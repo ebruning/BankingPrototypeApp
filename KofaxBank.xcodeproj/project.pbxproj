@@ -1,0 +1,1522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00B3C2511525E09F1E15FC05 /* Pods_KofaxBankTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */; };
+		0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */; };
+		719DE89B310DC15AC8244468 /* Pods_KofaxBankUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */; };
+		AE0FE0A61F0E0FCE00F9F520 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */; };
+		AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */; };
+		AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0FE0AB1F0F643000F9F520 /* MapKit.framework */; };
+		AE154A171EFCE1E100CF1F48 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A161EFCE1E100CF1F48 /* FloatingButton.swift */; };
+		AE154A1B1EFD197D00CF1F48 /* AccountTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A1A1EFD197D00CF1F48 /* AccountTransactionCell.swift */; };
+		AE154A1D1EFD1A5600CF1F48 /* AccountTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A1C1EFD1A5600CF1F48 /* AccountTransactionData.swift */; };
+		AE154A211F025AE900CF1F48 /* DocumentsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */; };
+		AE154A231F02632700CF1F48 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A221F02632700CF1F48 /* MainTabBarController.swift */; };
+		AE154A321F0288A500CF1F48 /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A311F0288A500CF1F48 /* ViewShadow.swift */; };
+		AE154A341F03A16F00CF1F48 /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A331F03A16F00CF1F48 /* PopVC.swift */; };
+		AE154A361F03A18D00CF1F48 /* PopViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A351F03A18D00CF1F48 /* PopViewCell.swift */; };
+		AE154A381F03A2A400CF1F48 /* PopViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A371F03A2A400CF1F48 /* PopViewData.swift */; };
+		AE154A3A1F03A6E000CF1F48 /* CreditCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A391F03A6E000CF1F48 /* CreditCardData.swift */; };
+		AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */; };
+		AE154A3E1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */; };
+		AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D241F55995A00695F8A /* UIColor+customization.swift */; };
+		AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */; };
+		AE254D491F582B3000695F8A /* CreditCardDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */; };
+		AE254D4B1F59382500695F8A /* CreditCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D4A1F59382500695F8A /* CreditCardManager.swift */; };
+		AE254D4D1F5D66E200695F8A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D4C1F5D66E200695F8A /* AppError.swift */; };
+		AE254D521F5D762C00695F8A /* InstructionsPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D501F5D762C00695F8A /* InstructionsPopup.swift */; };
+		AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D511F5D762C00695F8A /* InstructionsPopup.xib */; };
+		AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */; };
+		AE254D571F66867500695F8A /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D561F66867500695F8A /* BillManager.swift */; };
+		AE254D591F69309F00695F8A /* CreditCardHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */; };
+		AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6A1EE6856E000E296F /* UIView+ customization.swift */; };
+		AE449F6D1EE6894C000E296F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6C1EE6894C000E296F /* LoginVC.swift */; };
+		AE449F6F1EE6A1B4000E296F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6E1EE6A1B4000E296F /* SplashVC.swift */; };
+		AE449F711EE6C0FB000E296F /* TouchIDAuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */; };
+		AE449F731EE6DE57000E296F /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */; };
+		AE449F781EE9209C000E296F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F771EE9209C000E296F /* Constants.swift */; };
+		AE449F7B1EE92633000E296F /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F7A1EE92633000E296F /* ServerManager.swift */; };
+		AE50E1BA1EEE74DE00578645 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE50E1B91EEE74DE00578645 /* Utility.swift */; };
+		AE50E1BC1EEE875000578645 /* WaitIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE50E1BB1EEE875000578645 /* WaitIndicatorView.swift */; };
+		AE50E1BE1EEE8B4F00578645 /* WaitIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE50E1BD1EEE8B4F00578645 /* WaitIndicatorView.xib */; };
+		AE5343391F445AEF00EFD829 /* CDIPPUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5343351F445AEF00EFD829 /* CDIPPUtilities.m */; };
+		AE53433A1F445AEF00EFD829 /* IPPUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5343381F445AEF00EFD829 /* IPPUtilities.m */; };
+		AE53433D1F445B3F00EFD829 /* BaseIPPUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53433C1F445B3F00EFD829 /* BaseIPPUtilities.m */; };
+		AE5343461F46E29A00EFD829 /* CheckValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5343451F46E29A00EFD829 /* CheckValidation.m */; };
+		AE5343481F4AAF6100EFD829 /* ExtractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5343471F4AAF6100EFD829 /* ExtractionManager.swift */; };
+		AE5D7E351EDD729100D12163 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E341EDD729100D12163 /* AppDelegate.swift */; };
+		AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D7E381EDD729100D12163 /* Main.storyboard */; };
+		AE5D7E3D1EDD729100D12163 /* KofaxBank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E3B1EDD729100D12163 /* KofaxBank.xcdatamodeld */; };
+		AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D7E3E1EDD729100D12163 /* Assets.xcassets */; };
+		AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */; };
+		AE5D7E4D1EDD729200D12163 /* KofaxBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E4C1EDD729200D12163 /* KofaxBankTests.swift */; };
+		AE5D7E581EDD729200D12163 /* KofaxBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */; };
+		AE71BBCA1F2726A70066B632 /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC71F2726A70066B632 /* MobileSDK.framework */; };
+		AE71BBCB1F2726A70066B632 /* SDKStrings.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC81F2726A70066B632 /* SDKStrings.bundle */; };
+		AE71BBCC1F2726A70066B632 /* uiimages.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC91F2726A70066B632 /* uiimages.bundle */; };
+		AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD21F273F530066B632 /* libsqlite3.tbd */; };
+		AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD41F273F5B0066B632 /* libz.tbd */; };
+		AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD61F273F690066B632 /* libc++.tbd */; };
+		AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD81F273F700066B632 /* libxml2.tbd */; };
+		AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */; };
+		AE71BBDD1F2753F00066B632 /* BillDataPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71BBDC1F2753F00066B632 /* BillDataPreviewViewController.swift */; };
+		AE71BBDF1F27636C0066B632 /* BillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71BBDE1F27636C0066B632 /* BillData.swift */; };
+		AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */ = {isa = PBXBuildFile; fileRef = AE71BBE01F2B1B3A0066B632 /* sample_data.json */; };
+		AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71BBE21F2B2C390066B632 /* MoreViewController.swift */; };
+		AE7D5CDF1F8CA80C00538E61 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5CDE1F8CA80C00538E61 /* RegionViewController.swift */; };
+		AE7D5CE51F90A66900538E61 /* BarcodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5CE31F90A66900538E61 /* BarcodeReaderViewController.swift */; };
+		AE7D5CE61F90A66900538E61 /* BarcodeReaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7D5CE41F90A66900538E61 /* BarcodeReaderViewController.xib */; };
+		AE7D5CE81FA3761200538E61 /* IDDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5CE71FA3761200538E61 /* IDDataViewController.swift */; };
+		AE7D5E0A1FA7493000538E61 /* AuthenticationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5DE71FA7493000538E61 /* AuthenticationService.m */; };
+		AE7D5E0B1FA7493000538E61 /* IDAuthenticationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5DE91FA7493000538E61 /* IDAuthenticationService.m */; };
+		AE7D5E101FA7504800538E61 /* ServerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E0F1FA7504800538E61 /* ServerConstants.swift */; };
+		AE7D5E321FA77A2500538E61 /* AuthenticationResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E1B1FA77A2500538E61 /* AuthenticationResultModel.m */; };
+		AE7D5E441FA77B2200538E61 /* AuthenticationDocumentClassificationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E3D1FA77B2200538E61 /* AuthenticationDocumentClassificationModel.m */; };
+		AE7D5E451FA77B2200538E61 /* AuthenticationReasonsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E3F1FA77B2200538E61 /* AuthenticationReasonsModel.m */; };
+		AE7D5E461FA77B2200538E61 /* DocumentImageAnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E411FA77B2200538E61 /* DocumentImageAnalysisModel.m */; };
+		AE7D5E471FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E431FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m */; };
+		AE7D5E4A1FA77B8C00538E61 /* PassedAlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E491FA77B8C00538E61 /* PassedAlertsModel.m */; };
+		AE7D5E4D1FA77B9F00538E61 /* AlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E4C1FA77B9F00538E61 /* AlertsModel.m */; };
+		AE7D5E501FA77BC200538E61 /* FailedAlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E4F1FA77BC200538E61 /* FailedAlertsModel.m */; };
+		AE7D5E531FA77BD200538E61 /* AttentionAlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E521FA77BD200538E61 /* AttentionAlertsModel.m */; };
+		AE7D5E561FA77BDB00538E61 /* CautionAlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E551FA77BDB00538E61 /* CautionAlertsModel.m */; };
+		AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E581FA77BED00538E61 /* ImageOriginalityValuesModel.m */; };
+		AE7D5E5C1FA77BFA00538E61 /* RiskVectorOriginalityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E5B1FA77BFA00538E61 /* RiskVectorOriginalityModel.m */; };
+		AE7D5E5F1FA77C1100538E61 /* DocumentTestsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E5E1FA77C1100538E61 /* DocumentTestsModel.m */; };
+		AE7D5E621FA77C2200538E61 /* OriginalityValuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E611FA77C2200538E61 /* OriginalityValuesModel.m */; };
+		AE7D5E651FA77CD500538E61 /* ModelUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E641FA77CD500538E61 /* ModelUtilities.m */; };
+		AE7D5E681FAAE15400538E61 /* CreditCardTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */; };
+		AE7D5E6B1FAB55B300538E61 /* BillerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E691FAB55B300538E61 /* BillerViewController.swift */; };
+		AE7D5E6C1FAB55B300538E61 /* BillerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */; };
+		AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */; };
+		AE7EE5A71F3B296100536ED9 /* DiskUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */; };
+		AE7EE5A91F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5A81F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift */; };
+		AE7EE5B21F3C755800536ED9 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5B01F3C755800536ED9 /* PreviewViewController.swift */; };
+		AE7EE5B31F3C755800536ED9 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7EE5B11F3C755800536ED9 /* PreviewViewController.xib */; };
+		AE7EE5B51F3C8E1900536ED9 /* CheckDepositHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7EE5B41F3C8E1900536ED9 /* CheckDepositHomeViewController.xib */; };
+		AE7EE5B81F3D95CA00536ED9 /* CheckDepositHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5B71F3D95CA00536ED9 /* CheckDepositHomeViewController.swift */; };
+		AE7EE5BA1F4418DC00536ED9 /* ImageProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5B91F4418DC00536ED9 /* ImageProcessManager.swift */; };
+		AE7EE5BC1F44193D00536ED9 /* ImageProcessParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5BB1F44193D00536ED9 /* ImageProcessParameters.swift */; };
+		AE8BDB411F5418C7008EA957 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BDB401F5418C7008EA957 /* CustomButton.swift */; };
+		AE8C80BB1F31E3680024C382 /* AccountTransactionHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80BA1F31E3680024C382 /* AccountTransactionHistoryVC.swift */; };
+		AE8C80BE1F3301DC0024C382 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80BC1F3301DC0024C382 /* ImageCaptureViewController.swift */; };
+		AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8C80BD1F3301DC0024C382 /* ImageCaptureViewController.xib */; };
+		AE8C80DF1F33304E0024C382 /* BaseFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80DE1F33304E0024C382 /* BaseFlowManager.swift */; };
+		AE8C80E11F333C430024C382 /* BaseCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80E01F333C430024C382 /* BaseCaptureViewController.swift */; };
+		AE8C80E31F333C8D0024C382 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80E21F333C8D0024C382 /* BaseViewController.swift */; };
+		AE8C80EB1F3347F10024C382 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80EA1F3347F10024C382 /* UIImageEffects.m */; };
+		AE8C80ED1F3359FB0024C382 /* CaptureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80EC1F3359FB0024C382 /* CaptureFactory.swift */; };
+		AE8C80EF1F335AD40024C382 /* ExperienceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80EE1F335AD40024C382 /* ExperienceOptions.swift */; };
+		AE8C80F31F34797E0024C382 /* CaptureOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80F21F34797E0024C382 /* CaptureOptions.swift */; };
+		AE8C80F51F3483230024C382 /* ExperienceMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80F41F3483230024C382 /* ExperienceMessages.swift */; };
+		AE8C80F71F34AAA50024C382 /* CheckDepositManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80F61F34AAA50024C382 /* CheckDepositManager.swift */; };
+		AE90281B1F8376820055685B /* IDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90281A1F8376820055685B /* IDManager.swift */; };
+		AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90281C1F838F8B0055685B /* IDHomeVC.swift */; };
+		AE9028241F8638180055685B /* IDSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028221F8638180055685B /* IDSettingsViewController.swift */; };
+		AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028231F8638180055685B /* IDSettingsViewController.xib */; };
+		AE9028271F864A7A0055685B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028261F864A7A0055685B /* CustomView.swift */; };
+		AE9C006A1F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */; };
+		AEA3D3081EF7A0BF001DBB12 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */; };
+		AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */; };
+		AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */; };
+		AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */; };
+		AEA639661F4D8420006C122D /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA639651F4D8420006C122D /* DataParser.m */; };
+		AEA639691F4EFB77006C122D /* ImageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA639681F4EFB77006C122D /* ImageUtilities.swift */; };
+		AEAA70831F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEAA70821F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist */; };
+		AEAA70851F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEAA70841F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist */; };
+		AEAA70891F73F35200A511C8 /* RegionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAA70871F73F35200A511C8 /* RegionViewController.xib */; };
+		AEAA708B1F73F51A00A511C8 /* ID_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708A1F73F51A00A511C8 /* ID_Constants.swift */; };
+		AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */; };
+		AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708E1F7CF01100A511C8 /* RegionController.swift */; };
+		AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE5D7E491EDD729200D12163 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5D7E291EDD729100D12163 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE5D7E301EDD729100D12163;
+			remoteInfo = KofaxBank;
+		};
+		AE5D7E541EDD729200D12163 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5D7E291EDD729100D12163 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE5D7E301EDD729100D12163;
+			remoteInfo = KofaxBank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.debug.xcconfig"; sourceTree = "<group>"; };
+		759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.debug.xcconfig"; sourceTree = "<group>"; };
+		971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBankTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
+		AE0FE0AB1F0F643000F9F520 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AE154A161EFCE1E100CF1F48 /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		AE154A1A1EFD197D00CF1F48 /* AccountTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTransactionCell.swift; sourceTree = "<group>"; };
+		AE154A1C1EFD1A5600CF1F48 /* AccountTransactionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTransactionData.swift; sourceTree = "<group>"; };
+		AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsHomeVC.swift; sourceTree = "<group>"; };
+		AE154A221F02632700CF1F48 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		AE154A311F0288A500CF1F48 /* ViewShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
+		AE154A331F03A16F00CF1F48 /* PopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
+		AE154A351F03A18D00CF1F48 /* PopViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopViewCell.swift; sourceTree = "<group>"; };
+		AE154A371F03A2A400CF1F48 /* PopViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopViewData.swift; sourceTree = "<group>"; };
+		AE154A391F03A6E000CF1F48 /* CreditCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardData.swift; sourceTree = "<group>"; };
+		AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionData.swift; sourceTree = "<group>"; };
+		AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardPendingApprovalCell.swift; sourceTree = "<group>"; };
+		AE254D241F55995A00695F8A /* UIColor+customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+customization.swift"; sourceTree = "<group>"; };
+		AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardDataPreviewViewController.swift; sourceTree = "<group>"; };
+		AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreditCardDataPreviewViewController.xib; sourceTree = "<group>"; };
+		AE254D4A1F59382500695F8A /* CreditCardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardManager.swift; sourceTree = "<group>"; };
+		AE254D4C1F5D66E200695F8A /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		AE254D501F5D762C00695F8A /* InstructionsPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsPopup.swift; sourceTree = "<group>"; };
+		AE254D511F5D762C00695F8A /* InstructionsPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstructionsPopup.xib; sourceTree = "<group>"; };
+		AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillDataPreviewViewController.xib; sourceTree = "<group>"; };
+		AE254D561F66867500695F8A /* BillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
+		AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardHomeVC.swift; sourceTree = "<group>"; };
+		AE449F6A1EE6856E000E296F /* UIView+ customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ customization.swift"; sourceTree = "<group>"; };
+		AE449F6C1EE6894C000E296F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		AE449F6E1EE6A1B4000E296F /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthenticationVC.swift; sourceTree = "<group>"; };
+		AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
+		AE449F771EE9209C000E296F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AE449F7A1EE92633000E296F /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		AE50E1B91EEE74DE00578645 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		AE50E1BB1EEE875000578645 /* WaitIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitIndicatorView.swift; sourceTree = "<group>"; };
+		AE50E1BD1EEE8B4F00578645 /* WaitIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitIndicatorView.xib; sourceTree = "<group>"; };
+		AE5343341F445AEF00EFD829 /* CDIPPUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDIPPUtilities.h; sourceTree = "<group>"; };
+		AE5343351F445AEF00EFD829 /* CDIPPUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDIPPUtilities.m; sourceTree = "<group>"; };
+		AE5343361F445AEF00EFD829 /* IPPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPPConstants.h; sourceTree = "<group>"; };
+		AE5343371F445AEF00EFD829 /* IPPUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPPUtilities.h; sourceTree = "<group>"; };
+		AE5343381F445AEF00EFD829 /* IPPUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPPUtilities.m; sourceTree = "<group>"; };
+		AE53433B1F445B3F00EFD829 /* BaseIPPUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIPPUtilities.h; sourceTree = "<group>"; };
+		AE53433C1F445B3F00EFD829 /* BaseIPPUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseIPPUtilities.m; sourceTree = "<group>"; };
+		AE5343441F46E29A00EFD829 /* CheckValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckValidation.h; sourceTree = "<group>"; };
+		AE5343451F46E29A00EFD829 /* CheckValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckValidation.m; sourceTree = "<group>"; };
+		AE5343471F4AAF6100EFD829 /* ExtractionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractionManager.swift; sourceTree = "<group>"; };
+		AE5D7E311EDD729100D12163 /* KofaxBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KofaxBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5D7E341EDD729100D12163 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE5D7E391EDD729100D12163 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE5D7E3C1EDD729100D12163 /* KofaxBank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KofaxBank.xcdatamodel; sourceTree = "<group>"; };
+		AE5D7E3E1EDD729100D12163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE5D7E411EDD729100D12163 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE5D7E431EDD729100D12163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5D7E481EDD729200D12163 /* KofaxBankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KofaxBankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5D7E4C1EDD729200D12163 /* KofaxBankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KofaxBankTests.swift; sourceTree = "<group>"; };
+		AE5D7E4E1EDD729200D12163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5D7E531EDD729200D12163 /* KofaxBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KofaxBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KofaxBankUITests.swift; sourceTree = "<group>"; };
+		AE5D7E591EDD729200D12163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE71BBC71F2726A70066B632 /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
+		AE71BBC81F2726A70066B632 /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
+		AE71BBC91F2726A70066B632 /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
+		AE71BBD21F273F530066B632 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		AE71BBD41F273F5B0066B632 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		AE71BBD61F273F690066B632 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AE71BBD81F273F700066B632 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		AE71BBDC1F2753F00066B632 /* BillDataPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillDataPreviewViewController.swift; sourceTree = "<group>"; };
+		AE71BBDE1F27636C0066B632 /* BillData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillData.swift; sourceTree = "<group>"; };
+		AE71BBE01F2B1B3A0066B632 /* sample_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample_data.json; sourceTree = "<group>"; };
+		AE71BBE21F2B2C390066B632 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		AE7D5CDE1F8CA80C00538E61 /* RegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
+		AE7D5CE31F90A66900538E61 /* BarcodeReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeReaderViewController.swift; sourceTree = "<group>"; };
+		AE7D5CE41F90A66900538E61 /* BarcodeReaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarcodeReaderViewController.xib; sourceTree = "<group>"; };
+		AE7D5CE71FA3761200538E61 /* IDDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDDataViewController.swift; sourceTree = "<group>"; };
+		AE7D5DE61FA7493000538E61 /* AuthenticationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationService.h; sourceTree = "<group>"; };
+		AE7D5DE71FA7493000538E61 /* AuthenticationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationService.m; sourceTree = "<group>"; };
+		AE7D5DE81FA7493000538E61 /* IDAuthenticationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAuthenticationService.h; sourceTree = "<group>"; };
+		AE7D5DE91FA7493000538E61 /* IDAuthenticationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAuthenticationService.m; sourceTree = "<group>"; };
+		AE7D5E0F1FA7504800538E61 /* ServerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConstants.swift; sourceTree = "<group>"; };
+		AE7D5E1A1FA77A2500538E61 /* AuthenticationResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationResultModel.h; sourceTree = "<group>"; };
+		AE7D5E1B1FA77A2500538E61 /* AuthenticationResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationResultModel.m; sourceTree = "<group>"; };
+		AE7D5E3C1FA77B2200538E61 /* AuthenticationDocumentClassificationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationDocumentClassificationModel.h; sourceTree = "<group>"; };
+		AE7D5E3D1FA77B2200538E61 /* AuthenticationDocumentClassificationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationDocumentClassificationModel.m; sourceTree = "<group>"; };
+		AE7D5E3E1FA77B2200538E61 /* AuthenticationReasonsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationReasonsModel.h; sourceTree = "<group>"; };
+		AE7D5E3F1FA77B2200538E61 /* AuthenticationReasonsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationReasonsModel.m; sourceTree = "<group>"; };
+		AE7D5E401FA77B2200538E61 /* DocumentImageAnalysisModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentImageAnalysisModel.h; sourceTree = "<group>"; };
+		AE7D5E411FA77B2200538E61 /* DocumentImageAnalysisModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentImageAnalysisModel.m; sourceTree = "<group>"; };
+		AE7D5E421FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentRiskVectorAnalysisModel.h; sourceTree = "<group>"; };
+		AE7D5E431FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentRiskVectorAnalysisModel.m; sourceTree = "<group>"; };
+		AE7D5E481FA77B8C00538E61 /* PassedAlertsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassedAlertsModel.h; sourceTree = "<group>"; };
+		AE7D5E491FA77B8C00538E61 /* PassedAlertsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassedAlertsModel.m; sourceTree = "<group>"; };
+		AE7D5E4B1FA77B9F00538E61 /* AlertsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsModel.h; sourceTree = "<group>"; };
+		AE7D5E4C1FA77B9F00538E61 /* AlertsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsModel.m; sourceTree = "<group>"; };
+		AE7D5E4E1FA77BC200538E61 /* FailedAlertsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedAlertsModel.h; sourceTree = "<group>"; };
+		AE7D5E4F1FA77BC200538E61 /* FailedAlertsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedAlertsModel.m; sourceTree = "<group>"; };
+		AE7D5E511FA77BD200538E61 /* AttentionAlertsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionAlertsModel.h; sourceTree = "<group>"; };
+		AE7D5E521FA77BD200538E61 /* AttentionAlertsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionAlertsModel.m; sourceTree = "<group>"; };
+		AE7D5E541FA77BDB00538E61 /* CautionAlertsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CautionAlertsModel.h; sourceTree = "<group>"; };
+		AE7D5E551FA77BDB00538E61 /* CautionAlertsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CautionAlertsModel.m; sourceTree = "<group>"; };
+		AE7D5E571FA77BED00538E61 /* ImageOriginalityValuesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOriginalityValuesModel.h; sourceTree = "<group>"; };
+		AE7D5E581FA77BED00538E61 /* ImageOriginalityValuesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOriginalityValuesModel.m; sourceTree = "<group>"; };
+		AE7D5E5A1FA77BFA00538E61 /* RiskVectorOriginalityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskVectorOriginalityModel.h; sourceTree = "<group>"; };
+		AE7D5E5B1FA77BFA00538E61 /* RiskVectorOriginalityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskVectorOriginalityModel.m; sourceTree = "<group>"; };
+		AE7D5E5D1FA77C1100538E61 /* DocumentTestsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTestsModel.h; sourceTree = "<group>"; };
+		AE7D5E5E1FA77C1100538E61 /* DocumentTestsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTestsModel.m; sourceTree = "<group>"; };
+		AE7D5E601FA77C2200538E61 /* OriginalityValuesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalityValuesModel.h; sourceTree = "<group>"; };
+		AE7D5E611FA77C2200538E61 /* OriginalityValuesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalityValuesModel.m; sourceTree = "<group>"; };
+		AE7D5E631FA77CD500538E61 /* ModelUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUtilities.h; sourceTree = "<group>"; };
+		AE7D5E641FA77CD500538E61 /* ModelUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelUtilities.m; sourceTree = "<group>"; };
+		AE7D5E661FA77E2200538E61 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionCell.swift; sourceTree = "<group>"; };
+		AE7D5E691FAB55B300538E61 /* BillerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillerViewController.swift; sourceTree = "<group>"; };
+		AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillerViewController.xib; sourceTree = "<group>"; };
+		AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskUtility.swift; sourceTree = "<group>"; };
+		AE7EE5A81F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KEDImageMimeType+TypeStringify.swift"; sourceTree = "<group>"; };
+		AE7EE5B01F3C755800536ED9 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		AE7EE5B11F3C755800536ED9 /* PreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewViewController.xib; sourceTree = "<group>"; };
+		AE7EE5B41F3C8E1900536ED9 /* CheckDepositHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckDepositHomeViewController.xib; sourceTree = "<group>"; };
+		AE7EE5B71F3D95CA00536ED9 /* CheckDepositHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDepositHomeViewController.swift; sourceTree = "<group>"; };
+		AE7EE5B91F4418DC00536ED9 /* ImageProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessManager.swift; sourceTree = "<group>"; };
+		AE7EE5BB1F44193D00536ED9 /* ImageProcessParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessParameters.swift; sourceTree = "<group>"; };
+		AE8BDB401F5418C7008EA957 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		AE8C80BA1F31E3680024C382 /* AccountTransactionHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTransactionHistoryVC.swift; sourceTree = "<group>"; };
+		AE8C80BC1F3301DC0024C382 /* ImageCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureViewController.swift; sourceTree = "<group>"; };
+		AE8C80BD1F3301DC0024C382 /* ImageCaptureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCaptureViewController.xib; sourceTree = "<group>"; };
+		AE8C80DE1F33304E0024C382 /* BaseFlowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowManager.swift; sourceTree = "<group>"; };
+		AE8C80E01F333C430024C382 /* BaseCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCaptureViewController.swift; sourceTree = "<group>"; };
+		AE8C80E21F333C8D0024C382 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AE8C80E91F3347F10024C382 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		AE8C80EA1F3347F10024C382 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		AE8C80EC1F3359FB0024C382 /* CaptureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureFactory.swift; sourceTree = "<group>"; };
+		AE8C80EE1F335AD40024C382 /* ExperienceOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceOptions.swift; sourceTree = "<group>"; };
+		AE8C80F21F34797E0024C382 /* CaptureOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureOptions.swift; sourceTree = "<group>"; };
+		AE8C80F41F3483230024C382 /* ExperienceMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceMessages.swift; sourceTree = "<group>"; };
+		AE8C80F61F34AAA50024C382 /* CheckDepositManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDepositManager.swift; sourceTree = "<group>"; };
+		AE90281A1F8376820055685B /* IDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDManager.swift; sourceTree = "<group>"; };
+		AE90281C1F838F8B0055685B /* IDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDHomeVC.swift; sourceTree = "<group>"; };
+		AE9028221F8638180055685B /* IDSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSettingsViewController.swift; sourceTree = "<group>"; };
+		AE9028231F8638180055685B /* IDSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDSettingsViewController.xib; sourceTree = "<group>"; };
+		AE9028261F864A7A0055685B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		AE9C00681F0B7E0C000EEC47 /* KofaxBank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KofaxBank.entitlements; sourceTree = "<group>"; };
+		AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreditCardHomeVC+Banner.swift"; sourceTree = "<group>"; };
+		AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KofaxBank-Bridging-Header.h"; sourceTree = "<group>"; };
+		AEA3D3051EF7A0BF001DBB12 /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeVC.h; path = ParallaxViewController/HomeVC.h; sourceTree = "<group>"; };
+		AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeVC.m; path = ParallaxViewController/HomeVC.m; sourceTree = "<group>"; };
+		AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeScreen.xib; path = ParallaxViewController/HomeScreen.xib; sourceTree = "<group>"; };
+		AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsHomeVC.swift; sourceTree = "<group>"; };
+		AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		AEA639641F4D8420006C122D /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
+		AEA639651F4D8420006C122D /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		AEA639681F4EFB77006C122D /* ImageUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtilities.swift; sourceTree = "<group>"; };
+		AEAA70821F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Region_plist_for_ID_Server_1x.plist; sourceTree = "<group>"; };
+		AEAA70841F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Region_plist_for_ID_Server_2x.plist; sourceTree = "<group>"; };
+		AEAA70871F73F35200A511C8 /* RegionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionViewController.xib; sourceTree = "<group>"; };
+		AEAA708A1F73F51A00A511C8 /* ID_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID_Constants.swift; sourceTree = "<group>"; };
+		AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionProperties.swift; sourceTree = "<group>"; };
+		AEAA708E1F7CF01100A511C8 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
+		AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionConstants.swift; sourceTree = "<group>"; };
+		B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBankUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.release.xcconfig"; sourceTree = "<group>"; };
+		F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE5D7E2E1EDD729100D12163 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
+				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
+				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
+				AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */,
+				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
+				AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */,
+				AE71BBCA1F2726A70066B632 /* MobileSDK.framework in Frameworks */,
+				AE71BBCB1F2726A70066B632 /* SDKStrings.bundle in Frameworks */,
+				AE71BBCC1F2726A70066B632 /* uiimages.bundle in Frameworks */,
+				AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */,
+				0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E451EDD729200D12163 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00B3C2511525E09F1E15FC05 /* Pods_KofaxBankTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E501EDD729200D12163 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				719DE89B310DC15AC8244468 /* Pods_KofaxBankUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		75BDBBC70348218DCE276DAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
+				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
+				AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */,
+				AE71BBD81F273F700066B632 /* libxml2.tbd */,
+				AE71BBD61F273F690066B632 /* libc++.tbd */,
+				AE71BBD41F273F5B0066B632 /* libz.tbd */,
+				AE71BBD21F273F530066B632 /* libsqlite3.tbd */,
+				AE71BBC71F2726A70066B632 /* MobileSDK.framework */,
+				AE71BBC81F2726A70066B632 /* SDKStrings.bundle */,
+				AE71BBC91F2726A70066B632 /* uiimages.bundle */,
+				AE0FE0AB1F0F643000F9F520 /* MapKit.framework */,
+				B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */,
+				971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */,
+				D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE254D441F582A8100695F8A /* CreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */,
+				AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */,
+				AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */,
+				AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */,
+			);
+			name = CreditCard;
+			sourceTree = "<group>";
+		};
+		AE254D451F582AA000695F8A /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				AE71BBDC1F2753F00066B632 /* BillDataPreviewViewController.swift */,
+				AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */,
+				AE7D5E691FAB55B300538E61 /* BillerViewController.swift */,
+				AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */,
+			);
+			name = Bill;
+			sourceTree = "<group>";
+		};
+		AE449F761EE92069000E296F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AEA639671F4D8426006C122D /* Parser */,
+				AE5343331F445A6800EFD829 /* IPPUtilities */,
+				AE8C80E81F3347F10024C382 /* ImageEffects */,
+				AE449F771EE9209C000E296F /* Constants.swift */,
+				AE7D5E0F1FA7504800538E61 /* ServerConstants.swift */,
+				AE50E1B91EEE74DE00578645 /* Utility.swift */,
+				AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */,
+				AE7EE5BB1F44193D00536ED9 /* ImageProcessParameters.swift */,
+				AEA639681F4EFB77006C122D /* ImageUtilities.swift */,
+				AE254D4C1F5D66E200695F8A /* AppError.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		AE449F791EE9261A000E296F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AE449F7A1EE92633000E296F /* ServerManager.swift */,
+				AE8C80DE1F33304E0024C382 /* BaseFlowManager.swift */,
+				AE8C80F61F34AAA50024C382 /* CheckDepositManager.swift */,
+				AE90281A1F8376820055685B /* IDManager.swift */,
+				AE7EE5B91F4418DC00536ED9 /* ImageProcessManager.swift */,
+				AE5343471F4AAF6100EFD829 /* ExtractionManager.swift */,
+				AE254D4A1F59382500695F8A /* CreditCardManager.swift */,
+				AE254D561F66867500695F8A /* BillManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		AE50E1BF1EEEB99A00578645 /* WaitIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				AE50E1BD1EEE8B4F00578645 /* WaitIndicatorView.xib */,
+				AE50E1BB1EEE875000578645 /* WaitIndicatorView.swift */,
+			);
+			name = WaitIndicator;
+			sourceTree = "<group>";
+		};
+		AE5343331F445A6800EFD829 /* IPPUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE5343341F445AEF00EFD829 /* CDIPPUtilities.h */,
+				AE5343351F445AEF00EFD829 /* CDIPPUtilities.m */,
+				AE5343361F445AEF00EFD829 /* IPPConstants.h */,
+				AE5343371F445AEF00EFD829 /* IPPUtilities.h */,
+				AE5343381F445AEF00EFD829 /* IPPUtilities.m */,
+				AE53433B1F445B3F00EFD829 /* BaseIPPUtilities.h */,
+				AE53433C1F445B3F00EFD829 /* BaseIPPUtilities.m */,
+			);
+			name = IPPUtilities;
+			sourceTree = "<group>";
+		};
+		AE5D7E281EDD729100D12163 = {
+			isa = PBXGroup;
+			children = (
+				75BDBBC70348218DCE276DAA /* Frameworks */,
+				AE5D7E331EDD729100D12163 /* KofaxBank */,
+				AE5D7E4B1EDD729200D12163 /* KofaxBankTests */,
+				AE5D7E561EDD729200D12163 /* KofaxBankUITests */,
+				D1DE4007D8F113AE6A0345E1 /* Pods */,
+				AE5D7E321EDD729100D12163 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE5D7E321EDD729100D12163 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE5D7E311EDD729100D12163 /* KofaxBank.app */,
+				AE5D7E481EDD729200D12163 /* KofaxBankTests.xctest */,
+				AE5D7E531EDD729200D12163 /* KofaxBankUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE5D7E331EDD729100D12163 /* KofaxBank */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5CE21F90A65500538E61 /* Barcode */,
+				AEAA70801F73CF9A00A511C8 /* ID */,
+				AE5D7E681EDD751C00D12163 /* AppDelegate */,
+				AE5D7E651EDD74E500D12163 /* ViewControllers */,
+				AE5D7E691EDD752E00D12163 /* Extensions */,
+				AE449F761EE92069000E296F /* Utilities */,
+				AE9C00681F0B7E0C000EEC47 /* KofaxBank.entitlements */,
+				AE449F791EE9261A000E296F /* Managers */,
+				AE5D7E661EDD750A00D12163 /* Models */,
+				AE5D7E6A1EDD753B00D12163 /* Resources */,
+				AE5D7E6B1EDD754C00D12163 /* Supporting Files */,
+				AE5D7E671EDD751200D12163 /* Views */,
+			);
+			path = KofaxBank;
+			sourceTree = "<group>";
+		};
+		AE5D7E4B1EDD729200D12163 /* KofaxBankTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE5D7E4C1EDD729200D12163 /* KofaxBankTests.swift */,
+				AE5D7E4E1EDD729200D12163 /* Info.plist */,
+			);
+			path = KofaxBankTests;
+			sourceTree = "<group>";
+		};
+		AE5D7E561EDD729200D12163 /* KofaxBankUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */,
+				AE5D7E591EDD729200D12163 /* Info.plist */,
+			);
+			path = KofaxBankUITests;
+			sourceTree = "<group>";
+		};
+		AE5D7E651EDD74E500D12163 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE254D451F582AA000695F8A /* Bill */,
+				AE254D441F582A8100695F8A /* CreditCard */,
+				AE7EE5B61F3D95A000536ED9 /* Check */,
+				AE8C80E21F333C8D0024C382 /* BaseViewController.swift */,
+				AE8C80E41F333C970024C382 /* Capture */,
+				AE8C80BA1F31E3680024C382 /* AccountTransactionHistoryVC.swift */,
+				AE71BBE21F2B2C390066B632 /* MoreViewController.swift */,
+				AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */,
+				AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */,
+				AEA3D30A1EF7AC32001DBB12 /* HomeVC - Objective-C */,
+				AE449F6C1EE6894C000E296F /* LoginVC.swift */,
+				AE154A221F02632700CF1F48 /* MainTabBarController.swift */,
+				AE254D501F5D762C00695F8A /* InstructionsPopup.swift */,
+				AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */,
+				AE154A331F03A16F00CF1F48 /* PopVC.swift */,
+				AE449F6E1EE6A1B4000E296F /* SplashVC.swift */,
+				AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */,
+				AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */,
+				AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */,
+				AE7EE5B01F3C755800536ED9 /* PreviewViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AE5D7E661EDD750A00D12163 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE71BBDE1F27636C0066B632 /* BillData.swift */,
+				AEAA70821F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist */,
+				AEAA70841F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist */,
+				AE154A391F03A6E000CF1F48 /* CreditCardData.swift */,
+				AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */,
+				AE5D7E6E1EDD75B600D12163 /* Datamodel */,
+				AE154A371F03A2A400CF1F48 /* PopViewData.swift */,
+				AE154A1C1EFD1A5600CF1F48 /* AccountTransactionData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AE5D7E671EDD751200D12163 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */,
+				AE154A1A1EFD197D00CF1F48 /* AccountTransactionCell.swift */,
+				AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */,
+				AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */,
+				AE154A161EFCE1E100CF1F48 /* FloatingButton.swift */,
+				AE154A351F03A18D00CF1F48 /* PopViewCell.swift */,
+				AE5D7E6D1EDD757800D12163 /* Storyboard & Nibs */,
+				AE154A311F0288A500CF1F48 /* ViewShadow.swift */,
+				AE8BDB401F5418C7008EA957 /* CustomButton.swift */,
+				AE9028261F864A7A0055685B /* CustomView.swift */,
+				AE50E1BF1EEEB99A00578645 /* WaitIndicator */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AE5D7E681EDD751C00D12163 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				AE5D7E341EDD729100D12163 /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		AE5D7E691EDD752E00D12163 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AE254D241F55995A00695F8A /* UIColor+customization.swift */,
+				AE449F6A1EE6856E000E296F /* UIView+ customization.swift */,
+				AE7EE5A81F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AE5D7E6A1EDD753B00D12163 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AE71BBE01F2B1B3A0066B632 /* sample_data.json */,
+				AE5D7E3E1EDD729100D12163 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AE5D7E6B1EDD754C00D12163 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */,
+				AE5D7E431EDD729100D12163 /* Info.plist */,
+				AE7D5E661FA77E2200538E61 /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE5D7E6D1EDD757800D12163 /* Storyboard & Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */,
+				AE5D7E381EDD729100D12163 /* Main.storyboard */,
+				AE254D511F5D762C00695F8A /* InstructionsPopup.xib */,
+				AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */,
+				AE8C80BD1F3301DC0024C382 /* ImageCaptureViewController.xib */,
+				AE7EE5B11F3C755800536ED9 /* PreviewViewController.xib */,
+				AE7EE5B41F3C8E1900536ED9 /* CheckDepositHomeViewController.xib */,
+			);
+			name = "Storyboard & Nibs";
+			sourceTree = "<group>";
+		};
+		AE5D7E6E1EDD75B600D12163 /* Datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				AE5D7E3B1EDD729100D12163 /* KofaxBank.xcdatamodeld */,
+			);
+			name = Datamodel;
+			sourceTree = "<group>";
+		};
+		AE7D5CE21F90A65500538E61 /* Barcode */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5CE31F90A66900538E61 /* BarcodeReaderViewController.swift */,
+				AE7D5CE41F90A66900538E61 /* BarcodeReaderViewController.xib */,
+			);
+			name = Barcode;
+			sourceTree = "<group>";
+		};
+		AE7D5DAB1FA7493000538E61 /* DLAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5E111FA77A2500538E61 /* Models */,
+				AE7D5DE51FA7493000538E61 /* Services */,
+			);
+			path = DLAuthentication;
+			sourceTree = "<group>";
+		};
+		AE7D5DE51FA7493000538E61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5DE61FA7493000538E61 /* AuthenticationService.h */,
+				AE7D5DE71FA7493000538E61 /* AuthenticationService.m */,
+				AE7D5DE81FA7493000538E61 /* IDAuthenticationService.h */,
+				AE7D5DE91FA7493000538E61 /* IDAuthenticationService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AE7D5E111FA77A2500538E61 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5E3C1FA77B2200538E61 /* AuthenticationDocumentClassificationModel.h */,
+				AE7D5E3D1FA77B2200538E61 /* AuthenticationDocumentClassificationModel.m */,
+				AE7D5E3E1FA77B2200538E61 /* AuthenticationReasonsModel.h */,
+				AE7D5E511FA77BD200538E61 /* AttentionAlertsModel.h */,
+				AE7D5E521FA77BD200538E61 /* AttentionAlertsModel.m */,
+				AE7D5E4B1FA77B9F00538E61 /* AlertsModel.h */,
+				AE7D5E541FA77BDB00538E61 /* CautionAlertsModel.h */,
+				AE7D5E551FA77BDB00538E61 /* CautionAlertsModel.m */,
+				AE7D5E4C1FA77B9F00538E61 /* AlertsModel.m */,
+				AE7D5E5D1FA77C1100538E61 /* DocumentTestsModel.h */,
+				AE7D5E5E1FA77C1100538E61 /* DocumentTestsModel.m */,
+				AE7D5E601FA77C2200538E61 /* OriginalityValuesModel.h */,
+				AE7D5E611FA77C2200538E61 /* OriginalityValuesModel.m */,
+				AE7D5E3F1FA77B2200538E61 /* AuthenticationReasonsModel.m */,
+				AE7D5E571FA77BED00538E61 /* ImageOriginalityValuesModel.h */,
+				AE7D5E581FA77BED00538E61 /* ImageOriginalityValuesModel.m */,
+				AE7D5E401FA77B2200538E61 /* DocumentImageAnalysisModel.h */,
+				AE7D5E4E1FA77BC200538E61 /* FailedAlertsModel.h */,
+				AE7D5E4F1FA77BC200538E61 /* FailedAlertsModel.m */,
+				AE7D5E5A1FA77BFA00538E61 /* RiskVectorOriginalityModel.h */,
+				AE7D5E5B1FA77BFA00538E61 /* RiskVectorOriginalityModel.m */,
+				AE7D5E481FA77B8C00538E61 /* PassedAlertsModel.h */,
+				AE7D5E491FA77B8C00538E61 /* PassedAlertsModel.m */,
+				AE7D5E411FA77B2200538E61 /* DocumentImageAnalysisModel.m */,
+				AE7D5E421FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.h */,
+				AE7D5E431FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m */,
+				AE7D5E1A1FA77A2500538E61 /* AuthenticationResultModel.h */,
+				AE7D5E1B1FA77A2500538E61 /* AuthenticationResultModel.m */,
+				AE7D5E631FA77CD500538E61 /* ModelUtilities.h */,
+				AE7D5E641FA77CD500538E61 /* ModelUtilities.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AE7EE5B61F3D95A000536ED9 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				AE7EE5B71F3D95CA00536ED9 /* CheckDepositHomeViewController.swift */,
+				AE5343441F46E29A00EFD829 /* CheckValidation.h */,
+				AE5343451F46E29A00EFD829 /* CheckValidation.m */,
+			);
+			name = Check;
+			sourceTree = "<group>";
+		};
+		AE8C80E41F333C970024C382 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				AE8C80BC1F3301DC0024C382 /* ImageCaptureViewController.swift */,
+				AE8C80E01F333C430024C382 /* BaseCaptureViewController.swift */,
+				AE8C80EC1F3359FB0024C382 /* CaptureFactory.swift */,
+				AE8C80F41F3483230024C382 /* ExperienceMessages.swift */,
+				AE8C80EE1F335AD40024C382 /* ExperienceOptions.swift */,
+				AE8C80F21F34797E0024C382 /* CaptureOptions.swift */,
+			);
+			name = Capture;
+			sourceTree = "<group>";
+		};
+		AE8C80E81F3347F10024C382 /* ImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				AE8C80E91F3347F10024C382 /* UIImageEffects.h */,
+				AE8C80EA1F3347F10024C382 /* UIImageEffects.m */,
+			);
+			path = ImageEffects;
+			sourceTree = "<group>";
+		};
+		AEA3D30A1EF7AC32001DBB12 /* HomeVC - Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3D3051EF7A0BF001DBB12 /* HomeVC.h */,
+				AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */,
+			);
+			name = "HomeVC - Objective-C";
+			sourceTree = "<group>";
+		};
+		AEA639671F4D8426006C122D /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				AEA639641F4D8420006C122D /* DataParser.h */,
+				AEA639651F4D8420006C122D /* DataParser.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		AEAA70801F73CF9A00A511C8 /* ID */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5DAB1FA7493000538E61 /* DLAuthentication */,
+				AEAA70811F73CFA200A511C8 /* Region */,
+				AEAA708A1F73F51A00A511C8 /* ID_Constants.swift */,
+				AE90281C1F838F8B0055685B /* IDHomeVC.swift */,
+				AE7D5CE71FA3761200538E61 /* IDDataViewController.swift */,
+				AE9028221F8638180055685B /* IDSettingsViewController.swift */,
+				AE9028231F8638180055685B /* IDSettingsViewController.xib */,
+			);
+			name = ID;
+			sourceTree = "<group>";
+		};
+		AEAA70811F73CFA200A511C8 /* Region */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D5CDE1F8CA80C00538E61 /* RegionViewController.swift */,
+				AEAA70871F73F35200A511C8 /* RegionViewController.xib */,
+				AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */,
+				AEAA708E1F7CF01100A511C8 /* RegionController.swift */,
+				AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */,
+			);
+			name = Region;
+			sourceTree = "<group>";
+		};
+		D1DE4007D8F113AE6A0345E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */,
+				E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */,
+				05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */,
+				F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */,
+				FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */,
+				CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE5D7E301EDD729100D12163 /* KofaxBank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE5D7E5C1EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBank" */;
+			buildPhases = (
+				A0673D4E03874B01608C937F /* [CP] Check Pods Manifest.lock */,
+				AE5D7E2D1EDD729100D12163 /* Sources */,
+				AE5D7E2E1EDD729100D12163 /* Frameworks */,
+				AE5D7E2F1EDD729100D12163 /* Resources */,
+				2121A1904F6E8190EAE5C511 /* [CP] Embed Pods Frameworks */,
+				DF9BBD5B897F9E61554A8F17 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KofaxBank;
+			productName = KofaxBank;
+			productReference = AE5D7E311EDD729100D12163 /* KofaxBank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE5D7E471EDD729200D12163 /* KofaxBankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE5D7E5F1EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBankTests" */;
+			buildPhases = (
+				B070723DB30639653C09E887 /* [CP] Check Pods Manifest.lock */,
+				AE5D7E441EDD729200D12163 /* Sources */,
+				AE5D7E451EDD729200D12163 /* Frameworks */,
+				AE5D7E461EDD729200D12163 /* Resources */,
+				B086FB4AF8D3A794625C451F /* [CP] Embed Pods Frameworks */,
+				DC6D0DA01979989460BB597B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE5D7E4A1EDD729200D12163 /* PBXTargetDependency */,
+			);
+			name = KofaxBankTests;
+			productName = KofaxBankTests;
+			productReference = AE5D7E481EDD729200D12163 /* KofaxBankTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AE5D7E521EDD729200D12163 /* KofaxBankUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE5D7E621EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBankUITests" */;
+			buildPhases = (
+				01A73B1D0422049EB7E8D7D5 /* [CP] Check Pods Manifest.lock */,
+				AE5D7E4F1EDD729200D12163 /* Sources */,
+				AE5D7E501EDD729200D12163 /* Frameworks */,
+				AE5D7E511EDD729200D12163 /* Resources */,
+				57D0010108172D698E356F50 /* [CP] Embed Pods Frameworks */,
+				9C19A046A26EC9F8F623342D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE5D7E551EDD729200D12163 /* PBXTargetDependency */,
+			);
+			name = KofaxBankUITests;
+			productName = KofaxBankUITests;
+			productReference = AE5D7E531EDD729200D12163 /* KofaxBankUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE5D7E291EDD729100D12163 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = kofax;
+				TargetAttributes = {
+					AE5D7E301EDD729100D12163 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = C384ZZG573;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
+					AE5D7E471EDD729200D12163 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = C384ZZG573;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE5D7E301EDD729100D12163;
+					};
+					AE5D7E521EDD729200D12163 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = C384ZZG573;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE5D7E301EDD729100D12163;
+					};
+				};
+			};
+			buildConfigurationList = AE5D7E2C1EDD729100D12163 /* Build configuration list for PBXProject "KofaxBank" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+				es,
+				fr,
+				it,
+				"pt-BR",
+				"pt-PT",
+				pt,
+			);
+			mainGroup = AE5D7E281EDD729100D12163;
+			productRefGroup = AE5D7E321EDD729100D12163 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE5D7E301EDD729100D12163 /* KofaxBank */,
+				AE5D7E471EDD729200D12163 /* KofaxBankTests */,
+				AE5D7E521EDD729200D12163 /* KofaxBankUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE5D7E2F1EDD729100D12163 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */,
+				AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */,
+				AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */,
+				AE7D5E6C1FAB55B300538E61 /* BillerViewController.xib in Resources */,
+				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
+				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
+				AE7EE5B31F3C755800536ED9 /* PreviewViewController.xib in Resources */,
+				AEAA70831F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist in Resources */,
+				AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */,
+				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
+				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
+				AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */,
+				AE7EE5B51F3C8E1900536ED9 /* CheckDepositHomeViewController.xib in Resources */,
+				AEAA70891F73F35200A511C8 /* RegionViewController.xib in Resources */,
+				AE50E1BE1EEE8B4F00578645 /* WaitIndicatorView.xib in Resources */,
+				AE254D491F582B3000695F8A /* CreditCardDataPreviewViewController.xib in Resources */,
+				AE7D5CE61F90A66900538E61 /* BarcodeReaderViewController.xib in Resources */,
+				AEAA70851F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E461EDD729200D12163 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E511EDD729200D12163 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01A73B1D0422049EB7E8D7D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2121A1904F6E8190EAE5C511 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57D0010108172D698E356F50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C19A046A26EC9F8F623342D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0673D4E03874B01608C937F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B070723DB30639653C09E887 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B086FB4AF8D3A794625C451F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC6D0DA01979989460BB597B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF9BBD5B897F9E61554A8F17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE5D7E2D1EDD729100D12163 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */,
+				AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */,
+				AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */,
+				AE7D5E681FAAE15400538E61 /* CreditCardTransactionCell.swift in Sources */,
+				AE7D5E321FA77A2500538E61 /* AuthenticationResultModel.m in Sources */,
+				AE7D5E531FA77BD200538E61 /* AttentionAlertsModel.m in Sources */,
+				AEAA708B1F73F51A00A511C8 /* ID_Constants.swift in Sources */,
+				AE8C80EF1F335AD40024C382 /* ExperienceOptions.swift in Sources */,
+				AE71BBDF1F27636C0066B632 /* BillData.swift in Sources */,
+				AE154A381F03A2A400CF1F48 /* PopViewData.swift in Sources */,
+				AE7D5CDF1F8CA80C00538E61 /* RegionViewController.swift in Sources */,
+				AE154A1B1EFD197D00CF1F48 /* AccountTransactionCell.swift in Sources */,
+				AE7D5E5C1FA77BFA00538E61 /* RiskVectorOriginalityModel.m in Sources */,
+				AE90281B1F8376820055685B /* IDManager.swift in Sources */,
+				AE7D5E6B1FAB55B300538E61 /* BillerViewController.swift in Sources */,
+				AE254D591F69309F00695F8A /* CreditCardHomeVC.swift in Sources */,
+				AE154A171EFCE1E100CF1F48 /* FloatingButton.swift in Sources */,
+				AE7D5E441FA77B2200538E61 /* AuthenticationDocumentClassificationModel.m in Sources */,
+				AE7D5E4A1FA77B8C00538E61 /* PassedAlertsModel.m in Sources */,
+				AE5D7E3D1EDD729100D12163 /* KofaxBank.xcdatamodeld in Sources */,
+				AE7D5E501FA77BC200538E61 /* FailedAlertsModel.m in Sources */,
+				AE7EE5B81F3D95CA00536ED9 /* CheckDepositHomeViewController.swift in Sources */,
+				AE8C80ED1F3359FB0024C382 /* CaptureFactory.swift in Sources */,
+				AE7EE5BA1F4418DC00536ED9 /* ImageProcessManager.swift in Sources */,
+				AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */,
+				AE8C80E11F333C430024C382 /* BaseCaptureViewController.swift in Sources */,
+				AE154A3E1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift in Sources */,
+				AE8C80BB1F31E3680024C382 /* AccountTransactionHistoryVC.swift in Sources */,
+				AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */,
+				AE7D5CE51F90A66900538E61 /* BarcodeReaderViewController.swift in Sources */,
+				AE7D5E651FA77CD500538E61 /* ModelUtilities.m in Sources */,
+				AE5343391F445AEF00EFD829 /* CDIPPUtilities.m in Sources */,
+				AE7D5E621FA77C2200538E61 /* OriginalityValuesModel.m in Sources */,
+				AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */,
+				AE7EE5BC1F44193D00536ED9 /* ImageProcessParameters.swift in Sources */,
+				AE254D521F5D762C00695F8A /* InstructionsPopup.swift in Sources */,
+				AE53433D1F445B3F00EFD829 /* BaseIPPUtilities.m in Sources */,
+				AE7D5E0B1FA7493000538E61 /* IDAuthenticationService.m in Sources */,
+				AE5D7E351EDD729100D12163 /* AppDelegate.swift in Sources */,
+				AE154A231F02632700CF1F48 /* MainTabBarController.swift in Sources */,
+				AE7D5E561FA77BDB00538E61 /* CautionAlertsModel.m in Sources */,
+				AE7D5E5F1FA77C1100538E61 /* DocumentTestsModel.m in Sources */,
+				AE50E1BA1EEE74DE00578645 /* Utility.swift in Sources */,
+				AE449F731EE6DE57000E296F /* TouchIDEnablerVC.swift in Sources */,
+				AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */,
+				AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */,
+				AE449F711EE6C0FB000E296F /* TouchIDAuthenticationVC.swift in Sources */,
+				AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */,
+				AEA639661F4D8420006C122D /* DataParser.m in Sources */,
+				AE154A341F03A16F00CF1F48 /* PopVC.swift in Sources */,
+				AE8C80DF1F33304E0024C382 /* BaseFlowManager.swift in Sources */,
+				AE7EE5A91F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift in Sources */,
+				AE7EE5B21F3C755800536ED9 /* PreviewViewController.swift in Sources */,
+				AE8C80BE1F3301DC0024C382 /* ImageCaptureViewController.swift in Sources */,
+				AE5343481F4AAF6100EFD829 /* ExtractionManager.swift in Sources */,
+				AE71BBDD1F2753F00066B632 /* BillDataPreviewViewController.swift in Sources */,
+				AE8BDB411F5418C7008EA957 /* CustomButton.swift in Sources */,
+				AE8C80F71F34AAA50024C382 /* CheckDepositManager.swift in Sources */,
+				AE9028271F864A7A0055685B /* CustomView.swift in Sources */,
+				AE449F6D1EE6894C000E296F /* LoginVC.swift in Sources */,
+				AE154A3A1F03A6E000CF1F48 /* CreditCardData.swift in Sources */,
+				AE8C80F31F34797E0024C382 /* CaptureOptions.swift in Sources */,
+				AEA639691F4EFB77006C122D /* ImageUtilities.swift in Sources */,
+				AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */,
+				AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */,
+				AE8C80F51F3483230024C382 /* ExperienceMessages.swift in Sources */,
+				AEA3D3081EF7A0BF001DBB12 /* HomeVC.m in Sources */,
+				AE7D5E451FA77B2200538E61 /* AuthenticationReasonsModel.m in Sources */,
+				AE8C80E31F333C8D0024C382 /* BaseViewController.swift in Sources */,
+				AE154A1D1EFD1A5600CF1F48 /* AccountTransactionData.swift in Sources */,
+				AE9028241F8638180055685B /* IDSettingsViewController.swift in Sources */,
+				AE8C80EB1F3347F10024C382 /* UIImageEffects.m in Sources */,
+				AE154A361F03A18D00CF1F48 /* PopViewCell.swift in Sources */,
+				AE154A211F025AE900CF1F48 /* DocumentsHomeVC.swift in Sources */,
+				AE254D4B1F59382500695F8A /* CreditCardManager.swift in Sources */,
+				AE7D5E461FA77B2200538E61 /* DocumentImageAnalysisModel.m in Sources */,
+				AE9C006A1F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift in Sources */,
+				AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */,
+				AE449F6F1EE6A1B4000E296F /* SplashVC.swift in Sources */,
+				AE7D5E4D1FA77B9F00538E61 /* AlertsModel.m in Sources */,
+				AE154A321F0288A500CF1F48 /* ViewShadow.swift in Sources */,
+				AE254D4D1F5D66E200695F8A /* AppError.swift in Sources */,
+				AE5343461F46E29A00EFD829 /* CheckValidation.m in Sources */,
+				AE7D5E471FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m in Sources */,
+				AE254D571F66867500695F8A /* BillManager.swift in Sources */,
+				AE449F7B1EE92633000E296F /* ServerManager.swift in Sources */,
+				AE0FE0A61F0E0FCE00F9F520 /* MapVC.swift in Sources */,
+				AE53433A1F445AEF00EFD829 /* IPPUtilities.m in Sources */,
+				AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */,
+				AE7D5E101FA7504800538E61 /* ServerConstants.swift in Sources */,
+				AE7EE5A71F3B296100536ED9 /* DiskUtility.swift in Sources */,
+				AE449F781EE9209C000E296F /* Constants.swift in Sources */,
+				AE50E1BC1EEE875000578645 /* WaitIndicatorView.swift in Sources */,
+				AE7D5CE81FA3761200538E61 /* IDDataViewController.swift in Sources */,
+				AE7D5E0A1FA7493000538E61 /* AuthenticationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E441EDD729200D12163 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5D7E4D1EDD729200D12163 /* KofaxBankTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5D7E4F1EDD729200D12163 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5D7E581EDD729200D12163 /* KofaxBankUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE5D7E4A1EDD729200D12163 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE5D7E301EDD729100D12163 /* KofaxBank */;
+			targetProxy = AE5D7E491EDD729200D12163 /* PBXContainerItemProxy */;
+		};
+		AE5D7E551EDD729200D12163 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE5D7E301EDD729100D12163 /* KofaxBank */;
+			targetProxy = AE5D7E541EDD729200D12163 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE5D7E381EDD729100D12163 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE5D7E391EDD729100D12163 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE5D7E411EDD729100D12163 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE5D7E5A1EDD729200D12163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE5D7E5B1EDD729200D12163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE5D7E5D1EDD729200D12163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C384ZZG573;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/MobileSDK.framework/Headers";
+				INFOPLIST_FILE = KofaxBank/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "KofaxBank/KofaxBank-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AE5D7E5E1EDD729200D12163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C384ZZG573;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/MobileSDK.framework/Headers";
+				INFOPLIST_FILE = KofaxBank/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "KofaxBank/KofaxBank-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AE5D7E601EDD729200D12163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = C384ZZG573;
+				INFOPLIST_FILE = KofaxBankTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KofaxBank.app/KofaxBank";
+			};
+			name = Debug;
+		};
+		AE5D7E611EDD729200D12163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = C384ZZG573;
+				INFOPLIST_FILE = KofaxBankTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KofaxBank.app/KofaxBank";
+			};
+			name = Release;
+		};
+		AE5D7E631EDD729200D12163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = C384ZZG573;
+				INFOPLIST_FILE = KofaxBankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = KofaxBank;
+			};
+			name = Debug;
+		};
+		AE5D7E641EDD729200D12163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = C384ZZG573;
+				INFOPLIST_FILE = KofaxBankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kofax.KofaxBankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = KofaxBank;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE5D7E2C1EDD729100D12163 /* Build configuration list for PBXProject "KofaxBank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5D7E5A1EDD729200D12163 /* Debug */,
+				AE5D7E5B1EDD729200D12163 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE5D7E5C1EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5D7E5D1EDD729200D12163 /* Debug */,
+				AE5D7E5E1EDD729200D12163 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE5D7E5F1EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5D7E601EDD729200D12163 /* Debug */,
+				AE5D7E611EDD729200D12163 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE5D7E621EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBankUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5D7E631EDD729200D12163 /* Debug */,
+				AE5D7E641EDD729200D12163 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE5D7E3B1EDD729100D12163 /* KofaxBank.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE5D7E3C1EDD729100D12163 /* KofaxBank.xcdatamodel */,
+			);
+			currentVersion = AE5D7E3C1EDD729100D12163 /* KofaxBank.xcdatamodel */;
+			path = KofaxBank.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AE5D7E291EDD729100D12163 /* Project object */;
+}

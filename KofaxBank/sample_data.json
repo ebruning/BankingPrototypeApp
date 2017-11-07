@@ -1,0 +1,159 @@
+{
+    "user":{
+        "firstname":"Lucy",
+        "middlename":"John",
+        "lastname":"Tate",
+        "birthdate":"05-17-1982",
+        "phone":"+198765432",
+        "email":"lucy.tate@kofax.com",
+        "building":"15211",
+        "street":"Abc Xyz Road",
+        "city":"Los Angeles",
+        "state":"CA",
+        "zip":"12345",
+        "country":"United States",
+        "accounts":[{
+                    "accountnumber":"1234567890123456",
+                    "openingdate":"05-01-1999",
+                    "type":"Savings Account",
+                    "balance":"250000",
+                    "transactions":[{
+                                    "id":"11111111",
+                                    "amount":"10000",
+                                    "date":"05-01-2017",
+                                    "type":"Credit",
+                                    "checknumber":"0000064165",
+                                    "payeename":"Office",
+                                    "comment":"Salary"
+                                    },
+                                    {
+                                    "id":"22222222",
+                                    "amount":"300",
+                                    "date":"05-03-2017",
+                                    "type":"Debit",
+                                    "checknumber":"",
+                                    "payeename":"Lifestyle Retail Store",
+                                    "comment":"Purchase"
+                                    },
+                                    {
+                                    "id":"33333333",
+                                    "amount":"505",
+                                    "date":"05-04-2017",
+                                    "type":"Credit",
+                                    "checknumber":"0000064166",
+                                    "payeename":"ABC",
+                                    "comment":"Interest"
+                                    }]
+                    },
+                    {
+                    "accountnumber":"2397462918639028",
+                    "openingdate":"09-06-2005",
+                    "type":"Checking Account",
+                    "balance":"10500",
+                    
+                    "transactions":[{
+                                    "id":"44444444",
+                                    "amount":"150",
+                                    "date":"05-05-2017",
+                                    "type":"Debit",
+                                    "checknumber":"",
+                                    "payeename":"Gas Station",
+                                    "comment":"grossary Purchase"
+                                    },
+                                    {
+                                    "id":"55555555",
+                                    "amount":"50",
+                                    "date":"07-05-2017",
+                                    "type":"Debit",
+                                    "checknumber":"",
+                                    "payeename":"Gas Station",
+                                    "comment":"Fuel purchase"
+                                    }]
+                    },{
+                    "accountnumber":"8202740473620208",
+                    "openingdate":"01/05/1999",
+                    "type":"Home Mortgage",
+                    "balance":"289000",
+                    "transactions":[{
+                                    "id":"99123654",
+                                    "amount":"3000",
+                                    "date":"03-01-2017",
+                                    "type":"Credit",
+                                    "checknumber":"0000064167",
+                                    "payeename":"Lucy Tate",
+                                    "comment":"Check Deposit for Premium"
+                                    },
+                                    {
+                                    "id":"99123655",
+                                    "amount":"4000",
+                                    "date":"04-01-2017",
+                                    "type":"Credit",
+                                    "checknumber":"00000678766",
+                                    "payeename":"Lucy Tate",
+                                    "comment":"Check Deposit for Premium"
+                                    },
+                                    {
+                                    "id":"99123656",
+                                    "amount":"4500",
+                                    "date":"05-01-2017",
+                                    "type":"Credit",
+                                    "checknumber":"00000678768",
+                                    "payeename":"Lucy Tate",
+                                    "comment":"Check Deposit for Premium"
+                                    }]
+                        }
+                    ],
+        "creditcards":[
+                       {
+                       "cardnumber":"7765879908004266",
+                       "company":"MASTER CARD",
+                       "issuedate":"10-1-2004",
+                       "expdate":"10-1-2014",
+                       "creditlimit":"4000",
+                       "availablebalance":"3792",
+                       "dueamount":"423",
+                       "cardstatus":"Expired",
+                       "transactions":[
+                                       {
+                                       "id":"003",
+                                       "date":"05-03-2017",
+                                       "amount":"90.0",
+                                       "vender":"Clarks",
+                                       "vendercategory":"Footwear",
+                                       "description":"Shoe Shopping",
+                                       "type":"Debit"
+                                       },
+                                       {
+                                       "id":"004",
+                                       "date":"05-04-2017",
+                                       "amount":"40.0",
+                                       "vender":"Electricity Dept.",
+                                       "vendercategory":"Electricity",
+                                       "description":"Electricity Payment",
+                                       "type":"Debit"
+                                       },
+                                       {
+                                       "id":"005",
+                                       "date":"05-05-2017",
+                                       "amount":"65.0",
+                                       "vender":"Nature's Basket",
+                                       "vendercategory":"Supermarket",
+                                       "description":"Grossary",
+                                       "type":"Debit"
+                                       },
+                                       {
+                                       "id":"006",
+                                       "date":"05-06-2017",
+                                       "amount":"13.0",
+                                       "vender":"Ruby Medical Store",
+                                       "vendercategory":"Medicines",
+                                       "description":"Medicine purchase",
+                                       "type":"Debit"
+                                       }
+                                       ]
+                       
+                       
+                       } ]
+        
+    }
+}

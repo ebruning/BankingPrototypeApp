@@ -1,0 +1,6 @@
+framework module Pods_KofaxBank {
+  umbrella header "Pods-KofaxBank-umbrella.h"
+
+  export *
+  module * { export * }
+}
