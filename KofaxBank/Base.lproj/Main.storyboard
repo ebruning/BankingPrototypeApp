@@ -621,10 +621,10 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="68.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="STx-7f-v5i">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="196.5" height="68.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="181.5" height="68.5"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cVU-CZ-ajQ">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="196.5" height="50.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="151.5" height="50.5"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Checking Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-JW-ubG" userLabel="AccTitle">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="151.5" height="25"/>
@@ -633,7 +633,7 @@
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Expired" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-nR-Bd1" userLabel="AccStatus">
-                                                                                            <rect key="frame" x="154.5" y="0.0" width="42" height="15.5"/>
+                                                                                            <rect key="frame" x="151.5" y="0.0" width="0.0" height="15.5"/>
                                                                                             <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="11"/>
                                                                                             <color key="textColor" red="0.96870177984237671" green="0.57434099912643433" blue="0.19289806485176086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <nil key="highlightedColor"/>
@@ -649,16 +649,16 @@
                                                                             </subviews>
                                                                         </stackView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kAA-SZ-TMN">
-                                                                            <rect key="frame" x="196.5" y="0.0" width="91.5" height="68.5"/>
+                                                                            <rect key="frame" x="181.5" y="0.0" width="106.5" height="68.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="$6,215.90" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDI-hJ-lgo" userLabel="AccBalanceData">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="91.5" height="50.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="50.5"/>
                                                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
                                                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available balance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtV-0u-gfM" userLabel="AvailableBalance">
-                                                                                    <rect key="frame" x="0.0" y="50.5" width="91.5" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="50.5" width="106.5" height="18"/>
                                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>

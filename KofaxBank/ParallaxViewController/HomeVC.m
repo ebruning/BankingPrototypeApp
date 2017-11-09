@@ -15,63 +15,48 @@ typedef enum {
     UP = 2
 }Direction;
 
-@interface HomeVC ()<UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
+@interface HomeVC ()<MFMailComposeViewControllerDelegate>
 
 
-/**
- @property bottomScroll
- @description UIScrollView place at bottom of View holding labels and text and other controls one want to place on it
- */
-@property(nonatomic, weak) IBOutlet UIScrollView *bottomScroll;
+@property(nonatomic, weak) IBOutlet UIImageView *bannerBackgroundImage;
 
-/**
- @property topScroll
- @description UIScrollView place at top of View holding post image
- */
-@property(nonatomic, weak) IBOutlet UIScrollView *topScroll;
-/**
- @property scrollDirectionValue
- @description holding value to determine scroll direction
- */
-@property(nonatomic, assign) double lastScrollOffset;
+@property(nonatomic, weak)  IBOutlet NSLayoutConstraint *bannerViewHeight;
 
-/**
- @property yoffset
- @description set scroll contentoffset based on this offest value
- */
-//@property(nonatomic, assign) float yoffset;
-
-@property(nonatomic, assign) double scrollOffset;
-
-@property(nonatomic, assign) double screenHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerContentsViewHeight;
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
 
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
-
 @property (weak, nonatomic) IBOutlet UIStackView *stackViewUserDetails;
 
 @property (weak, nonatomic) IBOutlet UIView *bottomBarView;
 
-/**
- @property alphaValue
- @description alpha to  fade in fade out nav color
- */
-@property(nonatomic, assign) double alphaValue;
-/**
- @property bottomViewTopConstraint
- @description constraint for aligning bottom view as per our post imageview height
- */
-@property(nonatomic, weak) IBOutlet NSLayoutConstraint *bottomViewTopConstraint;
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
+
+@property (weak, nonatomic) IBOutlet UIView *bannerDetailsView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+
+@property(nonatomic, assign) double lastScrollOffset;
+
+@property(nonatomic, assign) double topScrollOffset;
+
+@property(nonatomic, assign) double bottomScrollOffset;
+
+@property(nonatomic, assign) double bannerInnerOffset;
+
+@property(nonatomic, assign) double screenHeight;   //??
 
 
 @end
 
+
 @implementation HomeVC
 
-int bottomBarHeight;
-int bottombarViewOriginalYPosition;
+UIPanGestureRecognizer *panGestureRecognizer;
+
+const double BANNER_AREA_PERCENT = 40.0;
 
 double divisionCounter;
 
@@ -85,75 +70,47 @@ double divisionCounter;
     //for iOS 10
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    _screenHeight = UIScreen.mainScreen.bounds.size.height;
+    [self setupPanGestureRecognizerOnBannerView];
     
-   // UIView *view = [[[NSBundle mainBundle]loadNibNamed:@"HomeScreen" owner:self options:nil] objectAtIndex:0];
-    self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, _screenHeight);
-    //[self.view insertSubview:view atIndex:0];
-    
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    
-    self.bottomScroll.delegate = self;
-    [self resetScreenParams];
+    [self initScreenParams];
 }
 
+-(void) setupPanGestureRecognizerOnBannerView {
+    panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(move:)];
+    
+    [panGestureRecognizer setMinimumNumberOfTouches:1];
+    [panGestureRecognizer setMaximumNumberOfTouches:1];
+    [_bannerView addGestureRecognizer:panGestureRecognizer];
+}
 
-- (void)resetScreenParams {
-
-    _scrollOffset = 0.70 * _screenHeight;
+- (void)initScreenParams {
+    
+    _screenHeight = UIScreen.mainScreen.bounds.size.height;
+    
+    //calculate height of banner based on decided percentage w.r.t. main screen height
+    _topScrollOffset = BANNER_AREA_PERCENT/100 * _screenHeight;
+    
+    //canculate bottom offset upto where banner can be dragged down (in this case upto the beginning of bottom bar).
+    _bottomScrollOffset = _bottomBarView.frame.origin.y;
+    
+    //inner offset is the bottom space(gap) between bannerContentView and banner view.
+    _bannerInnerOffset = _bannerViewHeight.constant -_bannerContentsViewHeight.constant;
     
     _visualEffectView.alpha = 0;
     _stackViewUserDetails.alpha = 0;
-    
-    self.headerImageViewHeight.constant = _screenHeight * 0.30; //30% of screen height
-    self.bottomViewTopConstraint.constant = _screenHeight;
-    self.contentViewHeight.constant = _screenHeight;
-
-    bottomBarHeight = _bottomBarView.frame.size.height;
-    
-    bottombarViewOriginalYPosition = _bottomBarView.frame.origin.y;
-  
-    divisionCounter = bottombarViewOriginalYPosition;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [[self navigationController] setNavigationBarHidden:YES];
-    self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, _screenHeight);
+    
+    //set initial height of banner while launching screen
+    _bannerViewHeight.constant = _topScrollOffset;
+    //adjest height of bannerContentView as per the new height of bannerView
+    _bannerContentsViewHeight.constant = _bannerViewHeight.constant - _bannerInnerOffset;
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-//[[self navigationController] setNavigationBarHidden:YES animated:NO];
-    //navigationController?.setNavigationBarHidden(true, animated: false)
-//    self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, _screenHeight);
-
-    //[[self navigationController] setNavigationBarHidden:YES];
-
-    CGRect scrollBounds = self.bottomScroll.bounds;
-    scrollBounds.origin = CGPointMake(0, _scrollOffset);
-    
-   // self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, _screenHeight);
-
-    self.bottomScroll.bounds = scrollBounds;
-}
-
-
--(void)adjustContentViewHeight{
-    
-    
-}
-
-
-#pragma mark UIScrollView Delegate
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
-}
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -168,41 +125,25 @@ double divisionCounter;
     
     _visualEffectView.alpha=fabs(1-percentage);
     
-   // NSLog(@"Percentage==> %f", percentage);
-  //  NSLog(@"Y==> %f", self.bottomScroll.contentOffset.y);
-    //NSLog(@"Image height ==> %f", self.headerImageViewHeight.constant);
-  //  NSLog(@"------------------------------------------------------");
-    
     
     if (percentage <= 0.15) {
-        [self.bottomScroll setContentOffset:CGPointMake(0, 0.15 * _screenHeight)];
+        //[self.topScroll setContentOffset:CGPointMake(0, 0.15 * _screenHeight)];
         _logoutButton.hidden = YES;
-        _stackViewUserDetails.alpha = 1.0;
         _visualEffectView.alpha = 1.0;
         
-        //hide bottom bar below screen
-       _bottomBarView.frame = CGRectMake(_bottomBarView.frame.origin.x,
-                                          _screenHeight,
-                                          _bottomBarView.frame.size.width,
-                                          _bottomBarView.frame.size.height);
         
     }
     else {
         // if bottomscroll is scrolled up till 70% of the screen, then set the bottomscroll y offset to 70% (calculated by screen height(headerImageViewHeight) * 0.70 as below).
         if (percentage >= 0.70) {
             
-            [self.bottomScroll setContentOffset:CGPointMake(0, 0.70 * _screenHeight)];
+           // [self.topScroll setContentOffset:CGPointMake(0, 0.70 * _screenHeight)];
 
             _logoutButton.alpha = 1.0;
             
             //_stackViewUserDetails.alpha = 1 - percentage;
             _stackViewUserDetails.hidden = YES;
             
-            //hide bottom bar below screen
-            _bottomBarView.frame = CGRectMake(_bottomBarView.frame.origin.x,
-                                              bottombarViewOriginalYPosition,
-                                              _bottomBarView.frame.size.width,
-                                              _bottomBarView.frame.size.height);
         }
         else {
             // Fade/unfade logout button on scroll down/up resp.
@@ -221,27 +162,45 @@ double divisionCounter;
                 divisionCounter += 0.786;
             }
             
-          //  NSLog(@"divisionCounter ==> %f", divisionCounter);
-
-            // CGFloat yPosition = bottombarViewOriginalYPosition + divisionCounter;
-            
-            _bottomBarView.frame = CGRectMake(_bottomBarView.frame.origin.x,
-                                              divisionCounter,
-                                              _bottomBarView.frame.size.width,
-                                              _bottomBarView.frame.size.height);
-
         }
-        //self.yoffset = self.bottomScroll.contentOffset.y*0.3;
-        //self.yoffset = 171;
-        [self.topScroll setContentOffset:CGPointMake(scrollView.contentOffset.x,0) animated:NO];
-        
-        _headerImageViewHeight.constant = _screenHeight - self.bottomScroll.contentOffset.y;
-        
     }
-   
-
-    
 }
+
+-(void)move:(UIPanGestureRecognizer*)sender {
+    CGPoint currentPoint = [panGestureRecognizer locationInView:self.bannerView.superview];
+    
+    double offset=currentPoint.y;
+    double percentage=offset/_screenHeight;
+
+    _lastScrollOffset = offset;
+    
+    _visualEffectView.alpha=fabs(percentage);
+    
+    if (percentage >= 0.70) {
+        _stackViewUserDetails.alpha = 1.0;
+    } else {
+        if (percentage <= 0.30) {
+            _stackViewUserDetails.alpha = 0.0;
+        } else {
+            _stackViewUserDetails.alpha = percentage;
+        }
+    }
+    printf("Percentage ==> %f", percentage);
+    
+    //NSLog(@"Current point => %f", currentPoint.y);
+    //NSLog(@"Bottombar Y => %f", _bottomBarView.frame.origin.y);
+
+    [UIView animateWithDuration:0.01f
+                     animations:^{
+                         //CGRect oldFrame = _bannerView.frame;
+//                         _bannerView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, ([UIScreen mainScreen].bounds.size.height - currentPoint.y));
+                         if ((currentPoint.y > _topScrollOffset) && (currentPoint.y <= _bottomScrollOffset)) {
+                             _bannerViewHeight.constant = currentPoint.y;
+                             _bannerContentsViewHeight.constant = _bannerViewHeight.constant - _bannerInnerOffset;
+                         }
+                     }];
+}
+
 
 #define kVerySmallValue (0.000001)
 
@@ -263,9 +222,7 @@ double divisionCounter;
 - (IBAction)showMyAccounts:(UIButton *)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBarController"];
-    //let vc = storyboard.instantiateViewController(withIdentifier: "AccountsHomeVC") as! AccountsHomeVC
     [[self navigationController] pushViewController:vc animated:NO];
-    //self.navigationController?.pushViewController(vc, animated: false)
 }
 
 - (IBAction)logoutButtonClicked:(UIButton *)sender {

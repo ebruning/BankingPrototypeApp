@@ -144,11 +144,6 @@ protocol IDHomeVCDelegate {
         dataReadInProgress = false
         
         DispatchQueue.main.async {
-            if authenticationResultModel == nil {
-            self.updateNavigationButtonItems()
-            } else {
-                authenticateButton.
-            }
             
             self.tableView.reloadData()
 
@@ -158,6 +153,8 @@ protocol IDHomeVCDelegate {
             
             if self.shouldAuthenticateWithSelfie() {
                 self.authenticateButton.isHidden = false
+            } else {
+                self.updateNavigationButtonItems()
             }
             self.waitIndicatorContainerVaiw.isHidden = true
             if self.authenticationResultModel != nil {
