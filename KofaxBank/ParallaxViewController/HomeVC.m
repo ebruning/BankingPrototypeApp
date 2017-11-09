@@ -38,8 +38,6 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 
-@property(nonatomic, assign) double lastScrollOffset;
-
 @property(nonatomic, assign) double topScrollOffset;
 
 @property(nonatomic, assign) double bottomScrollOffset;
@@ -95,9 +93,6 @@ double divisionCounter;
     
     //inner offset is the bottom space(gap) between bannerContentView and banner view.
     _bannerInnerOffset = _bannerViewHeight.constant -_bannerContentsViewHeight.constant;
-    
-    _visualEffectView.alpha = 0;
-    _stackViewUserDetails.alpha = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,72 +104,18 @@ double divisionCounter;
     _bannerViewHeight.constant = _topScrollOffset;
     //adjest height of bannerContentView as per the new height of bannerView
     _bannerContentsViewHeight.constant = _bannerViewHeight.constant - _bannerInnerOffset;
+    
+    _stackViewUserDetails.alpha = 0;
+    _visualEffectView.alpha = 0.27;
 }
 
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    double offset=scrollView.contentOffset.y;
-    double percentage=offset/_screenHeight;
-    
-    
-    Direction direction = [self getScrollDirection: scrollView.contentOffset.y];
-    
-    _lastScrollOffset = offset;
-    
-    _visualEffectView.alpha=fabs(1-percentage);
-    
-    
-    if (percentage <= 0.15) {
-        //[self.topScroll setContentOffset:CGPointMake(0, 0.15 * _screenHeight)];
-        _logoutButton.hidden = YES;
-        _visualEffectView.alpha = 1.0;
-        
-        
-    }
-    else {
-        // if bottomscroll is scrolled up till 70% of the screen, then set the bottomscroll y offset to 70% (calculated by screen height(headerImageViewHeight) * 0.70 as below).
-        if (percentage >= 0.70) {
-            
-           // [self.topScroll setContentOffset:CGPointMake(0, 0.70 * _screenHeight)];
-
-            _logoutButton.alpha = 1.0;
-            
-            //_stackViewUserDetails.alpha = 1 - percentage;
-            _stackViewUserDetails.hidden = YES;
-            
-        }
-        else {
-            // Fade/unfade logout button on scroll down/up resp.
-            _logoutButton.alpha = percentage;
-            _logoutButton.hidden = NO;
-            
-            _stackViewUserDetails.alpha = 1 - percentage;
-            _stackViewUserDetails.hidden = NO;
-
-            
-            //slide bottombar view
-            if (direction == UP && divisionCounter > (_screenHeight - _bottomBarView.frame.size.height)) {
-                divisionCounter -= 0.786;
-            }
-            else {
-                divisionCounter += 0.786;
-            }
-            
-        }
-    }
-}
+#pragma mark: PanGestureRecognizer selector action
 
 -(void)move:(UIPanGestureRecognizer*)sender {
     CGPoint currentPoint = [panGestureRecognizer locationInView:self.bannerView.superview];
     
     double offset=currentPoint.y;
     double percentage=offset/_screenHeight;
-
-    _lastScrollOffset = offset;
-    
-    _visualEffectView.alpha=fabs(percentage);
     
     if (percentage >= 0.70) {
         _stackViewUserDetails.alpha = 1.0;
@@ -185,37 +126,18 @@ double divisionCounter;
             _stackViewUserDetails.alpha = percentage;
         }
     }
-    printf("Percentage ==> %f", percentage);
+//    printf("Percentage ==> %f", percentage);
     
-    //NSLog(@"Current point => %f", currentPoint.y);
-    //NSLog(@"Bottombar Y => %f", _bottomBarView.frame.origin.y);
-
+    _visualEffectView.alpha=fabs(percentage);
+    
+    // update heights of banner-view and banner-content-view as per pan value on screen
     [UIView animateWithDuration:0.01f
                      animations:^{
-                         //CGRect oldFrame = _bannerView.frame;
-//                         _bannerView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, ([UIScreen mainScreen].bounds.size.height - currentPoint.y));
                          if ((currentPoint.y > _topScrollOffset) && (currentPoint.y <= _bottomScrollOffset)) {
                              _bannerViewHeight.constant = currentPoint.y;
                              _bannerContentsViewHeight.constant = _bannerViewHeight.constant - _bannerInnerOffset;
                          }
                      }];
-}
-
-
-#define kVerySmallValue (0.000001)
-
-- (Direction)getScrollDirection:(double)currentYOffset {
-    
-    Direction direction;
-
-        if((_lastScrollOffset - currentYOffset) > kVerySmallValue) {
-            direction = DOWN;
-        }
-        else {
-            direction = UP;
-        }
-
-    return direction;
 }
 
 // launch accountsHome screen
