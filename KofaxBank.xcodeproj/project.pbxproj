@@ -35,6 +35,11 @@
 		AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */; };
 		AE254D571F66867500695F8A /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D561F66867500695F8A /* BillManager.swift */; };
 		AE254D591F69309F00695F8A /* CreditCardHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */; };
+		AE33FD8F1FB2E41100E3C380 /* SelfieResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE33FD8D1FB2E41100E3C380 /* SelfieResultsViewController.swift */; };
+		AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE33FD8E1FB2E41100E3C380 /* SelfieResultsViewController.xib */; };
+		AE33FD921FB30D5900E3C380 /* SelfieResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE33FD911FB30D5900E3C380 /* SelfieResultsTableViewCell.xib */; };
+		AE33FD941FB30E6900E3C380 /* SelfieResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE33FD931FB30E6900E3C380 /* SelfieResultsTableViewCell.swift */; };
+		AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE33FD951FB3236D00E3C380 /* SelfieResult.plist */; };
 		AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6A1EE6856E000E296F /* UIView+ customization.swift */; };
 		AE449F6D1EE6894C000E296F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6C1EE6894C000E296F /* LoginVC.swift */; };
 		AE449F6F1EE6A1B4000E296F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6E1EE6A1B4000E296F /* SplashVC.swift */; };
@@ -135,6 +140,13 @@
 		AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */; };
 		AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708E1F7CF01100A511C8 /* RegionController.swift */; };
 		AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */; };
+		AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */; };
+		AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */; };
+		AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B51FB1D05100B79700 /* FaceDetection.m */; };
+		AEDDA3BD1FB1D05100B79700 /* SelfieDocumentTestsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B71FB1D05100B79700 /* SelfieDocumentTestsModel.m */; };
+		AEDDA3BE1FB1D05100B79700 /* SelfieOriginalityValuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B91FB1D05100B79700 /* SelfieOriginalityValuesModel.m */; };
+		AEDDA3BF1FB1D05100B79700 /* SelfieVerificationResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */; };
+		AEDDA3C61FB1D06B00B79700 /* SelfieVerificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +195,11 @@
 		AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillDataPreviewViewController.xib; sourceTree = "<group>"; };
 		AE254D561F66867500695F8A /* BillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
 		AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardHomeVC.swift; sourceTree = "<group>"; };
+		AE33FD8D1FB2E41100E3C380 /* SelfieResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieResultsViewController.swift; sourceTree = "<group>"; };
+		AE33FD8E1FB2E41100E3C380 /* SelfieResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieResultsViewController.xib; sourceTree = "<group>"; };
+		AE33FD911FB30D5900E3C380 /* SelfieResultsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieResultsTableViewCell.xib; sourceTree = "<group>"; };
+		AE33FD931FB30E6900E3C380 /* SelfieResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieResultsTableViewCell.swift; sourceTree = "<group>"; };
+		AE33FD951FB3236D00E3C380 /* SelfieResult.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SelfieResult.plist; sourceTree = "<group>"; };
 		AE449F6A1EE6856E000E296F /* UIView+ customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ customization.swift"; sourceTree = "<group>"; };
 		AE449F6C1EE6894C000E296F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AE449F6E1EE6A1B4000E296F /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
@@ -318,6 +335,18 @@
 		AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionProperties.swift; sourceTree = "<group>"; };
 		AEAA708E1F7CF01100A511C8 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionConstants.swift; sourceTree = "<group>"; };
+		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
+		AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieCaptureExprienceViewController.xib; sourceTree = "<group>"; };
+		AEDDA3B41FB1D05100B79700 /* FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetection.h; sourceTree = "<group>"; };
+		AEDDA3B51FB1D05100B79700 /* FaceDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceDetection.m; sourceTree = "<group>"; };
+		AEDDA3B61FB1D05100B79700 /* SelfieDocumentTestsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieDocumentTestsModel.h; sourceTree = "<group>"; };
+		AEDDA3B71FB1D05100B79700 /* SelfieDocumentTestsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieDocumentTestsModel.m; sourceTree = "<group>"; };
+		AEDDA3B81FB1D05100B79700 /* SelfieOriginalityValuesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieOriginalityValuesModel.h; sourceTree = "<group>"; };
+		AEDDA3B91FB1D05100B79700 /* SelfieOriginalityValuesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieOriginalityValuesModel.m; sourceTree = "<group>"; };
+		AEDDA3BA1FB1D05100B79700 /* SelfieVerificationResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieVerificationResultModel.h; sourceTree = "<group>"; };
+		AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationResultModel.m; sourceTree = "<group>"; };
+		AEDDA3C31FB1D06B00B79700 /* SelfieVerificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieVerificationService.h; sourceTree = "<group>"; };
+		AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationService.m; sourceTree = "<group>"; };
 		B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBankUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -551,6 +580,7 @@
 		AE5D7E661EDD750A00D12163 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE33FD951FB3236D00E3C380 /* SelfieResult.plist */,
 				AE71BBDE1F27636C0066B632 /* BillData.swift */,
 				AEAA70821F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist */,
 				AEAA70841F73E7B300A511C8 /* Region_plist_for_ID_Server_2x.plist */,
@@ -759,6 +789,7 @@
 		AEAA70801F73CF9A00A511C8 /* ID */ = {
 			isa = PBXGroup;
 			children = (
+				AEDDA3AE1FB18B3A00B79700 /* Selfie */,
 				AE7D5DAB1FA7493000538E61 /* DLAuthentication */,
 				AEAA70811F73CFA200A511C8 /* Region */,
 				AEAA708A1F73F51A00A511C8 /* ID_Constants.swift */,
@@ -780,6 +811,45 @@
 				AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */,
 			);
 			name = Region;
+			sourceTree = "<group>";
+		};
+		AEDDA3AE1FB18B3A00B79700 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDA3C01FB1D06B00B79700 /* Services */,
+				AEDDA3B31FB1D05100B79700 /* Models */,
+				AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */,
+				AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */,
+				AE33FD8D1FB2E41100E3C380 /* SelfieResultsViewController.swift */,
+				AE33FD8E1FB2E41100E3C380 /* SelfieResultsViewController.xib */,
+				AE33FD911FB30D5900E3C380 /* SelfieResultsTableViewCell.xib */,
+				AE33FD931FB30E6900E3C380 /* SelfieResultsTableViewCell.swift */,
+			);
+			name = Selfie;
+			sourceTree = "<group>";
+		};
+		AEDDA3B31FB1D05100B79700 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDA3B41FB1D05100B79700 /* FaceDetection.h */,
+				AEDDA3B51FB1D05100B79700 /* FaceDetection.m */,
+				AEDDA3B61FB1D05100B79700 /* SelfieDocumentTestsModel.h */,
+				AEDDA3B71FB1D05100B79700 /* SelfieDocumentTestsModel.m */,
+				AEDDA3B81FB1D05100B79700 /* SelfieOriginalityValuesModel.h */,
+				AEDDA3B91FB1D05100B79700 /* SelfieOriginalityValuesModel.m */,
+				AEDDA3BA1FB1D05100B79700 /* SelfieVerificationResultModel.h */,
+				AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AEDDA3C01FB1D06B00B79700 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDA3C31FB1D06B00B79700 /* SelfieVerificationService.h */,
+				AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		D1DE4007D8F113AE6A0345E1 /* Pods */ = {
@@ -933,10 +1003,14 @@
 				AE7D5E6C1FAB55B300538E61 /* BillerViewController.xib in Resources */,
 				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
 				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
+				AE33FD921FB30D5900E3C380 /* SelfieResultsTableViewCell.xib in Resources */,
 				AE7EE5B31F3C755800536ED9 /* PreviewViewController.xib in Resources */,
 				AEAA70831F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist in Resources */,
+				AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */,
+				AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */,
 				AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */,
 				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
+				AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */,
 				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
 				AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */,
 				AE7EE5B51F3C8E1900536ED9 /* CheckDepositHomeViewController.xib in Resources */,
@@ -1110,6 +1184,7 @@
 				AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */,
 				AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */,
 				AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */,
+				AEDDA3BE1FB1D05100B79700 /* SelfieOriginalityValuesModel.m in Sources */,
 				AE7D5E681FAAE15400538E61 /* CreditCardTransactionCell.swift in Sources */,
 				AE7D5E321FA77A2500538E61 /* AuthenticationResultModel.m in Sources */,
 				AE7D5E531FA77BD200538E61 /* AttentionAlertsModel.m in Sources */,
@@ -1120,6 +1195,7 @@
 				AE7D5CDF1F8CA80C00538E61 /* RegionViewController.swift in Sources */,
 				AE154A1B1EFD197D00CF1F48 /* AccountTransactionCell.swift in Sources */,
 				AE7D5E5C1FA77BFA00538E61 /* RiskVectorOriginalityModel.m in Sources */,
+				AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */,
 				AE90281B1F8376820055685B /* IDManager.swift in Sources */,
 				AE7D5E6B1FAB55B300538E61 /* BillerViewController.swift in Sources */,
 				AE254D591F69309F00695F8A /* CreditCardHomeVC.swift in Sources */,
@@ -1128,6 +1204,7 @@
 				AE7D5E4A1FA77B8C00538E61 /* PassedAlertsModel.m in Sources */,
 				AE5D7E3D1EDD729100D12163 /* KofaxBank.xcdatamodeld in Sources */,
 				AE7D5E501FA77BC200538E61 /* FailedAlertsModel.m in Sources */,
+				AE33FD8F1FB2E41100E3C380 /* SelfieResultsViewController.swift in Sources */,
 				AE7EE5B81F3D95CA00536ED9 /* CheckDepositHomeViewController.swift in Sources */,
 				AE8C80ED1F3359FB0024C382 /* CaptureFactory.swift in Sources */,
 				AE7EE5BA1F4418DC00536ED9 /* ImageProcessManager.swift in Sources */,
@@ -1138,6 +1215,7 @@
 				AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */,
 				AE7D5CE51F90A66900538E61 /* BarcodeReaderViewController.swift in Sources */,
 				AE7D5E651FA77CD500538E61 /* ModelUtilities.m in Sources */,
+				AEDDA3BF1FB1D05100B79700 /* SelfieVerificationResultModel.m in Sources */,
 				AE5343391F445AEF00EFD829 /* CDIPPUtilities.m in Sources */,
 				AE7D5E621FA77C2200538E61 /* OriginalityValuesModel.m in Sources */,
 				AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */,
@@ -1176,10 +1254,13 @@
 				AEA3D3081EF7A0BF001DBB12 /* HomeVC.m in Sources */,
 				AE7D5E451FA77B2200538E61 /* AuthenticationReasonsModel.m in Sources */,
 				AE8C80E31F333C8D0024C382 /* BaseViewController.swift in Sources */,
+				AEDDA3C61FB1D06B00B79700 /* SelfieVerificationService.m in Sources */,
 				AE154A1D1EFD1A5600CF1F48 /* AccountTransactionData.swift in Sources */,
 				AE9028241F8638180055685B /* IDSettingsViewController.swift in Sources */,
+				AE33FD941FB30E6900E3C380 /* SelfieResultsTableViewCell.swift in Sources */,
 				AE8C80EB1F3347F10024C382 /* UIImageEffects.m in Sources */,
 				AE154A361F03A18D00CF1F48 /* PopViewCell.swift in Sources */,
+				AEDDA3BD1FB1D05100B79700 /* SelfieDocumentTestsModel.m in Sources */,
 				AE154A211F025AE900CF1F48 /* DocumentsHomeVC.swift in Sources */,
 				AE254D4B1F59382500695F8A /* CreditCardManager.swift in Sources */,
 				AE7D5E461FA77B2200538E61 /* DocumentImageAnalysisModel.m in Sources */,
@@ -1190,6 +1271,7 @@
 				AE154A321F0288A500CF1F48 /* ViewShadow.swift in Sources */,
 				AE254D4D1F5D66E200695F8A /* AppError.swift in Sources */,
 				AE5343461F46E29A00EFD829 /* CheckValidation.m in Sources */,
+				AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */,
 				AE7D5E471FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m in Sources */,
 				AE254D571F66867500695F8A /* BillManager.swift in Sources */,
 				AE449F7B1EE92633000E296F /* ServerManager.swift in Sources */,

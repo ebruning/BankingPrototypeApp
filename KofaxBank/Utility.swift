@@ -197,4 +197,20 @@ class Utility {
     
     
     
+    class func getImage(base64String: String!) -> UIImage! {
+        
+        var outputImage: UIImage! = nil
+        
+        if base64String == nil || base64String.characters.count == 0 {
+                return nil;
+            }
+        
+        let imgData = NSData(base64Encoded: base64String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters) as Data!
+        
+        if imgData != nil {
+            outputImage = UIImage(data: imgData!)
+        }
+        
+        return outputImage
+    }
 }

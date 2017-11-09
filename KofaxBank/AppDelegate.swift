@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         checkDataStore()
         
+        loadDefaults()
         return true
     }
     
@@ -306,6 +307,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller = nil
         
         return billerMasterObj
+    }
+    
+    
+    
+    private func loadDefaults() {
+        
+        if UserDefaults.standard.value(forKey: KEY_DEFAULTS_LOADED) != nil {
+            return
+        }
+        
+        //region properties
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_MODEL_FILE, forKey: KEY_ID_REGION_PLIST_FILE_NAME)
+        
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_REGION_NAME, forKey: KEY_ID_REGION_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_CODE, forKey: KEY_ID_COUNTRY_CODE)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_DISPLAY_NAME, forKey: KEY_ID_COUNTRY_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_FLAG_IMAGE_NAME, forKey: KEY_ID_REGION_FLAG_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_IMAGE_RESIZE, forKey: KEY_ID_IMAGE_RESIZE)
+        
+        
+        //Mobile ID Version - default 2x
+        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        
+        UserDefaults.standard.setValue(true, forKey: KEY_DEFAULTS_LOADED)
     }
 
 }

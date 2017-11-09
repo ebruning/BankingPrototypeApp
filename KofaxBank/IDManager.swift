@@ -8,10 +8,13 @@
 
 import UIKit
 
-class IDManager: BaseFlowManager, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHomeVCDelegate {
+protocol IDManagerDelegate {
+    func IDDataReadCompleteWithSelfieVerification(idData: kfxIDData!)
+    func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!)
+}
     
-    let IPP_GERMAN_FRANCE = "_DeviceType_2_"
+class IDManager: BaseFlowManager, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
+InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHomeVCDelegate, SelfieCaptureExprienceViewControllerDelegate, SelfieResultsViewControllerDelegate {
     
     
     private enum IDFlowStates {
@@ -31,8 +34,12 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         
     }
     
+    // MARK: Public variables
+
+    var delegate: IDManagerDelegate? = nil
     
     // MARK: Local variables
+    private let IPP_GERMAN_FRANCE = "_DeviceType_2_"
     private var navigationController: UINavigationController!
     
     private var captureController: ImageCaptureViewController! = nil
@@ -70,6 +77,9 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     private var idSide: DocumentSide = .FRONT
     
     private var regionProperties: RegionProperties! = nil
+    //Selfie parameters
+    
+    private var selfieImage: UIImage! = nil
     
     //TODO: temp constant
     private let serverType = SERVER_TYPE_TOTALAGILITY
@@ -79,6 +89,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     //MARK: Authentication Parameters
     
     private var authenticationResultModel: AuthenticationResultModel! = nil
+    private var selfieVerificationResults: SelfieVerificationResultModel! = nil
 
     override init() {
         super.init()
@@ -188,7 +199,9 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             break
             
         case .IMAGE_DATA_EXTRACTED:
+            if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
             idHomeScreen?.authenticationResultModel = self.authenticationResultModel
+            }
             idHomeScreen?.idDataAvailable(idData: self.idData)
             break
             
@@ -586,7 +599,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         
         //this string is for device processing. Sever processing string is different
         
-        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        //UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
         
         mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
         
@@ -742,6 +755,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         //idHomeScreen = IDHomeVC.init(nibName: "IDHomeVC", bundle: nil)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         idHomeScreen = storyboard.instantiateViewController(withIdentifier: "IDHomeVC") as? IDHomeVC
+        idHomeScreen?.delegate = self
         
         self.navigationController.pushViewController(idHomeScreen!, animated: true)
     }
@@ -753,7 +767,10 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         idSide = .FRONT
         
         //self.idHomeScreen.delegate = nil
+        if self.idHomeScreen != nil {
+            self.idHomeScreen?.delegate = nil
         self.idHomeScreen = nil
+        }
         
         self.regionProperties = nil
         
@@ -775,6 +792,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         frontRawImagePath = nil
         backRawImagePath = nil
         
+        selfieImage = nil
         capturedImage = nil
         processedImage = nil
         
@@ -1343,16 +1361,43 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     }
     
     
-    //MARK: IDHomeVCDelegate method(s)
     
-    func onCancel() {
+    //MARK: IDHomeVCDelegate methods
+    
+    var selfieCaptureExprienceVC: SelfieCaptureExprienceViewController! = nil
+    
+    func authenticateWithSelfie() {
+        if selfieCaptureExprienceVC == nil {
+            selfieCaptureExprienceVC = SelfieCaptureExprienceViewController(nibName: "SelfieCaptureExprienceViewController", bundle: nil)
+            selfieCaptureExprienceVC.delegate = self
+        }
+        self.navigationController?.pushViewController(selfieCaptureExprienceVC, animated: true)
+    }
+    
+    func onIDHomeCancel() {
         //unload IDmanager if ID capture flow is cancelled
+        idHomeScreen?.delegate = nil
+        idHomeScreen = nil
+        
+        self.unloadManager()
         
         flowState = .CYCLE_CANCELLED
         handleScreenFlow(err: nil)
     }
     
     
+    func onIDHomeDoneWithoutData() {
+        
+    }
+    
+    
+    func onIDHomeDoneWithData(idData: kfxIDData) {
+        if mobileIDVersion == ServerVersion.VERSION_1X.rawValue {
+            delegate?.IDDataReadCompleteWithoutSelfieVerification(idData: self.idData)
+        } else {
+            delegate?.IDDataReadCompleteWithSelfieVerification(idData: self.idData)
+        }
+    }
     private func getLimitedUserSessionIdForComponent() -> NSString {
         if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
             print("Limited session ID for 2X:")
@@ -1436,4 +1481,167 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         return nil
     }
     
+    //MARK: Selfie related methods
+    
+    private func performSelfieVerificationWithCompletionHandler(handler: ((Any?, Int) -> ())!) {
+    
+        let ktaKofaxServerUrl = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+        let KTAAUTHENTICJOBSERVICE = "JobService.svc/json/CreateJobSyncWithDocuments"
+        
+        // if not ODE
+        
+        let authenticationURLString = ktaKofaxServerUrl + KTAAUTHENTICJOBSERVICE
+        let authenticationURL = URL.init(string: authenticationURLString)
+
+        let params = NSMutableDictionary()
+        params.setValue("KofaxMobileIdFacialRecognition", forKey: "processIdentityName")
+        params.setValue(self.authenticationResultModel.transactionID, forKey: "TransactionId")
+        params.setValue("0", forKey: "storeFolderAndDocuments") //TODO: Check if required
+
+        let selfieManager = SelfieVerificationService.init(sessionId: getLimitedUserSessionIdForComponent() as String!)
+        selfieManager?.performSelfieVerification(with: authenticationURL, forParameters: params as! [AnyHashable : Any], onImages: bytesArrayForSelfieImage() as! [Any], withCompletionHandler: { (responseData: Any?, status: Int) in
+            print("Selfie verification status ==> \(status)")
+            handler(responseData,status)
+        })
+    }
+    
+    
+    private func bytesArrayForSelfieImage() -> NSArray {
+        var dataBytesArray = NSArray()
+        
+        let imgObj = kfxKEDImage.init(image: self.selfieImage)
+        
+        if imgObj != nil {
+            imgObj?.imageMimeType = MIMETYPE_JPG
+            let err = imgObj?.imageWriteToFileBuffer()
+            
+            if err == KMC_SUCCESS {
+                let data = NSData.init(bytes: imgObj?.getFileBuffer(), length: Int((imgObj?.imageFileBufferSize)!))
+                dataBytesArray = NSArray.init(object: data)
+            }
+            imgObj?.clearFileBuffer()
+        }
+        return dataBytesArray
+    }
+    
+    
+    private func getSelfieAuthenticationResults(responseData: Any?, status: Int) -> ( [AnyHashable: Any]?, Error?) {
+        var authenticationResults:  [AnyHashable: Any]! = nil
+        var error: Error!
+        
+        do {
+            authenticationResults = try JSONSerialization.jsonObject(with: responseData as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as?  [AnyHashable: Any]
+        }
+        catch let err {
+            error = err
+            print(err.localizedDescription)
+        }
+        return (authenticationResults, error)
+    }
+    
+
+    //MARK: SelfieCaptureExprienceViewControllerDelegate methods
+    
+    func cancelledSelfieCapture() {
+        print("Selfie capture was cancelled.")
+        
+    }
+    
+
+    func selfieCapturedWithImage(image: UIImage!) {
+        self.selfieImage = nil
+        self.selfieImage = image
+        
+        DispatchQueue.global().async {
+            self.performSelfieVerificationWithCompletionHandler(handler: { (responseData: Any?, status: Int) in
+                
+                print("Selfie verification status ==> \(status)")
+                
+                var appError: AppError! = nil
+
+                if status == 200 {
+                    print("Selfie verification successful")
+                    if responseData != nil {
+                        self.showSelfieResultsScreenWithResponse(response: responseData!)
+                    } else {
+                        print("Selfie verification response is nil")
+                        Utility.showAlert(onViewController: self.navigationController.topViewController!, titleString: "Empty response", messageString: "Selfie verification response is empty.")
+                    }
+                } else {
+                    let (dictSelfieAuthenticationResults, error) = self.getSelfieAuthenticationResults(responseData: responseData, status: status) // JSONSerialization.jsonObject(with: responseData as! Data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    
+                    if error != nil {
+                        appError = AppError()
+                        appError.message = error?.localizedDescription
+                    }
+                    
+                    var errorMessage = "Unable to read selfie results"
+                    
+                    //Fetching error message from response data.
+                    if dictSelfieAuthenticationResults != nil {
+                        let errorDict = NSDictionary(dictionary: dictSelfieAuthenticationResults!)
+                        
+                        if (errorDict.object(forKey: "Message") != nil) {
+                            errorMessage = errorDict.object(forKey: "Message") as! String
+                        }
+                    }
+                    
+                    Utility.showAlert(onViewController: self.navigationController.topViewController!, titleString: "Selfie Authentication Failed", messageString: errorMessage)
+                }
+            })
+        }
+        
+    }
+    
+    var dictSelfieResults: NSDictionary! = nil
+    
+    // SelfieResultController methods
+    private func showSelfieResultsScreenWithResponse(response: Any) {
+
+        dictSelfieResults = nil
+        
+        do {
+            let dictSelfieResults = try JSONSerialization.jsonObject(with: response as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyHashable : Any]
+            
+            self.selfieVerificationResults = SelfieVerificationResultModel.init(dictionary: dictSelfieResults, andHeadShot: self.authenticationResultModel.headShotBase64ImageString)
+            
+            self.showSelfieResultViewController()
+            
+        } catch {
+            print("\(error)")
+        }
+    }
+
+    var selfieResultsVC: SelfieResultsViewController! = nil
+    
+    private func showSelfieResultViewController() {
+        DispatchQueue.main.async {
+            //self.selfieResultsVC = SelfieResultsViewController(nibName: "SelfieResultsViewController", bundle: nil)
+            self.selfieResultsVC = SelfieResultsViewController.init(selfieResults: self.selfieVerificationResults)
+            
+            self.selfieResultsVC.delegate = self
+            
+            self.selfieResultsVC.selfieImage = self.selfieImage
+            
+            self.navigationController.pushViewController(self.selfieResultsVC, animated: true)
+        }
+    }
+    
+    //MARK: - SelfieCaptureExprienceViewControllerDelegate methods
+    
+    func submitWithSelfieResults() {
+        
+        navigationController.popToRootViewController(animated: true)
+
+        delegate?.IDDataReadCompleteWithSelfieVerification(idData: self.idData)
+    }
+
+    func sendPushNotificationServiceOnSelfiVerification() {
+        //TODO: needs to be completed
+    }
+    
+    func backFromSelfieResultScreen() {
+        selfieResultsVC.delegate = nil
+        selfieResultsVC = nil
+    }
 }

@@ -18,3 +18,6 @@
 #import "AuthenticationService.h"
 #import "IDAuthenticationService.h"
 #import "AuthenticationResultModel.h"
+#import "Services/SelfieVerificationService.h"
+#import "SelfieVerificationResultModel.h"
+

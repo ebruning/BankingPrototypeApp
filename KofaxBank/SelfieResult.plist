@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>keysArray</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Match Score</string>
+			<key>key</key>
+			<string>selfieMatchScore</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Match Result</string>
+			<key>key</key>
+			<string>selfieMatchResult</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Transaction Id</string>
+			<key>key</key>
+			<string>transactionID</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Low Threshold</string>
+			<key>key</key>
+			<string>selfieLowThreshold</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Medium Threshold</string>
+			<key>key</key>
+			<string>selfieMediumThreshold</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>High Threshold</string>
+			<key>key</key>
+			<string>selfieHighThreshold</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Document Test</string>
+			<key>key</key>
+			<string>documentTests</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Document Image Analysis</string>
+			<key>key</key>
+			<string>documentImageAnalysisModel</string>
+			<key>value</key>
+			<string></string>
+			<key>confidence</key>
+			<string>0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

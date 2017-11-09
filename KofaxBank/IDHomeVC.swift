@@ -9,7 +9,10 @@
 import UIKit
 
 protocol IDHomeVCDelegate {
-    func onCancel()
+    func authenticateWithSelfie()
+    func onIDHomeDoneWithData(idData: kfxIDData)
+    func onIDHomeDoneWithoutData()
+    func onIDHomeCancel()
 }
 
  class IDHomeVC: UITableViewController {
@@ -27,6 +30,9 @@ protocol IDHomeVCDelegate {
     @IBOutlet weak var backImageView: UIImageView!
 
     @IBOutlet weak var backImagePreviewLabel: UILabel!
+    @IBOutlet weak var authenticateButton: CustomButton!
+
+    @IBOutlet weak var waitIndicatorContainerVaiw: UIView!
 
     @IBOutlet weak var idNumberField: UITextField!
     
@@ -138,7 +144,11 @@ protocol IDHomeVCDelegate {
         dataReadInProgress = false
         
         DispatchQueue.main.async {
+            if authenticationResultModel == nil {
             self.updateNavigationButtonItems()
+            } else {
+                authenticateButton.
+            }
             
             self.tableView.reloadData()
 
@@ -146,6 +156,10 @@ protocol IDHomeVCDelegate {
             
             self.viewMoreButton.isHidden = false
             
+            if self.shouldAuthenticateWithSelfie() {
+                self.authenticateButton.isHidden = false
+            }
+            self.waitIndicatorContainerVaiw.isHidden = true
             if self.authenticationResultModel != nil {
                 self.updateWarningLabel(verificationStatus: self.authenticationResultModel.authenticationResult)
             }
@@ -180,7 +194,11 @@ protocol IDHomeVCDelegate {
             
         case 3:
             if !dataReadInProgress {
+                if(idData != nil && shouldAuthenticateWithSelfie() == true) {
+                    rowHeight = 70
+                } else {
                 rowHeight = 0
+            }
             }
             break
 
@@ -197,7 +215,7 @@ protocol IDHomeVCDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //show ID Data viewcontroller when tapped on any fields row of table (not the rows containing images)
-        if indexPath.row > 2 {
+        if indexPath.row > 3 {
             displayIDDataViewControllerScreen()
         }
     }
@@ -225,7 +243,7 @@ protocol IDHomeVCDelegate {
 
     
     private func updateNavigationButtonItems() {
-        let rightBarButtonItem = UIBarButtonItem.init(title: "Next", style: .plain, target: self, action: #selector(onNextButtonClick))
+        let rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonClick))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
 //        let newBackButton = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onCancelButtonClick))
@@ -233,7 +251,23 @@ protocol IDHomeVCDelegate {
 //        self.navigationItem.leftBarButtonItem = newBackButton
     }
 
-    func onNextButtonClick() {
+    func onDoneButtonClick() {
+        if idData != nil {
+            delegate?.onIDHomeDoneWithData(idData: idData)
+        } else {
+            delegate?.onIDHomeDoneWithoutData()
+        }
+    }
+
+    private func shouldAuthenticateWithSelfie() -> Bool {
+        var shouldAuthenticate = false
+        let mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
+        
+        if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
+            shouldAuthenticate = true
+        }
+        
+        return shouldAuthenticate
         
     }
 
@@ -263,7 +297,7 @@ protocol IDHomeVCDelegate {
         Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the ID Authentication process.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
             print("Positive response selected")
             
-            self.delegate?.onCancel()
+            self.delegate?.onIDHomeCancel()
             
             self.restoreNavigationBar()
             self.navigationController?.popViewController(animated: true)
@@ -403,4 +437,10 @@ protocol IDHomeVCDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    @IBAction func onAuthenticateButtonClicked(_ sender: UIButton) {
+//        let vc = SelfieCaptureExprienceViewController(nibName: "SelfieCaptureExprienceViewController", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        delegate?.authenticateWithSelfie()
+    }
 }

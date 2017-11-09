@@ -201,6 +201,7 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    var idManager = IDManager()
     @IBAction func addNewAccount(_ sender: UIButton) {
         
 //        let vc = IDSettingsViewController.init(nibName: "IDSettingsViewController", bundle: nil)
@@ -208,6 +209,7 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 //        let vc = RegionViewController.init(nibName: "RegionViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
+        idManager.loadManager(navigationController: self.navigationController!)
     }
     
     // Mark: CoreData methods
