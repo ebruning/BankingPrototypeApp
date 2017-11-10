@@ -20,6 +20,7 @@ typedef enum {
 
 @property(nonatomic, weak) IBOutlet UIImageView *bannerBackgroundImage;
 
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
 @property(nonatomic, weak)  IBOutlet NSLayoutConstraint *bannerViewHeight;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerContentsViewHeight;
@@ -32,7 +33,6 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIView *bottomBarView;
 
-@property (weak, nonatomic) IBOutlet UIView *bannerView;
 
 @property (weak, nonatomic) IBOutlet UIView *bannerDetailsView;
 

@@ -12,15 +12,50 @@ import CoreData
 class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate  {
 
     @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var tableHeader: UILabel!
+
+    //Banner parameters
     
+    @IBOutlet weak var bannerView: UIView!
+    
+    @IBOutlet weak var bannerContentsView: UIView!
+    
+    @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
+
+    @IBOutlet weak var bannerContentsViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var bannerBackgroundImage: UIImageView!
+    
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    
+    @IBOutlet weak var stackViewUserDetails: UIStackView!
+    
+    @IBOutlet weak var avatar: UIImageView!
+    
+
+    //tableview
     private let MAX_VISIBLE_CELL_COUNT: Int = 2
     
     private var backImage: UIImage!
-    
+
+    //coredata
     private var fetchResultController: NSFetchedResultsController<AccountsMaster>!
     
     private var fetchResultControllerCC: NSFetchedResultsController<CreditCardMaster>!
     
+    //banner
+    private let SCREEN_HEIGHT: Double = Double(UIScreen.main.bounds.size.height)
+    
+    private let BANNER_AREA_PERCENT = 30.0
+
+    private var topScrollOffset: CGFloat = 0
+    
+    private var bottomScrollOffset: CGFloat = 0
+    
+    private var bannerInnerOffset: CGFloat = 0
+    
+
     //MARK: status bar visibility
     override var prefersStatusBarHidden: Bool {
         return false
@@ -34,37 +69,73 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         fetchAccounts()
         fetchCreditCardAccounts()
 
+        setupPanGestureRecognizerOnBannerView()
+
+        initScreenParams()
+        
         tableView.dataSource = self
         tableView.delegate = self
     }
 
+    private func setupPanGestureRecognizerOnBannerView() {
+        let panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(move(_:)))
+        panGestureRecognizer.maximumNumberOfTouches = 1
+        panGestureRecognizer.minimumNumberOfTouches = 1
+        
+        bannerView.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    private func initScreenParams() {
+        //calculate height of banner based on decided percentage w.r.t. main screen height
+        topScrollOffset = CGFloat((BANNER_AREA_PERCENT/100.0) * SCREEN_HEIGHT)
+        
+        //canculate bottom offset upto where banner can be dragged down (in this case upto the beginning of bottom bar).
+        bottomScrollOffset = (self.tabBarController?.tabBar.frame.origin.y)!
+        
+        //inner offset is the bottom space(gap) between bannerContentView and banner view.
+        bannerInnerOffset = bannerViewHeight.constant - bannerContentsViewHeight.constant
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        customizeNavigationBar()
+    
+        //set initial height of banner while launching screen
+        bannerViewHeight.constant = topScrollOffset
+        
+        //adjust height of bannerContentView as per the new height of bannerView
+        bannerContentsViewHeight.constant = bannerViewHeight.constant - bannerInnerOffset
+        
+        //adjust top margin of tableheader label as per the height of bannerview
+        tableHeader.topAnchor.constraint(equalTo: (tableHeader.superview?.topAnchor)!, constant: bannerContentsView.frame.origin.y + bannerContentsViewHeight.constant).isActive = true
+        
+        stackViewUserDetails.alpha = 0
+        visualEffectView.alpha = 0.27
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
     
     private func customizeNavigationBar() {
-
+        
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
         navigationController?.navigationBar.topItem?.rightBarButtonItem?.image = nil
     }
     
-    
-    func menuBarButtonClicked() {
-        print("Clicked!")
+    private func restoreNavigationBar() {
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        customizeNavigationBar()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
 
-    }
-
-    func convertToDictionary(text: String) -> [String: Any]? {
+    private func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
@@ -74,6 +145,39 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return nil
     }
+    
+    //MARK: PanGestureRecognizer selector method
+    func move(_ sender: UIPanGestureRecognizer) {
+        
+        let currentPoint = sender.location(in: self.bannerView.superview)
+        
+        let currentYPosition = currentPoint.y
+        let percentage = currentYPosition/CGFloat(SCREEN_HEIGHT)
+        
+        if percentage >= 0.70 {
+            //show user details completly when banner is dragged sufficiently down
+            stackViewUserDetails.alpha = 1.0
+        } else if percentage <= 0.30 {
+            //hide user details completly when banner is dragged sufficiently up
+            stackViewUserDetails.alpha = 0.0
+        } else {
+            stackViewUserDetails.alpha = percentage
+        }
+        
+        visualEffectView.alpha = fabs(percentage)
+        
+        // update heights of banner-view and banner-content-view as per pan value on screen
+        UIView.animate(withDuration: 0.01, animations: {
+            if (currentYPosition > self.topScrollOffset) && (currentYPosition <= self.bottomScrollOffset) {
+                self.bannerViewHeight.constant = currentYPosition
+                self.bannerContentsViewHeight.constant = self.bannerViewHeight.constant - self.bannerInnerOffset
+            } else if currentYPosition < self.topScrollOffset {
+                self.bannerViewHeight.constant = self.topScrollOffset
+                self.bannerContentsViewHeight.constant = self.bannerViewHeight.constant - self.bannerInnerOffset
+            }
+        }, completion: nil)
+    }
+    
     
     // MARK: - TableView Methods
     
@@ -202,6 +306,7 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     var idManager = IDManager()
+    
     @IBAction func addNewAccount(_ sender: UIButton) {
         
 //        let vc = IDSettingsViewController.init(nibName: "IDSettingsViewController", bundle: nil)
@@ -209,9 +314,10 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 //        let vc = RegionViewController.init(nibName: "RegionViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
+        
         idManager.loadManager(navigationController: self.navigationController!)
     }
-    
+
     // Mark: CoreData methods
     
     func fetchAccounts() {
