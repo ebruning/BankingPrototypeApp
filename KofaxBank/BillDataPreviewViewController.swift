@@ -63,9 +63,6 @@ class BillDataPreviewViewController: UIViewController {
     
     var delegate: BillDataPreviewDelegate?
 
-    //private var fetchResultsController: NSFetchedResultsController<AccountsMaster>!
-    //private var accountMasterFRC: NSFetchedResultsController<AccountsMaster>!
-
     //MARK: - Private variables
 
     private var wasNavigationHidden: Bool = false
@@ -81,6 +78,7 @@ class BillDataPreviewViewController: UIViewController {
     
     private var swipeLeftRecogizer: UISwipeGestureRecognizer! = nil
 
+    private let scrollContentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 200, 0.0)
     
     //MARK: statusbar content color
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -96,6 +94,9 @@ class BillDataPreviewViewController: UIViewController {
         processedImageView.isHidden = true
         imagePlaceholderLabel.isHidden = false
         
+        scrollView.contentInset = scrollContentInset
+        scrollView.scrollIndicatorInsets = scrollContentInset
+        
         showWaitIndicator()
         
         registerForKeyboardNotifications()
@@ -104,8 +105,7 @@ class BillDataPreviewViewController: UIViewController {
         
         pageControl.isHidden = true
     }
-    
-    
+
     // MARK: Public mathods
     
     func rawImageReady() {
@@ -348,17 +348,33 @@ class BillDataPreviewViewController: UIViewController {
             
             if isAccountBalanceSufficient(amount: amt!) {
                 
-                let billTransaction = BillTransactions(context: context)
+                //reload the billData object first
                 
+                if self.billData == nil {
+                    self.billData = kfxBillData()
+                }
+                self.billData?.amount.value = amountTextField.text
+                self.billData?.name.value = nameTextField.text
+                
+                self.billData?.accountNumber.value = accountNumberTextField.text
+                self.billData?.addressLine1.value = address1TextField.text
+                self.billData?.addressLine2.value = address2TextField.text
+                self.billData?.city.value = cityTextField.text
+                self.billData?.state.value = stateTextField.text
+                self.billData?.zip.value = zipTextField.text
+                self.billData?.phoneNumber.value = phoneNumberTextField.text
+
+                //create BillTransaction coreData object
+                let billTransaction = BillTransactions(context: context)
+
                 billTransaction.amountDue = amt!
                 billTransaction.comment = "Bill paid - \(nameTextField.text!)"
                 billTransaction.name = nameTextField.text  //TODO: take payee name from extracted data.
 
-                billTransaction.name = nameTextField.text
                 billTransaction.accountNumber = accountNumberTextField.text
                 billTransaction.addressLine1 = address1TextField.text
                 billTransaction.addressLine2 = address2TextField.text
-                billTransaction.amountDue = amt!
+
                 billTransaction.city = cityTextField.text
                 billTransaction.state = stateTextField.text
                 billTransaction.zip = zipTextField.text
@@ -472,6 +488,8 @@ class BillDataPreviewViewController: UIViewController {
 
     // MARK: Scrollview and keyboard methods
     
+    //override var automaticallyAdjustsScrollViewInsets: Bool = true
+    
     private var scrollViewYPos: CGFloat = 70
     private var activeField: UITextField! = nil
     
@@ -490,7 +508,7 @@ class BillDataPreviewViewController: UIViewController {
         let info: NSDictionary = notification.userInfo! as NSDictionary
         let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         
-        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, (kbSize?.height)!, 0.0)
+        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, (kbSize?.height)! + 50, 0.0)
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
         
@@ -517,11 +535,14 @@ class BillDataPreviewViewController: UIViewController {
         // let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -(kbSize?.height)!, 0.0)
         var contentInset: UIEdgeInsets = UIEdgeInsets.zero
         contentInset.top += scrollViewYPos
-        scrollView.contentInset = contentInset
-        scrollView.scrollIndicatorInsets = contentInset
+        scrollView.contentInset = scrollContentInset
+        scrollView.scrollIndicatorInsets = scrollContentInset
         
-        //self.automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = true
     }
+    
+    
+    
     
     // MARK: Textfield delegate
     

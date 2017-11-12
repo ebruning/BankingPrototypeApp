@@ -29,7 +29,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     
     private var checkDepositManager: CheckDepositManager? = nil
     
-    private var billManager: BillManager? = nil
     
     private var fetchResultController: NSFetchedResultsController<AccountTransactionMaster>!
 
@@ -310,14 +309,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
 
         checkDepositManager?.account = account
         checkDepositManager?.loadManager(navigationController: self.navigationController!)
-    }
-
-    @IBAction func BillButtonOnClick(_ sender: UIBarButtonItem) {
-        if billManager == nil {
-            billManager = BillManager()
-        }
-        billManager?.account = account
-        billManager?.loadManager(navigationController: self.navigationController!)
     }
 
     // Mark: Segue delegates

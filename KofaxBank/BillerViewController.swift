@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 
 protocol BillerViewControllerDelegate {
-    func paybillWithExistingBiller(account: AccountsMaster, biller: BillerMaster, amount: Double)
-    func paybillWithNewBiller(account: AccountsMaster)
 }
 
 
@@ -40,6 +38,8 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         case BILLER
     }
 
+    private var billManager: BillManager? = nil
+
     private var wasNavigationHidden: Bool = false
     private var oldBarTintColor: UIColor!
     private var oldStatusBarStyle: UIStatusBarStyle!
@@ -56,66 +56,66 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
         
         customizeNavigationBar()
-        
         pickerView.delegate = self
+    }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        initialize()
         
         fetchAccounts()
         fetchBillers()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        clear()
+    }
+
+    private func initialize() {
+        customizeNavigationBar()
+
+        selectedBiller = nil
+        selectedAccount = nil
+        selectionType = SelectionType.ACCOUNT
+    }
     
+    private func clear() {
+        //restoreNavigationBar()
+        accounts.removeAll()
+        billers.removeAll()
+        self.selectedBiller = nil
+        
+        if self.billManager != nil {
+            self.billManager?.delegate = nil
+            self.billManager = nil
+        }
+    }
+
     private func customizeNavigationBar() {
 
         oldStatusBarStyle = UIApplication.shared.statusBarStyle
         oldBarTintColor = navigationController?.navigationBar.tintColor
         
-        UIApplication.shared.statusBarStyle = .default
-        navigationController?.navigationBar.tintColor = UIColor.darkGray
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
         
-        //right navigation button
-        let continueButton = UIBarButtonItem.init(title: "Continue", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onContinueButtonPressed))
-        self.navigationItem.rightBarButtonItem = continueButton
-
-        //new back button
-        let newBackButton = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onCancelButtonPressed))
-        
-        self.navigationItem.leftBarButtonItem=newBackButton
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
+
     private func restoreNavigationBar() {
         UIApplication.shared.statusBarStyle = oldStatusBarStyle
         navigationController?.navigationBar.tintColor = oldBarTintColor
         navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
     }
-    
-    //Mark: Navigation button actions
-    
-    func onCancelButtonPressed() {
-        
-/*        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the process of bill payment.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
-            print("Positive response selected")
-            
-            self.delegate?.billPreviewOnCancelData()
-            
-            self.account = nil
-            
-            //self.dismiss(animated: true, completion: nil)
-            self.dismiss(animated: true, completion: {
-                self.restoreNavigationBar()
-            })
-        }, negativeActionResponse: {
-            print("Negative response selected")
-        })
-*/
-        restoreNavigationBar()
-        self.closeScreen()
-    }
 
     var amount: Double = 0
     
-    func onContinueButtonPressed() {
+    @IBAction func onPayButtonPressed(_ sender: UIButton) {
         
         if amountTextField.text != "" {
             amount = Double.init(amountTextField.text!)!
@@ -145,9 +145,10 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 //save bill data
                 ad.saveContext()
                 
-                delegate?.paybillWithExistingBiller(account: selectedAccount, biller: selectedBiller, amount: amount)
-                closeScreen()
-
+                Utility.showAlert(onViewController: self, titleString: "", messageString: "Bill is paid.")
+                amountTextField.text = ""
+                selectedAccount = nil
+                selectedBiller = nil
             } else {
                 Utility.showAlert(onViewController: self, titleString: "Insufficient Balance", messageString: "Make sure your account has enough balance to pay the bill.")
             }
@@ -179,15 +180,18 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         fetchRequest = nil
     }
 
+
+/*
     private func closeScreen() {
+        
+        //TODO: find place to clean data
         
         accounts.removeAll()
         billers.removeAll()
-        
-        delegate = nil
+
         navigationController?.popViewController(animated: true)
     }
-    
+*/
     @IBAction func selectPayee(_ sender: UIButton) {
         pickerContainerView.isHidden = false
         
@@ -217,8 +221,16 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
 
     @IBAction func openBillPayScreen(_ sender: UIButton) {
-        delegate?.paybillWithNewBiller(account: accounts[pickerViewSelectedRow])
-        self.closeScreen()
+        if selectedAccount  == nil {
+            Utility.showAlert(onViewController: self, titleString: "Ampty Account", messageString: "Select account before paying new bill.")
+        } else {
+            if billManager == nil {
+                billManager = BillManager()
+                billManager?.loadManager(navigationController: self.navigationController!)
+            }
+            billManager?.account = selectedAccount
+            billManager?.paybillWithNewBiller(account: selectedAccount)
+        }
     }
 
     @IBAction func onTapGesture(_ sender: UITapGestureRecognizer) {

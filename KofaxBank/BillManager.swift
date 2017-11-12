@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol BillManagerDelegate {
+    //TODO: implement these delegates
+    func newBillPaymentSucceded()
+    func newBillPaymentFailed()
+}
+
 class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegate, PreviewDelegate, UINavigationControllerDelegate,
-    UIImagePickerControllerDelegate,
-    BillerViewControllerDelegate {
+    UIImagePickerControllerDelegate {
    
     private enum BillFlowStates {
         case NOOP
@@ -29,6 +34,8 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     // MARK: Public variables
     var account: AccountsMaster?
 
+    var delegate: BillManagerDelegate! = nil
+
     // MARK: Local variables
     
     private var navigationController: UINavigationController!
@@ -37,7 +44,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     
     private var billDataPreview: BillDataPreviewViewController!
     
-    private var billerSelection: BillerViewController!
 
     private var captureController: ImageCaptureViewController! = nil
 
@@ -73,9 +79,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         super.loadManager(navigationController: navigationController)
         
         self.navigationController = navigationController
-        
-        showBillerSelectionScreen()
-        //showInstructionPopupForBill()
+
     }
     
     // MARK: Private methods
@@ -159,15 +163,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     }
 
     
-    
-    private func showBillerSelectionScreen() {
-        billerSelection = BillerViewController.init(nibName: "BillerViewController", bundle: nil)
-        
-        self.navigationController?.pushViewController(billerSelection, animated: true)
-        billerSelection.delegate = self
-    }
-    
-    
     private func showBillDataPreviewScreen() {
         billDataPreview = BillDataPreviewViewController.init(nibName: "BillDataPreviewViewController", bundle: nil)
         
@@ -250,6 +245,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.isTranslucent = true
         navController.navigationBar.backgroundColor = UIColor.clear
+        
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
     }
@@ -709,16 +705,10 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     //MARK: BillerViewControllerDelegate
     
     func paybillWithNewBiller(account: AccountsMaster) {
+        self.account = account
         showInstructionPopupForBill()
-        billerSelection.delegate = nil
-        billerSelection = nil
     }
     
-    func paybillWithExistingBiller(account: AccountsMaster, biller: BillerMaster, amount: Double) {
-        //bill is paid and the record is updated in coreData database
-        billerSelection.delegate = nil
-        billerSelection = nil
-    }
 
     override func unloadManager() {
         DiskUtility.shared.removeFile(atPath: self.capturedImagePath)
@@ -731,11 +721,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         captureController = nil
         navigationController = nil
         billDataPreview = nil
-        if billerSelection != nil {
-            billerSelection.delegate = nil
-            billerSelection = nil
-        }
-        
+
         if imageProcessManager != nil {
             imageProcessManager.unload()
             imageProcessManager = nil

@@ -11,12 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BillerViewController" customModule="KofaxBank" customModuleProvider="target">
             <connections>
-                <outlet property="accountButton" destination="TQe-3t-alt" id="GX0-Ws-2sk"/>
-                <outlet property="amountTextField" destination="Hrb-x8-vWl" id="KnN-0H-bC4"/>
-                <outlet property="floatingContainerView" destination="bPa-Pv-1qI" id="jmH-xP-LF1"/>
-                <outlet property="payeeButton" destination="coq-yA-Ay1" id="qYf-08-rIW"/>
-                <outlet property="pickerContainerView" destination="SHp-gu-nwJ" id="8Gy-Sb-UAH"/>
-                <outlet property="pickerView" destination="fyq-td-bgv" id="WGk-mX-Pzk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,55 +22,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klQ-N8-haO" userLabel="MainContainerView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2e-iH-roi">
-                            <rect key="frame" x="16" y="89" width="288" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="jT6-ZR-HoW"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkR-nT-ESg" userLabel="PayeeCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="122" width="320" height="40"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="6ME-Qk-b0O">
-                                    <rect key="frame" x="292" y="10" width="20" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="T4H-vj-VKk"/>
-                                        <constraint firstAttribute="height" constant="20" id="cEg-EE-bUb"/>
-                                    </constraints>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coq-yA-Ay1">
-                                    <rect key="frame" x="16" y="5" width="268" height="30"/>
-                                    <state key="normal" title="Select a Payee">
-                                        <color key="titleColor" red="0.53980461980000005" green="0.51916550220000002" blue="0.54534113220000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="selectPayee:" destination="-1" eventType="touchUpInside" id="eIu-h9-fKi"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="coq-yA-Ay1" firstAttribute="centerY" secondItem="MkR-nT-ESg" secondAttribute="centerY" id="Gqa-i5-yw1"/>
-                                <constraint firstItem="6ME-Qk-b0O" firstAttribute="centerY" secondItem="MkR-nT-ESg" secondAttribute="centerY" id="I7S-nH-zTw"/>
-                                <constraint firstItem="6ME-Qk-b0O" firstAttribute="leading" secondItem="coq-yA-Ay1" secondAttribute="trailing" constant="8" id="U4M-T2-Swx"/>
-                                <constraint firstItem="coq-yA-Ay1" firstAttribute="leading" secondItem="MkR-nT-ESg" secondAttribute="leading" constant="16" id="dEN-G5-CAg"/>
-                                <constraint firstAttribute="trailing" secondItem="6ME-Qk-b0O" secondAttribute="trailing" constant="8" id="hN1-rp-dn6"/>
-                                <constraint firstAttribute="height" constant="40" id="ilq-JZ-W0K"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="0.5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBS-5E-Zna">
-                            <rect key="frame" x="16" y="202" width="288" height="25"/>
+                            <rect key="frame" x="16" y="89" width="288" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="b8m-qy-Ipk"/>
                             </constraints>
@@ -85,7 +32,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9b-hQ-C7T" userLabel="AccountCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="235" width="320" height="40"/>
+                            <rect key="frame" x="0.0" y="122" width="320" height="40"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="C0U-1g-SmK">
                                     <rect key="frame" x="292" y="10" width="20" height="20"/>
@@ -99,9 +46,6 @@
                                     <state key="normal" title="Select a Payment Account">
                                         <color key="titleColor" red="0.53980461980000005" green="0.51916550220000002" blue="0.54534113220000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="selectAccount:" destination="-1" eventType="touchUpInside" id="5dk-93-6Id"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,7 +76,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bK7-Fe-c1A" userLabel="AmountContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="349" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="348" width="375" height="40"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hrb-x8-vWl">
                                     <rect key="frame" x="16" y="0.0" width="288" height="40"/>
@@ -160,7 +104,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdL-M3-hkb">
-                            <rect key="frame" x="8" y="425" width="304" height="21"/>
+                            <rect key="frame" x="8" y="424" width="304" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="hz4-jY-IiR"/>
                             </constraints>
@@ -168,14 +112,58 @@
                             <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2e-iH-roi">
+                            <rect key="frame" x="16" y="202" width="288" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="jT6-ZR-HoW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkR-nT-ESg" userLabel="PayeeCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="235" width="320" height="40"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="6ME-Qk-b0O">
+                                    <rect key="frame" x="292" y="10" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="T4H-vj-VKk"/>
+                                        <constraint firstAttribute="height" constant="20" id="cEg-EE-bUb"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coq-yA-Ay1">
+                                    <rect key="frame" x="16" y="5" width="268" height="30"/>
+                                    <state key="normal" title="Select a Payee">
+                                        <color key="titleColor" red="0.53980461980000005" green="0.51916550220000002" blue="0.54534113220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="coq-yA-Ay1" firstAttribute="centerY" secondItem="MkR-nT-ESg" secondAttribute="centerY" id="Gqa-i5-yw1"/>
+                                <constraint firstItem="6ME-Qk-b0O" firstAttribute="centerY" secondItem="MkR-nT-ESg" secondAttribute="centerY" id="I7S-nH-zTw"/>
+                                <constraint firstItem="6ME-Qk-b0O" firstAttribute="leading" secondItem="coq-yA-Ay1" secondAttribute="trailing" constant="8" id="U4M-T2-Swx"/>
+                                <constraint firstItem="coq-yA-Ay1" firstAttribute="leading" secondItem="MkR-nT-ESg" secondAttribute="leading" constant="16" id="dEN-G5-CAg"/>
+                                <constraint firstAttribute="trailing" secondItem="6ME-Qk-b0O" secondAttribute="trailing" constant="8" id="hN1-rp-dn6"/>
+                                <constraint firstAttribute="height" constant="40" id="ilq-JZ-W0K"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="LdL-M3-hkb" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" constant="8" id="7NV-iQ-xue"/>
                         <constraint firstItem="MkR-nT-ESg" firstAttribute="top" secondItem="c2e-iH-roi" secondAttribute="bottom" constant="8" id="AAR-ND-OH9"/>
                         <constraint firstAttribute="trailing" secondItem="7cD-TH-Uq6" secondAttribute="trailing" constant="16" id="BAF-qJ-bhB"/>
+                        <constraint firstItem="7cD-TH-Uq6" firstAttribute="top" secondItem="MkR-nT-ESg" secondAttribute="bottom" constant="40" id="L6e-ok-oa1"/>
                         <constraint firstAttribute="trailing" secondItem="L9b-hQ-C7T" secondAttribute="trailing" id="LHm-es-k73"/>
-                        <constraint firstItem="7cD-TH-Uq6" firstAttribute="top" secondItem="L9b-hQ-C7T" secondAttribute="bottom" constant="40" id="S7M-YT-jjG"/>
                         <constraint firstAttribute="trailing" secondItem="c2e-iH-roi" secondAttribute="trailing" constant="16" id="Ss4-ws-fWj"/>
                         <constraint firstItem="MkR-nT-ESg" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" id="SuS-S2-7Rg"/>
                         <constraint firstItem="bK7-Fe-c1A" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" id="UQd-5c-JJz"/>
@@ -183,13 +171,13 @@
                         <constraint firstAttribute="trailing" secondItem="ZBS-5E-Zna" secondAttribute="trailing" constant="16" id="bCc-Nn-i2l"/>
                         <constraint firstItem="L9b-hQ-C7T" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" id="dmp-j5-m9t"/>
                         <constraint firstAttribute="trailing" secondItem="LdL-M3-hkb" secondAttribute="trailing" constant="8" id="eMM-hP-au8"/>
+                        <constraint firstItem="ZBS-5E-Zna" firstAttribute="top" secondItem="klQ-N8-haO" secondAttribute="top" constant="89" id="etq-te-2cG"/>
                         <constraint firstAttribute="trailing" secondItem="bK7-Fe-c1A" secondAttribute="trailing" constant="-55" id="gA2-tL-ot2"/>
                         <constraint firstItem="ZBS-5E-Zna" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" constant="16" id="gqk-zO-e6d"/>
-                        <constraint firstItem="bK7-Fe-c1A" firstAttribute="top" secondItem="7cD-TH-Uq6" secondAttribute="bottom" constant="9" id="iMZ-1l-XMZ"/>
+                        <constraint firstItem="bK7-Fe-c1A" firstAttribute="top" secondItem="7cD-TH-Uq6" secondAttribute="bottom" constant="8" id="iMZ-1l-XMZ"/>
                         <constraint firstItem="7cD-TH-Uq6" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" constant="16" id="ios-EL-23i"/>
+                        <constraint firstItem="c2e-iH-roi" firstAttribute="top" secondItem="L9b-hQ-C7T" secondAttribute="bottom" constant="40" id="jme-pV-gxY"/>
                         <constraint firstItem="c2e-iH-roi" firstAttribute="leading" secondItem="klQ-N8-haO" secondAttribute="leading" constant="16" id="kWj-UR-xju"/>
-                        <constraint firstItem="c2e-iH-roi" firstAttribute="top" secondItem="klQ-N8-haO" secondAttribute="top" constant="89" id="nto-9F-zTp"/>
-                        <constraint firstItem="ZBS-5E-Zna" firstAttribute="top" secondItem="MkR-nT-ESg" secondAttribute="bottom" constant="40" id="ny3-Cp-2Z1"/>
                         <constraint firstItem="L9b-hQ-C7T" firstAttribute="top" secondItem="ZBS-5E-Zna" secondAttribute="bottom" constant="8" id="wXa-14-f8Z"/>
                         <constraint firstItem="LdL-M3-hkb" firstAttribute="top" secondItem="bK7-Fe-c1A" secondAttribute="bottom" constant="36" id="xqj-De-wKc"/>
                     </constraints>
@@ -221,9 +209,6 @@
                                     <size key="value" width="1" height="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="openBillPayScreen:" destination="-1" eventType="touchUpInside" id="trQ-3M-8es"/>
-                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1l-3L-GqM" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                             <rect key="frame" x="-4" y="0.0" width="226" height="60"/>
@@ -300,9 +285,6 @@
                                     <real key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="onPickerViewDoneButtonClick:" destination="-1" eventType="touchUpInside" id="WRk-oM-U9c"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
@@ -345,11 +327,7 @@
             </connections>
             <point key="canvasLocation" x="24" y="51"/>
         </view>
-        <tapGestureRecognizer id="sxl-3Y-Xbo">
-            <connections>
-                <action selector="onTapGesture:" destination="-1" id="NOI-0N-Xh2"/>
-            </connections>
-        </tapGestureRecognizer>
+        <tapGestureRecognizer id="sxl-3Y-Xbo"/>
     </objects>
     <resources>
         <image name="camera_white_small" width="30" height="26"/>

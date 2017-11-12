@@ -56,15 +56,6 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     private var bannerInnerOffset: CGFloat = 0
     
 
-    //MARK: status bar visibility
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
-    
-    //MARK: statusbar content color
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -308,6 +299,8 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var idManager = IDManager()
     
     @IBAction func addNewAccount(_ sender: UIButton) {
+//        let vc = BillDataPreviewViewController.init(nibName: "BillDataPreviewViewController", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
         
 //        let vc = IDSettingsViewController.init(nibName: "IDSettingsViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)

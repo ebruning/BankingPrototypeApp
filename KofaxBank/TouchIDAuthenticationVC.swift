@@ -82,11 +82,13 @@ class TouchIDAuthenticationVC: UIViewController {
 
     
     func launchHomeScreenAsFirstScreen(){
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let vc = storyboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        
-        let vc = HomeVC(nibName: "HomeScreen", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
+        navigationController?.pushViewController(vc, animated: true)
+
+//        let vc = HomeVC(nibName: "HomeScreen", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
         
         /**
          Important: set next viewcontroller as base(first) viewcontroller after login screen is closed.
@@ -94,9 +96,6 @@ class TouchIDAuthenticationVC: UIViewController {
          */
         let newViewControllersSequenceArray: NSMutableArray = NSMutableArray(object: vc)
         navigationController?.setViewControllers(newViewControllersSequenceArray as! [UIViewController], animated: false)
-        
-        
-        //dismiss(animated: true, completion: nil)
     }
 
 }
