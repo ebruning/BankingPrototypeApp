@@ -19,7 +19,7 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBOutlet weak var pickerView: UIPickerView!
 
-    @IBOutlet weak var floatingContainerView: UIView!
+//    @IBOutlet weak var floatingContainerView: UIView!
 
     @IBOutlet weak var payeeButton: UIButton!
     
@@ -55,7 +55,6 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        customizeNavigationBar()
         pickerView.delegate = self
     }
 

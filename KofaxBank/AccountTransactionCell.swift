@@ -53,13 +53,13 @@ class AccountTransactionCell: UITableViewCell {
         
         
         if let date = transaction.dateOfTransaction {
-            let dateStr = Utility.dateToFormattedString(format: LongDateFormat, date: date as Date)
+            let dateStr = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: date as Date)
             
             dateLabel.text = dateStr
         }
         else {
             //if date is empty, add current date
-            dateLabel.text = Utility.dateToFormattedString(format: LongDateFormat, date: Date())
+            dateLabel.text = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: Date())
         }
     }   
 }

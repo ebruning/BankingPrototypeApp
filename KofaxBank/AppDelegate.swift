@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             user.middlename = userObject["middlename"] as? String
             
             user.lastname = userObject["lastname"] as? String
-            if let birthDate:Date? = Utility.convertStringToDate(format: LongDateFormat, dateStr: (userObject["birthdate"] as? String)) {   //TODO: put this null check for every date field
+            if let birthDate:Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (userObject["birthdate"] as? String)) {   //TODO: put this null check for every date field
                 user.birthdate = birthDate! as NSDate
             }
             
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let aObject = accountArray[index] as! [String : AnyObject]
                 
                 accountMaster.accountNumber = aObject["accountnumber"] as? String
-                accountMaster.openingDate = Utility.convertStringToDate(format: LongDateFormat, dateStr: (aObject["openingdate"] as? String))! as NSDate //aObject["openingdate"] as? NSDate
+                accountMaster.openingDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (aObject["openingdate"] as? String))! as NSDate //aObject["openingdate"] as? NSDate
                 accountMaster.accounttype = aObject["type"] as? String
                 accountMaster.balance = (aObject["balance"] as! NSString).doubleValue
                 
@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     transaction.type = tObject["type"] as? String
                     
                     if (tObject["date"] as? String != nil) {
-                        transaction.dateOfTransaction = Utility.convertStringToDate(format: LongDateFormat, dateStr: (tObject["date"] as? String))! as NSDate
+                        transaction.dateOfTransaction = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (tObject["date"] as? String))! as NSDate
                     }
 
                     if transaction.type == TransactionType.DEBIT.rawValue {
@@ -237,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ccMaster.cardNumber = ccObject["cardnumber"] as? String
                 ccMaster.company = ccObject["company"] as? String
                 
-                ccMaster.expDate = Utility.convertStringToDate(format: LongDateFormat, dateStr: ccObject["expdate"] as? String) as NSDate?//ccObject["expdate"] as? NSDate
+                ccMaster.expDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: ccObject["expdate"] as? String) as NSDate?//ccObject["expdate"] as? NSDate
                 
                 print("Formatted exp DAte-----> \(Utility.dateToFormattedString(format: LongDateFormatWithTime, date: ccMaster.expDate! as Date))")
                 
@@ -258,7 +258,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let tObject = transactionArray[index1] as! [String : AnyObject]
                     
                     transaction.transactionId = tObject["id"] as? String
-                    transaction.date = Utility.convertStringToDate(format: LongDateFormat, dateStr: (tObject["date"] as? String))! as NSDate//tObject["date"] as? NSDate
+                    transaction.date = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (tObject["date"] as? String))! as NSDate//tObject["date"] as? NSDate
                     transaction.amount = (tObject["amount"] as! NSString).doubleValue
                     transaction.vender = tObject["vender"] as? String
                     transaction.venderCategory = tObject["vendercategory"] as? String

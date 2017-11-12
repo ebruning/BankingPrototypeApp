@@ -81,7 +81,8 @@ let applicationCurrency = CurrencyType.DOLLER
 
 
 let ShortDateFormatWithDay: String = "dd.MMM"
-let LongDateFormat: String = "MM.dd.yyyy"
+let ShortDateFormatWithMonth = "dd.MMM.yyyy"
+let LongDateFormatWithNumericMonth: String = "MM.dd.yyyy"
 let ShortDateFormatWithoutDay: String = "MM.yy"
 let LongDateFormatWithNumericMonthAndTime: String = "MM.dd.yyyy hh:mm a"
 let LongDateFormatWithTime = "dd.MMM.yyyy hh:mm a"

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol  CheckDepositManagerDelegate{
+    func checkDepositComplete()
+    func checkDepositCancelled()
+    func checkDepositFailed(error: AppError!)
+}
 class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     private enum CheckStates {
@@ -30,6 +35,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     
     // MARK: Public variables
     var account: AccountsMaster?
+    var delegate: CheckDepositManagerDelegate? = nil
 
     // MARK: Local constants
         
@@ -74,7 +80,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         showCheckDepositHomeScreen()
     }
 
-    func showCheckDepositHomeScreen() {
+    private func showCheckDepositHomeScreen() {
         checkHomeViewController = CheckDepositHomeViewController.init(nibName: "CheckDepositHomeViewController", bundle: nil)
         navigationController?.pushViewController(checkHomeViewController, animated: true)
         checkHomeViewController.account = account
@@ -490,10 +496,12 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     // MARK: CheckDepositHomeViewController Delegate
     
     func checkDepositCancelled() {
+        delegate?.checkDepositCancelled()
         unloadManager()
     }
     
     func checkDeposited() {
+        delegate?.checkDepositComplete()
         unloadManager()
     }
         

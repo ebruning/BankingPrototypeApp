@@ -50,7 +50,7 @@ class CreditCardTransactionCell: UITableViewCell {
         //descriptionLabel.text = transaction.description
         
         if let date = transaction.date {
-            let dateStr = Utility.dateToFormattedString(format: LongDateFormat, date: date as Date)
+            let dateStr = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: date as Date)
             
             transactionDateLabel.text = dateStr
         }

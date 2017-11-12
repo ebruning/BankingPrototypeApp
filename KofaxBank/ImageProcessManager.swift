@@ -110,7 +110,9 @@ class ImageProcessManager: NSObject, kfxKIPDelegate {
     func imageOut(_ status: Int32, withMsg errorMsg: String!, andOutputImage kfxImage: kfxKEDImage!) {
         
         
+        if kfxImage != nil {
         print("Image DPI ==> \(kfxImage.imageDPI)")
+        }
         
         
         if status == KMC_SUCCESS || status == Int32(KMC_EV_USER_ABORT.rawValue) {

@@ -546,9 +546,9 @@ class CheckDepositHomeViewController: BaseViewController {
         checkTransaction.amount = Double(data.amount.value)!
         checkTransaction.comment = "Check with number - \(data.checkNumber.value!) deposited"
         checkTransaction.checkNumber = data.checkNumber.value
-        checkTransaction.paymentDate = Utility.convertStringToDate(format: LongDateFormat, dateStr: data.date.value)! as NSDate
+        checkTransaction.paymentDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: data.date.value)! as NSDate
         
-        print("Formatted date from sring ==>\(Utility.convertStringToDate(format: LongDateFormat, dateStr: data.date.value)!))")
+        print("Formatted date from sring ==>\(Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: data.date.value)!))")
         
         let transaction = AccountTransactionMaster(context: context)
         transaction.account = account
@@ -576,10 +576,14 @@ class CheckDepositHomeViewController: BaseViewController {
     
     @IBAction func depositCheck(_ sender: UIButton) {
         
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Check is deposited", messageString: "The amount will reflect in your account once the check is processed.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
+        if (self.frontProcessedImageView.image == nil || self.backProcessedImageViewTop.image == nil) {
+            Utility.showAlert(onViewController: self, titleString: "Check Data Empty", messageString: "Both sides of the check required to deposit the check.")
+            return
+        }
 
             self.addCheckDetailsToPersistentStorage(data: self.checkData)
             
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Check is deposited", messageString: "The amount will reflect in your account once the check is processed.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
             self.clearScreenData()
             
             self.delegate?.checkDeposited()
@@ -633,7 +637,7 @@ class CheckDepositHomeViewController: BaseViewController {
             
             //validate date before displaying
             // TODO: may have to change the date format based on the country.
-            if Utility.validateDate(format: LongDateFormat, dateStr: checkData.date.value) == true {
+            if Utility.validateDate(format: LongDateFormatWithNumericMonth, dateStr: checkData.date.value) == true {
                 dateText.text = checkData.date.value
             } else {
                 dateText.text = ""
@@ -818,7 +822,7 @@ class CheckDepositHomeViewController: BaseViewController {
         print("Done datepicker")
         
         let picker = self.dateText.inputView as! UIDatePicker
-        self.dateText.text = Utility.dateToFormattedString(format: LongDateFormat, date: picker.date)
+        self.dateText.text = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: picker.date)
         
         //dismiss date picker dialog
         self.view.endEditing(true)

@@ -140,6 +140,7 @@
 		AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */; };
 		AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708E1F7CF01100A511C8 /* RegionController.swift */; };
 		AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */; };
+		AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */; };
 		AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */; };
 		AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */; };
 		AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B51FB1D05100B79700 /* FaceDetection.m */; };
@@ -335,6 +336,7 @@
 		AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionProperties.swift; sourceTree = "<group>"; };
 		AEAA708E1F7CF01100A511C8 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionConstants.swift; sourceTree = "<group>"; };
+		AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabHomeViewController.swift; sourceTree = "<group>"; };
 		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
 		AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieCaptureExprienceViewController.xib; sourceTree = "<group>"; };
 		AEDDA3B41FB1D05100B79700 /* FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetection.h; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 				AE7EE5B71F3D95CA00536ED9 /* CheckDepositHomeViewController.swift */,
 				AE5343441F46E29A00EFD829 /* CheckValidation.h */,
 				AE5343451F46E29A00EFD829 /* CheckValidation.m */,
+				AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */,
 			);
 			name = Check;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */,
 				AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */,
 				AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */,
 				AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */,
