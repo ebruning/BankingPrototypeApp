@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate  {
+class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate  {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -40,9 +40,9 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     private var backImage: UIImage!
 
     //coredata
-    private var fetchResultController: NSFetchedResultsController<AccountsMaster>!
+    private var fetchResultController: NSFetchedResultsController<AccountsMaster>! = nil
     
-    private var fetchResultControllerCC: NSFetchedResultsController<CreditCardMaster>!
+    private var fetchResultControllerCC: NSFetchedResultsController<CreditCardMaster>! = nil
     
     //banner
     private let SCREEN_HEIGHT: Double = Double(UIScreen.main.bounds.size.height)
@@ -54,21 +54,18 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     private var bottomScrollOffset: CGFloat = 0
     
     private var bannerInnerOffset: CGFloat = 0
+
     
+    //Others
+    private var markForRefresh = true
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchAccounts()
-        fetchCreditCardAccounts()
 
         setupPanGestureRecognizerOnBannerView()
 
         initScreenParams()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
     }
 
     private func setupPanGestureRecognizerOnBannerView() {
@@ -91,8 +88,19 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    //MARK TabBar controller delegate
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController != self {
+            print("New tab selected!")
+            markForRefresh = true
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.tabBarController?.delegate = self
         
         customizeNavigationBar()
     
@@ -107,10 +115,24 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         stackViewUserDetails.alpha = 0
         visualEffectView.alpha = 0.27
+        
+        if markForRefresh {
+            fetchAccounts()
+            fetchCreditCardAccounts()
+            markForRefresh = false
+
+            if tableView.delegate == nil {
+                tableView.dataSource = self
+                tableView.delegate = self
+            }else {
+              //  tableView.reloadData()
+            }
+        }
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        
+        self.tabBarController?.delegate = nil
     }
     
     private func customizeNavigationBar() {
@@ -274,7 +296,7 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //open credit card tab when tapped on credit-card row
         if indexPath.section != 0 {
-            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 3
             return
         }
 
@@ -299,9 +321,10 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var idManager = IDManager()
     
     @IBAction func addNewAccount(_ sender: UIButton) {
+    
 //        let vc = BillDataPreviewViewController.init(nibName: "BillDataPreviewViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
-        
+
 //        let vc = IDSettingsViewController.init(nibName: "IDSettingsViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
 
@@ -314,41 +337,42 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Mark: CoreData methods
     
     func fetchAccounts() {
-        let fetchRequest: NSFetchRequest<AccountsMaster> = AccountsMaster.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "accountNumber", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        if fetchResultController == nil {
+            let fetchRequest: NSFetchRequest<AccountsMaster> = AccountsMaster.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "accountNumber", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        controller.delegate = self  //IMP for reloading the data after any changes into the database
+            controller.delegate = self  //IMP for reloading the data after any changes into the database
         
-        self.fetchResultController = controller
-        
+            self.fetchResultController = controller
+        }
+
         do {
-            try controller.performFetch()
-            
+            try self.fetchResultController.performFetch()
         } catch {
             let error = error as NSError
             print("\(error)")
-            
             //TODO: Return and display error  on screen.
         }
     }
     
     func fetchCreditCardAccounts() {
-        let fetchRequest: NSFetchRequest<CreditCardMaster> = CreditCardMaster.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "expDate", ascending: true)
-        fetchRequest.sortDescriptors = [dateSort]
+        if fetchResultControllerCC == nil {
+            let fetchRequest: NSFetchRequest<CreditCardMaster> = CreditCardMaster.fetchRequest()
+            let dateSort = NSSortDescriptor(key: "expDate", ascending: true)
+            fetchRequest.sortDescriptors = [dateSort]
 
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        controller.delegate = self  //IMP for reloading the data after any changes into the database
+            controller.delegate = self  //IMP for reloading the data after any changes into the database
         
-        self.fetchResultControllerCC = controller
+            self.fetchResultControllerCC = controller
+        }
         
         do {
-            try controller.performFetch()
-            
+            try self.fetchResultControllerCC.performFetch()
         } catch {
             let error = error as NSError
             print("\(error)")
@@ -358,7 +382,7 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     
-    /*
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         tableView.beginUpdates()
@@ -384,9 +408,14 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             break
         case .update:
+
             if let indexPath = newIndexPath {
                 let cell = tableView.cellForRow(at: indexPath) as! AccountCell
-                configureCell(cell: cell, indexPath: indexPath)
+                if indexPath.section == 0 {
+                    configureCell(cell: cell, indexPath: indexPath)
+                } else {
+                    configureCreditCardCell(cell: cell, indexPath: indexPath)   //TODO: not updating credit card correctly
+                }
             }
             break
         
@@ -401,7 +430,5 @@ class AccountsHomeVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-
-*/
     
 }

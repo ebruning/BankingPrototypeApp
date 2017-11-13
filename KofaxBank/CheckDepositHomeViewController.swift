@@ -17,8 +17,10 @@ protocol CheckDepositHomeViewControllerDelegate {
     func checkDepositCancelled()
 }
 
-class CheckDepositHomeViewController: BaseViewController {
+class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var countryNameLabel: UILabel!
     
     @IBOutlet weak var frontContainerView: ViewShadow!
@@ -132,6 +134,8 @@ class CheckDepositHomeViewController: BaseViewController {
 
     private var viewingForTheFirstTime: Bool = true
     
+    //private let scrollContentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 10.0, 0.0)
+    
     //MARK: - navigationbar variables
     
     private var wasNavigationHidden: Bool = false
@@ -160,10 +164,12 @@ class CheckDepositHomeViewController: BaseViewController {
         backProcessedImageViewTop.isHidden = true
         backProcessedImageViewBottom.isHidden = true
 
+        frontPageControl.isHidden = true
         frontPageControl.currentPage = 0
         
-        //MARK: Feedback
-        frontPageControl.isHidden = true
+//        scrollView.contentInset = scrollContentInset
+//        scrollView.scrollIndicatorInsets = scrollContentInset
+        registerForKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -874,4 +880,80 @@ class CheckDepositHomeViewController: BaseViewController {
         self.overlayView = nil
         self.account = nil
     }
+    
+    
+    
+    
+    // MARK: Scrollview and keyboard methods
+    
+    private var scrollViewYPos: CGFloat = 0
+    private var activeField: UITextField! = nil
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    /*  Function to shift scrollview up when keyboard appears
+     Called when the UIKeyboardDidShowNotification is sent.
+     */
+    func keyboardWillBeShown(notification: NSNotification) {
+        
+        let info: NSDictionary = notification.userInfo! as NSDictionary
+        let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, (kbSize?.height)!, 0.0)
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        var rect: CGRect = self.view.frame
+        rect.size.height -= (kbSize?.height)!
+        if (activeField) != nil {
+            if !rect.contains(activeField!.frame.origin) {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+    }
+    
+    /* Function to move scrollview to its initial position when keyboard disappears.
+     Called when the UIKeyboardWillHideNotification is sent.
+     */
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        
+        // let info: NSDictionary = notification.userInfo! as NSDictionary
+        //   let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        // let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -(kbSize?.height)!, 0.0)
+        var contentInset: UIEdgeInsets = UIEdgeInsets.zero
+        contentInset.top += scrollViewYPos
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        //self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    // MARK: Textfield delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //if its a last text fiel (done key), dismiss the keyboard
+        dismissKeyboard()
+        return true
+    }
+
 }

@@ -59,8 +59,6 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         tableView.dataSource = self
         
        // loadCardDataArrayForPopover(creditCards: creditCards)
-
-        cardStatus = updateSceenAsPerCardStatus()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,13 +70,15 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         updateCardBanner(index: 0)
         
         //return if table is already loaded
+        cardStatus = updateSceenAsPerCardStatus()
 
-        if cardStatus != STATUS_PENDING_FOR_APPROVAL && tableView.isHidden {
+        
+       // if cardStatus != STATUS_PENDING_FOR_APPROVAL && tableView.isHidden {
 //            tableView.isHidden = false
 //            infoLabel.isHidden = true
             updateTableVisibility()
             //tableView.reloadData()
-        }
+        //}
         
         if cardStatus ==  STATUS_EXPIRED {
             floatingButton.isHidden = false
@@ -157,8 +157,8 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
             self.cardStatusLabel.text = "Pending Approval"
             self.cardStatusLabel.textColor = applicationOrangeColor
             self.cardStatusLabel.isHidden = false
-            self.infoLabel.text = "Approval for activation is pending for this card.\n\nYou should be able to use it after positive confirmation is received from the bank."
-            self.infoLabel.isHidden = false
+//            self.infoLabel.text = "Approval for activation is pending for this card.\n\nYou should be able to use it after positive confirmation is received from the bank."
+//            self.infoLabel.isHidden = false
         } else if cardStatus == STATUS_ACTIVE {
             self.floatingButton.isHidden = true
             self.cardStatusLabel.isHidden = true
@@ -211,9 +211,8 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     
     
     @IBAction func requestSupplementaryCard(_ sender: UIButton) {
-
         initiateCardActivation()
-        
+
         /*        if idManager != nil {
             idManager?.unloadManager()
         } else {
@@ -333,7 +332,7 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     private func fetchTransactions() {
         let fetchRequest: NSFetchRequest<CreditCardTransactions> = CreditCardTransactions.fetchRequest()
         
-        let dateSort = NSSortDescriptor(key: "date", ascending: false)
+        let dateSort = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [dateSort]
         
         fetchRequest.predicate = NSPredicate(format: "creditcard == %@", cards[0])
@@ -415,6 +414,7 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
             //}
             break
 
+        
             
         //case NSFetchRsultChangeUpdate:
 //            break
@@ -428,12 +428,12 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     
     func cardSubmittedForActivation(cardData: kfxCreditCardData) {
         DispatchQueue.main.async {
-            self.tableView.isHidden = true
+            //self.tableView.isHidden = true
             self.cardStatusLabel.isHidden = false
             self.cardStatusLabel.textColor = applicationOrangeColor
             self.cardStatusLabel.text = "Pending Activation"
             self.infoLabel.text = "Approval for activation is pending for this card.\n\nYou should be able to use it after positive confirmation is received from the bank."
-            self.infoLabel.isHidden = false
+            self.infoLabel.isHidden = true
             self.floatingButton.isHidden = true
 
             //self.cardNumberLabel.text = cardData.cardNumber.value

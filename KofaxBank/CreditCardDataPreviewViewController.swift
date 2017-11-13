@@ -242,10 +242,10 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
         DispatchQueue.main.async {
             if self.cardData != nil {
                 if self.cardData.name != nil, let fieldValue = self.cardData.name.value {
-                    self.cardHolderNameTextField.text = fieldValue
+                    self.cardHolderNameTextField.text = fieldValue.trimmingCharacters(in: NSCharacterSet.whitespaces)
                 }
                 if self.cardData.cardNumber != nil, let fieldValue = self.cardData.cardNumber.value {
-                    self.cardNumberTextField.text = fieldValue
+                    self.cardNumberTextField.text = fieldValue.trimmingCharacters(in: .whitespaces)
                 }
                 if self.cardData.expirationMonth != nil, let fieldValue = self.cardData.expirationMonth.value {
                     self.expMonthTextField.text = fieldValue
@@ -255,7 +255,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
                 }
  
                 if self.cardData.expirationYear != nil, let fieldValue = self.cardData.expirationYear.value {
-                    self.expYearTextField.text = fieldValue
+                    self.expYearTextField.text = fieldValue.trimmingCharacters(in: .whitespaces)
                 }
                 else {
                     //self.expYearTextField.text = "17"
@@ -323,7 +323,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
             do {
                 var cards = try context.fetch(fetchRequest)
                 let pendingCard = cards[0]
-                pendingCard.availableBalance = 0
+                //pendingCard.availableBalance = 0
                 pendingCard.cardHolderName = cardHolderNameTextField.text //UserDefaults.standard.value(forKey: "applicationUserName") as? String
                 pendingCard.cardNumber = cardNumberTextField.text
                 
@@ -333,8 +333,8 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
                     pendingCard.company = ""
                 }
                 
-                pendingCard.creditLimit = 0.0
-                pendingCard.dueAmount = 0.0
+                //pendingCard.creditLimit = 0.0
+                //pendingCard.dueAmount = 0.0
                 pendingCard.cardStatus = STATUS_PENDING_FOR_APPROVAL
                 pendingCard.expDate = Utility.convertStringToDate(format: ShortDateFormatWithoutDay, dateStr: expMonthTextField.text! + "-" + expYearTextField.text!) as NSDate
                 
@@ -342,7 +342,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
                 ad.saveContext()
                 
                 isSaved = true
-                cards.removeAll()
+                //cards.removeAll()
             } catch {
                 Utility.showAlert(onViewController: self, titleString: "Error", messageString: "Failed to save data.")
                 let error = error as NSError
