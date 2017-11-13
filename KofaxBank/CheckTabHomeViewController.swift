@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CheckDepositManagerDelegate {
+class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CheckDepositManagerDelegate {
 
     @IBOutlet weak var pickerContainerView: CustomView!
     
@@ -32,8 +32,6 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerView.delegate = self
     }
     
     
@@ -41,27 +39,30 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewWillAppear(animated)
         
         initialize()
-        
-        fetchAccounts()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        clear()
+        
+        self.tabBarController?.delegate = nil
+        self.pickerView.delegate = nil
     }
     
     private func initialize() {
         customizeNavigationBar()
         
-        print("Date is ===> \( Utility.dateToFormattedString(format: ShortDateFormatWithMonth, date: Date()))")
-        
         dateButton.titleLabel?.text = Utility.dateToFormattedString(format: ShortDateFormatWithMonth, date: Date())
-        
-        selectedAccount = nil
+
+        if self.accounts.count == 0 {
+            fetchAccounts()
+            selectedAccount = nil
+        }
+
+        self.tabBarController?.delegate = self
+        self.pickerView.delegate = self
     }
     
     private func clear() {
-        //restoreNavigationBar()
         accounts.removeAll()
         self.selectedAccount = nil
 
@@ -93,6 +94,8 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
     private func fetchAccounts() {
         var fetchRequest: NSFetchRequest<AccountsMaster>! = AccountsMaster.fetchRequest()
         
+        accounts.removeAll()
+
         do {
             accounts = try context.fetch(fetchRequest)
         } catch {
@@ -100,6 +103,17 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         fetchRequest = nil
     }
+    
+    //MARK Tabbar controller delegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if viewController != self {
+            print("New viewcontroller selected!")
+            clear()
+        }
+    }
+
+    //Screen command button actions
     
     @IBAction func selectAccount(_ sender: UIButton) {
         pickerContainerView.isHidden = false
@@ -118,13 +132,16 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
             Utility.showAlert(onViewController: self, titleString: "Ampty Account", messageString: "Select account to deposit check into.")
         } else {
             if checkManager == nil {
-                checkManager = CheckDepositManager()
-                checkManager?.loadManager(navigationController: self.navigationController!)
-                self.checkManager?.delegate = nil
+                self.checkManager = CheckDepositManager()
+            }
+            if self.checkManager?.delegate == nil {
+                self.checkManager?.delegate = self
             }
             checkManager?.account = selectedAccount
+            checkManager?.loadManager(navigationController: self.navigationController!)
         }
     }
+
     //MARK: Pickerview delegates
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -167,15 +184,23 @@ class CheckTabHomeViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func checkDepositFailed(error: AppError!) {
         print("Check Deposit Failed")
+        selectedAccount = nil
     }
     
     func checkDepositComplete() {
         print("Check Deposit Complete")
+        
+        Utility.showAlert(onViewController: self, titleString: "Check is deposited", messageString: "The amount will reflect in your account once the check is processed.")
+        
+        selectedAccount = nil
+
+        fetchAccounts()
         
         //TODO: You can take care of coredata update of check data here instead of checkManger if required.
     }
     
     func checkDepositCancelled() {
         print("Check Deposit Cancelled")
+        selectedAccount = nil
     }
 }

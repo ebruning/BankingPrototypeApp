@@ -27,7 +27,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     
     var account: AccountsMaster?
     
-    private var checkDepositManager: CheckDepositManager? = nil
     
     
     private var fetchResultController: NSFetchedResultsController<AccountTransactionMaster>!
@@ -70,11 +69,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
 
                 updateTableVisibility()
             }
-        }
-        //TODO: may want to change the place to de-initialize this later
-        if checkDepositManager != nil {
-            checkDepositManager?.account = nil
-            checkDepositManager = nil
         }
     }
 
@@ -300,49 +294,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         default:
             break
         }
-    }
-
-    @IBAction func CheckButtonOnClick(_ sender: UIBarButtonItem) {
-        if checkDepositManager == nil {
-            checkDepositManager = CheckDepositManager()
-        }
-
-        checkDepositManager?.account = account
-        checkDepositManager?.loadManager(navigationController: self.navigationController!)
-    }
-
-    // Mark: Segue delegates
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "BillCaptureId" {
-        }
-    }
-    
-
-    @IBAction func clicked(_ sender: UIButton) {
- /*
-        let transaction = AccountTransactions(context: context)
-        transaction.account = account
-        
-        transaction.amount = 10.0
-        transaction.comment = "Bill paid"
-        transaction.date = NSDate()
-        //transaction.date = NSCalendar.current.date(from: Date())
-        transaction.payeename = "Rupali "
-        transaction.transactionId = "123455"
-        transaction.type = "DB."
-
-        ad.saveContext()
- */
-    }
-
-    @IBAction func deleteClicked(_ sender: UIButton) {
-/*        if let objs = self.fetchResultController.fetchedObjects, objs.count > 0 {
-            let transaction = objs[0]
-            context.delete(transaction)
-            ad.saveContext()
-        }
-*/
     }
     
     // Mark: Tap Gesture Recognizer delegates

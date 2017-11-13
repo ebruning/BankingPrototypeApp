@@ -9,17 +9,14 @@
 import UIKit
 import CoreData
 
-protocol BillerViewControllerDelegate {
-}
+//protocol BillerViewControllerDelegate {
+//}
 
-
-class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, BillManagerDelegate {
 
     @IBOutlet weak var pickerContainerView: CustomView!
 
     @IBOutlet weak var pickerView: UIPickerView!
-
-//    @IBOutlet weak var floatingContainerView: UIView!
 
     @IBOutlet weak var payeeButton: UIButton!
     
@@ -29,8 +26,8 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     //MARK: - Public variables
     
-    var delegate: BillerViewControllerDelegate?
-    
+    //var delegate: BillerViewControllerDelegate?
+
     //MARK: - Private variables
 
     private enum SelectionType: String {
@@ -52,10 +49,10 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     private var selectedAccount: AccountsMaster! = nil
     private var selectedBiller: BillerMaster! = nil
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerView.delegate = self
     }
 
     
@@ -70,7 +67,9 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        clear()
+
+        self.tabBarController?.delegate = nil
+        self.pickerView.delegate = nil
     }
 
     private func initialize() {
@@ -79,6 +78,9 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         selectedBiller = nil
         selectedAccount = nil
         selectionType = SelectionType.ACCOUNT
+        
+        self.tabBarController?.delegate = self
+        self.pickerView.delegate = self
     }
     
     private func clear() {
@@ -91,6 +93,8 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             self.billManager?.delegate = nil
             self.billManager = nil
         }
+        
+        self.tabBarController?.delegate = nil
     }
 
     private func customizeNavigationBar() {
@@ -112,9 +116,19 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
     }
 
-    var amount: Double = 0
+    
+    //MARK Tabbar controller delegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if viewController != self {
+            print("New viewcontroller selected!")
+            clear()
+        }
+    }
     
     @IBAction func onPayButtonPressed(_ sender: UIButton) {
+        
+        var amount: Double = 0.0
         
         if amountTextField.text != "" {
             amount = Double.init(amountTextField.text!)!
@@ -128,12 +142,12 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 let billTransaction = BillTransactions(context: context)
                 billTransaction.name = payeeButton.titleLabel?.text
                 billTransaction.accountNumber = accountButton.titleLabel?.text
-                billTransaction.amountDue = self.amount
+                billTransaction.amountDue = amount
                 billTransaction.billDate = Date() as NSDate
                 billTransaction.comment = "Bill paid for existing biller"
                 
                 selectedBiller.addToBillTransactions(billTransaction)
-                selectedAccount?.balance = selectedAccount!.balance - self.amount
+                selectedAccount?.balance = selectedAccount!.balance - amount
     
                 let transaction = AccountTransactionMaster(context: context)
                 transaction.account = selectedAccount
@@ -157,6 +171,9 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
 
     private func fetchAccounts() {
+        
+        accounts.removeAll()
+        
         var fetchRequest: NSFetchRequest<AccountsMaster>! = AccountsMaster.fetchRequest()
         
         do {
@@ -168,6 +185,9 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     private func fetchBillers() {
+        
+        billers.removeAll()
+
         var fetchRequest: NSFetchRequest<BillerMaster>! = BillerMaster.fetchRequest()
         
         do{
@@ -225,10 +245,13 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         } else {
             if billManager == nil {
                 billManager = BillManager()
-                billManager?.loadManager(navigationController: self.navigationController!)
             }
+            billManager?.loadManager(navigationController: self.navigationController!)
             billManager?.account = selectedAccount
             billManager?.paybillWithNewBiller(account: selectedAccount)
+            if billManager?.delegate == nil {
+                billManager?.delegate = self
+            }
         }
     }
 
@@ -238,6 +261,30 @@ class BillerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
 
+    //MARK: BillManagerDelegate methods
+    
+    func billPaymentCancelled() {
+        
+    }
+    
+    func billPaymentFailed(error: AppError!) {
+        var title: String = ""
+
+        var message: String = "Bill Payment failed"
+        
+        if error != nil {
+            message = error.message
+            title = error.title
+        }
+        
+        Utility.showAlert(onViewController: self, titleString: title, messageString: message)
+    }
+    
+    func billPaymentSucceded() {
+        fetchAccounts()
+        fetchBillers()
+    }
+    
     //MARK: Pickerview delegates
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -10,8 +10,9 @@ import UIKit
 
 protocol BillManagerDelegate {
     //TODO: implement these delegates
-    func newBillPaymentSucceded()
-    func newBillPaymentFailed()
+    func billPaymentSucceded()
+    func billPaymentFailed(error: AppError!)
+    func billPaymentCancelled()
 }
 
 class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegate, PreviewDelegate, UINavigationControllerDelegate,
@@ -65,7 +66,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     
     private var billData: kfxBillData! = nil
     
-    private var errObj: AppError! = AppError.init()
+    private var errObj: AppError! = nil
 
     //TODO: temp constant
     private let serverType = SERVER_TYPE_TOTALAGILITY
@@ -80,6 +81,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         
         self.navigationController = navigationController
 
+        errObj = AppError.init()
     }
     
     // MARK: Private methods
@@ -98,6 +100,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
             
         case .IMAGE_RETRIEVEL_CANCELLED:
             flowState = BillFlowStates.CYCLE_COMPLETE
+            self.delegate?.billPaymentCancelled()
             break
             
         case .IMAGE_PROCESSED:
@@ -112,11 +115,13 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         case .IMAGE_PROCESSING_FAILED:
             billDataPreview.billDataNotAvailable(err: err)
             flowState = BillFlowStates.CYCLE_COMPLETE
+            //self.delegate?.newBillPaymentFailed(error: err)
             break
             
         case .IMAGE_DATA_EXTRACTION_FAILED:
             billDataPreview.billDataNotAvailable(err: err)
             flowState = BillFlowStates.CYCLE_COMPLETE
+            //self.delegate?.newBillPaymentFailed(error: err)
             break
             
         case .IMAGE_DATA_EXTRACTED:
@@ -377,7 +382,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         var image: UIImage? = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         let dpi = ImageUtilities.getImageDPI(imageUrl: imageFileUrl)
-        //checkFlowState = CheckStates.CDCAPTURED
+        
         performPostImageRetrievalTasks(image: ImageUtilities.createKfxKEDImage(sourceImage: image!, dpiValue: dpi))
         
         image = nil
@@ -387,20 +392,25 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
 
     // MARK: BillDataPreviewDelegate Methods
     func billPreviewOnCancelData() {
+        delegate?.billPaymentCancelled()
+        
         flowState = BillFlowStates.CYCLE_COMPLETE
         handleBillFlow(err: nil)
-
     }
+
     
     func billPreviewOnDataSaved(data: kfxBillData) {
-        Utility.showAlertWithCallback(onViewController: navigationController.topViewController!, titleString: "Bill Paid", messageString: "Bill for the required amount is paid.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
+//        Utility.showAlert(onViewController: self, titleString: "Bill Paid", messageString: "Bill for the required amount is paid.")
+        //Utility.showAlertWithCallback(onViewController: navigationController.topViewController!, titleString: "Bill Paid", messageString: "Bill for the required amount is paid.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
 
+            self.delegate?.billPaymentSucceded()
+            
             self.flowState = BillFlowStates.CYCLE_COMPLETE
             self.handleBillFlow(err: nil)
             
-        }, negativeActionResponse: {
+        //}, negativeActionResponse: {
             
-        })
+        //})
     }
 
     //MARK: - Image processing methods
@@ -496,7 +506,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
             
             flowState = BillFlowStates.IMAGE_DATA_EXTRACTION_FAILED
             self.errObj.title = "Network Error"
-            self.errObj.message  = "A working network connection is required to read data from check. \nPlease check network connection and try again."
+            self.errObj.message  = "A working network connection is required to read data from bill. \nPlease check network connection and try again."
             self.handleBillFlow(err: self.errObj)
             
             return
@@ -521,7 +531,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
                 self.extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
                 
                 //We need to send login credentials to the server if the server type is KTA.
-                //let serverURL: URL! = URL.init(string: "https://mobiledemo.kofax.com:443/mobilesdk/api/CheckDeposit?customer=Kofax")
                 let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
                 
                // let serverURL: URL! = URL.init(string: "http://hyd-mob-kta73.asia.kofax.com/totalagility/services/sdk")
@@ -615,8 +624,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
                     dataField.name = key
                     //store this field entry in dictionary with key as the field name (for a convinient search later)
                     billRawData.setValue(dataField, forKey: key)
-                    
-                    //checkData.checkNumber = dataField
                 }
                 fieldDataArray.removeAllObjects()
                 fieldDataArray = nil

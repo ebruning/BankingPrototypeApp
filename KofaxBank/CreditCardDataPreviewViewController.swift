@@ -351,7 +351,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
             fetchRequest = nil
         } else {
-            Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "All the fields are required to have data.")
+            Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "All the fields are required to save data.")
         }
         return isSaved
     }

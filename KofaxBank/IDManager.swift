@@ -12,10 +12,9 @@ protocol IDManagerDelegate {
     func IDDataReadCompleteWithSelfieVerification(idData: kfxIDData!)
     func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!)
 }
-    
+
 class IDManager: BaseFlowManager, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
 InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHomeVCDelegate, SelfieCaptureExprienceViewControllerDelegate, SelfieResultsViewControllerDelegate {
-    
     
     private enum IDFlowStates {
         case NOOP
@@ -33,13 +32,14 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         case CYCLE_CANCELLED
         
     }
-    
+
     // MARK: Public variables
 
     var delegate: IDManagerDelegate? = nil
     
     // MARK: Local variables
     private let IPP_GERMAN_FRANCE = "_DeviceType_2_"
+    
     private var navigationController: UINavigationController!
     
     private var captureController: ImageCaptureViewController! = nil
@@ -77,6 +77,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     private var idSide: DocumentSide = .FRONT
     
     private var regionProperties: RegionProperties! = nil
+    
     //Selfie parameters
     
     private var selfieImage: UIImage! = nil
@@ -89,8 +90,9 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     //MARK: Authentication Parameters
     
     private var authenticationResultModel: AuthenticationResultModel! = nil
-    private var selfieVerificationResults: SelfieVerificationResultModel! = nil
 
+    private var selfieVerificationResults: SelfieVerificationResultModel! = nil
+    
     override init() {
         super.init()
     }
@@ -127,6 +129,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             }, completion: nil)
         }
     }
+    
+    
     
     private func handleScreenFlow(err: AppError!) {
         switch flowState {
@@ -200,7 +204,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             
         case .IMAGE_DATA_EXTRACTED:
             if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
-            idHomeScreen?.authenticationResultModel = self.authenticationResultModel
+                idHomeScreen?.authenticationResultModel = self.authenticationResultModel
             }
             idHomeScreen?.idDataAvailable(idData: self.idData)
             break
@@ -298,7 +302,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         var image: UIImage? = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         let dpi = ImageUtilities.getImageDPI(imageUrl: imageFileUrl)
-        //checkFlowState = CheckStates.CDCAPTURED
         performPostImageRetrievalTasks(image: ImageUtilities.createKfxKEDImage(sourceImage: image!, dpiValue: dpi))
         
         image = nil
@@ -360,11 +363,13 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.captureController = ImageCaptureViewController.init(options: captureOptions,
                                                                  experienceOptions: experienceOptions,
                                                                  regionProperties: self.regionProperties, showRegionSelection: true)
+        
         let navController = UINavigationController.init(rootViewController: self.captureController)
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.isTranslucent = true
         navController.navigationBar.backgroundColor = UIColor.clear
+
         self.captureController.delegate = self
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
@@ -472,6 +477,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             self.handleScreenFlow(err: nil)
         }
     }
+    
     
     // MARK: Image preview methods
     
@@ -769,9 +775,9 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         //self.idHomeScreen.delegate = nil
         if self.idHomeScreen != nil {
             self.idHomeScreen?.delegate = nil
-        self.idHomeScreen = nil
+            self.idHomeScreen = nil
         }
-        
+
         self.regionProperties = nil
         
         self.captureController?.delegate = nil
@@ -793,6 +799,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         backRawImagePath = nil
         
         selfieImage = nil
+        
         capturedImage = nil
         processedImage = nil
         
@@ -832,7 +839,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 
                 self.flowState = .IMAGE_DATA_EXTRACTION_FAILED
                 self.errObj.title = "Network Error"
-                self.errObj.message  = "A working network connection is required to read data from check. \nPlease check network connection and try again."
+                self.errObj.message  = "A working network connection is required to read data from the ID. \nPlease check network connection and try again."
                 self.handleScreenFlow(err: self.errObj)
                 
                 return
@@ -859,7 +866,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 self.extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
                 
                 //We need to send login credentials to the server if the server type is KTA.
-                //            let serverURL: URL! = URL.init(string: "https://mobiledemo.kofax.com:443/mobilesdk/api/CheckDeposit?customer=Kofax")
                 //let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
                 
                 
@@ -1124,7 +1130,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             
             self.idData = getParsedIDFields(rawData: idRawData!)
             
-            //checkHomeViewController.checkDataAvailable(checkData: checkData, checkIQAData: checkIQData)
             print("Data found during ID parsing")
         } else {
             print("No data found during ID parsing")
@@ -1150,6 +1155,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.handleScreenFlow(err: self.errObj)
     }
     
+
     
     // MARK: Data parsing
     
@@ -1202,8 +1208,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                         errorField.name = dataField.name
                         errorField.value = dataField.value
                     }
-                    
-                    //checkData.checkNumber = dataField
                 }
                 fieldDataArray.removeAllObjects()
                 fieldDataArray = nil
@@ -1398,6 +1402,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             delegate?.IDDataReadCompleteWithSelfieVerification(idData: self.idData)
         }
     }
+    
     private func getLimitedUserSessionIdForComponent() -> NSString {
         if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
             print("Limited session ID for 2X:")
@@ -1480,6 +1485,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         }
         return nil
     }
+    
     
     //MARK: Selfie related methods
     

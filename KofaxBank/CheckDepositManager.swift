@@ -13,6 +13,7 @@ protocol  CheckDepositManagerDelegate{
     func checkDepositCancelled()
     func checkDepositFailed(error: AppError!)
 }
+
 class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     private enum CheckStates {
@@ -35,6 +36,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     
     // MARK: Public variables
     var account: AccountsMaster?
+
     var delegate: CheckDepositManagerDelegate? = nil
 
     // MARK: Local constants
@@ -59,6 +61,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     private var imageProcessManager: ImageProcessManager!
     
     private var captureController: ImageCaptureViewController! = nil
+    
     private var frontCheckProcessed: Bool!
     private var backCheckProcessed: Bool!
     
@@ -160,7 +163,6 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
 //        vc.delegate = nil
         self.captureController.delegate = nil
         self.captureController.dismiss(animated: true, completion: nil)
-        
         //checkFlowState = CheckStates.CDNOOP
     }
     
@@ -829,7 +831,6 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         account = nil
         extractionManager = nil
         imageProcessManager = nil
-        checkHomeViewController = nil
         processedImgFilePathArr = nil
         parameters = nil
         ImageUtilities.clearImage(image: currentProcessedImage)
@@ -840,6 +841,6 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     }
     
     deinit {
-        unloadManager()
+//        unloadManager()
     }
 }

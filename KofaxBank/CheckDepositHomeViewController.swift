@@ -101,8 +101,12 @@ class CheckDepositHomeViewController: BaseViewController {
     //Mark: - Delegate
     var delegate: CheckDepositHomeViewControllerDelegate?
     
+    //Mark: - Public variables
+
     var account: AccountsMaster?
-    
+
+    //Mark: - Private variables
+
     private var backProcessedImage: UIImage!
     
     private var frontProcessedImagePath: String!
@@ -120,7 +124,6 @@ class CheckDepositHomeViewController: BaseViewController {
     private var checkData: kfxCheckData! = nil
     private var checkIQAData: kfxCheckIQAData! = nil
 
-    //private var backProcessedImage: UIImage!
     
     //Check quality alert banner relatd variables
     private var bannerTimer: Timer! = nil
@@ -134,7 +137,6 @@ class CheckDepositHomeViewController: BaseViewController {
     private var wasNavigationHidden: Bool = false
     private var oldBarTintColor: UIColor!
     private var oldStatusBarStyle: UIStatusBarStyle!
-    
 
 
     //MARK: status bar visibility
@@ -538,17 +540,39 @@ class CheckDepositHomeViewController: BaseViewController {
     }
     
     
-    private func addCheckDetailsToPersistentStorage(data: kfxCheckData) {
-        //save to persistent storage
-        let checkTransaction = CheckTransactions(context: context)
-        checkTransaction.payee = data.payeeName.value
-        checkTransaction.accountNumber = account?.accountNumber
-        checkTransaction.amount = Double(data.amount.value)!
-        checkTransaction.comment = "Check with number - \(data.checkNumber.value!) deposited"
-        checkTransaction.checkNumber = data.checkNumber.value
-        checkTransaction.paymentDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: data.date.value)! as NSDate
+    private func addCheckDetailsToPersistentStorage() {
         
-        print("Formatted date from sring ==>\(Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: data.date.value)!))")
+        //save to persistent storage
+        
+        if self.checkData == nil {
+            self.checkData = kfxCheckData()
+            
+            self.checkData.amount = kfxDataField()
+            self.checkData.car = kfxDataField()
+            self.checkData.checkNumber = kfxDataField()
+            self.checkData.date = kfxDataField()
+            self.checkData.micr = kfxDataField()
+            self.checkData.payeeName = kfxDataField()
+            self.checkData.reasonForRejection = kfxDataField()
+            self.checkData.restrictiveEndorsement = kfxDataField()
+            self.checkData.restrictiveEndorsementPresent = kfxDataField()
+            self.checkData.usable = kfxDataField()
+        }
+        
+        self.checkData.amount.value = amountText.text
+        self.checkData.checkNumber.value = checkNumberText.text
+        self.checkData.date.value = dateText.text
+        self.checkData.payeeName.value = payeeNameText.text
+        
+        let checkTransaction = CheckTransactions(context: context)
+        checkTransaction.payee = self.checkData.payeeName.value
+        checkTransaction.accountNumber = account?.accountNumber
+        checkTransaction.amount = Double(self.checkData.amount.value)!
+        checkTransaction.comment = "Check with number - \(self.checkData.checkNumber.value!) deposited"
+        checkTransaction.checkNumber = self.checkData.checkNumber.value
+        checkTransaction.paymentDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: self.checkData.date.value)! as NSDate
+        
+        print("Formatted date from sring ==>\(Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: self.checkData.date.value)!))")
         
         let transaction = AccountTransactionMaster(context: context)
         transaction.account = account
@@ -577,25 +601,30 @@ class CheckDepositHomeViewController: BaseViewController {
     @IBAction func depositCheck(_ sender: UIButton) {
         
         if (self.frontProcessedImageView.image == nil || self.backProcessedImageViewTop.image == nil) {
-            Utility.showAlert(onViewController: self, titleString: "Check Data Empty", messageString: "Both sides of the check required to deposit the check.")
+            Utility.showAlert(onViewController: self, titleString: "Insufficient information", messageString: "Both sides of the check required to deposit the check.")
+            return
+        }
+        
+        if account == nil {
+            Utility.showAlert(onViewController: self, titleString: "No Account Found", messageString: "Account cannot be empty.\nPlease make sure proper account is selected to deposit the check into.")
+            return
+        }
+        
+        if areAllFieldsPresent() == false {
+            Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "One or more check details are missing.\n\nMake sure all the details are filled before depositing the check.")
             return
         }
 
-            self.addCheckDetailsToPersistentStorage(data: self.checkData)
-            
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Check is deposited", messageString: "The amount will reflect in your account once the check is processed.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
-            self.clearScreenData()
-            
-            self.delegate?.checkDeposited()
+        self.addCheckDetailsToPersistentStorage()
 
-            self.restoreNavigationBar()
-            
-            //close this viewcontroller
-            self.navigationController?.popViewController(animated: true)
-
-        }, negativeActionResponse: {
+        self.delegate?.checkDeposited()
         
-        })
+        self.restoreNavigationBar()
+
+        self.clearScreenData()
+
+        //close this viewcontroller
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func onCameraOptionClicked(_ sender: UIButton) {

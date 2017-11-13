@@ -151,6 +151,27 @@ class BillDataPreviewViewController: UIViewController {
     
     // MARK: - Private Methods
 
+    private func clear() {
+        if imageContainerView != nil {
+            if swipeLeftRecogizer != nil {
+                imageContainerView.removeGestureRecognizer(swipeLeftRecogizer)
+            }
+            if swipeRightRecogizer != nil {
+                imageContainerView.removeGestureRecognizer(swipeRightRecogizer)
+            }
+        }
+        
+        swipeLeftRecogizer = nil
+        swipeRightRecogizer = nil
+        
+        rawImagePath = nil
+        processedImagePath = nil
+        
+        self.billData = nil
+        self.account = nil
+        self.delegate = nil
+    }
+    
     private func displayRawImagePreview() {
         if rawImagePath != nil {
             displayImage(toImageView: rawImageView, fromFileContent: rawImagePath)
@@ -276,6 +297,7 @@ class BillDataPreviewViewController: UIViewController {
 
             //self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: {
+                self.clear()
                 self.restoreNavigationBar()
             })
         }, negativeActionResponse: {
@@ -302,6 +324,7 @@ class BillDataPreviewViewController: UIViewController {
                         //close screen
                         //self.navigationController?.popViewController(animated: true)
                         self.dismiss(animated: true, completion: {
+                            self.clear()
                             self.restoreNavigationBar()
                         })
                     }, negativeActionResponse: {
@@ -315,6 +338,7 @@ class BillDataPreviewViewController: UIViewController {
                     //close screen
                     //self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: {
+                        self.clear()
                         self.restoreNavigationBar()
                     })
                 })
@@ -353,16 +377,52 @@ class BillDataPreviewViewController: UIViewController {
                 if self.billData == nil {
                     self.billData = kfxBillData()
                 }
-                self.billData?.amount.value = amountTextField.text
-                self.billData?.name.value = nameTextField.text
                 
+                if (self.billData?.amount == nil) {
+                    self.billData?.amount = kfxDataField()
+                }
+                self.billData?.amount.value = amountTextField.text
+                
+                if (self.billData?.name == nil) {
+                    self.billData?.name = kfxDataField()
+                }
+                self.billData?.name.value = nameTextField.text
+
+                if (self.billData?.accountNumber == nil) {
+                    self.billData?.accountNumber = kfxDataField()
+                }
                 self.billData?.accountNumber.value = accountNumberTextField.text
+                
+                if (self.billData?.addressLine1 == nil) {
+                    self.billData?.addressLine1 = kfxDataField()
+                }
                 self.billData?.addressLine1.value = address1TextField.text
+
+                if (self.billData?.addressLine2 == nil) {
+                    self.billData?.addressLine2 = kfxDataField()
+                }
                 self.billData?.addressLine2.value = address2TextField.text
+
+                if (self.billData?.city == nil) {
+                    self.billData?.city = kfxDataField()
+                }
                 self.billData?.city.value = cityTextField.text
+                
+                if (self.billData?.state == nil) {
+                    self.billData?.state = kfxDataField()
+                }
                 self.billData?.state.value = stateTextField.text
+                
+                if (self.billData?.zip == nil) {
+                    self.billData?.zip = kfxDataField()
+                }
                 self.billData?.zip.value = zipTextField.text
+
+                if (self.billData?.phoneNumber == nil) {
+                    self.billData?.phoneNumber = kfxDataField()
+                }
                 self.billData?.phoneNumber.value = phoneNumberTextField.text
+
 
                 //create BillTransaction coreData object
                 let billTransaction = BillTransactions(context: context)

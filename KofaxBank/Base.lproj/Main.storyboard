@@ -1044,7 +1044,7 @@ United States</string>
                                                             <constraint firstAttribute="width" constant="20" id="ihm-rW-E7w"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYN-Gc-Ins">
+                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYN-Gc-Ins">
                                                         <rect key="frame" x="16" y="2.5" width="236" height="30"/>
                                                         <state key="normal" title="This button contains current date">
                                                             <color key="titleColor" red="0.53980461980000005" green="0.51916550220000002" blue="0.54534113220000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1950,29 +1950,8 @@ United States</string>
                                             <constraint firstItem="8CK-jl-RG0" firstAttribute="top" secondItem="jYH-Om-A9M" secondAttribute="top" id="Z4k-PS-geR"/>
                                         </constraints>
                                     </view>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzz-S9-Yel">
-                                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                        <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Pvq-m0-9gw"/>
-                                            <barButtonItem image="check" id="u86-mp-wP8">
-                                                <color key="tintColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="CheckButtonOnClick:" destination="zHV-ah-EYm" id="883-Ts-IHb"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="fh3-8U-KGf"/>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="cS2-VI-1gM"/>
-                                            <barButtonItem image="bill" id="WTa-qg-B7A">
-                                                <color key="tintColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="BillButtonOnClick:" destination="zHV-ah-EYm" id="ECw-kZ-ifq"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="r10-Ji-MD2"/>
-                                        </items>
-                                    </toolbar>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5AG-uY-QPQ" userLabel="TableViewContainerView">
-                                        <rect key="frame" x="0.0" y="200" width="320" height="324"/>
+                                        <rect key="frame" x="0.0" y="200" width="320" height="368"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsO-Ur-xZJ" userLabel="TableHeaderLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
@@ -2009,10 +1988,10 @@ United States</string>
                                                                 </connections>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-fu-7c7">
-                                                                <rect key="frame" x="87" y="0.0" width="140" height="25"/>
+                                                                <rect key="frame" x="77" y="0.0" width="140" height="25"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="302" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYEE/DESCRIPTION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArY-Ax-NCp">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="25"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="18"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="140" id="if2-0w-j4u"/>
                                                                         </constraints>
@@ -2020,8 +1999,8 @@ United States</string>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="1hw-23-VYP">
-                                                                        <rect key="frame" x="0.0" y="25" width="12" height="0.0"/>
+                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="1hw-23-VYP">
+                                                                        <rect key="frame" x="0.0" y="19" width="12" height="6"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="6" id="kiQ-gD-YBc"/>
                                                                             <constraint firstAttribute="width" constant="12" id="noT-YK-Etp"/>
@@ -2033,11 +2012,11 @@ United States</string>
                                                                     <constraint firstAttribute="width" constant="140" id="1c1-2M-usn"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vbb-oD-abA">
-                                                                <rect key="frame" x="227" y="0.0" width="0.0" height="25"/>
+                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vbb-oD-abA">
+                                                                <rect key="frame" x="224.5" y="0.0" width="12" height="25"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="303" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CR/DB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z1-UW-2zI" userLabel="CR/DB">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="303" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CR/DB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z1-UW-2zI" userLabel="CR/DB">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="5" height="18"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="5" id="3zG-dX-yIj"/>
                                                                         </constraints>
@@ -2045,8 +2024,8 @@ United States</string>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="16Q-gX-GfH">
-                                                                        <rect key="frame" x="0.0" y="19" width="0.0" height="6"/>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="16Q-gX-GfH">
+                                                                        <rect key="frame" x="0.0" y="19" width="12" height="6"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="6" id="Znf-14-Bne"/>
                                                                             <constraint firstAttribute="width" constant="12" id="bET-fw-F4p"/>
@@ -2095,7 +2074,7 @@ United States</string>
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-CC-maV">
-                                                <rect key="frame" x="0.0" y="40" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="40" width="320" height="328"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2167,7 +2146,7 @@ United States</string>
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwS-bA-6d7">
-                                                <rect key="frame" x="8" y="98" width="304" height="128"/>
+                                                <rect key="frame" x="8" y="120" width="304" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXK-IZ-bSt">
                                                         <rect key="frame" x="8" y="9" width="288" height="25"/>
@@ -2205,7 +2184,7 @@ United States</string>
                                             <constraint firstAttribute="trailing" secondItem="NwS-bA-6d7" secondAttribute="trailing" constant="8" id="fUs-lX-cd2"/>
                                             <constraint firstItem="gsO-Ur-xZJ" firstAttribute="leading" secondItem="5AG-uY-QPQ" secondAttribute="leading" id="l8w-3c-8If"/>
                                             <constraint firstItem="NwS-bA-6d7" firstAttribute="centerX" secondItem="5AG-uY-QPQ" secondAttribute="centerX" id="pLG-hY-fnN"/>
-                                            <constraint firstAttribute="bottom" secondItem="vc9-CC-maV" secondAttribute="bottom" constant="44" id="tLS-J0-lWn"/>
+                                            <constraint firstAttribute="bottom" secondItem="vc9-CC-maV" secondAttribute="bottom" id="tLS-J0-lWn"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXO-vx-5Oc" userLabel="TopBar">
@@ -2229,11 +2208,9 @@ United States</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="jzz-S9-Yel" firstAttribute="leading" secondItem="NdN-8V-myR" secondAttribute="leading" id="4hL-r9-tg6"/>
-                                    <constraint firstItem="jzz-S9-Yel" firstAttribute="top" secondItem="5AG-uY-QPQ" secondAttribute="bottom" id="7ZS-bB-5Fd"/>
                                     <constraint firstItem="jYH-Om-A9M" firstAttribute="top" secondItem="NdN-8V-myR" secondAttribute="top" id="7pP-0e-W32"/>
                                     <constraint firstAttribute="trailing" secondItem="IXO-vx-5Oc" secondAttribute="trailing" constant="8" id="8Iu-0I-x2G"/>
-                                    <constraint firstAttribute="bottom" secondItem="jzz-S9-Yel" secondAttribute="bottom" id="Fog-AL-Bo1"/>
+                                    <constraint firstAttribute="bottom" secondItem="5AG-uY-QPQ" secondAttribute="bottom" id="FQq-eJ-I0S"/>
                                     <constraint firstItem="jYH-Om-A9M" firstAttribute="leading" secondItem="NdN-8V-myR" secondAttribute="leading" id="IP5-ym-tJi"/>
                                     <constraint firstAttribute="trailing" secondItem="jYH-Om-A9M" secondAttribute="trailing" id="QHZ-Au-Fs9"/>
                                     <constraint firstItem="IXO-vx-5Oc" firstAttribute="leading" secondItem="NdN-8V-myR" secondAttribute="leadingMargin" constant="8" id="VZr-TP-bKs"/>
@@ -2241,7 +2218,6 @@ United States</string>
                                     <constraint firstItem="5AG-uY-QPQ" firstAttribute="leading" secondItem="NdN-8V-myR" secondAttribute="leading" id="ZdY-14-iU7"/>
                                     <constraint firstAttribute="trailing" secondItem="5AG-uY-QPQ" secondAttribute="trailing" id="eC9-u4-ykg"/>
                                     <constraint firstItem="IXO-vx-5Oc" firstAttribute="top" secondItem="NdN-8V-myR" secondAttribute="top" constant="20" id="fAh-uz-2uc"/>
-                                    <constraint firstAttribute="trailing" secondItem="jzz-S9-Yel" secondAttribute="trailing" id="qtT-qA-FX0"/>
                                 </constraints>
                             </view>
                         </subviews>

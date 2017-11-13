@@ -286,6 +286,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
         navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.isTranslucent = true
         navController.navigationBar.backgroundColor = UIColor.clear
+
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
      //   self.creditCardDataPreview.present(self.captureController, animated: true, completion: nil)
@@ -416,7 +417,6 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
         var image: UIImage? = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         let dpi = ImageUtilities.getImageDPI(imageUrl: imageFileUrl)
-        //checkFlowState = CheckStates.CDCAPTURED
         performPostImageRetrievalTasks(image: ImageUtilities.createKfxKEDImage(sourceImage: image!, dpiValue: dpi))
         
         image = nil
@@ -515,7 +515,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
 
             flowState = CreditCardFlowStates.IMAGE_DATA_EXTRACTION_FAILED
             self.errObj.title = "Network Error"
-            self.errObj.message  = "A working network connection is required to read data from check. \nPlease check network connection and try again."
+            self.errObj.message  = "A working network connection is required to read data from credit card. \nPlease check network connection and try again."
             self.handleCreditCardFlow(err: self.errObj)
             
             return
@@ -539,7 +539,6 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
             
             //We need to send login credentials to the server if the server type is KTA.
-                    //let serverURL: URL! = URL.init(string: "https://mobiledemo.kofax.com:443/mobilesdk/api/CheckDeposit?customer=Kofax")
             let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
 
 //            let serverURL: URL! = URL.init(string: "http://win2012r2-kta.kofax.com/totalagility/services/sdk/")
@@ -566,7 +565,6 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
         
         if cardRawData != nil {
             
-            //cardData = getCheckDisplayData(rawData: checkRawData)
             self.cardData = getCardData(rawData: cardRawData)
             
             if isNewCardExpired {
@@ -579,7 +577,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
                 flowState = CreditCardFlowStates.IMAGE_DATA_EXTRACTION_FAILED
                 self.handleCreditCardFlow(err: self.errObj)
             }
-            //checkHomeViewController.checkDataAvailable(checkData: checkData, checkIQAData: checkIQData)
+            
             print("Data found during credit card parsing")
         } else {
             if self.errObj == nil {
@@ -674,8 +672,6 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
                     dataField.name = key
                     //store this field entry in dictionary with key as the field name (for a convinient search later)
                     cardRawData.setValue(dataField, forKey: key)
-                    
-                    //checkData.checkNumber = dataField
                 }
                 fieldDataArray.removeAllObjects()
                 fieldDataArray = nil
