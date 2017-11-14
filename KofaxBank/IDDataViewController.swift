@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol  IDDataViewControllerDelegate {
+    func IDDataSaved(idData: kfxIDData)
+}
 class IDDataViewController: UITableViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -64,6 +67,9 @@ class IDDataViewController: UITableViewController {
     
     @IBOutlet weak var confidenceRatingField: UITextField!
 
+    //MARK: Public variables
+    
+    var delegate: IDDataViewControllerDelegate? = nil
     
     //MARK: Private variables
     
@@ -96,8 +102,10 @@ class IDDataViewController: UITableViewController {
         UIApplication.shared.statusBarStyle = .default
         navigationController?.navigationBar.tintColor = UIColor.darkGray
         
+        if idData != nil {
         let rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .plain, target: self, action: #selector(onSaveButtonClicked))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        }
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
 
@@ -212,13 +220,56 @@ class IDDataViewController: UITableViewController {
 
     
     func onSaveButtonClicked() {
+        if areAllRequiredFieldsAvailable() {
 
+            updateIDObject()
+            delegate?.IDDataSaved(idData: idData)
+            delegate = nil
         self.navigationController?.popViewController(animated: true)
+        } else {
+            Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "One or more required fields are empty. Please fill all the details before saving.")
+        }
     }
 
     
+    private func areAllRequiredFieldsAvailable() -> Bool {
+        if firstNameField.text?.characters.count == 0 || lastNameField.text?.characters.count == 0 || addressField.text?.characters.count == 0 || cityField.text?.characters.count == 0 || stateField.text?.characters.count == 0 || countryField.text?.characters.count == 0 || zipField.text?.characters.count == 0 || dobField.text?.characters.count == 0 {
+                return false
+        }
+        return true
+    }
+    
+    private func updateIDObject() {
+        
+        idData.idNumber.value = idNumberField.text
+        
+        idData.firstName.value = firstNameField.text
+        
+        idData.middleName.value = middleNameField.text
+
+        idData.lastName.value = lastNameField.text
+        
+        idData.address.value = addressField.text
+
+        idData.city.value = cityField.text
+        
+        idData.state.value = stateField.text
+        
+        idData.zip.value = zipField.text
+
+        idData.country.value = countryField.text
+        
+        idData.dateOfBirth.value = dobField.text
+
+        idData.gender.value = genderField.text
+        
+        idData.issueDate.value = issueDateField.text
+
+        idData.expirationDate.value = expDateField.text
+    }
     func onCancelButtonClicked() {
         restoreNavigationBar()
+        delegate = nil
         self.navigationController?.popViewController(animated: true)
     }
 

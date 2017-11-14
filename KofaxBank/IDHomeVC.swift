@@ -9,13 +9,13 @@
 import UIKit
 
 protocol IDHomeVCDelegate {
-    func authenticateWithSelfie()
+    func authenticateWithSelfie(idData: kfxIDData)
     func onIDHomeDoneWithData(idData: kfxIDData)
-    func onIDHomeDoneWithoutData()
+//    func onIDHomeDoneWithoutData()
     func onIDHomeCancel()
 }
 
- class IDHomeVC: UITableViewController {
+ class IDHomeVC: UITableViewController, IDDataViewControllerDelegate {
 
     @IBOutlet weak var warningContainer: UIView!
     
@@ -30,7 +30,8 @@ protocol IDHomeVCDelegate {
     @IBOutlet weak var backImageView: UIImageView!
 
     @IBOutlet weak var backImagePreviewLabel: UILabel!
-    @IBOutlet weak var authenticateButton: CustomButton!
+
+//    @IBOutlet weak var authenticateButton: CustomButton!
 
     @IBOutlet weak var waitIndicatorContainerVaiw: UIView!
 
@@ -52,7 +53,7 @@ protocol IDHomeVCDelegate {
     
     private var dataReadInProgress = false
 
-
+    
     //MARK: Public variables
     
     var authenticationResultModel: AuthenticationResultModel! = nil
@@ -90,6 +91,10 @@ protocol IDHomeVCDelegate {
         customizeNavigationBar()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        //TODO: temp code
+        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
     }
     
     //MARK: Public methods
@@ -107,6 +112,7 @@ protocol IDHomeVCDelegate {
     func idDataFetchBegun() {
         dataReadInProgress = true
         DispatchQueue.main.async {
+            self.waitIndicatorContainerVaiw.isHidden = false
             self.tableView.reloadData()
         }
     }
@@ -116,6 +122,7 @@ protocol IDHomeVCDelegate {
         var alertMessage: String! = ""
         
         dataReadInProgress = false
+        waitIndicatorContainerVaiw.isHidden = true
         
         self.idData = nil
         
@@ -144,23 +151,33 @@ protocol IDHomeVCDelegate {
         dataReadInProgress = false
         
         DispatchQueue.main.async {
-            
             self.tableView.reloadData()
 
-            self.displayDataFields()
             
             self.viewMoreButton.isHidden = false
             
-            if self.shouldAuthenticateWithSelfie() {
-                self.authenticateButton.isHidden = false
-            } else {
-                self.updateNavigationButtonItems()
-            }
             self.waitIndicatorContainerVaiw.isHidden = true
+            
+            if self.idData != nil {
+                self.displayDataFields()
+
+                if self.shouldAuthenticateWithSelfie() {
+                    if self.authenticationResultModel == nil {
+                        Utility.showAlert(onViewController: self, titleString: "Verification Error", messageString: "Could not receive ID verification results.\n\nPlease try again.")
+                    }
+                    else {
+                        self.updateNavigationButtonItems(title: "Authenticate")
+                    }
+                } else {
+                    self.updateNavigationButtonItems(title: "Done")
+                }
+            } else {
+                Utility.showAlert(onViewController: self, titleString: "", messageString: "Could not read data from ID.\n\nPlease try again")
+            }
+            
             if self.authenticationResultModel != nil {
                 self.updateWarningLabel(verificationStatus: self.authenticationResultModel.authenticationResult)
             }
-            
         }
     }
 
@@ -168,7 +185,7 @@ protocol IDHomeVCDelegate {
     //MARK: TableView Methods
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var rowHeight: CGFloat = 70
+        var rowHeight: CGFloat = 60
         
         switch indexPath.row {
         
@@ -177,6 +194,7 @@ protocol IDHomeVCDelegate {
                 rowHeight = 0
             }
             break
+            
         case 1:
             rowHeight = 150
             break
@@ -190,13 +208,14 @@ protocol IDHomeVCDelegate {
             break
             
         case 3:
-            if !dataReadInProgress {
-                if(idData != nil && shouldAuthenticateWithSelfie() == true) {
-                    rowHeight = 70
+/*            if !dataReadInProgress {
+                if(idData != nil && shouldAuthenticateWithSelfie() == true && (verificationStatus == nil || verificationStatus != "FAILED")) {
+                    rowHeight = 60
                 } else {
-                rowHeight = 0
+                    rowHeight = 0
+                }
             }
-            }
+*/
             break
 
         default:
@@ -239,23 +258,47 @@ protocol IDHomeVCDelegate {
     }
 
     
-    private func updateNavigationButtonItems() {
-        let rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonClick))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-//        let newBackButton = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onCancelButtonClick))
-//        
-//        self.navigationItem.leftBarButtonItem = newBackButton
-    }
-
-    func onDoneButtonClick() {
-        if idData != nil {
-            delegate?.onIDHomeDoneWithData(idData: idData)
+    private func updateNavigationButtonItems(title: String!) {
+        if title != nil {
+            
+            var rightBarButtonItem: UIBarButtonItem! = nil
+            if title.caseInsensitiveCompare("Done") == ComparisonResult.orderedSame {
+                
+                rightBarButtonItem = UIBarButtonItem.init(title: title, style: .plain, target: self, action: #selector(onDoneBarButtonClicked))
+            } else if title.caseInsensitiveCompare("Authenticate") == ComparisonResult.orderedSame {
+                rightBarButtonItem = UIBarButtonItem.init(title: title, style: .plain, target: self, action: #selector(onAuthenticateBarButtonClicked))
+            }
+            self.navigationItem.rightBarButtonItem = rightBarButtonItem
         } else {
-            delegate?.onIDHomeDoneWithoutData()
+            
         }
     }
 
+    func onDoneBarButtonClicked() {
+            if areAllRequiredFieldsAvailable() {
+                delegate?.onIDHomeDoneWithData(idData: idData)
+                self.navigationController?.popViewController(animated: true)
+        }
+    }
+
+    func onAuthenticateBarButtonClicked() {
+        if areAllRequiredFieldsAvailable() {
+            delegate?.authenticateWithSelfie(idData: self.idData)
+        } else {
+            Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "One or more required fields are empty. Please fill all the details before saving.")
+        }
+    }
+
+    private func areAllRequiredFieldsAvailable() -> Bool {
+        if idData == nil {
+            return false
+        }
+        if idData.firstName.value == nil || idData.lastName.value == nil || idData.address.value == nil || idData.city.value ==  nil || idData.state.value == nil || idData.country.value == nil || idData.zip.value == nil || idData.dateOfBirth.value == nil {
+            return false
+        }
+        return true
+    }
+    
     private func shouldAuthenticateWithSelfie() -> Bool {
         var shouldAuthenticate = false
         let mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
@@ -267,11 +310,16 @@ protocol IDHomeVCDelegate {
         return shouldAuthenticate
         
     }
-
+    
+    var verificationStatus: String! =  nil
+    
     private func updateWarningLabel(verificationStatus: String!) {
         if verificationStatus == nil {
             warningContainer.isHidden = true
         } else {
+            
+            self.verificationStatus = verificationStatus.capitalized
+
             warningContainer.isHidden = false
             if verificationStatus.caseInsensitiveCompare("FAILED") == ComparisonResult.orderedSame {
                 warningContainer.backgroundColor = UIColor.red
@@ -282,7 +330,7 @@ protocol IDHomeVCDelegate {
                 warningLabel.text = "DOCUMENT APPEARS TO BE AUTHENTIC, BUT NEEDS ATTENTION"
                 warningIcon.image = UIImage(named: "warning")
             } else if verificationStatus.caseInsensitiveCompare("Passed") == ComparisonResult.orderedSame {
-                warningContainer.backgroundColor = UIColor.green
+                warningContainer.backgroundColor = applicationGreenColor
                 warningLabel.text = "DOCUMENT IS VERIFIED"
                 warningIcon.image = UIImage(named: "checkmark_yellow")
             }
@@ -430,14 +478,16 @@ protocol IDHomeVCDelegate {
         
         let vc = storyboard.instantiateViewController(withIdentifier: "IDDataView") as! IDDataViewController
         vc.idData = self.idData
+        vc.delegate = self
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    @IBAction func onAuthenticateButtonClicked(_ sender: UIButton) {
-//        let vc = SelfieCaptureExprienceViewController(nibName: "SelfieCaptureExprienceViewController", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
-        delegate?.authenticateWithSelfie()
+    
+    //MARK: IDDataViewControllerDelegate method
+    func IDDataSaved(idData: kfxIDData) {
+        if idData != nil {
+            self.idData = idData
+        }
     }
+    
 }

@@ -156,7 +156,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             user.phone = userObject["phone"] as? String
             user.email = userObject["email"] as? String
-            user.address = userObject["city"] as? String
+            user.address = userObject["address"] as? String
+            user.city = userObject["city"] as? String
+            user.state = userObject["state"] as? String
+            user.country = userObject["country"] as? String
+            user.zip = userObject["zip"] as? String
             
             
             //add accounts
@@ -328,7 +332,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //Mobile ID Version - default 2x
-        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        UserDefaults.standard.set(ServerVersion.VERSION_1X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
         
         UserDefaults.standard.setValue(true, forKey: KEY_DEFAULTS_LOADED)
     }

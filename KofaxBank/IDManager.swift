@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 protocol IDManagerDelegate {
     func IDDataReadCompleteWithSelfieVerification(idData: kfxIDData!)
     func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!)
+    func IDDataReadFailed(error: AppError!)
+    func IDDataReadCancelled()
 }
+
 
 class IDManager: BaseFlowManager, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
 InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHomeVCDelegate, SelfieCaptureExprienceViewControllerDelegate, SelfieResultsViewControllerDelegate {
@@ -141,27 +145,17 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             
         case .IMAGE_RETRIEVEL_CANCELLED:
             flowState = IDFlowStates.CYCLE_COMPLETE
-            handleScreenFlow(err: nil)
+            handleScreenFlow(err: err)
             break
             
         case .IMAGE_PREVIEWED:
-            /*if idSide == .BACK {
-             showIDHomScreen()
-             }*/
             if idHomeScreen == nil {
-                DispatchQueue.main.async {
-                    self.showIDHomScreen()
-                }
+                self.showIDHomScreen()
             }
             processCapturedImage()
             break
             
         case .IMAGE_PROCESSED:
-            //            if idHomeScreen == nil {
-            //                DispatchQueue.main.async {
-            //                    self.showIDHomScreen()
-            //                }
-            //            }
             
             //display processed image on ID home screen
             if idSide == .FRONT {
@@ -199,7 +193,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         case .IMAGE_DATA_EXTRACTION_FAILED:
             idHomeScreen?.idDataNotAvailable(err: err)
             flowState = .CYCLE_COMPLETE
-            handleScreenFlow(err: nil)
+            handleScreenFlow(err: err)
             break
             
         case .IMAGE_DATA_EXTRACTED:
@@ -210,11 +204,16 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             break
             
         case .CYCLE_COMPLETE:
-            //            unloadManager()
+            if err != nil {
+                delegate?.IDDataReadFailed(error: err)
+            } else {
+                
+            }
+            
             break
             
         case .CYCLE_CANCELLED:
-            //            unloadManager()
+            delegate?.IDDataReadCancelled()
             break
             
         default:
@@ -360,9 +359,12 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             self.captureController.delegate = nil
             self.captureController = nil
         }
+        
+        
+        
         self.captureController = ImageCaptureViewController.init(options: captureOptions,
                                                                  experienceOptions: experienceOptions,
-                                                                 regionProperties: self.regionProperties, showRegionSelection: true)
+                                                                 regionProperties: self.regionProperties, showRegionSelection: self.idSide == .FRONT ? true : false)
         
         let navController = UINavigationController.init(rootViewController: self.captureController)
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -757,15 +759,16 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     //MARK: ID Hom screen methods
     
     private func showIDHomScreen() {
-        
-        //idHomeScreen = IDHomeVC.init(nibName: "IDHomeVC", bundle: nil)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        idHomeScreen = storyboard.instantiateViewController(withIdentifier: "IDHomeVC") as? IDHomeVC
-        idHomeScreen?.delegate = self
-        
-        self.navigationController.pushViewController(idHomeScreen!, animated: true)
+        DispatchQueue.main.async {
+            //idHomeScreen = IDHomeVC.init(nibName: "IDHomeVC", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.idHomeScreen = storyboard.instantiateViewController(withIdentifier: "IDHomeVC") as? IDHomeVC
+            self.idHomeScreen?.delegate = self
+            
+            self.navigationController.pushViewController(self.idHomeScreen!, animated: true)
+        }
     }
-    
+
     override func unloadManager() {
         super.unloadManager()
         
@@ -1370,7 +1373,12 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     var selfieCaptureExprienceVC: SelfieCaptureExprienceViewController! = nil
     
-    func authenticateWithSelfie() {
+    func authenticateWithSelfie(idData: kfxIDData) {
+        if self.idData != nil {
+            self.idData = nil
+        }
+        self.idData = idData
+
         if selfieCaptureExprienceVC == nil {
             selfieCaptureExprienceVC = SelfieCaptureExprienceViewController(nibName: "SelfieCaptureExprienceViewController", bundle: nil)
             selfieCaptureExprienceVC.delegate = self
@@ -1390,12 +1398,13 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     }
     
     
-    func onIDHomeDoneWithoutData() {
-        
-    }
-    
-    
     func onIDHomeDoneWithData(idData: kfxIDData) {
+        if self.idData != nil {
+            self.idData = nil
+        }
+        self.idData = idData
+        updateUserDetails(idData: idData)
+        
         if mobileIDVersion == ServerVersion.VERSION_1X.rawValue {
             delegate?.IDDataReadCompleteWithoutSelfieVerification(idData: self.idData)
         } else {
@@ -1637,11 +1646,83 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     func submitWithSelfieResults() {
         
-        navigationController.popToRootViewController(animated: true)
+        updateUserDetails(idData: self.idData)
+        
+        //navigationController.popToRootViewController(animated: true)
 
+        navigationController.popToRootViewController(animated: true)
+        
         delegate?.IDDataReadCompleteWithSelfieVerification(idData: self.idData)
     }
 
+    
+    private func updateUserDetails(idData: kfxIDData!) {
+        if idData == nil {
+            print("Error: idData is nil. cannot update user details")
+            return
+        }
+        
+        if  let user = fetchUser() {
+
+            if idData.dateOfBirth != nil && idData.dateOfBirth.value != nil {
+             //   user.birthdate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: idData.dateOfBirth.value)! as NSDate    //TODO: check the issue with nil birthdate later
+            }
+            
+            if idData.address != nil && idData.address.value != nil {
+                user.address = idData.address.value
+            } else {
+                user.address = ""
+            }
+            
+            if idData.city != nil && idData.city.value != nil {
+                user.city = idData.city.value
+            } else {
+                user.city = ""
+            }
+
+            if idData.state != nil && idData.state.value != nil {
+                user.state = idData.state.value
+            } else {
+                user.state = ""
+            }
+            
+            if idData.country != nil && idData.country.value != nil {
+                user.country = idData.country.value
+            } else {
+                user.country = ""
+            }
+            
+            if idData.zip != nil && idData.zip.value != nil {
+                user.zip = idData.zip.value
+            } else {
+                user.zip = ""
+            }
+
+            ad.saveContext()
+        }
+    }
+    
+    
+    private func fetchUser() -> UserMaster! {
+        
+        var user: UserMaster! = nil
+        
+        let fetchRequest: NSFetchRequest<UserMaster>! = UserMaster.fetchRequest()
+        
+        do{
+            let users = try context.fetch(fetchRequest)
+            if users.count > 0 {
+                user = users[0]
+            }
+        } catch {
+            print("\(error)")
+        }
+        
+        return user
+    }
+
+    
+    
     func sendPushNotificationServiceOnSelfiVerification() {
         //TODO: needs to be completed
     }

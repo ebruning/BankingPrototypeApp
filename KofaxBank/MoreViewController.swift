@@ -23,6 +23,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
 
     }
 
+    //MARK: UITabBar delegate
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController != self {
@@ -30,17 +31,15 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         }
     }
     
+    
+    // Screen UIButton actions
+    
     @IBAction func onInfoClicked(_ sender: UIButton) {
         print("onInfoClicked")
         
         showApplicationInformation()
     }
 
-    private func showApplicationInformation() {
-        Utility.showAlert(onViewController: self, titleString: "Kofax Bank", messageString: "Version 1.0")
-    }
-    
-    
     @IBAction func onUserProfileClicked(_ sender: UIButton) {
         print("onUserProfileClicked")
         
@@ -50,13 +49,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     @IBAction func onNotificationClicked(_ sender: UIButton) {
              print("onNotificationClicked")
         
-        Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picure of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
-            
-            
-        }, negativeActionResponse: {
-            
-            
-        })
+        //showNotification()
     }
 
     @IBAction func onContactUsClicked(_ sender: UIButton) {
@@ -76,7 +69,25 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     }
 
 
+    //About (Info)
+    
+    private func showApplicationInformation() {
+        Utility.showAlert(onViewController: self, titleString: "Kofax Bank", messageString: "Version 1.0")
+    }
+
+    
+    //User profile
+    
+    private func showUserProfile() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "UserProfile")
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
+
     //Contact Us
+    
     private func showEmailComposer() {
         if MFMailComposeViewController.canSendMail() {
             let mailer = MFMailComposeViewController()
@@ -92,6 +103,8 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
             present(mailer, animated: true, completion: nil)
         }
     }
+    
+    //Email composer
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
@@ -103,15 +116,6 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     private func showLocation() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Map")
-        
-        present(vc, animated: true, completion: nil)
-    }
-    
-    
-    //User profile
-    private func showUserProfile() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "UserProfile")
         
         present(vc, animated: true, completion: nil)
     }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate  {
+class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, IDManagerDelegate  {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -31,9 +31,19 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     @IBOutlet weak var stackViewUserDetails: UIStackView!
     
+
+    //User Details
+    
+    @IBOutlet weak var greetingMessage: UILabel!
+    
     @IBOutlet weak var avatar: UIImageView!
     
-
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var telephoneNumberLabel: UILabel!
+    
+    @IBOutlet weak var emailAddressLabel: UILabel!
+    
     //tableview
     private let MAX_VISIBLE_CELL_COUNT: Int = 2
     
@@ -66,6 +76,8 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         setupPanGestureRecognizerOnBannerView()
 
         initScreenParams()
+        
+        loadUserDetails()
     }
 
     private func setupPanGestureRecognizerOnBannerView() {
@@ -88,6 +100,57 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
     }
     
+    private func loadUserDetails() {
+        if let user = fetchUser() {
+            
+            var addressStr = user.address! + "\n"
+            
+            if user.city != nil {
+                addressStr = addressStr + user.city! + " "
+            }
+
+            if user.state != nil {
+                addressStr = addressStr + user.state! + " "
+            }
+            
+            if user.zip != nil {
+                addressStr = addressStr + user.zip!
+            }
+            
+            if user.country != nil {
+                addressStr = addressStr + "\n" + user.country!
+            }
+
+            addressLabel.text = addressStr
+            
+            if user.phone != nil {
+                telephoneNumberLabel.text = user.phone
+            }
+            
+            if user.email != nil {
+                emailAddressLabel.text = user.email
+            }
+        }
+    }
+    
+    private func fetchUser() -> UserMaster! {
+        
+        var user: UserMaster! = nil
+        
+        let fetchRequest: NSFetchRequest<UserMaster>! = UserMaster.fetchRequest()
+        
+        do{
+            let users = try context.fetch(fetchRequest)
+            if users.count > 0 {
+                user = users[0]
+            }
+        } catch {
+            print("\(error)")
+        }
+        
+        return user
+    }
+
     //MARK TabBar controller delegate
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -137,10 +200,12 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     private func customizeNavigationBar() {
         
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+/*        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
         navigationController?.navigationBar.topItem?.rightBarButtonItem?.image = nil
+  */
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func restoreNavigationBar() {
@@ -318,7 +383,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         }
     }
 
-    var idManager = IDManager()
+    //var idManager = IDManager()
     
     @IBAction func addNewAccount(_ sender: UIButton) {
     
@@ -331,7 +396,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
 //        let vc = RegionViewController.init(nibName: "RegionViewController", bundle: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
         
-        idManager.loadManager(navigationController: self.navigationController!)
+//        idManager.loadManager(navigationController: self.navigationController!)
     }
 
     // Mark: CoreData methods
@@ -429,6 +494,67 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
             }
         }
         
+    }
+    
+    //Bell Notification badge on click 
+    
+    @IBAction func onNotificationClicked(_ sender: UIButton) {
+        print("onNotificationClicked")
+        
+        showNotification()
+    }
+    
+    // Notification
+    
+    private func showNotification() {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picure of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
+            
+            self.readUserID()
+            
+        }, negativeActionResponse: {
+            
+        })
+    }
+    
+    
+    private var idManager: IDManager! = nil
+    
+    private func readUserID() {
+        idManager = IDManager()
+        idManager.delegate = self
+        idManager.loadManager(navigationController: self.navigationController!)
+    }
+
+    //MARK: IDManager Delegate methods
+    
+    func IDDataReadCancelled() {
+        print("User ID read was cancelled")
+    }
+    
+    func IDDataReadFailed(error: AppError!) {
+        
+        var msg = String()
+        if error != nil && error.message != nil {
+            msg = error.message
+        }
+        print("User ID read failed with error: \(msg)")
+    }
+    
+    func IDDataReadCompleteWithSelfieVerification(idData: kfxIDData!) {
+        print("User ID read complete WITH selfie verification")
+        loadUserDetails()
+        
+        if idData.address != nil && idData.address.value != nil {
+            print("New adress in idData is NOT empty. :)")
+        } else {
+            print("Error: New adress in idData is empty!")
+            addressLabel.text = ""
+        }
+    }
+    
+    func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!) {
+        print("User ID read complete WITHOUT selfie verification")
+        loadUserDetails()
     }
     
 }
