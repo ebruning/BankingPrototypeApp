@@ -1380,6 +1380,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.idData = idData
 
         if selfieCaptureExprienceVC == nil {
+            idHomeScreen?.selfieAuthenticationBegun()
             selfieCaptureExprienceVC = SelfieCaptureExprienceViewController(nibName: "SelfieCaptureExprienceViewController", bundle: nil)
             selfieCaptureExprienceVC.delegate = self
         }
@@ -1559,7 +1560,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     func cancelledSelfieCapture() {
         print("Selfie capture was cancelled.")
-        
+        idHomeScreen?.selfieAuthenticationEnded()
     }
     
 
@@ -1567,6 +1568,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.selfieImage = nil
         self.selfieImage = image
         
+
         DispatchQueue.global().async {
             self.performSelfieVerificationWithCompletionHandler(handler: { (responseData: Any?, status: Int) in
                 
@@ -1574,6 +1576,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 
                 var appError: AppError! = nil
 
+                self.idHomeScreen?.selfieAuthenticationEnded()
+                
                 if status == 200 {
                     print("Selfie verification successful")
                     if responseData != nil {

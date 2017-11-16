@@ -62,9 +62,9 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     private var oldBarTintColor: UIColor!
     private var oldStatusBarStyle: UIStatusBarStyle!
 
-    private lazy var overlayView: WaitIndicatorView! = {
-        let overlayView = WaitIndicatorView()
-        return overlayView
+    private lazy var waitIndicator: WaitIndicatorView! = {
+        let waitIndicator = WaitIndicatorView()
+        return waitIndicator
     }()
     
     private var cardkData: kfxCreditCardData! = nil
@@ -284,13 +284,13 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
     private func showWaitIndicator() {
         DispatchQueue.main.async {
-            self.overlayView.displayView(onView: self.view)
+            self.waitIndicator.displayView(onView: self.view)
         }
     }
     
     private func hideWaitIndicator() {
         DispatchQueue.main.async {
-            self.overlayView.hideView()
+            self.waitIndicator.hideView()
         }
     }
 

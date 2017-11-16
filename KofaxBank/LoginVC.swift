@@ -30,9 +30,9 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     /// Overlayview that is being displayed when the user tries to log in
-    private lazy var overlayView: WaitIndicatorView! = {
-        let overlayView = WaitIndicatorView()
-        return overlayView
+    private lazy var waitIndicator: WaitIndicatorView! = {
+        let waitIndicator = WaitIndicatorView()
+        return waitIndicator
     }()
  
     
@@ -110,7 +110,7 @@ class LoginVC: UIViewController {
             Utility.showAlert(onViewController: self, titleString: "Invalid credentials", messageString: "User name and password cannot be empty.")
         }
         else {
-            overlayView.displayView(onView: self.view)
+            showWaitIndicator()
 
             let serverManager = ServerManager.shared
             
@@ -152,8 +152,7 @@ class LoginVC: UIViewController {
 */
                     }
 
-                    //hide wait indicator overlay
-                    self.overlayView.hideView()
+                    self.hideWaitIndicator()
                     
                     self.handleLoginSuccess()
                     
@@ -164,17 +163,32 @@ class LoginVC: UIViewController {
                         if (statusCode != 0) {
                             message = "status code: \(statusCode)"
                         }
-                        self.overlayView.hideView()
+                        self.hideWaitIndicator()
                         Utility.showAlert(onViewController: self, titleString: "Login Failed", messageString: message)
                 })
             }catch {
-                self.overlayView.hideView()
+                hideWaitIndicator()
 
                 print(error.localizedDescription)
                 Utility.showAlert(onViewController: self, titleString: "Login Error", messageString: error.localizedDescription)
             }
         }
     }
+    
+    //MARK: Wait indicator methods
+    
+    private func showWaitIndicator() {
+        DispatchQueue.main.async {
+            self.waitIndicator.displayView(onView: self.view)
+        }
+    }
+    
+    private func hideWaitIndicator() {
+        DispatchQueue.main.async {
+            self.waitIndicator.hideView()
+        }
+    }
+
     
     func handleLoginSuccess() {
 
@@ -224,8 +238,6 @@ class LoginVC: UIViewController {
     //
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        self.overlayView = nil
-        //navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
 }

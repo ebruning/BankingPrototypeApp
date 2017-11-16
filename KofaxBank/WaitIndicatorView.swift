@@ -36,12 +36,6 @@ class WaitIndicatorView: UIView {
     func setupView() {
         
         loadFromNib()
-      /*
-        self.view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        self.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        self.view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        self.view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        */
         
         /// Adds a shadow to our view
         self.view.layer.cornerRadius = 8.0
@@ -52,8 +46,6 @@ class WaitIndicatorView: UIView {
         self.view.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.visualEffectView.layer.cornerRadius = self.view.layer.cornerRadius
         self.visualEffectView.layer.masksToBounds = true
-        
-      //  self.view.layer.masksToBounds = true
         
         //Be warned: generating shadows dynamically is expensive, because iOS has to draw the shadow around the exact shape of your view's contents. If you can, set the shadowPath property to a specific value so that iOS doesn't need to calculate transparency dynamically. For example, this creates a shadow path equivalent to the frame of the view:
         
@@ -69,8 +61,6 @@ class WaitIndicatorView: UIView {
         Bundle.main.loadNibNamed("WaitIndicatorView", owner: self, options: nil)
 
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //self.addSubview(self.containerView)
     }
     
     func displayView(onView: UIView) {
@@ -82,28 +72,9 @@ class WaitIndicatorView: UIView {
         self.containerView.bottomAnchor.constraint(equalTo: onView.bottomAnchor).isActive = true
         self.containerView.topAnchor.constraint(equalTo: onView.topAnchor).isActive = true
 
-        //self.containerView.center = onView.center;
-        //self.view.centerXAnchor.constraint(equalTo: onView.centerXAnchor).isActive = true
-        //self.view.centerYAnchor.constraint(equalTo: onView.centerYAnchor).isActive = true
-     
-      //  self.containerView.center = onView.center
-        
-        //display the view
-     //   transform =  CGAffineTransform.init(scaleX: 0.1, y: 0.1)
-      //  UIView.animate(withDuration: 0.5, animations: { () -> Void in
-       //     self.alpha = 1.0
-        //    self.transform = CGAffineTransform.identity
-        //})
-        
     }
 
     func hideView() {
- /*       UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }) { (finished) -> Void in
-            self.removeFromSuperview()
-        }
- */
         DispatchQueue.main.async() {
             self.containerView.removeFromSuperview()
         }

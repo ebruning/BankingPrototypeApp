@@ -97,9 +97,9 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         case LEFT
     }
 
-    private lazy var overlayView: WaitIndicatorView! = {
-        let overlayView = WaitIndicatorView()
-        return overlayView
+    private lazy var waitIndicator: WaitIndicatorView! = {
+        let waitIndicator = WaitIndicatorView()
+        return waitIndicator
     }()
 
     
@@ -399,13 +399,13 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
   */
     func showWaitIndicator() {
         DispatchQueue.main.async {
-            self.overlayView.displayView(onView: self.view)
+            self.waitIndicator.displayView(onView: self.view)
         }
     }
     
     private func hideWaitIndicator() {
         DispatchQueue.main.async {
-            self.overlayView.hideView()
+            self.waitIndicator.hideView()
         }
     }
     
@@ -895,7 +895,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         self.delegate = nil
         self.checkData = nil
         self.checkIQAData = nil
-        self.overlayView = nil
+        self.waitIndicator = nil
         self.account = nil
     }
     

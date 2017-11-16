@@ -47,7 +47,8 @@ class SplashVC: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //set default background image
         runTimer()
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelfieCaptureExprienceViewController" customModule="KofaxBank" customModuleProvider="target">
             <connections>
                 <outlet property="captureViewContainer" destination="QIx-3V-vLI" id="wpS-QT-7zo"/>
+                <outlet property="continueButton" destination="7XK-wB-B8X" id="EOu-Uo-6mz"/>
                 <outlet property="instructionsContainer" destination="x27-ZG-T3N" id="gNP-zS-uRM"/>
+                <outlet property="instructionsTitle" destination="1yR-DZ-B6C" id="wLd-zQ-enL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

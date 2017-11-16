@@ -66,6 +66,8 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeScreenControls()
+        
         customizeNavigationBar()
         
         if selfieImage != nil {
@@ -115,6 +117,12 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Navigationbar methods
     
+    private func customizeScreenControls() {
+        let buttonStyler = AppStyleManager.sharedInstance()?.get_button_styler()
+        
+        buttonStyler?.configure_primary_button(submitButton)
+    }
+
     private func customizeNavigationBar() {
         oldStatusBarStyle = UIApplication.shared.statusBarStyle
         oldBarTintColor = navigationController?.navigationBar.tintColor

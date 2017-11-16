@@ -18,6 +18,10 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
     @IBOutlet weak var instructionsContainer: UIVisualEffectView!
 
     @IBOutlet weak var captureViewContainer: UIView!
+    
+    @IBOutlet weak var instructionsTitle: UILabel!
+    
+    @IBOutlet weak var continueButton: UIButton!
 
     //MARK: - Public variables
     
@@ -37,6 +41,8 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeScreenControls()
+        
         customizeNavigationBar()
     }
     
@@ -50,6 +56,14 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
     }
 
     //MARK: Private methods
+    
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance()?.get_app_screen_styler()
+        let buttonStyler = AppStyleManager.sharedInstance()?.get_button_styler()
+        
+        instructionsTitle.textColor = screenStyler?.get_accent_color()
+        continueButton = buttonStyler?.configure_primary_button(continueButton)
+    }
     
     private func customizeNavigationBar() {
         

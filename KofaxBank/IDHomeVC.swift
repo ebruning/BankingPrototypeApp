@@ -15,7 +15,7 @@ protocol IDHomeVCDelegate {
     func onIDHomeCancel()
 }
 
- class IDHomeVC: UITableViewController, IDDataViewControllerDelegate {
+ class IDHomeVC: UIViewController, IDDataViewControllerDelegate {
 
     @IBOutlet weak var warningContainer: UIView!
     
@@ -25,21 +25,22 @@ protocol IDHomeVCDelegate {
 
     @IBOutlet weak var frontImageView: UIImageView!
     
-    @IBOutlet weak var backImageTableRow: UITableViewCell!
+    @IBOutlet weak var backImageContainerView: CustomView!
     
     @IBOutlet weak var backImageView: UIImageView!
 
     @IBOutlet weak var backImagePreviewLabel: UILabel!
 
-//    @IBOutlet weak var authenticateButton: CustomButton!
+    @IBOutlet weak var dataFieldsInstructionLabel: UILabel!
+    
+    @IBOutlet weak var fieldsContainerView: UIView!
 
-    @IBOutlet weak var waitIndicatorContainerVaiw: UIView!
+
+//    @IBOutlet weak var waitIndicatorContainerVaiw: UIView!
 
     @IBOutlet weak var idNumberField: UITextField!
     
     @IBOutlet weak var firstNameField: UITextField!
-
-    //@IBOutlet weak var v: UIView!
     
     @IBOutlet weak var viewMoreButton: UIButton!
     
@@ -49,9 +50,12 @@ protocol IDHomeVCDelegate {
     
     private var idData: kfxIDData!
     
-    private var displayMore = false
-    
     private var dataReadInProgress = false
+
+    private lazy var waitindicatorView: WaitIndicatorView! = {
+        let waitindicatorView = WaitIndicatorView()
+        return waitindicatorView
+    }()
 
     
     //MARK: Public variables
@@ -88,13 +92,12 @@ protocol IDHomeVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeScreenControls()
+        
         customizeNavigationBar()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        
         //TODO: temp code
-        //UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
     }
     
     //MARK: Public methods
@@ -111,10 +114,8 @@ protocol IDHomeVCDelegate {
     
     func idDataFetchBegun() {
         dataReadInProgress = true
-        DispatchQueue.main.async {
-            self.waitIndicatorContainerVaiw.isHidden = false
-            self.tableView.reloadData()
-        }
+        
+        showWaitIndicator()
     }
     
     func idDataNotAvailable(err: AppError!) {
@@ -122,7 +123,7 @@ protocol IDHomeVCDelegate {
         var alertMessage: String! = ""
         
         dataReadInProgress = false
-        waitIndicatorContainerVaiw.isHidden = true
+        hideWaitIndicator()
         
         self.idData = nil
         
@@ -139,8 +140,6 @@ protocol IDHomeVCDelegate {
         DispatchQueue.main.async {
           //  self.hideWaitIndicator()
             
-            self.tableView.reloadData()
-            
             Utility.showAlert(onViewController: self, titleString: alertTitle, messageString: alertMessage)
         }
     }
@@ -150,13 +149,11 @@ protocol IDHomeVCDelegate {
         
         dataReadInProgress = false
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        hideWaitIndicator()
 
+        DispatchQueue.main.async {
             
             self.viewMoreButton.isHidden = false
-            
-            self.waitIndicatorContainerVaiw.isHidden = true
             
             if self.idData != nil {
                 self.displayDataFields()
@@ -181,63 +178,33 @@ protocol IDHomeVCDelegate {
         }
     }
 
-
-    //MARK: TableView Methods
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var rowHeight: CGFloat = 60
-        
-        switch indexPath.row {
-        
-        case 0:
-            if authenticationResultModel == nil {
-                rowHeight = 0
-            }
-            break
-            
-        case 1:
-            rowHeight = 150
-            break
-            
-        case 2:
-            if backImageFilePath == nil || backImageFilePath.characters.count == 0 {
-                rowHeight = 0
-            } else {
-                rowHeight = 150
-            }
-            break
-            
-        case 3:
-/*            if !dataReadInProgress {
-                if(idData != nil && shouldAuthenticateWithSelfie() == true && (verificationStatus == nil || verificationStatus != "FAILED")) {
-                    rowHeight = 60
-                } else {
-                    rowHeight = 0
-                }
-            }
-*/
-            break
-
-        default:
-            // if not data available, no dot display fields rows and 'view more' option
-            if indexPath.row != 1 && idData == nil {
-                rowHeight = 0
-            }
-            break
-        }
-        return rowHeight
+    func selfieAuthenticationBegun() {
+        showWaitIndicator()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //show ID Data viewcontroller when tapped on any fields row of table (not the rows containing images)
-        if indexPath.row > 3 {
-            displayIDDataViewControllerScreen()
-        }
+    func selfieAuthenticationEnded() {
+        hideWaitIndicator()
+    }
+
+    private func updateVisibilityAuthenticationWarningView(shouldHide: Bool) {
+        //if authenticationResultModel == nil {
+        warningContainer.isHidden = shouldHide
+    }
+
+    
+    //MARK: TAP Gesture Recognizer Methods
+    
+    @IBAction func onFieldTapGesture(_ sender: UITapGestureRecognizer) {
+        displayIDDataViewControllerScreen()
     }
     
     
     //MARK: Private methods
+
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance().get_app_screen_styler()
+        dataFieldsInstructionLabel.backgroundColor = screenStyler?.get_accent_color()
+    }
 
     private func customizeNavigationBar() {
         oldStatusBarStyle = UIApplication.shared.statusBarStyle
@@ -288,6 +255,8 @@ protocol IDHomeVCDelegate {
             Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "One or more required fields are empty. Please fill all the details before saving.")
         }
     }
+    
+    
 
     private func areAllRequiredFieldsAvailable() -> Bool {
         if idData == nil {
@@ -315,12 +284,13 @@ protocol IDHomeVCDelegate {
     
     private func updateWarningLabel(verificationStatus: String!) {
         if verificationStatus == nil {
-            warningContainer.isHidden = true
+            updateVisibilityAuthenticationWarningView(shouldHide: true)
         } else {
             
             self.verificationStatus = verificationStatus.capitalized
 
-            warningContainer.isHidden = false
+            updateVisibilityAuthenticationWarningView(shouldHide: false)
+
             if verificationStatus.caseInsensitiveCompare("FAILED") == ComparisonResult.orderedSame {
                 warningContainer.backgroundColor = UIColor.red
                 warningLabel.text = "DOCUMENT IS INVALID"
@@ -367,7 +337,7 @@ protocol IDHomeVCDelegate {
     private func displayBackImage() {
         if _backImageFilePath != nil {
             displayImage(toImageView: backImageView, fromFileContent: _backImageFilePath)
-            self.tableView.reloadData()
+            backImageContainerView.isHidden = false
         }
     }
     
@@ -412,56 +382,7 @@ protocol IDHomeVCDelegate {
         
         firstNameField.text = data.firstName.value
         
-        if displayMore == false {
-           // return
-        }
-/*
-        middleNameField.text = data.middleName.value
-        
-        lastNameField.text = data.lastName.value
-        
-        addressField.text = data.address.value
-        
-        cityField.text = data.city.value
-        
-        stateField.text = data.state.value
-        
-        zipField.text = data.zip.value
-        
-        countryField.text = data.country.value
-        
-        dobField.text = data.dateOfBirth.value
-        
-        genderField.text = data.gender.value
-        
-        eyesField.text = data.eyes.value
-        
-        hairField.text = data.eyes.value
-        
-        heightField.text = data.height.value
-        
-        weightField.text = data.weight.value
-        
-        nationalityField.text = data.nationality.value
-        
-        //classField.text = data.c
-        
-        countryShortField.text = data.countryShort.value
-        
-        issueDateField.text = data.issueDate.value
-        
-        expDateField.text = data.expirationDate.value
-        
-        barcodeReadField.text = data.isBarcodeRead == true ? "Yes" : "No"
-        
-        ocrReadField.text = data.isOcrRead == true ? "Yes" : "No"
-        
-        idVerificationField.text = data.isIDVerified == true ? "Yes" : "No"
-        
-        //productVersionField.text = data
-        
-        confidenceRatingField.text = String.init(format: "%2.0",  data.documentVerificationConfidenceRating)
- */
+        fieldsContainerView.isHidden = false
     }
     
     
@@ -472,7 +393,6 @@ protocol IDHomeVCDelegate {
     }
     
     private func displayIDDataViewControllerScreen() {
-        displayMore = !displayMore
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
@@ -485,9 +405,23 @@ protocol IDHomeVCDelegate {
     
     //MARK: IDDataViewControllerDelegate method
     func IDDataSaved(idData: kfxIDData) {
-        if idData != nil {
-            self.idData = idData
+        self.idData = idData
+    }
+    
+    
+    //MARK: Wait indicator methods
+    
+    private func showWaitIndicator() {
+        DispatchQueue.main.async {
+            self.waitindicatorView.displayView(onView: self.view)
         }
     }
     
+    private func hideWaitIndicator() {
+        DispatchQueue.main.async {
+            self.waitindicatorView.hideView()
+        }
+    }
+    
+
 }
