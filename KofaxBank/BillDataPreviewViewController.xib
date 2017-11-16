@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,6 +22,7 @@
                 <outlet property="mainView" destination="d1n-cb-imy" id="gBN-GL-Jqo"/>
                 <outlet property="nameTextField" destination="CfA-Lu-8vR" id="DNd-5f-7iq"/>
                 <outlet property="pageControl" destination="jkq-ui-gYK" id="b4a-ht-pnd"/>
+                <outlet property="payBillButton" destination="bEd-b9-5eK" id="EYq-Iw-RQr"/>
                 <outlet property="phoneNumberTextField" destination="ryB-RJ-8LJ" id="w8V-qw-YyD"/>
                 <outlet property="processedImageView" destination="hKa-bB-zjR" id="YSg-bu-W5f"/>
                 <outlet property="rawImageView" destination="HaP-qt-PGi" id="Nl1-z9-Awn"/>
@@ -88,7 +89,6 @@
                             <color key="currentPageIndicatorTintColor" red="1" green="0.7725490196" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="270" id="BXq-ZU-blr"/>
                         <constraint firstAttribute="trailing" secondItem="h2j-M7-GcB" secondAttribute="trailing" constant="16" id="MIi-7O-qkh"/>

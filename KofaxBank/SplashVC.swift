@@ -11,9 +11,25 @@ import Foundation
 
 class SplashVC: UIViewController {
     
-    let TIMEOUT_INTERVAL = 2.0
+    @IBOutlet weak var splashBackgroundImageView: UIImageView!
     
-    var timer = Timer()
+    @IBOutlet weak var splashLogoImageView: UIImageView!
+    
+    @IBOutlet weak var appTitleLabel: UILabel!
+    
+    @IBOutlet weak var appSubTitleLabel1: UILabel!
+    @IBOutlet weak var appSubTitleLabel2: UILabel!
+    @IBOutlet weak var appSubtitleDotLabel: UILabel!
+    @IBOutlet weak var appTitleDividerLineView: UIView!
+    
+    @IBOutlet weak var footerLogoImageView: UIImageView!
+    
+    @IBOutlet weak var footerTextLabel: UILabel!
+    
+    private let TIMEOUT_INTERVAL = 2.0
+    
+    private var timer: Timer!
+    
     
     //override statusbar method to hide it
     override var prefersStatusBarHidden: Bool {
@@ -24,9 +40,9 @@ class SplashVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        //navigationController?.isNavigationBarHidden = true
+        customizeScreenControls()
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
         
     override func viewDidLoad() {
@@ -34,8 +50,29 @@ class SplashVC: UIViewController {
 
         runTimer()
     }
+
     
-    func runTimer() {
+    private func customizeScreenControls() {
+        
+        let splashStyler = AppStyleManager.sharedInstance()?.get_splash_styler()
+        
+        let accentColor = AppStyleManager.sharedInstance()?.get_app_screen_styler().get_accent_color()
+
+        self.view = splashStyler?.configure_view_background(self.view)
+        self.splashLogoImageView = splashStyler?.configure_app_logo(splashLogoImageView)
+        
+        self.appTitleLabel = splashStyler?.configure_app_title(appTitleLabel)
+        self.appSubTitleLabel1 = splashStyler?.configure_app_title(appSubTitleLabel1)
+        self.appSubTitleLabel2 = splashStyler?.configure_app_title(appSubTitleLabel2)
+        
+        self.appTitleDividerLineView.backgroundColor = accentColor
+        self.appSubtitleDotLabel.textColor = accentColor
+        
+        self.footerLogoImageView = splashStyler?.configure_footer_logo(footerLogoImageView)
+    }
+    
+    
+    private func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: TIMEOUT_INTERVAL, target: self, selector: (#selector(handleTimeoutEvent)), userInfo: nil, repeats: false)
     }
     
@@ -48,7 +85,7 @@ class SplashVC: UIViewController {
     }
     
     
-    func launchNextScreen() {
+    private func launchNextScreen() {
         
         // Use fade animation to launch HomeViewController
         let transition = CATransition()

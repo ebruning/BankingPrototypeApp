@@ -11,10 +11,18 @@ import CoreData
 
 class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CheckDepositManagerDelegate {
 
+    @IBOutlet weak var appLogoImage: UIImageView!
+    
+    @IBOutlet weak var bannerContentsView: UIView!
+        
+    @IBOutlet weak var cameraButton: UIButton!
+
     @IBOutlet weak var pickerContainerView: CustomView!
     
     @IBOutlet weak var pickerView: UIPickerView!
 
+    @IBOutlet weak var pickerDoneButton: UIButton!
+    
     @IBOutlet weak var dateButton: UIButton!
     
     @IBOutlet weak var accountButton: UIButton!
@@ -37,7 +45,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        customizeScreenControls()
         initialize()
     }
     
@@ -72,6 +80,22 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         }
     }
 
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let splashStyler = appStyler?.get_splash_styler()
+        let screenStyler = appStyler?.get_app_screen_styler()
+        
+        appLogoImage = splashStyler?.configure_app_logo(appLogoImage)
+        bannerContentsView = screenStyler?.configure_primary_view_background(bannerContentsView)
+        
+        let accentColor = screenStyler?.get_accent_color()
+
+        cameraButton.backgroundColor = accentColor
+        pickerDoneButton.backgroundColor = accentColor
+    }
+
+    
     private func customizeNavigationBar() {
         
         oldStatusBarStyle = UIApplication.shared.statusBarStyle

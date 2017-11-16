@@ -9,6 +9,7 @@
 #import <kfxLibUtilities/kfxUtilities.h>
 #import <kfxLibEngines/kfxEngines.h>
 #import <kfxLibLogistics/kfxLogistics.h>
+#import <AppStylerLib/AppStyleManager.h>
 
 
 #import "UIImageEffects.h"

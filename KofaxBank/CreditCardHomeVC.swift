@@ -12,6 +12,10 @@ import CoreData
 
 class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CreditCardManagerDelegate {
 
+    @IBOutlet weak var appLogoImage: UIImageView!
+    
+    @IBOutlet weak var bannerContentsView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var cardInfoPopover: UIView!
@@ -48,6 +52,12 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
 
     private var cardStatus: String! = STATUS_ACTIVE
     
+    
+    private var oldAccentColor: UIColor? = nil
+    
+    private var currentAccentColor: UIColor? = nil
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,31 +65,33 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
 
         self.tableView.isHidden = true
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-       // loadCardDataArrayForPopover(creditCards: creditCards)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         customizeNavigationBar()
-
+        
         updateCardBanner(index: 0)
         
-        //return if table is already loaded
         cardStatus = updateSceenAsPerCardStatus()
+        
+        customizeScreenControls()
+        
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+
+        if tableView.delegate == nil {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
         
-       // if cardStatus != STATUS_PENDING_FOR_APPROVAL && tableView.isHidden {
-//            tableView.isHidden = false
-//            infoLabel.isHidden = true
+        if isThemeChanged() {
+            oldAccentColor = currentAccentColor
+            tableView.reloadData()
+            
             updateTableVisibility()
-            //tableView.reloadData()
-        //}
-        
+        }
+
         if cardStatus ==  STATUS_EXPIRED {
             floatingButton.isHidden = false
             
@@ -93,6 +105,25 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
             
         }
     }
+
+    private func isThemeChanged() -> Bool {
+        return oldAccentColor != currentAccentColor
+    }
+    
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let splashStyler = appStyler?.get_splash_styler()
+        let screenStyler = appStyler?.get_app_screen_styler()
+        
+        appLogoImage = splashStyler?.configure_app_logo(appLogoImage)
+        bannerContentsView = screenStyler?.configure_primary_view_background(bannerContentsView)
+        
+        floatingButton.backgroundColor = screenStyler?.get_accent_color()
+
+        currentAccentColor = screenStyler?.get_accent_color()
+    }
+
     
     var rightBarButtonItem: UIBarButtonItem! = nil
     
@@ -104,7 +135,7 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         //if rightBarButtonItem == nil {
             rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
        // }
-        navigationController?.navigationBar.topItem?.setRightBarButtonItems([(navigationController?.navigationBar.topItem?.rightBarButtonItem)!, rightBarButtonItem], animated: false)
+        //navigationController?.navigationBar.topItem?.setRightBarButtonItems([(navigationController?.navigationBar.topItem?.rightBarButtonItem)!, rightBarButtonItem], animated: false)
     }
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -318,7 +349,7 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
 
         //fetch credit card master records
         var fetchRequest: NSFetchRequest<CreditCardMaster>! = CreditCardMaster.fetchRequest()
-        //TODO: add condition for pending card
+
         do {
             self.cards = try context.fetch(fetchRequest)
         } catch {
@@ -429,10 +460,11 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     func cardSubmittedForActivation(cardData: kfxCreditCardData) {
         DispatchQueue.main.async {
             //self.tableView.isHidden = true
-            self.cardStatusLabel.isHidden = false
-            self.cardStatusLabel.textColor = applicationOrangeColor
-            self.cardStatusLabel.text = "Pending Activation"
-            self.infoLabel.text = "Approval for activation is pending for this card.\n\nYou should be able to use it after positive confirmation is received from the bank."
+            self.cardStatusLabel.text = ""
+            self.cardStatusLabel.isHidden = true
+            //self.cardStatusLabel.textColor = applicationOrangeColor
+            //self.cardStatusLabel.text = "Pending Activation"
+            //self.infoLabel.text = "Approval for activation is pending for this card.\n\nYou should be able to use it after positive confirmation is received from the bank."
             self.infoLabel.isHidden = true
             self.floatingButton.isHidden = true
 
@@ -444,35 +476,20 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
 
     // Remove pending card entry button delegate
     
-    @IBAction func removePendingCard(_ sender: UIButton) {
-        print("removePendingCard...")
-       
-        if let objs = self.fetchResultControllerTransactions.fetchedObjects, objs.count > 0 {
+//    @IBAction func removePendingCard(_ sender: UIButton) {
+//        print("removePendingCard...")
+//       
+//        if let objs = self.fetchResultControllerTransactions.fetchedObjects, objs.count > 0 {
+//
+//            let obj = objs[selectedTableRowIndex]
+//            context.delete(obj)
+//            ad.saveContext()
+//
+//            //hide tableview if all rows are deleted
+//            self.updateTableVisibility()
+//        }
+//    }
 
-            let obj = objs[selectedTableRowIndex]
-            context.delete(obj)
-            ad.saveContext()
-
-            //hide tableview if all rows are deleted
-            self.updateTableVisibility()
-        }
-    }
-    
-    @IBAction func activateCard(_ sender: UIButton) {
-        print("activateCard...")
-        
-        if idManager != nil {
-            idManager?.unloadManager()
-            //idManager = nil
-        }
-        else {
-            idManager = IDManager.init()
-        }
-
-        idManager?.loadManager(navigationController: self.navigationController!)
-    }
-
-    // Activate card button delegate
 }
 
 

@@ -25,8 +25,12 @@ class IDSettingsViewController: UIViewController {
     @IBOutlet weak var imageProcessLabel: UILabel!
     @IBOutlet weak var serverLabel: UILabel!
     
+    private var accentColor = UIColor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        accentColor = AppStyleManager.sharedInstance().get_app_screen_styler().get_accent_color()
         
         customizeNavigationBar()
     }
@@ -66,7 +70,7 @@ class IDSettingsViewController: UIViewController {
             imageProcessImage.image = UIImage.init(named: "gallery_white_100")
             serverImage.image = UIImage.init(named: "cloud_white")
             
-            cameraLabel.textColor = applicationAccentColor
+            cameraLabel.textColor = accentColor
             imageProcessLabel.textColor = applicationTextColor
             serverLabel.textColor = applicationTextColor
 
@@ -83,7 +87,7 @@ class IDSettingsViewController: UIViewController {
             cameraImage.image = UIImage.init(named: "camera_white_100")
             serverImage.image = UIImage.init(named: "cloud_white")
 
-            imageProcessLabel.textColor = applicationAccentColor
+            imageProcessLabel.textColor = accentColor
             cameraLabel.textColor = applicationTextColor
             serverLabel.textColor = applicationTextColor
 
@@ -100,7 +104,7 @@ class IDSettingsViewController: UIViewController {
             cameraImage.image = UIImage.init(named: "camera_white_100")
             imageProcessImage.image = UIImage.init(named: "gallery_white_100")
 
-            serverLabel.textColor = applicationAccentColor
+            serverLabel.textColor = accentColor
             imageProcessLabel.textColor = applicationTextColor
             cameraLabel.textColor = applicationTextColor
 

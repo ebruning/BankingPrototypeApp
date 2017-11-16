@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,11 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewViewController" customModule="KofaxBank" customModuleProvider="target">
             <connections>
-                <outlet property="closeButton" destination="N3q-z8-J8S" id="W3Y-mM-MuU"/>
+                <outlet property="cancelButton" destination="JGo-NU-RPW" id="2Zp-42-PWZ"/>
                 <outlet property="imageContainerView" destination="n4i-4B-Jfy" id="d7x-Q7-AFK"/>
                 <outlet property="imageView" destination="uYP-6i-b7w" id="THx-h0-E4X"/>
                 <outlet property="popupView" destination="5iD-8m-YWl" id="nTD-hl-bu4"/>
-                <outlet property="retakeButton" destination="JGo-NU-RPW" id="CyG-E8-c37"/>
                 <outlet property="useButton" destination="1iJ-JN-wIn" id="Olr-B8-mhX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -57,11 +56,11 @@
                                             <constraint firstAttribute="height" constant="1" id="H5r-Ls-xjn"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="w4K-i7-lGG">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="w4K-i7-lGG">
                                         <rect key="frame" x="16" y="312" width="218" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGo-NU-RPW" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="30"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="1" green="0.77255852570000005" blue="0.095399493759999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -72,13 +71,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="retakeButtonClicked:" destination="-1" eventType="touchUpInside" id="vYh-jL-jSl"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iJ-JN-wIn" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
-                                                <rect key="frame" x="111.5" y="0.0" width="106.5" height="30"/>
+                                                <rect key="frame" x="109.5" y="0.0" width="108.5" height="30"/>
                                                 <state key="normal" title="Use">
                                                     <color key="titleColor" red="1" green="0.7725490196" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -89,29 +91,21 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="useButtonClicked:" destination="-1" eventType="touchUpInside" id="caN-1a-iWT"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </stackView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3q-z8-J8S">
-                                        <rect key="frame" x="231" y="-17" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="DQi-IY-vwb"/>
-                                            <constraint firstAttribute="width" constant="35" id="jWc-7I-s2X"/>
-                                        </constraints>
-                                        <state key="normal" image="Cancel Filled-50"/>
-                                        <connections>
-                                            <action selector="closeButtonClicked:" destination="-1" eventType="touchUpInside" id="aCr-Rr-ljZ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="7If-9C-DNh"/>
-                                    <constraint firstAttribute="trailing" secondItem="N3q-z8-J8S" secondAttribute="trailing" constant="-16" id="FN0-l8-29Y"/>
                                     <constraint firstItem="w4K-i7-lGG" firstAttribute="leading" secondItem="49r-2R-CMf" secondAttribute="leading" constant="16" id="H6c-mL-eqH"/>
                                     <constraint firstItem="n4i-4B-Jfy" firstAttribute="top" secondItem="49r-2R-CMf" secondAttribute="top" constant="8" id="ScH-tt-pYU"/>
                                     <constraint firstAttribute="trailing" secondItem="tu8-DS-69P" secondAttribute="trailing" id="ZgZ-vL-PcV"/>
@@ -119,7 +113,6 @@
                                     <constraint firstItem="tu8-DS-69P" firstAttribute="leading" secondItem="49r-2R-CMf" secondAttribute="leading" id="ioi-Zy-iTT"/>
                                     <constraint firstAttribute="trailing" secondItem="n4i-4B-Jfy" secondAttribute="trailing" constant="8" id="naV-j9-Zn6"/>
                                     <constraint firstAttribute="trailing" secondItem="w4K-i7-lGG" secondAttribute="trailing" constant="16" id="sZW-1u-qbn"/>
-                                    <constraint firstItem="N3q-z8-J8S" firstAttribute="top" secondItem="49r-2R-CMf" secondAttribute="top" constant="-17" id="tzp-AQ-OsJ"/>
                                     <constraint firstItem="tu8-DS-69P" firstAttribute="top" secondItem="n4i-4B-Jfy" secondAttribute="bottom" constant="6" id="y1A-XW-IGD"/>
                                     <constraint firstAttribute="height" constant="350" id="zKH-7x-TGU"/>
                                     <constraint firstItem="n4i-4B-Jfy" firstAttribute="leading" secondItem="49r-2R-CMf" secondAttribute="leading" constant="8" id="zs2-1R-aVz"/>
@@ -154,9 +147,10 @@
             </constraints>
             <point key="canvasLocation" x="-28" y="47"/>
         </view>
-        <tapGestureRecognizer id="WXF-GY-OgH" userLabel="Main View Tap Gesture Recognizer"/>
+        <tapGestureRecognizer id="WXF-GY-OgH" userLabel="Main View Tap Gesture Recognizer">
+            <connections>
+                <action selector="mainViewOnTap:" destination="-1" id="yMY-bq-lih"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
-    <resources>
-        <image name="Cancel Filled-50" width="50" height="50"/>
-    </resources>
 </document>

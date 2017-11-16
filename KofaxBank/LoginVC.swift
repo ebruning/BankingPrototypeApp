@@ -10,11 +10,24 @@ import UIKit
 
 class LoginVC: UIViewController {
     
+    
+    @IBOutlet weak var splashLogoImageView: UIImageView!
+    @IBOutlet weak var appTitleLabel: UILabel!
+    
+    @IBOutlet weak var appSubTitleLabel1: UILabel!
+    @IBOutlet weak var appSubTitleLabel2: UILabel!
+    @IBOutlet weak var appSubtitleDotLabel: UILabel!
+    @IBOutlet weak var appTitleDividerLineView: UIView!
+
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
     @IBOutlet weak var textFieldViewContainer1: UIView!
     @IBOutlet weak var textFieldViewContainer2: UIView!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
     
     /// Overlayview that is being displayed when the user tries to log in
     private lazy var overlayView: WaitIndicatorView! = {
@@ -32,6 +45,9 @@ class LoginVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        customizeScreenControls()
+
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -46,6 +62,29 @@ class LoginVC: UIViewController {
         textFieldViewContainer2.customizeBorderColor(color: UIColor.lightGray)
         
     }
+    
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let splashStyler = appStyler?.get_splash_styler()
+        self.view = splashStyler?.configure_view_background(self.view)
+
+        splashLogoImageView = splashStyler?.configure_app_logo(splashLogoImageView)
+
+        self.appTitleLabel = splashStyler?.configure_app_title(appTitleLabel)
+        self.appSubTitleLabel1 = splashStyler?.configure_app_title(appSubTitleLabel1)
+        self.appSubTitleLabel2 = splashStyler?.configure_app_title(appSubTitleLabel2)
+        
+        let accentColor = appStyler?.get_app_screen_styler().get_accent_color()
+        self.appTitleDividerLineView.backgroundColor = accentColor
+        self.appSubtitleDotLabel.textColor = accentColor
+
+        self.welcomeLabel.textColor = accentColor
+        
+        //login button
+        loginButton = AppStyleManager.sharedInstance()?.get_button_styler().configure_primary_button(loginButton)
+    }
+
     
     @IBAction func loginButtonClicked(_ sender: UIButton) {
         view.endEditing(true)

@@ -94,7 +94,7 @@ protocol IDHomeVCDelegate {
         
         
         //TODO: temp code
-        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        //UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
     }
     
     //MARK: Public methods

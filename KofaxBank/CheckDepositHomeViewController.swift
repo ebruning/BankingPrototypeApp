@@ -43,22 +43,22 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var selectionOverlayVisualEffectView: UIVisualEffectView!
     
+    @IBOutlet weak var checkDataHeaderLabel: UILabel!
     
     //Post data retrieval parameters
     
     @IBOutlet weak var amountText: UITextField!
-    @IBOutlet weak var payeeNameText: UITextField!
+    //@IBOutlet weak var payeeNameText: UITextField!
     @IBOutlet weak var checkNumberText: UITextField!
     @IBOutlet weak var dateText: UITextField!
-    @IBOutlet weak var larCarMatchImageView: UIImageView!
+    //@IBOutlet weak var larCarMatchImageView: UIImageView!
     
     @IBOutlet weak var checkDataFieldsContainerView: UIView!
 
     //Check quality related controls
     
-    @IBOutlet weak var checkQualityCommandContainerView: UIView!
     
-    @IBOutlet weak var checkQualityPopupView: CustomView!
+    @IBOutlet weak var checkQualityPopupView: UIVisualEffectView!
     
     @IBOutlet weak var imgTornEdgesGreen: UIImageView!
     @IBOutlet weak var imgTornEdgesRed: UIImageView!
@@ -80,6 +80,9 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imgFocusedGreen: UIImageView!
     @IBOutlet weak var imgFocusedRed: UIImageView!
+
+    @IBOutlet weak var imgCarLarMatchGreen: UIImageView!
+    @IBOutlet weak var imgCarLarMatchRed: UIImageView!
 
     
     //Check quality alert banner related controls
@@ -156,8 +159,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        customizeNavigationBar()
-        
         addTapGestureRecognizers()
         
         frontProcessedImageView.isHidden = true
@@ -167,9 +168,13 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         frontPageControl.isHidden = true
         frontPageControl.currentPage = 0
         
+        depositButton.isHidden = true
+        
 //        scrollView.contentInset = scrollContentInset
 //        scrollView.scrollIndicatorInsets = scrollContentInset
         registerForKeyboardNotifications()
+        
+        customizeScreenControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -180,6 +185,21 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
     
     // MARK: private methods
+    
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance()?.get_app_screen_styler()
+        
+        let buttonStyler = AppStyleManager.sharedInstance()?.get_button_styler()
+
+        let accentColor = screenStyler?.get_accent_color()
+        
+        checkDataHeaderLabel.backgroundColor = accentColor
+        depositButton = buttonStyler?.configure_primary_button(depositButton)
+        
+        frontPageControl.currentPageIndicatorTintColor = accentColor
+    }
+    
+
     
     private func customizeNavigationBar() {
         
@@ -422,6 +442,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
             self.hideWaitIndicator()
 
             self.performPostDataRetrievalTasks()
+            self.depositButton.isHidden = false
         }
     }
     
@@ -439,7 +460,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         
         self.displayFieldData()
         
-        self.checkQualityCommandContainerView.isHidden = false
         
         if areAllCheckParamsGood(checkIQData: checkIQAData) == false {
             viewingForTheFirstTime = true
@@ -568,7 +588,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         self.checkData.amount.value = amountText.text
         self.checkData.checkNumber.value = checkNumberText.text
         self.checkData.date.value = dateText.text
-        self.checkData.payeeName.value = payeeNameText.text
+        //self.checkData.payeeName.value = payeeNameText.text
         
         let checkTransaction = CheckTransactions(context: context)
         checkTransaction.payee = self.checkData.payeeName.value
@@ -658,17 +678,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
             checkDataFieldsContainerView.isHidden = false
             
             amountText.text = checkData.amount.value
-            payeeNameText.text = checkData.payeeName.value
+//            payeeNameText.text = checkData.payeeName.value
             checkNumberText.text = checkData.checkNumber.value
-            //carText.text = checkData.car.value
-            //larText.text = checkData.lar.value
-            
-            if checkData.car.value == checkData.lar.value {
-                larCarMatchImageView.image = UIImage(named: "checkmark_green_50")
-            } else {
-                larCarMatchImageView.image = UIImage(named:"cross_red_50")
-            }
-            larCarMatchImageView.isHidden = false
             
             //validate date before displaying
             // TODO: may have to change the date format based on the country.
@@ -715,6 +726,11 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
                 imgSkewedRed.isHidden = false
                 imgSkewedGreen.isHidden = true
             }
+            
+            if checkData.car.value == checkData.lar.value {
+                imgCarLarMatchGreen.isHidden = false
+                imgCarLarMatchRed.isHidden = true
+            }
         }
     }
 
@@ -741,6 +757,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         }
         else if let fieldValue = checkIQData.outOfFocus.value {
             isGood = (fieldValue.caseInsensitiveCompare("false") == ComparisonResult.orderedSame) ? true : false
+        } else {
+            isGood = checkData.car.value == checkData.lar.value
         }
         
         return isGood
@@ -788,7 +806,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     private func areAllFieldsPresent() -> Bool {
         var present: Bool = true
         
-        if amountText.text == "" || payeeNameText.text == "" || checkNumberText.text == "" || dateText.text == "" {
+        if amountText.text == "" || checkNumberText.text == "" || dateText.text == "" {
             present = false
         }
         
@@ -825,7 +843,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
     //MARK:
     
-    @IBAction func onCheckQualityLabelTapGesture(_ sender: UITapGestureRecognizer) {
+    @IBAction func onCheckQualityButtonClicked(_ sender: UIButton) {
         if checkIQAData != nil {
             showCheckQualityPopupView()
         }
@@ -903,7 +921,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         let info: NSDictionary = notification.userInfo! as NSDictionary
         let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         
-        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, (kbSize?.height)!, 0.0)
+        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 20, 0.0)
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
         

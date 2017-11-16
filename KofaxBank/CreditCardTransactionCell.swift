@@ -24,7 +24,15 @@ class CreditCardTransactionCell: UITableViewCell {
     @IBOutlet weak var venderLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance().get_app_screen_styler()
+        venderLabel.textColor = screenStyler?.get_accent_color()
+    }
+
     func configureCell(transaction: CreditCardTransactions) {
+        
+        customizeScreenControls()
+        
         venderLabel.text = transaction.vender
         //amountLabel.text = String(format: "%.2f", transaction.amount)
         

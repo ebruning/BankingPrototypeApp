@@ -27,8 +27,6 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
     @IBOutlet weak var processedImageView: UIImageView!
     
-    @IBOutlet weak var cardHolderNameTextField: UITextField!
-    
     @IBOutlet weak var cardNumberTextField: UITextField!
     
     @IBOutlet weak var expMonthTextField: UITextField!
@@ -190,6 +188,13 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     
     // MARK: - Navigationbar methods
     
+    private func customizeScreenControls() {
+        let buttonStyler = AppStyleManager.sharedInstance().get_button_styler()
+        
+        activateButton = buttonStyler?.configure_primary_button(activateButton)
+    }
+
+    
     private func customizeNavigationBar() {
         
         //navigationController?.navigationBar.topItem?.title = "Supplementary Card"
@@ -241,9 +246,9 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     private func showCardData() {
         DispatchQueue.main.async {
             if self.cardData != nil {
-                if self.cardData.name != nil, let fieldValue = self.cardData.name.value {
-                    self.cardHolderNameTextField.text = fieldValue.trimmingCharacters(in: NSCharacterSet.whitespaces)
-                }
+//                if self.cardData.name != nil, let fieldValue = self.cardData.name.value {
+//                    self.cardHolderNameTextField.text = fieldValue.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//                }
                 if self.cardData.cardNumber != nil, let fieldValue = self.cardData.cardNumber.value {
                     self.cardNumberTextField.text = fieldValue.trimmingCharacters(in: .whitespaces)
                 }
@@ -313,30 +318,30 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
             if cardData == nil {
                 cardData = kfxCreditCardData.init()
             }
-            cardData.name.value = cardHolderNameTextField.text
+//            cardData.name.value = cardHolderNameTextField.text
             cardData.cardNumber.value = cardNumberTextField.text
             cardData.expirationMonth.value = expMonthTextField.text
             cardData.expirationYear.value = expYearTextField.text
             
             var fetchRequest: NSFetchRequest<CreditCardMaster>! = CreditCardMaster.fetchRequest()
-            //TODO: add condition for pending card
+            //TODO: add condition for active card
             do {
                 var cards = try context.fetch(fetchRequest)
-                let pendingCard = cards[0]
-                //pendingCard.availableBalance = 0
-                pendingCard.cardHolderName = cardHolderNameTextField.text //UserDefaults.standard.value(forKey: "applicationUserName") as? String
-                pendingCard.cardNumber = cardNumberTextField.text
+                let newCard = cards[0]
+                //newCard.availableBalance = 0
+//                newCard.cardHolderName = cardHolderNameTextField.text //UserDefaults.standard.value(forKey: "applicationUserName") as? String
+                newCard.cardNumber = cardNumberTextField.text
                 
                 if cardCompanyField != nil && cardCompanyField?.value != nil {
-                    pendingCard.company = cardCompanyField?.value
+                    newCard.company = cardCompanyField?.value
                 } else {
-                    pendingCard.company = ""
+                    newCard.company = ""
                 }
                 
-                //pendingCard.creditLimit = 0.0
-                //pendingCard.dueAmount = 0.0
-                pendingCard.cardStatus = STATUS_PENDING_FOR_APPROVAL
-                pendingCard.expDate = Utility.convertStringToDate(format: ShortDateFormatWithoutDay, dateStr: expMonthTextField.text! + "-" + expYearTextField.text!) as NSDate
+                //newCard.creditLimit = 0.0
+                //newCard.dueAmount = 0.0
+                newCard.cardStatus = STATUS_ACTIVE
+                newCard.expDate = Utility.convertStringToDate(format: ShortDateFormatWithoutDay, dateStr: expMonthTextField.text! + "-" + expYearTextField.text!) as NSDate
                 
                 //save card
                 ad.saveContext()
@@ -360,7 +365,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     private func areAllFieldsPresent() -> Bool {
         var present: Bool = true
         
-        if cardHolderNameTextField.text == "" || cardNumberTextField.text == "" || expMonthTextField.text == "" || expYearTextField.text == "" {
+        if cardNumberTextField.text == "" || expMonthTextField.text == "" || expYearTextField.text == "" {
             present = false
         }
         

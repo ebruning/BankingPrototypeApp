@@ -50,6 +50,9 @@ class BillDataPreviewViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var payBillButton: UIButton!
+
+    
     //MARK - Public variables
     var rawImagePath: String! = nil
     
@@ -87,6 +90,8 @@ class BillDataPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        customizeScreenControls()
 
         customizeNavigationBar()
         
@@ -258,6 +263,14 @@ class BillDataPreviewViewController: UIViewController {
     
     // MARK: - Navigationbar methods
 
+    private func customizeScreenControls() {
+        let buttonStyler = AppStyleManager.sharedInstance().get_button_styler()
+        
+        //payBillButton.backgroundColor = screenStyler?.get_accent_color()
+        payBillButton = buttonStyler?.configure_primary_button(payBillButton)
+    }
+    
+    
     private func customizeNavigationBar() {
         navigationController?.navigationBar.topItem?.title = "Bill Information"
         

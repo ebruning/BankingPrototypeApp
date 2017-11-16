@@ -15,6 +15,8 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
 
     @IBOutlet weak var tableHeader: UILabel!
 
+    @IBOutlet weak var appLogoImage: UIImageView!
+    
     //Banner parameters
     
     @IBOutlet weak var bannerView: UIView!
@@ -44,6 +46,9 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     @IBOutlet weak var emailAddressLabel: UILabel!
     
+    @IBOutlet weak var addAccountFloatingButton: UIButton!
+    
+
     //tableview
     private let MAX_VISIBLE_CELL_COUNT: Int = 2
     
@@ -68,7 +73,10 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     //Others
     private var markForRefresh = true
-
+    
+    private var oldAccentColor: UIColor? = nil
+    
+    private var currentAccentColor: UIColor? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +105,6 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
         //inner offset is the bottom space(gap) between bannerContentView and banner view.
         bannerInnerOffset = bannerViewHeight.constant - bannerContentsViewHeight.constant
-        
     }
     
     private func loadUserDetails() {
@@ -162,8 +169,11 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.tabBarController?.delegate = self
+        if self.tabBarController?.delegate == nil {
+            self.tabBarController?.delegate = self
+        }
+
+        customizeScreenControls()
         
         customizeNavigationBar()
     
@@ -175,6 +185,9 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
         //adjust top margin of tableheader label as per the height of bannerview
         tableHeader.topAnchor.constraint(equalTo: (tableHeader.superview?.topAnchor)!, constant: bannerContentsView.frame.origin.y + bannerContentsViewHeight.constant).isActive = true
+
+        //adjust top margin of tableview as per the position of the bannerview
+//        tableView.topAnchor.constraint(equalTo: (tableView.superview?.topAnchor)!, constant: bannerContentsView.frame.origin.y + bannerContentsViewHeight.constant).isActive = true
         
         stackViewUserDetails.alpha = 0
         visualEffectView.alpha = 0.27
@@ -187,15 +200,41 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
             if tableView.delegate == nil {
                 tableView.dataSource = self
                 tableView.delegate = self
-            }else {
-              //  tableView.reloadData()
+                oldAccentColor = currentAccentColor
+            } else {
+                if isThemeChanged() {
+                    tableView.reloadData()
+                    oldAccentColor = currentAccentColor
+                }
             }
         }
-
     }
 
+
+    private func isThemeChanged() -> Bool {
+        return oldAccentColor != currentAccentColor
+    }
+
+
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let splashStyler = appStyler?.get_splash_styler()
+        let screenStyler = appStyler?.get_app_screen_styler()
+        
+        appLogoImage = splashStyler?.configure_app_logo(appLogoImage)
+        bannerContentsView = screenStyler?.configure_primary_view_background(bannerContentsView)
+
+        currentAccentColor = screenStyler?.get_accent_color()
+        
+        addAccountFloatingButton.backgroundColor = currentAccentColor
+    }
+    
+    
+
+    
     override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.delegate = nil
+//        self.tabBarController?.delegate = nil
     }
     
     private func customizeNavigationBar() {
@@ -278,12 +317,13 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     }
     
     let sectionHeaderTitleArray = ["BANKING ACCOUNT", "CREDIT CARD ACCOUNT"]
-    let sectionHeaderImageArray = ["Account", "Card Black"]
+    //let sectionHeaderImageArray = ["Account", "Card Black"]
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView(frame: CGRect.init(x:0, y:0, width: 200, height:30))
         returnedView.backgroundColor = UIColor.init(rgb: 0xD8D8D8)
         
+        /*
         let imageIcon = UIImage.init(named: sectionHeaderImageArray[section])
         let iconImageView = UIImageView.init(image: imageIcon)
         iconImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -294,7 +334,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         iconImageView.centerYAnchor.constraint(equalTo: returnedView.centerYAnchor).isActive = true
 
         iconImageView.centerYAnchor.constraint(equalTo: returnedView.centerYAnchor).isActive = true
-        
+        */
         let label = UILabel(frame: CGRect(x:0, y:0, width:250, height:30))
         label.text = self.sectionHeaderTitleArray[section]
         returnedView.addSubview(label)
@@ -507,7 +547,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     // Notification
     
     private func showNotification() {
-        Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picure of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picture of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
             
             self.readUserID()
             
@@ -555,6 +595,8 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!) {
         print("User ID read complete WITHOUT selfie verification")
         loadUserDetails()
+        
+        Utility.showAlert(onViewController: self, titleString: "Profile Details Updated", messageString: "\nYou can slide down your profile picture to see the details.")
     }
     
 }

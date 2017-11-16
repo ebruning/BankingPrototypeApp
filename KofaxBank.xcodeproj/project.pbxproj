@@ -141,6 +141,9 @@
 		AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708E1F7CF01100A511C8 /* RegionController.swift */; };
 		AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */; };
 		AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */; };
+		AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
+		AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
+		AEBC71741FBAF81D00604399 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */; };
 		AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */; };
 		AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B51FB1D05100B79700 /* FaceDetection.m */; };
@@ -166,6 +169,20 @@
 			remoteInfo = KofaxBank;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEBC71751FBAF81E00604399 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AEBC71741FBAF81D00604399 /* AppStylerLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -337,6 +354,7 @@
 		AEAA708E1F7CF01100A511C8 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionConstants.swift; sourceTree = "<group>"; };
 		AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabHomeViewController.swift; sourceTree = "<group>"; };
+		AEBC71711FBAF63400604399 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
 		AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieCaptureExprienceViewController.xib; sourceTree = "<group>"; };
 		AEDDA3B41FB1D05100B79700 /* FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetection.h; sourceTree = "<group>"; };
@@ -362,10 +380,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */,
 				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
 				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
 				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
 				AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */,
+				AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */,
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
 				AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */,
 				AE71BBCA1F2726A70066B632 /* MobileSDK.framework in Frameworks */,
@@ -398,6 +418,7 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEBC71711FBAF63400604399 /* AppStylerLib.framework */,
 				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
 				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
 				AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */,
@@ -881,6 +902,7 @@
 				AE5D7E2F1EDD729100D12163 /* Resources */,
 				2121A1904F6E8190EAE5C511 /* [CP] Embed Pods Frameworks */,
 				DF9BBD5B897F9E61554A8F17 /* [CP] Copy Pods Resources */,
+				AEBC71751FBAF81E00604399 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

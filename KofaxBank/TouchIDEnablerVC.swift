@@ -22,7 +22,7 @@ class TouchIDEnablerVC: UIViewController {
     }
 */
     @IBOutlet weak var touchIDButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     override var prefersStatusBarHidden: Bool {
         
@@ -31,10 +31,21 @@ class TouchIDEnablerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        customizeScreenControls()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
         
-        
+        touchIDButton = appStyler?.get_button_styler().configure_primary_button(touchIDButton)
+        skipButton = appStyler?.get_button_styler().configure_secondary_button(skipButton)
     }
     
     @IBAction func enableTouchIDButtonClicked(_ sender: UIButton) {
@@ -59,9 +70,6 @@ class TouchIDEnablerVC: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         navigationController?.pushViewController(vc, animated: true)
-
-//        let vc = HomeVC(nibName: "HomeScreen", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
         
         /**
          Important: set next viewcontroller as base(first) viewcontroller after touchIDEnabler screen is closed.

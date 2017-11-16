@@ -17,7 +17,8 @@ typealias LoginFailed = ((Int) -> Void)
 typealias LogoutComplete = (() -> Void)
 typealias LogoutFailed = ((Int) -> Void)
 
-let applicationAccentColor: UIColor = UIColor(red:1.00, green:0.77, blue:0.09, alpha:1.0)  //#FFC518 (musterd yellow)
+//let applicationAccentColor: UIColor = AppStyleManager.sharedInstance().get_app_screen_styler().get_accent_color()
+//let applicationAccentColor: UIColor = UIColor(red:1.00, green:0.77, blue:0.09, alpha:1.0)  //#FFC518 (musterd yellow)
 let applicationTextColor: UIColor = UIColor(red:1.00, green:1.0, blue:1.0, alpha:1.0)
 
 let applicationRedColor: UIColor = UIColor.init(rgb: 0xDD0004)

@@ -19,9 +19,8 @@ class PreviewViewController: BaseViewController {
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var retakeButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var useButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     
     //MARK - Public variables
 
@@ -46,6 +45,8 @@ class PreviewViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeScreenControls()
+        
         hideNavigationBar()
         
         self.view.backgroundColor = UIColor.init(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.6)
@@ -54,7 +55,16 @@ class PreviewViewController: BaseViewController {
         }
     }
     
-    func hideNavigationBar() {
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance().get_app_screen_styler()
+        let accentColor = screenStyler?.get_accent_color()
+        
+        useButton.setTitleColor(accentColor, for: UIControlState.normal)
+        cancelButton.setTitleColor(accentColor, for: UIControlState.normal)
+    }
+
+    
+    private func hideNavigationBar() {
         
         wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
         
@@ -65,17 +75,11 @@ class PreviewViewController: BaseViewController {
     
     @IBAction func mainViewOnTap(_ sender: UITapGestureRecognizer) {
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        close(command: CommandOptions.CANCEL)
+        //close(command: CommandOptions.CANCEL)
     }
 
     //Mark: - Button Actions
     
-    @IBAction func closeButtonClicked(_ sender: UIButton) {
-        close(command: CommandOptions.CANCEL)
-    }
-
     @IBAction func retakeButtonClicked(_ sender: UIButton) {
         close(command: CommandOptions.CANCEL)
     }

@@ -613,7 +613,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
     
     func creditCardOnDataSaved(data: kfxCreditCardData) {
 
-        Utility.showAlertWithCallback(onViewController: navigationController.topViewController!, titleString: "Card Activation", messageString: "Card is submitted for activation.\n\nYou will receive confirmation from bank in next 24 hours.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: navigationController.topViewController!, titleString: "Card Activated", messageString: " Your card is now ready for use.\n\nMake sure it is signed before using it.", positiveActionTitle: "OK", negativeActionTitle: nil, positiveActionResponse: {
 
             self.delegate?.cardSubmittedForActivation(cardData: data)
 
@@ -667,7 +667,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
                         key = component[0]
                     }
                     
-                    print("key ===> \(key) and Value ===> \(dataField.value)")
+                    print("key ===> \(key) and Value ===> \(dataField.value) with confidence ===> \(dataField.confidence)")
                     
                     dataField.name = key
                     //store this field entry in dictionary with key as the field name (for a convinient search later)

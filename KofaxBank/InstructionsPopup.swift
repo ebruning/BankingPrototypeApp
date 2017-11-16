@@ -20,6 +20,8 @@ class InstructionsPopup: UIViewController {
     
     @IBOutlet weak var sampleImageView: UIImageView!
     
+    @IBOutlet weak var instructionLabel: UILabel!
+    
     
     // MARK: Public variables
     
@@ -67,6 +69,9 @@ class InstructionsPopup: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        customizeScreenControls()
+
         hideNavigationBar()
         
         if _titleText != nil {
@@ -82,6 +87,12 @@ class InstructionsPopup: UIViewController {
         }
     }
     
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance().get_app_screen_styler()
+        
+        instructionLabel.backgroundColor = screenStyler?.get_accent_color()
+    }
+
     func hideNavigationBar() {
         wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
         

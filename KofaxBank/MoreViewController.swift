@@ -7,11 +7,18 @@
 //
 
 import UIKit
-
 import MessageUI
+import CoreData
 
 class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailComposeViewControllerDelegate {
 
+    
+    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var userProfileButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var contactUsButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     //MARK: Private variables
 
@@ -20,7 +27,11 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
+        customizeScreenControls()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        customizeScreenControls()
     }
 
     //MARK: UITabBar delegate
@@ -31,6 +42,23 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         }
     }
     
+    
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let screenStyler = appStyler?.get_app_screen_styler()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        infoButton.backgroundColor = screenStyler?.get_accent_color()
+        userProfileButton.backgroundColor = screenStyler?.get_accent_color()
+        locationButton.backgroundColor = screenStyler?.get_accent_color()
+        contactUsButton.backgroundColor = screenStyler?.get_accent_color()
+        resetButton.backgroundColor = screenStyler?.get_accent_color()
+        settingsButton.backgroundColor = screenStyler?.get_accent_color()
+        
+        //appStyler?.get_button_styler().configure_primary_button(addAccountFloatingButton)
+    }
+
     
     // Screen UIButton actions
     
@@ -46,10 +74,11 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         showUserProfile()
     }
 
-    @IBAction func onNotificationClicked(_ sender: UIButton) {
+    @IBAction func onSettingsClicked(_ sender: UIButton) {
              print("onNotificationClicked")
         
-        //showNotification()
+        let stylerManager = AppStyleManager.sharedInstance()
+        stylerManager?.showStyler(self.navigationController)
     }
 
     @IBAction func onContactUsClicked(_ sender: UIButton) {
@@ -66,6 +95,10 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
 
     @IBAction func onResetClicked(_ sender: UIButton) {
              print("onResetClicked")
+        
+            //resetAllData()
+        
+            Utility.showAlert(onViewController: self, titleString: "", messageString: "Data reset complete")
     }
 
 
@@ -119,6 +152,26 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         
         present(vc, animated: true, completion: nil)
     }
+    
+    
+    //Reset data
+    
+    func resetAllData(){
+        
+        let entities = ["CreditCardTransactions", "CreditCardMaster", "CheckTransactions", "BillTransactions", "BillerMaster", "AccountTransactionMaster", "AccountMaster", "UserMaster"]
+        
+        
+        for entity in entities {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+            let deleteAllReq = NSBatchDeleteRequest(fetchRequest: request)
+            
+            do { try context.execute(deleteAllReq) }
+            catch { print(error) }    }
+        
+        
+        Utility.checkDataStore()
+    }
+    
     
     
 }

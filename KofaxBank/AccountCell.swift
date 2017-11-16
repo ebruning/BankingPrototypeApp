@@ -14,9 +14,15 @@ class AccountCell: UITableViewCell {
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var accountBalanceLabel: UILabel!
     @IBOutlet weak var accountStatusLabel: UILabel!
-
+  
+    private func customizeScreenControls() {
+        let screenStyler = AppStyleManager.sharedInstance().get_app_screen_styler()
+        accountTitleLabel.textColor = screenStyler?.get_accent_color()
+    }
     
     func configureCell(account: AccountsMaster) {
+        customizeScreenControls()
+        
         accountTitleLabel.text = account.accounttype
         
         //accountNumberLabel.text = account.accountNumber
@@ -36,9 +42,12 @@ class AccountCell: UITableViewCell {
     }
     
     func configureCellForCreditCardAccount(card: CreditCardMaster) {
+        
+        customizeScreenControls()
+        
         accountTitleLabel.text = "Credit Card"
 
-        accountNumberLabel.text = card.cardNumber
+        accountNumberLabel.text = Utility.maskString(nonMaskedString: card.cardNumber, visibleCharacterCount: 4)
         
         let formattedString = Utility.formatCurrency(format: CurrencyType.DOLLER.rawValue, amount: card.availableBalance)
         accountBalanceLabel.text = formattedString
@@ -52,16 +61,13 @@ class AccountCell: UITableViewCell {
                 accountStatusLabel.text = "Pending"
             }
             accountStatusLabel.isHidden = false
+        } else {
+            accountStatusLabel.text = ""
+            accountStatusLabel.isHidden = true
         }
     }
 
     
-/*
-    func configureCell(account: Account) {
-        accountTitleLabel.text = account.accountTitle
-        accountNumberLabel.text = account.accountNumber
-        accountBalanceLabel.text =  String(format: "%.2f", account.accontBalance)
-    }
-*/
+
     
 }

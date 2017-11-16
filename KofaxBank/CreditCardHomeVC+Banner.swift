@@ -17,7 +17,9 @@ extension  CreditCardHomeVC  {
         //dueAmountLabel.text = String.init(format: "%.2f", forCard.dueAmount)
         dueAmountLabel.text = Utility.formatCurrency(format: CurrencyType.DOLLER.rawValue, amount: forCard.dueAmount)
         
-        cardTypeLabel.text = forCard.company
+        if forCard.company != nil {
+            cardTypeLabel.text = forCard.company?.uppercased()
+        }
         
         if let expiryDate = forCard.expDate {
             expDateLabel.text = "\(Utility.dateToFormattedString(format: ShortDateFormatWithoutDay, date: expiryDate as Date))"

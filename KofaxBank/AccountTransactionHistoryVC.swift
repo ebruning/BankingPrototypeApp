@@ -11,12 +11,17 @@ import CoreData
 
 class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
+    @IBOutlet weak var appLogoImage: UIImageView!
+
+    @IBOutlet weak var bannerContainerView: UIView!
+
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet var tableHeadingLabels: [UILabel]!
 
     @IBOutlet var instructionsView: UIView!
     
+    @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var accountNumber: UILabel!
     @IBOutlet weak var accountBalance: UILabel!
     
@@ -27,11 +32,11 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     
     var account: AccountsMaster?
     
-    
-    
     private var fetchResultController: NSFetchedResultsController<AccountTransactionMaster>!
 
     private var selectedTableRowIndex: Int = 0
+    
+    private var accentColor = UIColor()
     
     //MARK: statusbar content color
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -50,12 +55,12 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        customizeScreenControls()
         customizeNavigationBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
-        //customizeNavigationBar()
         
         //return if table is already loaded
         if fetchResultController != nil {
@@ -72,6 +77,22 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         }
     }
 
+    
+    private func customizeScreenControls() {
+        let appStyler = AppStyleManager.sharedInstance()
+        
+        let splashStyler = appStyler?.get_splash_styler()
+        let screenStyler = appStyler?.get_app_screen_styler()
+        
+        appLogoImage = splashStyler?.configure_app_logo(appLogoImage)
+        bannerContainerView = screenStyler?.configure_primary_view_background(bannerContainerView)
+        
+        self.accentColor = (screenStyler?.get_accent_color())!
+        
+        //highlight default date label with accent color
+        dateLabel.textColor = accentColor
+    }
+    
 
     // MARK: Private methods
 
@@ -88,15 +109,20 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         //for iOS 10
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
 
     private func updateAccountDetailsOnBanner() {
-        //accountNumber.text = account?.accountNumber
+        if account == nil {
+            return
+        }
+        accountName.text = account?.accounttype
+        
         accountNumber.text = Utility.maskString(nonMaskedString: account?.accountNumber, visibleCharacterCount: 4)
 
         if let balance = account?.balance {
-
             accountBalance.text =  Utility.formatCurrency(format: CurrencyType.DOLLER.rawValue, amount: balance)
         }
         else {
@@ -295,18 +321,17 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
             break
         }
     }
-    
-    // Mark: Tap Gesture Recognizer delegates
+
+        // Mark: Tap Gesture Recognizer delegates
     
     @IBAction func sortTransactionsForDate(_ sender: UITapGestureRecognizer) {
         
         for label in tableHeadingLabels {
             label.textColor = UIColor.white
         }
-        
-        
+
         //highlight label with accent color
-        dateLabel.textColor = applicationAccentColor
+        dateLabel.textColor = accentColor
         
         _ = fetchAccountTransactions(sortWith: "dateOfTransaction")
         
@@ -321,7 +346,7 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         }
         
         //highlight label with accent color
-        typeLabel.textColor = applicationAccentColor
+        typeLabel.textColor = accentColor
 
         _ = fetchAccountTransactions(sortWith: "type")
         
@@ -335,8 +360,9 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
             label.textColor = UIColor.white
         }
         
+
         //highlight label with accent color
-        amountLabel.textColor = applicationAccentColor
+        amountLabel.textColor = accentColor
 
         _ = fetchAccountTransactions(sortWith: "amount")
         
