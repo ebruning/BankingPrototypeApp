@@ -870,7 +870,7 @@ United States</string>
                                                     <action selector="onNotificationClicked:" destination="erx-ga-v50" eventType="touchUpInside" id="9vl-Ry-mzN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq7-Eo-sWp" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq7-Eo-sWp" userLabel="BellBadge" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="2" width="18" height="18"/>
                                                 <color key="backgroundColor" red="0.86793434619999998" green="0.0" blue="0.017264507710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -987,6 +987,7 @@ United States</string>
                         <outlet property="bannerContentsViewHeight" destination="X0U-GI-sac" id="91j-jZ-htZ"/>
                         <outlet property="bannerView" destination="rJJ-a1-6fm" id="qIK-0c-msr"/>
                         <outlet property="bannerViewHeight" destination="n1f-i8-Dev" id="kuT-5E-slV"/>
+                        <outlet property="bellBadge" destination="wq7-Eo-sWp" id="daX-ER-KgU"/>
                         <outlet property="emailAddressLabel" destination="Lz4-UR-TFh" id="MWY-7v-dLF"/>
                         <outlet property="greetingMessage" destination="uR6-O0-Nqd" id="dxL-aA-Dzp"/>
                         <outlet property="stackViewUserDetails" destination="Huy-Ee-bbb" id="q8H-dQ-YJv"/>

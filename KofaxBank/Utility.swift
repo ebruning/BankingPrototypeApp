@@ -267,6 +267,7 @@ class Utility {
             user.state = userObject["state"] as? String
             user.country = userObject["country"] as? String
             user.zip = userObject["zip"] as? String
+            user.profileupdatestatus = false
             
             //add accounts
             let accountArray = userObject.value(forKey: "accounts") as! NSArray

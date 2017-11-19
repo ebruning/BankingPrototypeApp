@@ -33,6 +33,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     @IBOutlet weak var stackViewUserDetails: UIStackView!
     
+    
 
     //User Details
     
@@ -48,6 +49,9 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     @IBOutlet weak var addAccountFloatingButton: UIButton!
     
+    //Bell notification 
+    
+    @IBOutlet weak var bellBadge: UIButton!
 
     //tableview
     private let MAX_VISIBLE_CELL_COUNT: Int = 2
@@ -108,8 +112,14 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         bannerInnerOffset = bannerViewHeight.constant - bannerContentsViewHeight.constant
     }
     
+    private var user: UserMaster! = nil
+    
     private func loadUserDetails() {
-        if let user = fetchUser() {
+        user = nil
+        
+        user = fetchUser()
+            
+        if user != nil {
             
             var addressStr = user.address! + "\n"
             
@@ -170,6 +180,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         if self.tabBarController?.delegate == nil {
             self.tabBarController?.delegate = self
         }
@@ -194,6 +205,9 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         visualEffectView.alpha = 0.27
         
         if markForRefresh {
+            
+            updateBellBadge()
+            
             fetchAccounts()
             fetchCreditCardAccounts()
             markForRefresh = false
@@ -203,12 +217,24 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
                 tableView.delegate = self
                 oldAccentColor = currentAccentColor
             } else {
-                
                 tableView.reloadData()
                 
                 if isThemeChanged() {
                     oldAccentColor = currentAccentColor
                 }
+            }
+        }
+    }
+
+
+    //update the count on the red bagde on bell image to show/hide number of (dummy)notifations received.
+    private func updateBellBadge() {
+        if user != nil {
+            if user.profileupdatestatus == false {
+                bellBadge.titleLabel?.text = "1"
+                bellBadge.isHidden = false
+            } else {
+                bellBadge.isHidden = true
             }
         }
     }
@@ -551,13 +577,19 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     // Notification
     
     private func showNotification() {
-        Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picture of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
-            
-            self.readUserID()
-            
-        }, negativeActionResponse: {
-            
-        })
+        
+        if user != nil && user.profileupdatestatus == false {
+            Utility.showAlertWithCallback(onViewController: self, titleString: "You have received 1 message", messageString: "You are required to update your profile.\n\nYou can take picture of your valid ID to update your profile details.", positiveActionTitle: "Update Now", negativeActionTitle: "Later", positiveActionResponse: {
+                
+                self.readUserID()
+                
+            }, negativeActionResponse: {
+                
+            })
+        } else {
+            Utility.showAlert(onViewController: self, titleString: "", messageString: "You have no new notifications.")
+        }
+        
     }
     
     

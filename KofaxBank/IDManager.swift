@@ -1702,6 +1702,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 user.zip = ""
             }
 
+            user.profileupdatestatus = true
+            
             ad.saveContext()
         }
     }
