@@ -216,7 +216,7 @@ class Utility {
     }
     
     
-    class func checkDataStore() {
+    class func loadDatabaseWithDefaultsIfEmpty() {
         
         let fetchRequest: NSFetchRequest<UserMaster> = UserMaster.fetchRequest()
         
@@ -316,6 +316,8 @@ class Utility {
                             if billerMasterObj == nil {
                                 billerMasterObj = BillerMaster(context: context)
                                 billerMasterObj?.name = billTransaction.name
+                                
+                                user.addToBillers(billerMasterObj!)
                             }
                             billerMasterObj?.addToBillTransactions(billTransaction)
                         }

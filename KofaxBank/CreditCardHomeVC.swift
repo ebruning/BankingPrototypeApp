@@ -61,8 +61,6 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        attemptFetch()
-
         self.tableView.isHidden = true
         
     }
@@ -71,27 +69,32 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         customizeNavigationBar()
         
         updateCardBanner(index: 0)
-        
+
+        fetchCards()
         cardStatus = updateSceenAsPerCardStatus()
         
         customizeScreenControls()
-        
+/*        if isThemeChanged() {
+            oldAccentColor = currentAccentColor
+        }
+*/
     }
 
     override func viewDidAppear(_ animated: Bool) {
+
+        updateTableVisibility()
 
         if tableView.delegate == nil {
             tableView.delegate = self
             tableView.dataSource = self
         }
-        
-        if isThemeChanged() {
-            oldAccentColor = currentAccentColor
-            tableView.reloadData()
-            
-            updateTableVisibility()
+        else {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
 
+        
         if cardStatus ==  STATUS_EXPIRED {
             floatingButton.isHidden = false
             
@@ -106,10 +109,10 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         }
     }
 
-    private func isThemeChanged() -> Bool {
+/*    private func isThemeChanged() -> Bool {
         return oldAccentColor != currentAccentColor
     }
-    
+*/
     private func customizeScreenControls() {
         let appStyler = AppStyleManager.sharedInstance()
         
@@ -335,7 +338,7 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
 
     // CoreData methods
     
-    func attemptFetch() {
+    func fetchCards() {
 
         fetchCreditCardMasterRecords()
         if cards.count > 0 {

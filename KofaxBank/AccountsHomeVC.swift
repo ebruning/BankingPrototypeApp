@@ -87,6 +87,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
         loadUserDetails()
     }
+    
 
     private func setupPanGestureRecognizerOnBannerView() {
         let panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(move(_:)))
@@ -202,8 +203,10 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
                 tableView.delegate = self
                 oldAccentColor = currentAccentColor
             } else {
+                
+                tableView.reloadData()
+                
                 if isThemeChanged() {
-                    tableView.reloadData()
                     oldAccentColor = currentAccentColor
                 }
             }
@@ -449,7 +452,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
             let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-            controller.delegate = self  //IMP for reloading the data after any changes into the database
+          //  controller.delegate = self  //IMP for reloading the data after any changes into the database
         
             self.fetchResultController = controller
         }
@@ -471,7 +474,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
 
             let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-            controller.delegate = self  //IMP for reloading the data after any changes into the database
+            //controller.delegate = self  //IMP for reloading the data after any changes into the database
         
             self.fetchResultControllerCC = controller
         }
@@ -487,7 +490,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     }
 
     
-
+/*
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         tableView.beginUpdates()
@@ -532,10 +535,11 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
             if let indexPath = newIndexPath {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
+            break
         }
         
     }
-    
+*/
     //Bell Notification badge on click 
     
     @IBAction func onNotificationClicked(_ sender: UIButton) {

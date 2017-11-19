@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AccountMaster" representedClassName="AccountsMaster" syncable="YES" codeGenerationType="class">
         <attribute name="accountNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="accounttype" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="openingDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AccountTransactionMaster" inverseName="account" inverseEntity="AccountTransactionMaster" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserMaster" inverseName="accounts" inverseEntity="UserMaster" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserMaster" inverseName="accounts" inverseEntity="UserMaster" syncable="YES"/>
     </entity>
     <entity name="AccountTransactionMaster" representedClassName="AccountTransactionMaster" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfTransaction" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -23,9 +23,10 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="billTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BillTransactions" inverseName="billerMaster" inverseEntity="BillTransactions" syncable="YES"/>
+        <relationship name="billTransactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BillTransactions" inverseName="billerMaster" inverseEntity="BillTransactions" syncable="YES"/>
+        <relationship name="userMaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserMaster" inverseName="billers" inverseEntity="UserMaster" syncable="YES"/>
     </entity>
-    <entity name="BillTransactions" representedClassName="BillTransactions" parentEntity="AccountTransactionMaster" syncable="YES" codeGenerationType="class">
+    <entity name="BillTransactions" representedClassName="BillTransactions" syncable="YES" codeGenerationType="class">
         <attribute name="accountNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,9 +42,9 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="billerMaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BillerMaster" inverseName="billTransactions" inverseEntity="BillerMaster" syncable="YES"/>
-        <relationship name="transactionMaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountTransactionMaster" inverseName="billTransaction" inverseEntity="AccountTransactionMaster" syncable="YES"/>
+        <relationship name="transactionMaster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccountTransactionMaster" inverseName="billTransaction" inverseEntity="AccountTransactionMaster" syncable="YES"/>
     </entity>
-    <entity name="CheckTransactions" representedClassName="CheckTransactions" parentEntity="AccountTransactionMaster" syncable="YES" codeGenerationType="class">
+    <entity name="CheckTransactions" representedClassName="CheckTransactions" syncable="YES" codeGenerationType="class">
         <attribute name="accountNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="checkNumber" optional="YES" attributeType="String" syncable="YES"/>
@@ -89,16 +90,17 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="AccountMaster" inverseName="user" inverseEntity="AccountMaster" syncable="YES"/>
+        <relationship name="billers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BillerMaster" inverseName="userMaster" inverseEntity="BillerMaster" syncable="YES"/>
         <relationship name="creditcard" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CreditCardMaster" inverseName="user" inverseEntity="CreditCardMaster" syncable="YES"/>
     </entity>
     <elements>
         <element name="AccountMaster" positionX="-639" positionY="99" width="128" height="133"/>
         <element name="AccountTransactionMaster" positionX="-414" positionY="-54" width="128" height="120"/>
-        <element name="BillerMaster" positionX="-29" positionY="-126" width="128" height="165"/>
-        <element name="BillTransactions" positionX="16" positionY="144" width="128" height="285"/>
-        <element name="CheckTransactions" positionX="-234" positionY="423" width="128" height="165"/>
+        <element name="BillerMaster" positionX="-29" positionY="-126" width="128" height="178"/>
+        <element name="BillTransactions" positionX="16" positionY="144" width="128" height="283"/>
+        <element name="CheckTransactions" positionX="-234" positionY="423" width="128" height="163"/>
         <element name="CreditCardMaster" positionX="-432" positionY="441" width="128" height="210"/>
         <element name="CreditCardTransactions" positionX="-639" positionY="458" width="128" height="163"/>
-        <element name="UserMaster" positionX="-459" positionY="135" width="128" height="240"/>
+        <element name="UserMaster" positionX="-459" positionY="144" width="128" height="253"/>
     </elements>
 </model>

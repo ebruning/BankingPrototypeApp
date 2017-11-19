@@ -96,9 +96,15 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     @IBAction func onResetClicked(_ sender: UIButton) {
              print("onResetClicked")
         
-            //resetAllData()
-        
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Reset All Data", messageString: "All the application data will be reset to the original values.\n\nDo you want to continue?", positiveActionTitle: "Continue", negativeActionTitle: "Cancel", positiveActionResponse: {
+            
+            self.resetAllData()
+            
             Utility.showAlert(onViewController: self, titleString: "", messageString: "Data reset complete")
+            
+        }, negativeActionResponse: {
+            
+        })
     }
 
 
@@ -155,23 +161,44 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     
     
     //Reset data
-    
     func resetAllData(){
         
-        let entities = ["CreditCardTransactions", "CreditCardMaster", "CheckTransactions", "BillTransactions", "BillerMaster", "AccountTransactionMaster", "AccountMaster", "UserMaster"]
+        let entity = "UserMaster"
         
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         
-        for entity in entities {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-            let deleteAllReq = NSBatchDeleteRequest(fetchRequest: request)
+        do {
+            let users = try context.fetch(request)
+
+            for user in users {
+                context.delete(user as! NSManagedObject)    //deleting 'usermaster' record will delete all other table data, this is because of the 'delete rule' applied in entities. All the entities are directly/indirectly related with userMaster.
+            }
+        } catch {
             
-            do { try context.execute(deleteAllReq) }
-            catch { print(error) }    }
+        }
         
-        
-        Utility.checkDataStore()
+        Utility.loadDatabaseWithDefaultsIfEmpty()
     }
     
     
+//    func resetAllData(){
+//        
+//        let entities = ["UserMaster"]
+//
+//        for entity in entities {
+//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+//            let deleteAllReq = NSBatchDeleteRequest(fetchRequest: request)
+//            
+//            do {
+//                try context.execute(deleteAllReq)
+//            }
+//            catch {
+//                print(error)
+//            }
+//        }
+//        
+//        Utility.loadDatabaseWithDefaultsIfEmpty()
+//    }
+//    
     
 }

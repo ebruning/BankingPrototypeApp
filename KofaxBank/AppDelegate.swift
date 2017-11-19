@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error: Kofax license is not valid or expired!");
         }
         
-        Utility.checkDataStore()
+        Utility.loadDatabaseWithDefaultsIfEmpty()
         
         loadDefaults()
 
