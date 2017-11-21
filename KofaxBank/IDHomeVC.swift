@@ -306,7 +306,7 @@ protocol IDHomeVCDelegate {
     
     
     func onCancelButtonClick() {
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the ID Authentication process.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the ID Authentication process.\n\nDo you want to continue?", positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
             print("Positive response selected")
             
             self.delegate?.onIDHomeCancel()

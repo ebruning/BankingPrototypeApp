@@ -222,7 +222,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     
     func onCancelPressed() {
         //self.navigationController?.popViewController(animated: true)
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the process of adding supplementary card.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the process of adding supplementary card.\n\nDo you want to continue?", positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
             print("Positive response selected")
 
             self.dismiss(animated: true, completion: {
@@ -284,7 +284,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
                 }
 
                 if self.companyTextField != nil && self.cardCompanyField?.value != nil {
-                    self.companyTextField.text = self.cardCompanyField?.value
+                    self.companyTextField.text = self.cardCompanyField?.value.uppercased()
                     print("Card Type confidence ==> \(self.cardCompanyField!.confidence)")
                     
                     if self.cardCompanyField!.confidence < 0.80 {

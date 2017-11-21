@@ -16,6 +16,7 @@
                 <outlet property="authenticationURLField" destination="ryv-sh-j7d" id="EYP-ba-aPY"/>
                 <outlet property="mobileIDVersionContainer" destination="hA2-aO-BS8" id="8If-nQ-X9k"/>
                 <outlet property="mobileIDVersionSegmentedControl" destination="JTx-yu-WrD" id="q3m-zm-mi4"/>
+                <outlet property="parentViewHeight" destination="dgJ-fg-J6o" id="C1d-kE-sfG"/>
                 <outlet property="processIdentityNameField" destination="rt8-OY-z5g" id="pBA-Ye-V74"/>
                 <outlet property="serverUrlField" destination="qSK-KY-0Px" id="Cc7-Kn-BuC"/>
                 <outlet property="sessionIDField" destination="6Uh-dK-hCl" id="E3V-MD-RLB"/>
@@ -34,6 +35,338 @@
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vWV-N1-Ccx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRe-rM-3NR" userLabel="SettingsNameLabel">
+                                <rect key="frame" x="16" y="98" width="343" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.32156862749999998" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iff-RH-Dj4" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                <rect key="frame" x="52" y="129" width="270" height="409"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PBP-Ru-4mK">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="409"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLu-an-X3N" userLabel="ServerURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="65"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSK-KY-0Px">
+                                                        <rect key="frame" x="8" y="27" width="254" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="ZHe-vS-b4s"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-1" id="sc4-YF-8nf"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcw-7c-VNW">
+                                                        <rect key="frame" x="8" y="8" width="254" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="oZS-OR-ZHz"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="bcw-7c-VNW" firstAttribute="leading" secondItem="YLu-an-X3N" secondAttribute="leading" constant="8" id="4Wz-Oz-UVo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bcw-7c-VNW" secondAttribute="trailing" constant="8" id="4fb-Qx-TQw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qSK-KY-0Px" secondAttribute="trailing" constant="8" id="7ST-u3-ONU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qSK-KY-0Px" secondAttribute="bottom" constant="8" id="D9v-Ze-FZl"/>
+                                                    <constraint firstItem="qSK-KY-0Px" firstAttribute="leading" secondItem="YLu-an-X3N" secondAttribute="leading" constant="8" id="YHD-P4-2sd"/>
+                                                    <constraint firstItem="bcw-7c-VNW" firstAttribute="top" secondItem="YLu-an-X3N" secondAttribute="top" constant="8" id="iyd-6t-2Og"/>
+                                                    <constraint firstAttribute="height" constant="65" id="waT-A4-HYP"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MN-Me-QZW" userLabel="ProcessIdentityNameContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="65" width="270" height="65"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KofaxBillPaySync" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rt8-OY-z5g">
+                                                        <rect key="frame" x="8" y="27" width="254" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="4R3-85-Jf9"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-1" id="6LN-ei-Q4y"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Process Identity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcu-4Y-0Cx">
+                                                        <rect key="frame" x="8" y="8" width="254" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="ARM-qM-X9P"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="Xcu-4Y-0Cx" firstAttribute="leading" secondItem="6MN-Me-QZW" secondAttribute="leading" constant="8" id="5Nf-KR-Jcb"/>
+                                                    <constraint firstItem="Xcu-4Y-0Cx" firstAttribute="top" secondItem="6MN-Me-QZW" secondAttribute="top" constant="8" id="FTP-tR-wdK"/>
+                                                    <constraint firstItem="rt8-OY-z5g" firstAttribute="leading" secondItem="6MN-Me-QZW" secondAttribute="leading" constant="8" id="MPx-rl-p8B"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rt8-OY-z5g" secondAttribute="trailing" constant="8" id="Oxf-2a-1RH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Xcu-4Y-0Cx" secondAttribute="trailing" constant="8" id="avV-2C-msC"/>
+                                                    <constraint firstAttribute="height" constant="65" id="dng-eo-khl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rt8-OY-z5g" secondAttribute="bottom" constant="8" id="naL-zI-NPB"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0L-zq-yUJ" userLabel="SessionIDContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="130" width="270" height="65"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="C640521793431F4486D4EF1586672385" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uh-dK-hCl">
+                                                        <rect key="frame" x="8" y="27" width="254" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="P21-Lg-ad7"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-1" id="M9g-uc-wMS"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-k5-0ZL">
+                                                        <rect key="frame" x="8" y="8" width="254" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="O6d-el-QxW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="65" id="Bwc-qg-lxv"/>
+                                                    <constraint firstItem="tBV-k5-0ZL" firstAttribute="top" secondItem="h0L-zq-yUJ" secondAttribute="top" constant="8" id="Dx8-NV-MFe"/>
+                                                    <constraint firstItem="tBV-k5-0ZL" firstAttribute="leading" secondItem="h0L-zq-yUJ" secondAttribute="leading" constant="8" id="HvD-zT-Zoj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6Uh-dK-hCl" secondAttribute="bottom" constant="8" id="I9y-qR-oyE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tBV-k5-0ZL" secondAttribute="trailing" constant="8" id="i8u-Ug-Ibg"/>
+                                                    <constraint firstItem="6Uh-dK-hCl" firstAttribute="leading" secondItem="h0L-zq-yUJ" secondAttribute="leading" constant="8" id="mSX-Ci-X4r"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6Uh-dK-hCl" secondAttribute="trailing" constant="8" id="vcT-Jm-koI"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ljR-N3-B3J" userLabel="AuthenticationStackView">
+                                                <rect key="frame" x="0.0" y="195" width="270" height="214"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUTHENTICATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV4-c2-YtQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="21"/>
+                                                        <color key="backgroundColor" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="kJ2-2O-73U"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-aO-BS8" userLabel="MobileIDVersionContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="21" width="270" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile ID Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etu-Bp-jga">
+                                                                <rect key="frame" x="8" y="8" width="123" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="123" id="fZg-vv-32V"/>
+                                                                    <constraint firstAttribute="height" constant="21" id="icL-jM-Q3M"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                                <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="JTx-yu-WrD" userLabel="MobileIDSegmentedControl">
+                                                                <rect key="frame" x="176" y="8" width="77" height="29"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <segments>
+                                                                    <segment title="1.X"/>
+                                                                    <segment title="2.X"/>
+                                                                </segments>
+                                                                <connections>
+                                                                    <action selector="onSegmentedControlSelection:" destination="-1" eventType="valueChanged" id="ATi-h9-aAp"/>
+                                                                    <action selector="segmentedControlWillChangeSelection:" destination="-1" eventType="editingDidBegin" id="Yge-RB-r3K"/>
+                                                                </connections>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Etu-Bp-jga" firstAttribute="leading" secondItem="hA2-aO-BS8" secondAttribute="leading" constant="8" id="IdT-S6-uEf"/>
+                                                            <constraint firstAttribute="height" constant="45" id="Ws7-Fh-yv1"/>
+                                                            <constraint firstItem="Etu-Bp-jga" firstAttribute="top" secondItem="hA2-aO-BS8" secondAttribute="top" constant="8" id="bER-UQ-hQ7"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-Cc-t18">
+                                                        <rect key="frame" x="0.0" y="66" width="270" height="148"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCw-4r-yzy" userLabel="AuthenticationURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="74"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-sh-j7d">
+                                                                        <rect key="frame" x="8" y="36" width="254" height="30"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="30" id="XOm-1u-bVf"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="-1" id="BUd-9W-NHQ"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authentication URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix5-p8-P3k">
+                                                                        <rect key="frame" x="8" y="8" width="254" height="21"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="21" id="McU-RJ-2nt"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="ix5-p8-P3k" secondAttribute="trailing" constant="8" id="9SJ-nZ-w5W"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ryv-sh-j7d" secondAttribute="bottom" constant="8" id="Box-sX-36h"/>
+                                                                    <constraint firstAttribute="height" constant="74" id="SQJ-Lr-GJZ"/>
+                                                                    <constraint firstItem="ix5-p8-P3k" firstAttribute="leading" secondItem="oCw-4r-yzy" secondAttribute="leading" constant="8" id="dQa-JB-ZDd"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="ryv-sh-j7d" secondAttribute="trailing" constant="8" id="fYa-Ov-xqV"/>
+                                                                    <constraint firstItem="ix5-p8-P3k" firstAttribute="top" secondItem="oCw-4r-yzy" secondAttribute="top" constant="8" id="wP7-rx-Xq6"/>
+                                                                    <constraint firstItem="ryv-sh-j7d" firstAttribute="leading" secondItem="oCw-4r-yzy" secondAttribute="leading" constant="8" id="wcq-RR-Wcb"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbe-Xd-OcM" userLabel="AuthenticationProcessIdentityNameContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="74" width="270" height="74"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KofaxMobileIdFacialRecognition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJQ-qo-nSk">
+                                                                        <rect key="frame" x="8" y="36" width="254" height="30"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="30" id="uxc-OD-XUj"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="-1" id="DP4-Rh-nyV"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Process Identity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOo-Ni-Vtg">
+                                                                        <rect key="frame" x="8" y="8" width="254" height="21"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="21" id="Jwf-fM-4ZA"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="oJQ-qo-nSk" secondAttribute="bottom" constant="8" id="0Ej-UV-tvh"/>
+                                                                    <constraint firstItem="oJQ-qo-nSk" firstAttribute="leading" secondItem="fbe-Xd-OcM" secondAttribute="leading" constant="8" id="2R0-7L-2Wm"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="IOo-Ni-Vtg" secondAttribute="trailing" constant="8" id="3gw-qv-FDk"/>
+                                                                    <constraint firstAttribute="height" constant="74" id="CTA-ln-yeK"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="oJQ-qo-nSk" secondAttribute="trailing" constant="8" id="J1S-aR-Ib6"/>
+                                                                    <constraint firstItem="IOo-Ni-Vtg" firstAttribute="top" secondItem="fbe-Xd-OcM" secondAttribute="top" constant="8" id="YC6-1a-UM1"/>
+                                                                    <constraint firstItem="IOo-Ni-Vtg" firstAttribute="leading" secondItem="fbe-Xd-OcM" secondAttribute="leading" constant="8" id="vAC-7n-9DO"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="PBP-Ru-4mK" firstAttribute="leading" secondItem="iff-RH-Dj4" secondAttribute="leading" id="6KP-Zy-PAL"/>
+                                    <constraint firstItem="PBP-Ru-4mK" firstAttribute="top" secondItem="iff-RH-Dj4" secondAttribute="top" id="F8H-wO-TR4"/>
+                                    <constraint firstAttribute="trailing" secondItem="PBP-Ru-4mK" secondAttribute="trailing" id="ZPv-lV-vu9"/>
+                                    <constraint firstAttribute="height" constant="409" id="dgJ-fg-J6o"/>
+                                    <constraint firstAttribute="width" constant="270" id="vBw-UK-Jpf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0I7-HF-hS8" appends="YES" id="mZC-EF-4Ok"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DRe-rM-3NR" secondAttribute="trailing" constant="16" id="EEX-m1-0Hx"/>
+                            <constraint firstItem="DRe-rM-3NR" firstAttribute="leading" secondItem="vWV-N1-Ccx" secondAttribute="leading" constant="16" id="KyX-Sm-fSs"/>
+                            <constraint firstItem="iff-RH-Dj4" firstAttribute="top" secondItem="DRe-rM-3NR" secondAttribute="bottom" constant="9" id="Wrg-fB-fLN"/>
+                            <constraint firstItem="iff-RH-Dj4" firstAttribute="centerX" secondItem="vWV-N1-Ccx" secondAttribute="centerX" id="WxA-BW-HMS"/>
+                            <constraint firstItem="iff-RH-Dj4" firstAttribute="centerY" secondItem="vWV-N1-Ccx" secondAttribute="centerY" id="rNf-Lh-90f"/>
+                        </constraints>
                     </view>
                     <gestureRecognizers/>
                     <blurEffect style="light"/>
@@ -41,342 +374,14 @@
                         <outletCollection property="gestureRecognizers" destination="a5Z-WR-aif" appends="YES" id="icF-ql-s9S"/>
                     </connections>
                 </visualEffectView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iff-RH-Dj4" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                    <rect key="frame" x="52.5" y="108.5" width="270" height="450"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRe-rM-3NR" userLabel="SettingsNameLabel">
-                            <rect key="frame" x="8" y="16" width="254" height="19.5"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
-                            <color key="textColor" red="0.23093501329999999" green="0.18637529310000001" blue="0.026702002579999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PBP-Ru-4mK">
-                            <rect key="frame" x="0.0" y="36" width="270" height="409"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLu-an-X3N" userLabel="ServerURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="270" height="65"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSK-KY-0Px">
-                                            <rect key="frame" x="8" y="27" width="254" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="ZHe-vS-b4s"/>
-                                            </constraints>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="sc4-YF-8nf"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcw-7c-VNW">
-                                            <rect key="frame" x="8" y="8" width="254" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="oZS-OR-ZHz"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="bcw-7c-VNW" firstAttribute="leading" secondItem="YLu-an-X3N" secondAttribute="leading" constant="8" id="4Wz-Oz-UVo"/>
-                                        <constraint firstAttribute="trailing" secondItem="bcw-7c-VNW" secondAttribute="trailing" constant="8" id="4fb-Qx-TQw"/>
-                                        <constraint firstAttribute="trailing" secondItem="qSK-KY-0Px" secondAttribute="trailing" constant="8" id="7ST-u3-ONU"/>
-                                        <constraint firstAttribute="bottom" secondItem="qSK-KY-0Px" secondAttribute="bottom" constant="8" id="D9v-Ze-FZl"/>
-                                        <constraint firstItem="qSK-KY-0Px" firstAttribute="leading" secondItem="YLu-an-X3N" secondAttribute="leading" constant="8" id="YHD-P4-2sd"/>
-                                        <constraint firstItem="bcw-7c-VNW" firstAttribute="top" secondItem="YLu-an-X3N" secondAttribute="top" constant="8" id="iyd-6t-2Og"/>
-                                        <constraint firstAttribute="height" constant="65" id="waT-A4-HYP"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MN-Me-QZW" userLabel="ProcessIdentityNameContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="65" width="270" height="65"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KofaxBillPaySync" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rt8-OY-z5g">
-                                            <rect key="frame" x="8" y="27" width="254" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="4R3-85-Jf9"/>
-                                            </constraints>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="6LN-ei-Q4y"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Process Identity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcu-4Y-0Cx">
-                                            <rect key="frame" x="8" y="8" width="254" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="ARM-qM-X9P"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="Xcu-4Y-0Cx" firstAttribute="leading" secondItem="6MN-Me-QZW" secondAttribute="leading" constant="8" id="5Nf-KR-Jcb"/>
-                                        <constraint firstItem="Xcu-4Y-0Cx" firstAttribute="top" secondItem="6MN-Me-QZW" secondAttribute="top" constant="8" id="FTP-tR-wdK"/>
-                                        <constraint firstItem="rt8-OY-z5g" firstAttribute="leading" secondItem="6MN-Me-QZW" secondAttribute="leading" constant="8" id="MPx-rl-p8B"/>
-                                        <constraint firstAttribute="trailing" secondItem="rt8-OY-z5g" secondAttribute="trailing" constant="8" id="Oxf-2a-1RH"/>
-                                        <constraint firstAttribute="trailing" secondItem="Xcu-4Y-0Cx" secondAttribute="trailing" constant="8" id="avV-2C-msC"/>
-                                        <constraint firstAttribute="height" constant="65" id="dng-eo-khl"/>
-                                        <constraint firstAttribute="bottom" secondItem="rt8-OY-z5g" secondAttribute="bottom" constant="8" id="naL-zI-NPB"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0L-zq-yUJ" userLabel="SessionIDContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="130" width="270" height="65"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="C640521793431F4486D4EF1586672385" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uh-dK-hCl">
-                                            <rect key="frame" x="8" y="27" width="254" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="P21-Lg-ad7"/>
-                                            </constraints>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="M9g-uc-wMS"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-k5-0ZL">
-                                            <rect key="frame" x="8" y="8" width="254" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="O6d-el-QxW"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="65" id="Bwc-qg-lxv"/>
-                                        <constraint firstItem="tBV-k5-0ZL" firstAttribute="top" secondItem="h0L-zq-yUJ" secondAttribute="top" constant="8" id="Dx8-NV-MFe"/>
-                                        <constraint firstItem="tBV-k5-0ZL" firstAttribute="leading" secondItem="h0L-zq-yUJ" secondAttribute="leading" constant="8" id="HvD-zT-Zoj"/>
-                                        <constraint firstAttribute="bottom" secondItem="6Uh-dK-hCl" secondAttribute="bottom" constant="8" id="I9y-qR-oyE"/>
-                                        <constraint firstAttribute="trailing" secondItem="tBV-k5-0ZL" secondAttribute="trailing" constant="8" id="i8u-Ug-Ibg"/>
-                                        <constraint firstItem="6Uh-dK-hCl" firstAttribute="leading" secondItem="h0L-zq-yUJ" secondAttribute="leading" constant="8" id="mSX-Ci-X4r"/>
-                                        <constraint firstAttribute="trailing" secondItem="6Uh-dK-hCl" secondAttribute="trailing" constant="8" id="vcT-Jm-koI"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ljR-N3-B3J" userLabel="AuthenticationStackView">
-                                    <rect key="frame" x="0.0" y="195" width="270" height="214"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUTHENTICATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV4-c2-YtQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="21"/>
-                                            <color key="backgroundColor" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="kJ2-2O-73U"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
-                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-aO-BS8" userLabel="MobileIDVersionContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="21" width="270" height="45"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile ID Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etu-Bp-jga">
-                                                    <rect key="frame" x="8" y="8" width="123" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="123" id="fZg-vv-32V"/>
-                                                        <constraint firstAttribute="height" constant="21" id="icL-jM-Q3M"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="JTx-yu-WrD" userLabel="MobileIDSegmentedControl">
-                                                    <rect key="frame" x="176" y="8" width="77" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <segments>
-                                                        <segment title="1.X"/>
-                                                        <segment title="2.X"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="onSegmentedControlSelection:" destination="-1" eventType="valueChanged" id="ATi-h9-aAp"/>
-                                                        <action selector="segmentedControlWillChangeSelection:" destination="-1" eventType="editingDidBegin" id="Yge-RB-r3K"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="Etu-Bp-jga" firstAttribute="leading" secondItem="hA2-aO-BS8" secondAttribute="leading" constant="8" id="IdT-S6-uEf"/>
-                                                <constraint firstAttribute="height" constant="45" id="Ws7-Fh-yv1"/>
-                                                <constraint firstItem="Etu-Bp-jga" firstAttribute="top" secondItem="hA2-aO-BS8" secondAttribute="top" constant="8" id="bER-UQ-hQ7"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                    <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="0.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-Cc-t18">
-                                            <rect key="frame" x="0.0" y="66" width="270" height="148"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCw-4r-yzy" userLabel="AuthenticationURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="74"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-sh-j7d">
-                                                            <rect key="frame" x="8" y="36" width="254" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="XOm-1u-bVf"/>
-                                                            </constraints>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="-1" id="BUd-9W-NHQ"/>
-                                                            </connections>
-                                                        </textField>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authentication URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix5-p8-P3k">
-                                                            <rect key="frame" x="8" y="8" width="254" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="McU-RJ-2nt"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="ix5-p8-P3k" secondAttribute="trailing" constant="8" id="9SJ-nZ-w5W"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ryv-sh-j7d" secondAttribute="bottom" constant="8" id="Box-sX-36h"/>
-                                                        <constraint firstAttribute="height" constant="74" id="SQJ-Lr-GJZ"/>
-                                                        <constraint firstItem="ix5-p8-P3k" firstAttribute="leading" secondItem="oCw-4r-yzy" secondAttribute="leading" constant="8" id="dQa-JB-ZDd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ryv-sh-j7d" secondAttribute="trailing" constant="8" id="fYa-Ov-xqV"/>
-                                                        <constraint firstItem="ix5-p8-P3k" firstAttribute="top" secondItem="oCw-4r-yzy" secondAttribute="top" constant="8" id="wP7-rx-Xq6"/>
-                                                        <constraint firstItem="ryv-sh-j7d" firstAttribute="leading" secondItem="oCw-4r-yzy" secondAttribute="leading" constant="8" id="wcq-RR-Wcb"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbe-Xd-OcM" userLabel="AuthenticationProcessIdentityNameContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="74" width="270" height="74"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KofaxMobileIdFacialRecognition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJQ-qo-nSk">
-                                                            <rect key="frame" x="8" y="36" width="254" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="uxc-OD-XUj"/>
-                                                            </constraints>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="-1" id="DP4-Rh-nyV"/>
-                                                            </connections>
-                                                        </textField>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Process Identity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOo-Ni-Vtg">
-                                                            <rect key="frame" x="8" y="8" width="254" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="Jwf-fM-4ZA"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                                            <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="oJQ-qo-nSk" secondAttribute="bottom" constant="8" id="0Ej-UV-tvh"/>
-                                                        <constraint firstItem="oJQ-qo-nSk" firstAttribute="leading" secondItem="fbe-Xd-OcM" secondAttribute="leading" constant="8" id="2R0-7L-2Wm"/>
-                                                        <constraint firstAttribute="trailing" secondItem="IOo-Ni-Vtg" secondAttribute="trailing" constant="8" id="3gw-qv-FDk"/>
-                                                        <constraint firstAttribute="height" constant="74" id="CTA-ln-yeK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="oJQ-qo-nSk" secondAttribute="trailing" constant="8" id="J1S-aR-Ib6"/>
-                                                        <constraint firstItem="IOo-Ni-Vtg" firstAttribute="top" secondItem="fbe-Xd-OcM" secondAttribute="top" constant="8" id="YC6-1a-UM1"/>
-                                                        <constraint firstItem="IOo-Ni-Vtg" firstAttribute="leading" secondItem="fbe-Xd-OcM" secondAttribute="leading" constant="8" id="vAC-7n-9DO"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="DRe-rM-3NR" secondAttribute="trailing" constant="8" id="1w2-0g-0ZR"/>
-                        <constraint firstItem="PBP-Ru-4mK" firstAttribute="leading" secondItem="iff-RH-Dj4" secondAttribute="leading" id="6KP-Zy-PAL"/>
-                        <constraint firstItem="DRe-rM-3NR" firstAttribute="top" secondItem="iff-RH-Dj4" secondAttribute="top" constant="16" id="6VX-7W-mPo"/>
-                        <constraint firstAttribute="trailing" secondItem="PBP-Ru-4mK" secondAttribute="trailing" id="ZPv-lV-vu9"/>
-                        <constraint firstAttribute="height" constant="450" id="dgJ-fg-J6o"/>
-                        <constraint firstItem="DRe-rM-3NR" firstAttribute="leading" secondItem="iff-RH-Dj4" secondAttribute="leading" constant="8" id="oi0-H2-PJz"/>
-                        <constraint firstItem="PBP-Ru-4mK" firstAttribute="top" secondItem="DRe-rM-3NR" secondAttribute="bottom" id="p2d-PD-e6p"/>
-                        <constraint firstAttribute="width" constant="270" id="vBw-UK-Jpf"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                            <real key="value" value="0.29999999999999999"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                            <size key="value" width="1" height="1"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                            <color key="value" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="0I7-HF-hS8" appends="YES" id="mZC-EF-4Ok"/>
-                    </connections>
-                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="Z9e-Fw-Qme" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4OU-8E-kN0"/>
-                <constraint firstItem="iff-RH-Dj4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DMc-cQ-Mal"/>
                 <constraint firstItem="Z9e-Fw-Qme" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KXu-2E-Cpb"/>
                 <constraint firstAttribute="trailing" secondItem="Z9e-Fw-Qme" secondAttribute="trailing" id="Nwm-YY-VUV"/>
                 <constraint firstAttribute="bottom" secondItem="Z9e-Fw-Qme" secondAttribute="bottom" id="Qiw-WO-qFa"/>
-                <constraint firstItem="iff-RH-Dj4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hVn-ZM-OQ2"/>
             </constraints>
-            <point key="canvasLocation" x="-26" y="-27"/>
+            <point key="canvasLocation" x="-26.5" y="-27.5"/>
         </view>
         <tapGestureRecognizer id="a5Z-WR-aif">
             <connections>

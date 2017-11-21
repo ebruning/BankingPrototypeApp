@@ -30,6 +30,9 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var authenticationProcessIdentityNameField: UITextField!
     
+    @IBOutlet weak var parentViewHeight: NSLayoutConstraint!
+    
+    //@IBOutlet weak var outerContainerHeight: NSLayoutConstraint!
     
     //MARK: Public variables
     
@@ -44,6 +47,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
             hideNavigationBar()
+            initialize()
         
             loadFields(forAppComponent: applicationComponentName)
     }
@@ -71,7 +75,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    // MARK: Private methods
+    // MARK: Public methods
 
     func close() {
         
@@ -85,6 +89,13 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
             self.dismiss(animated: true, completion: nil)
         }, completion: nil)
         
+    }
+
+    // MARK: Private methods
+
+    private func initialize() {
+        stackContainerForIDSettings.isHidden = true
+        parentViewHeight.constant = 195
     }
 
     
@@ -164,6 +175,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
             //hide authentication fields container
             authenticationContainerViewFor2X.isHidden = true
             
+            parentViewHeight.constant = 260
         } else {    // Mobile ID -- 2.x
             mobileIDVersionSegmentedControl.selectedSegmentIndex = 1
             processIdentityNameField.text = UserDefaults.standard.value(forKey: KEY_ID_PROCESS_IDENTITY_NAME_2X) as? String
@@ -173,6 +185,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
             
             //Show authentication fields container
             authenticationContainerViewFor2X.isHidden = false
+            parentViewHeight.constant = 409
         }
     }
     

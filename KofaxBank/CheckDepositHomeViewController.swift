@@ -240,7 +240,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
 
     func onCancelPressed() {
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the check deposit process.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the check deposit process.\n\nDo you want to continue?", positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
             print("Positive response selected")
             
             self.delegate?.checkDepositCancelled()

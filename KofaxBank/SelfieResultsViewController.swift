@@ -151,7 +151,7 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func onBackPressed() {
         
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will reset the verification results.\n\nDo you want to continue?", positiveActionTitle: "YES", negativeActionTitle: "NO", positiveActionResponse: {
+        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will reset the verification results.\n\nDo you want to continue?", positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
             print("Positive response selected")
             
             self.delegate?.backFromSelfieResultScreen()

@@ -539,22 +539,59 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
             
             //We need to send login credentials to the server if the server type is KTA.
-            let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
+                let urlString = getServerUrlString()
+                let url = URL.init(string: urlString)
+//            let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
 
 //            let serverURL: URL! = URL.init(string: "http://win2012r2-kta.kofax.com/totalagility/services/sdk/")
             //let serverURL: URL! = URL.init(string: "http://hyd-mob-kta73.asia.kofax.com/totalagility/services/sdk/")
             parameters.setValue("Detect", forKey: "ExtractMethod")
             parameters.setValue("false", forKey: "ImagePerfection")
-            parameters.setValue("KofaxCardCaptureSync", forKey: "processIdentityName")
 
-            //let sessionId = UserDefaults.standard.value(forKey: "SessionId") as! String
-            let sessionId = "C640521793431F4486D4EF1586672385"  //TODO: define this session ID at a common place
+            let processIdentityName = getProcessIdentityName()
+            parameters.setValue(processIdentityName, forKey: "processIdentityName")
+
+            let sessionId = getSessionId()
             parameters.setValue(sessionId, forKey: "sessionId")
 
             parameters.setValue("0", forKey: "storeFolderAndDocuments")
             
-             extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: processedImage), serverUrl: serverURL, paramsDict: parameters, imageMimeType: MIMETYPE_JPG)
+             extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: processedImage), serverUrl: url!, paramsDict: parameters, imageMimeType: MIMETYPE_JPG)
         }
+    }
+    
+    private func getServerUrlString() -> String {
+        let urlString = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_URL)
+        
+        print("Credit card URL ::: \(urlString as! String)")
+        
+        if urlString != nil {
+            return urlString as! String
+        }
+        return ""
+    }
+
+    
+    private func getSessionId() -> String {
+        let sessionID = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_SESSION_ID)
+        
+        print("Credit card sessionID ::: \(sessionID as! String)")
+        
+        if sessionID != nil {
+            return sessionID as! String
+        }
+        return ""
+    }
+
+    private func getProcessIdentityName() -> String {
+        let processIdentityName = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_PROCESS_IDENTITY_NAME)
+        
+        print("Credit card Process Identity Name ::: \(processIdentityName as! String)")
+        
+        if processIdentityName != nil {
+            return processIdentityName as! String
+        }
+        return ""
     }
     
     override func extractionSucceeded(statusCode: NSInteger, results: Data) {
