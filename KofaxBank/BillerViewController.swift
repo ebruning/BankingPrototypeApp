@@ -28,9 +28,9 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     
     @IBOutlet weak var pickerDoneButton: UIButton!
 
-    @IBOutlet weak var payeeButton: UIButton!
+    @IBOutlet weak var payeeField: UITextField!
     
-    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var accountField: UITextField!
     
     @IBOutlet weak var amountTextField: UITextField!
 
@@ -48,9 +48,9 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
 
     private var billManager: BillManager? = nil
 
-    private var wasNavigationHidden: Bool = false
-    private var oldBarTintColor: UIColor!
-    private var oldStatusBarStyle: UIStatusBarStyle!
+//    private var wasNavigationHidden: Bool = false
+//    private var oldBarTintColor: UIColor!
+//    private var oldStatusBarStyle: UIStatusBarStyle!
 
     private var accounts = [AccountsMaster]()
     private var billers = [BillerMaster]()
@@ -60,6 +60,8 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     private var selectedAccount: AccountsMaster! = nil
     private var selectedBiller: BillerMaster! = nil
 
+    
+    private var settingsPopup: SettingsPopupViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,12 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         fetchAccounts()
         fetchBillers()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        customizeNavigationBar()
+    }
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -85,21 +92,35 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     }
 
     private func initialize() {
-        customizeNavigationBar()
 
-        selectedBiller = nil
-        selectedAccount = nil
+        reset()
+
         selectionType = SelectionType.ACCOUNT
         
         self.tabBarController?.delegate = self
         self.pickerView.delegate = self
     }
     
+    private func reset() {
+        self.selectedBiller = nil
+        self.selectedAccount = nil
+        self.amountTextField.text = ""
+
+        self.payeeField.text = ""
+        self.accountField.text = ""
+    }
+    
     private func clear() {
         //restoreNavigationBar()
         accounts.removeAll()
         billers.removeAll()
-        self.selectedBiller = nil
+        
+        if settingsPopup != nil {
+            settingsPopup.close()
+            settingsPopup.dismiss(animated: false, completion: nil)
+            settingsPopup.removeFromParentViewController()
+            
+        }
         
         if self.billManager != nil {
             self.billManager?.delegate = nil
@@ -131,23 +152,47 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
 
     private func customizeNavigationBar() {
 
-        oldStatusBarStyle = UIApplication.shared.statusBarStyle
-        oldBarTintColor = navigationController?.navigationBar.tintColor
+        UIApplication.shared.isStatusBarHidden = false
         
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
+        //remove back button title from navigationbar
+        navigationController?.navigationBar.backItem?.title = ""
+        let backImage = UIImage(named: "back_white")!
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         
+        let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
+         
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+         
+         self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+ 
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
-    private func restoreNavigationBar() {
-        UIApplication.shared.statusBarStyle = oldStatusBarStyle
-        navigationController?.navigationBar.tintColor = oldBarTintColor
-        navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
+    
+    func logout() {
+        print("Logout!!!")
     }
 
+    func showSettingsPopup() {
+        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
+        self.settingsPopup.applicationComponentName = AppComponent.BILL
+        
+        
+        self.addChildViewController(self.settingsPopup)
+        self.settingsPopup.view.frame = self.view.frame
+        
+        self.view.addSubview(self.settingsPopup.view)
+        self.settingsPopup.view.alpha = 0
+        self.settingsPopup.didMove(toParentViewController: self)
+        
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.settingsPopup.view.alpha = 1
+        }, completion: nil)
+        
+    }
     
     //MARK Tabbar controller delegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -172,8 +217,8 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
             if selectedAccount.balance > amount {
                 
                 let billTransaction = BillTransactions(context: context)
-                billTransaction.name = payeeButton.titleLabel?.text
-                billTransaction.accountNumber = accountButton.titleLabel?.text
+                billTransaction.name = payeeField.text
+                billTransaction.accountNumber = accountField.text
                 billTransaction.amountDue = amount
                 billTransaction.billDate = Date() as NSDate
                 billTransaction.comment = "Bill paid for existing biller"
@@ -186,14 +231,13 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
                 transaction.type = TransactionType.DEBIT.rawValue
                 transaction.billTransaction = billTransaction
                 transaction.dateOfTransaction = Date() as NSDate
-                
+
                 //save bill data
                 ad.saveContext()
-                
+
                 Utility.showAlert(onViewController: self, titleString: "", messageString: "Bill is paid.")
-                amountTextField.text = ""
-                selectedAccount = nil
-                selectedBiller = nil
+                
+                reset()
             } else {
                 Utility.showAlert(onViewController: self, titleString: "Insufficient Balance", messageString: "Make sure your account has enough balance to pay the bill.")
             }
@@ -243,33 +287,31 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         navigationController?.popViewController(animated: true)
     }
 */
-    @IBAction func selectPayee(_ sender: UIButton) {
+    @IBAction func selectPayee(_ sender: UITapGestureRecognizer) {
         pickerContainerView.isHidden = false
         
         selectionType = SelectionType.BILLER
         
         if billers.count > 0 {
-//            pickerViewSelectedRow = 0
             pickerView.reloadAllComponents()
             pickerView.selectRow(0, inComponent: 0, animated: true)
         } else {
             Utility.showAlert(onViewController: self, titleString: "", messageString: "No Billers Available")
         }
     }
-
-    @IBAction func selectAccount(_ sender: UIButton) {
+    @IBAction func selectAccount(_ sender: UITapGestureRecognizer) {
         pickerContainerView.isHidden = false
         
         selectionType = SelectionType.ACCOUNT
-
+        
         if accounts.count > 0 {
-//            pickerViewSelectedRow = 0
             pickerView.reloadAllComponents()
             pickerView.selectRow(0, inComponent: 0, animated: true)
         } else {
             Utility.showAlert(onViewController: self, titleString: "", messageString: "No Accounts Available")
         }
     }
+
 
     @IBAction func openBillPayScreen(_ sender: UIButton) {
         if selectedAccount  == nil {
@@ -358,14 +400,18 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         
         if selectionType == SelectionType.ACCOUNT {
             selectedAccount = accounts[pickerViewSelectedRow]
-            accountButton.titleLabel?.text = selectedAccount.accountNumber
+            accountField.text = selectedAccount.accountNumber
         } else if selectionType == SelectionType.BILLER {
             selectedBiller = billers[pickerViewSelectedRow]
-            payeeButton.titleLabel?.text = selectedBiller.name
+            payeeField.text = selectedBiller.name
         }
 
         pickerContainerView.isHidden = true
     }
     
+    
+    //MARK: Setting popup methods and delegate
+    
+
     
 }

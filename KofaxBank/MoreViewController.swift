@@ -178,6 +178,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         }
         
         Utility.loadDatabaseWithDefaultsIfEmpty()
+        Utility.resetUserDefaults()
     }
     
     

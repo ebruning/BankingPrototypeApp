@@ -14,7 +14,7 @@ protocol BillDataPreviewDelegate {
     func billPreviewOnCancelData()
 }
 
-class BillDataPreviewViewController: UIViewController {
+class BillDataPreviewViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var mainView: UIView!
     
@@ -234,15 +234,64 @@ class BillDataPreviewViewController: UIViewController {
                 print("zip => \(self.billData!.zip.value)")
 
                 self.amountTextField.text = self.billData!.amount.value
+                if (self.billData!.amount.confidence <= 0.80) {
+                    self.amountTextField.textColor = UIColor.red
+                }
+                print("amount.confidence ==> \(self.billData!.amount.confidence)")
+                
                 self.accountNumberTextField.text = self.billData!.accountNumber.value
+                print("accountNumber.confidence ==> \(self.billData!.accountNumber.confidence)")
+                if (self.billData!.accountNumber.confidence <= 0.80) {
+                    self.accountNumberTextField.textColor = UIColor.red
+                }
+                
                 self.dueDateTextField.text = self.billData!.dueDate.value
+                print("dueDate.confidence ==> \(self.billData!.dueDate.confidence)")
+                if (self.billData!.dueDate.confidence <= 0.80) {
+                    self.dueDateTextField.textColor = UIColor.red
+                }
+                
                 self.nameTextField.text = self.billData!.name.value
+                print("name.confidence ==> \(self.billData!.name.confidence)")
+                if (self.billData!.name.confidence <= 0.80) {
+                    self.nameTextField.textColor = UIColor.red
+                }
+                
                 self.phoneNumberTextField.text = self.billData!.phoneNumber.value
+                print("phoneNumber.confidence ==> \(self.billData!.phoneNumber.confidence)")
+                if (self.billData!.phoneNumber.confidence <= 0.80) {
+                    self.phoneNumberTextField.textColor = UIColor.red
+                }
+                
                 self.address1TextField.text = self.billData!.addressLine1.value
+                print("addressLine1.confidence ==> \(self.billData!.addressLine1.confidence)")
+                if (self.billData!.addressLine1.confidence <= 0.80) {
+                    self.address1TextField.textColor = UIColor.red
+                }
+                
                 self.address2TextField.text = self.billData!.addressLine2.value
+                print("addressLine2.confidence ==> \(self.billData!.addressLine2.confidence)")
+                if (self.billData!.addressLine2.confidence <= 0.80) {
+                    self.address2TextField.textColor = UIColor.red
+                }
+                
                 self.cityTextField.text = self.billData!.city.value
+                print("city.confidence ==> \(self.billData!.city.confidence)")
+                if (self.billData!.city.confidence <= 0.80) {
+                    self.cityTextField.textColor = UIColor.red
+                }
+                
                 self.stateTextField.text = self.billData!.state.value
+                print("state.confidence ==> \(self.billData!.state.confidence)")
+                if (self.billData!.state.confidence <= 0.80) {
+                    self.stateTextField.textColor = UIColor.red
+                }
+                
                 self.zipTextField.text = self.billData!.zip.value
+                print("zip.confidence ==> \(self.billData!.zip.confidence)")
+                if (self.billData!.zip.confidence <= 0.80) {
+                    self.zipTextField.textColor = UIColor.red
+                }
             }
         }
     }
@@ -621,6 +670,7 @@ class BillDataPreviewViewController: UIViewController {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        textField.textColor = UIColor.init(rgb: 0x525054)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

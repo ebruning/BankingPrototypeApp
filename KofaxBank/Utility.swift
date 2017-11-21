@@ -388,6 +388,45 @@ class Utility {
         }
     }
     
+    
+    class func resetUserDefaults() {
+        
+        //region properties
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_MODEL_FILE, forKey: KEY_ID_REGION_PLIST_FILE_NAME)
+        
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_REGION_NAME, forKey: KEY_ID_REGION_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_CODE, forKey: KEY_ID_COUNTRY_CODE)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_DISPLAY_NAME, forKey: KEY_ID_COUNTRY_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_FLAG_IMAGE_NAME, forKey: KEY_ID_REGION_FLAG_NAME)
+        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_IMAGE_RESIZE, forKey: KEY_ID_IMAGE_RESIZE)
+        
+        //Bill Server Settings
+        
+        UserDefaults.standard.set(DEFAULT_BILLPAY_SERVER_URL, forKey: KEY_BILLPAY_SERVER_URL)
+        UserDefaults.standard.set(DEFAULT_BILLPAY_PROCESS_IDENTITY_NAME, forKey: KEY_BILLPAY_PROCESS_IDENTITY_NAME)
+        UserDefaults.standard.set(DEFAULT_BILLPAY_SESSION_ID, forKey: KEY_BILLPAY_SESSION_ID)
+        
+        UserDefaults.standard.set(DEFAULT_CHECK_SERVER_URL, forKey: KEY_CHECK_SERVER_URL)
+        UserDefaults.standard.set(DEFAULT_CHECK_PROCESS_IDENTITY_NAME, forKey: KEY_CHECK_PROCESS_IDENTITY_NAME)
+        UserDefaults.standard.set(DEFAULT_CHECK_SESSION_ID, forKey: KEY_CHECK_SESSION_ID)
+        
+        UserDefaults.standard.set(DEFAULT_CREDIT_CARD_SERVER_URL, forKey: KEY_CREDIT_CARD_URL)
+        UserDefaults.standard.set(DEFAULT_CREDIT_CARD_PROCESS_IDENTITY_NAME, forKey: KEY_CREDIT_CARD_PROCESS_IDENTITY_NAME)
+        UserDefaults.standard.set(DEFAULT_CREDIT_CARD_SESSION_ID, forKey: KEY_CREDIT_CARD_SESSION_ID)
+
+        
+        UserDefaults.standard.set(DEFAULT_ID_SERVER_URL, forKey: KEY_ID_SERVER_URL)
+        //Mobile ID Version - default 2x
+        UserDefaults.standard.set(DEFAULT_ID_MOBILE_ID_VERSION, forKey: KEY_ID_MOBILE_ID_VERSION)
+        UserDefaults.standard.set(DEFAULT_ID_SESSION_ID, forKey: KEY_ID_SESSION_ID)
+        UserDefaults.standard.set(DEFAULT_ID_PROCESS_IDENTITY_NAME_1X, forKey: KEY_ID_PROCESS_IDENTITY_NAME_1X)
+        UserDefaults.standard.set(DEFAULT_ID_PROCESS_IDENTITY_NAME_2X, forKey: KEY_ID_PROCESS_IDENTITY_NAME_2X)
+        UserDefaults.standard.set(DEFAULT_ID_AUTHENTICATION_URL, forKey: KEY_ID_AUTHENTICATION_URL)
+        UserDefaults.standard.set(DEFAULT_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME, forKey: KEY_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME)
+        
+        
+        UserDefaults.standard.setValue(true, forKey: KEY_DEFAULTS_LOADED)
+    }
 
     class func retrieveBillerMasterObject(forName: String) -> BillerMaster! {
         var billerMasterObj: BillerMaster! = nil

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CreditCardManagerDelegate {
+class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopoverPresentationControllerDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CreditCardManagerDelegate {
 
     @IBOutlet weak var appLogoImage: UIImageView!
     
@@ -57,6 +57,11 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     
     private var currentAccentColor: UIColor? = nil
 
+    private var refreshOnTabChanged: Bool = true
+    
+    //settings popup
+    private var settingsPopup: SettingsPopupViewController!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,20 +71,24 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        customizeScreenControls()
+        
         customizeNavigationBar()
+        
+        self.tabBarController?.delegate = self
         
         updateCardBanner(index: 0)
 
         fetchCards()
         cardStatus = updateSceenAsPerCardStatus()
-        
-        customizeScreenControls()
-/*        if isThemeChanged() {
-            oldAccentColor = currentAccentColor
-        }
-*/
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.tabBarController?.delegate = nil
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
 
         updateTableVisibility()
@@ -88,26 +97,45 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
             tableView.delegate = self
             tableView.dataSource = self
         }
-        else {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        
+        tableView.reloadData()
+
+        if refreshOnTabChanged {
+            refreshOnTabChanged = false
+            if cardStatus ==  STATUS_EXPIRED {
+                floatingButton.isHidden = false
+                
+                Utility.showAlertWithCallback(onViewController: self, titleString: "Attention", messageString: "Your credit card is not valid anymore.\nPlease request a new card. \n\n If a new card is aready issued, use 'Activate Now' button to start activication process. You can also use option on screen to activate it later.", positiveActionTitle: "Activate Now", negativeActionTitle: "Maybe later", positiveActionResponse: {
+                    
+                    self.initiateCardActivation()
+                    
+                }, negativeActionResponse: {
+                    
+                })
             }
         }
-
+    }
+    
+    //MARK Tabbar controller delegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
-        if cardStatus ==  STATUS_EXPIRED {
-            floatingButton.isHidden = false
-            
-            Utility.showAlertWithCallback(onViewController: self, titleString: "Attention", messageString: "Your credit card is not valid anymore.\nPlease request a new card. \n\n If a new card is aready issued, use 'Activate Now' button to start activication process. You can also use option on screen to activate it later.", positiveActionTitle: "Activate Now", negativeActionTitle: "Maybe later", positiveActionResponse: {
-              
-                self.initiateCardActivation()
-                
-            }, negativeActionResponse: {
-                
-            })
+        if viewController != self {
+            print("New viewcontroller selected!")
+            clear()
+            refreshOnTabChanged = true
+        }
+    }
+
+    
+    private func clear() {
+        if settingsPopup != nil {
+            settingsPopup.close()
+            settingsPopup.dismiss(animated: false, completion: nil)
+            settingsPopup.removeFromParentViewController()
             
         }
     }
+    
 
 /*    private func isThemeChanged() -> Bool {
         return oldAccentColor != currentAccentColor
@@ -131,15 +159,49 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
     var rightBarButtonItem: UIBarButtonItem! = nil
     
     private func customizeNavigationBar() {
+        
+        UIApplication.shared.isStatusBarHidden = false
+        
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
-
-        //show vertical menu option (vertical dots) on right side of navigationbar
-        //if rightBarButtonItem == nil {
-            rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
-       // }
-        //navigationController?.navigationBar.topItem?.setRightBarButtonItems([(navigationController?.navigationBar.topItem?.rightBarButtonItem)!, rightBarButtonItem], animated: false)
+        
+        //remove back button title from navigationbar
+        navigationController?.navigationBar.backItem?.title = ""
+        let backImage = UIImage(named: "back_white")!
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
+        
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        
+        self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
+
+    
+    func logout() {
+        print("Logout!!!")
+    }
+    
+    func showSettingsPopup() {
+        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
+        self.settingsPopup.applicationComponentName = AppComponent.CREDITCARD
+        
+        self.addChildViewController(self.settingsPopup)
+        self.settingsPopup.view.frame = self.view.frame
+        
+        self.view.addSubview(self.settingsPopup.view)
+        self.settingsPopup.view.alpha = 0
+        self.settingsPopup.didMove(toParentViewController: self)
+        
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.settingsPopup.view.alpha = 1
+        }, completion: nil)
+        
+    }
+    
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
@@ -217,23 +279,8 @@ class CreditCardHomeVC: BaseViewController, UIPopoverPresentationControllerDeleg
         }
     }
     
-    //NavigationbarButtonItem selector event
-    func showSettingsPopup() {
-        let vc = IDSettingsViewController.init(nibName: "IDSettingsViewController", bundle: nil)
-        
-        let navController = UINavigationController.init(rootViewController: vc)
-        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController.navigationBar.shadowImage = UIImage()
-        navController.navigationBar.isTranslucent = true
-        navController.navigationBar.backgroundColor = UIColor.clear
-        
-        self.present(navController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     //Card information view methods
     
-
     @IBAction func showCardInformation(_ sender: UITapGestureRecognizer) {
         cardInfoPopover.isHidden = false
     }

@@ -2,7 +2,6 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "HomeVC.h"
 #import <MobileSDK/MobileSDK.h>
 #import <MobileSDK/kfxLicense.h>
 #import <kfxLibUIControls/kfxUIControls.h>

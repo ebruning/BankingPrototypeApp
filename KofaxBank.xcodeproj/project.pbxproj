@@ -98,7 +98,6 @@
 		AE7D5E651FA77CD500538E61 /* ModelUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E641FA77CD500538E61 /* ModelUtilities.m */; };
 		AE7D5E681FAAE15400538E61 /* CreditCardTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */; };
 		AE7D5E6B1FAB55B300538E61 /* BillerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D5E691FAB55B300538E61 /* BillerViewController.swift */; };
-		AE7D5E6C1FAB55B300538E61 /* BillerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */; };
 		AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */; };
 		AE7EE5A71F3B296100536ED9 /* DiskUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */; };
 		AE7EE5A91F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE5A81F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift */; };
@@ -127,7 +126,6 @@
 		AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028231F8638180055685B /* IDSettingsViewController.xib */; };
 		AE9028271F864A7A0055685B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028261F864A7A0055685B /* CustomView.swift */; };
 		AE9C006A1F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */; };
-		AEA3D3081EF7A0BF001DBB12 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */; };
 		AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */; };
 		AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */; };
 		AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */; };
@@ -140,6 +138,8 @@
 		AEAA708D1F73FCDA00A511C8 /* RegionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */; };
 		AEAA708F1F7CF01100A511C8 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA708E1F7CF01100A511C8 /* RegionController.swift */; };
 		AEAA70911F7E5DCD00A511C8 /* RegionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */; };
+		AEB6EFA91FC2BC2A00D218ED /* SettingsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */; };
+		AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */; };
 		AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */; };
 		AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
 		AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
@@ -305,7 +305,6 @@
 		AE7D5E661FA77E2200538E61 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionCell.swift; sourceTree = "<group>"; };
 		AE7D5E691FAB55B300538E61 /* BillerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillerViewController.swift; sourceTree = "<group>"; };
-		AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillerViewController.xib; sourceTree = "<group>"; };
 		AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskUtility.swift; sourceTree = "<group>"; };
@@ -338,8 +337,6 @@
 		AE9C00681F0B7E0C000EEC47 /* KofaxBank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KofaxBank.entitlements; sourceTree = "<group>"; };
 		AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreditCardHomeVC+Banner.swift"; sourceTree = "<group>"; };
 		AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KofaxBank-Bridging-Header.h"; sourceTree = "<group>"; };
-		AEA3D3051EF7A0BF001DBB12 /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeVC.h; path = ParallaxViewController/HomeVC.h; sourceTree = "<group>"; };
-		AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeVC.m; path = ParallaxViewController/HomeVC.m; sourceTree = "<group>"; };
 		AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeScreen.xib; path = ParallaxViewController/HomeScreen.xib; sourceTree = "<group>"; };
 		AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsHomeVC.swift; sourceTree = "<group>"; };
 		AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -353,6 +350,8 @@
 		AEAA708C1F73FCDA00A511C8 /* RegionProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionProperties.swift; sourceTree = "<group>"; };
 		AEAA708E1F7CF01100A511C8 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionConstants.swift; sourceTree = "<group>"; };
+		AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPopupViewController.swift; sourceTree = "<group>"; };
+		AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsPopupViewController.xib; sourceTree = "<group>"; };
 		AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabHomeViewController.swift; sourceTree = "<group>"; };
 		AEBC71711FBAF63400604399 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
@@ -454,7 +453,6 @@
 				AE71BBDC1F2753F00066B632 /* BillDataPreviewViewController.swift */,
 				AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */,
 				AE7D5E691FAB55B300538E61 /* BillerViewController.swift */,
-				AE7D5E6A1FAB55B300538E61 /* BillerViewController.xib */,
 			);
 			name = Bill;
 			sourceTree = "<group>";
@@ -539,6 +537,7 @@
 		AE5D7E331EDD729100D12163 /* KofaxBank */ = {
 			isa = PBXGroup;
 			children = (
+				AEB6EFA61FC2BC1200D218ED /* PopOver */,
 				AE7D5CE21F90A65500538E61 /* Barcode */,
 				AEAA70801F73CF9A00A511C8 /* ID */,
 				AE5D7E681EDD751C00D12163 /* AppDelegate */,
@@ -585,7 +584,6 @@
 				AE71BBE21F2B2C390066B632 /* MoreViewController.swift */,
 				AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */,
 				AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */,
-				AEA3D30A1EF7AC32001DBB12 /* HomeVC - Objective-C */,
 				AE449F6C1EE6894C000E296F /* LoginVC.swift */,
 				AE154A221F02632700CF1F48 /* MainTabBarController.swift */,
 				AE254D501F5D762C00695F8A /* InstructionsPopup.swift */,
@@ -792,15 +790,6 @@
 			path = ImageEffects;
 			sourceTree = "<group>";
 		};
-		AEA3D30A1EF7AC32001DBB12 /* HomeVC - Objective-C */ = {
-			isa = PBXGroup;
-			children = (
-				AEA3D3051EF7A0BF001DBB12 /* HomeVC.h */,
-				AEA3D3061EF7A0BF001DBB12 /* HomeVC.m */,
-			);
-			name = "HomeVC - Objective-C";
-			sourceTree = "<group>";
-		};
 		AEA639671F4D8426006C122D /* Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -835,6 +824,15 @@
 				AEAA70901F7E5DCD00A511C8 /* RegionConstants.swift */,
 			);
 			name = Region;
+			sourceTree = "<group>";
+		};
+		AEB6EFA61FC2BC1200D218ED /* PopOver */ = {
+			isa = PBXGroup;
+			children = (
+				AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */,
+				AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */,
+			);
+			name = PopOver;
 			sourceTree = "<group>";
 		};
 		AEDDA3AE1FB18B3A00B79700 /* Selfie */ = {
@@ -1025,8 +1023,8 @@
 				AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */,
 				AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */,
 				AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */,
-				AE7D5E6C1FAB55B300538E61 /* BillerViewController.xib in Resources */,
 				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
+				AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */,
 				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
 				AE33FD921FB30D5900E3C380 /* SelfieResultsTableViewCell.xib in Resources */,
 				AE7EE5B31F3C755800536ED9 /* PreviewViewController.xib in Resources */,
@@ -1208,6 +1206,7 @@
 			files = (
 				AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */,
 				AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */,
+				AEB6EFA91FC2BC2A00D218ED /* SettingsPopupViewController.swift in Sources */,
 				AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */,
 				AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */,
 				AEDDA3BE1FB1D05100B79700 /* SelfieOriginalityValuesModel.m in Sources */,
@@ -1277,7 +1276,6 @@
 				AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */,
 				AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */,
 				AE8C80F51F3483230024C382 /* ExperienceMessages.swift in Sources */,
-				AEA3D3081EF7A0BF001DBB12 /* HomeVC.m in Sources */,
 				AE7D5E451FA77B2200538E61 /* AuthenticationReasonsModel.m in Sources */,
 				AE8C80E31F333C8D0024C382 /* BaseViewController.swift in Sources */,
 				AEDDA3C61FB1D06B00B79700 /* SelfieVerificationService.m in Sources */,

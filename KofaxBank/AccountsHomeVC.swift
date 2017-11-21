@@ -74,13 +74,18 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     private var bannerInnerOffset: CGFloat = 0
 
+    //Settings popup
+    private var settingsPopup: SettingsPopupViewController!
+
     
     //Others
-    private var markForRefresh = true
+//    private var markForRefresh = true
     
     private var oldAccentColor: UIColor? = nil
     
     private var currentAccentColor: UIColor? = nil
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,17 +179,18 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController != self {
             print("New tab selected!")
-            markForRefresh = true
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if self.tabBarController?.delegate == nil {
+        print("****** AccountsHomeVC: viewWillAppear")
+        
+/*        if self.tabBarController?.delegate == nil {
             self.tabBarController?.delegate = self
         }
-
+*/
         customizeScreenControls()
         
         customizeNavigationBar()
@@ -204,13 +210,13 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         stackViewUserDetails.alpha = 0
         visualEffectView.alpha = 0.27
         
-        if markForRefresh {
+//        if markForRefresh {
             
             updateBellBadge()
             
             fetchAccounts()
             fetchCreditCardAccounts()
-            markForRefresh = false
+//            markForRefresh = false
 
             if tableView.delegate == nil {
                 tableView.dataSource = self
@@ -223,8 +229,22 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
                     oldAccentColor = currentAccentColor
                 }
             }
-        }
+//        }
+    //}
+    
     }
+    
+    private func clear() {
+        if settingsPopup != nil {
+            settingsPopup.close()
+            settingsPopup.dismiss(animated: false, completion: nil)
+            settingsPopup.removeFromParentViewController()
+            
+        }
+
+//        self.tabBarController?.delegate = nil
+    }
+
 
 
     //update the count on the red bagde on bell image to show/hide number of (dummy)notifations received.
@@ -260,27 +280,51 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     }
     
     
-
-    
-    override func viewWillDisappear(_ animated: Bool) {
-//        self.tabBarController?.delegate = nil
-    }
-    
     private func customizeNavigationBar() {
         
-/*        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        UIApplication.shared.isStatusBarHidden = false
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        navigationController?.navigationBar.topItem?.rightBarButtonItem?.image = nil
-  */
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        //remove back button title from navigationbar
+        navigationController?.navigationBar.backItem?.title = ""
+        let backImage = UIImage(named: "back_white")!
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
+        
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        
+        self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    private func restoreNavigationBar() {
+    func logout() {
+        print("Logout!!!")
+    }
+    
+    func showSettingsPopup() {
+        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
+        self.settingsPopup.applicationComponentName = AppComponent.IDCARD
+        
+        
+        self.addChildViewController(self.settingsPopup)
+        self.settingsPopup.view.frame = self.view.frame
+        
+        self.view.addSubview(self.settingsPopup.view)
+        self.settingsPopup.view.alpha = 0
+        self.settingsPopup.didMove(toParentViewController: self)
+        
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.settingsPopup.view.alpha = 1
+        }, completion: nil)
         
     }
-    
 
+    
     private func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
@@ -585,17 +629,22 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
                 
             }, negativeActionResponse: {
                 
+
             })
         } else {
             Utility.showAlert(onViewController: self, titleString: "", messageString: "You have no new notifications.")
         }
-        
     }
     
     
     private var idManager: IDManager! = nil
     
     private func readUserID() {
+        if idManager != nil {
+            idManager.unloadManager()
+            idManager = nil
+        }
+
         idManager = IDManager()
         idManager.delegate = self
         idManager.loadManager(navigationController: self.navigationController!)

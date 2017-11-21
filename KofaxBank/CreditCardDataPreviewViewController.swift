@@ -251,9 +251,21 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 //                }
                 if self.cardData.cardNumber != nil, let fieldValue = self.cardData.cardNumber.value {
                     self.cardNumberTextField.text = fieldValue.trimmingCharacters(in: .whitespaces)
+                    
+                    print("cardData.cardNumber confidence ==> \(self.cardData.cardNumber.confidence)")
+                    
+                    if self.cardData.cardNumber.confidence < 0.80 {
+                        self.cardNumberTextField.textColor = UIColor.red
+                    }
                 }
+                
                 if self.cardData.expirationMonth != nil, let fieldValue = self.cardData.expirationMonth.value {
                     self.expMonthTextField.text = fieldValue
+                    print("expMonth confidence ==> \(self.cardData.expirationMonth.confidence)")
+                    
+                    if self.cardData.expirationMonth.confidence < 0.80 {
+                        self.expMonthTextField.textColor = UIColor.red
+                    }
                 }
                 else {
                     //self.expMonthTextField.text = "9"
@@ -261,6 +273,11 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
  
                 if self.cardData.expirationYear != nil, let fieldValue = self.cardData.expirationYear.value {
                     self.expYearTextField.text = fieldValue.trimmingCharacters(in: .whitespaces)
+                    print("expYear confidence ==> \(self.cardData.expirationYear.confidence)")
+                    
+                    if self.cardData.expirationYear.confidence < 0.80 {
+                        self.expYearTextField.textColor = UIColor.red
+                    }
                 }
                 else {
                     //self.expYearTextField.text = "17"
@@ -268,6 +285,11 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
                 if self.companyTextField != nil && self.cardCompanyField?.value != nil {
                     self.companyTextField.text = self.cardCompanyField?.value
+                    print("Card Type confidence ==> \(self.cardCompanyField!.confidence)")
+                    
+                    if self.cardCompanyField!.confidence < 0.80 {
+                        self.companyTextField.textColor = UIColor.red
+                    }
                 }
 
 /*                if self.cardData.cvv != nil, let fieldValue = self.cardData.cvv.value {
@@ -485,8 +507,9 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        textField.textColor = UIColor.init(rgb: 0x525054)
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
     }

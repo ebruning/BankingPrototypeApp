@@ -97,7 +97,7 @@ protocol IDHomeVCDelegate {
         customizeNavigationBar()
         
         //TODO: temp code
-        UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        UserDefaults.standard.set(MobileIDVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
     }
     
     //MARK: Public methods
@@ -272,7 +272,7 @@ protocol IDHomeVCDelegate {
         var shouldAuthenticate = false
         let mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
         
-        if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
+        if mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
             shouldAuthenticate = true
         }
         

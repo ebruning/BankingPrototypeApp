@@ -8,20 +8,25 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UIPopoverPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("****** MainTabbarController: viewWillAppear")
         customizeScreenControls()
-
-        customizeNavigationBar()
+        //customizeNavigationBar()
     }
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("****** MainTabbarController: viewDidAppear")
+    }
+        
     private func customizeScreenControls() {
         
         let screenStyler = AppStyleManager.sharedInstance()?.get_app_screen_styler()
@@ -42,15 +47,12 @@ class MainTabBarController: UITabBarController {
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         
-        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    
-
-
-    
-    func logout() {
+        let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
         
-    }
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
 
-}
+        self.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+    }
+    
+
+ }

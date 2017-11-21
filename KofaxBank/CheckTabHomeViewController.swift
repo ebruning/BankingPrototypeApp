@@ -23,14 +23,14 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
 
     @IBOutlet weak var pickerDoneButton: UIButton!
     
-    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var dateTextField: UITextField!
     
-    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var accountTextField: UITextField!
     
     //MARK: Private variables
-    private var wasNavigationHidden: Bool = false
-    private var oldBarTintColor: UIColor!
-    private var oldStatusBarStyle: UIStatusBarStyle!
+//    private var wasNavigationHidden: Bool = false
+//    private var oldBarTintColor: UIColor!
+//    private var oldStatusBarStyle: UIStatusBarStyle!
     
     private var accounts = [AccountsMaster]()
 
@@ -38,8 +38,12 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     
     private var checkManager: CheckDepositManager? = nil
     
+    private var settingsPopup: SettingsPopupViewController!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     
@@ -59,20 +63,33 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     private func initialize() {
         customizeNavigationBar()
         
-        dateButton.titleLabel?.text = Utility.dateToFormattedString(format: ShortDateFormatWithMonth, date: Date())
-
+        reset()
+        
+        dateTextField.text = Utility.dateToFormattedString(format: ShortDateFormatWithMonth, date: Date())
+        
         if self.accounts.count == 0 {
             fetchAccounts()
-            selectedAccount = nil
         }
 
         self.tabBarController?.delegate = self
         self.pickerView.delegate = self
+
+    }
+    
+    private func reset() {
+        self.selectedAccount = nil
+        accountTextField.text = ""
     }
     
     private func clear() {
         accounts.removeAll()
-        self.selectedAccount = nil
+
+        if settingsPopup != nil {
+            settingsPopup.close()
+            settingsPopup.dismiss(animated: false, completion: nil)
+            settingsPopup.removeFromParentViewController()
+            
+        }
 
         if self.checkManager != nil {
             self.checkManager?.delegate = nil
@@ -98,21 +115,45 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     
     private func customizeNavigationBar() {
         
-        oldStatusBarStyle = UIApplication.shared.statusBarStyle
-        oldBarTintColor = navigationController?.navigationBar.tintColor
+        UIApplication.shared.isStatusBarHidden = false
         
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
+        //remove back button title from navigationbar
+        navigationController?.navigationBar.backItem?.title = ""
+        let backImage = UIImage(named: "back_white")!
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
+        
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        
+        self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    private func restoreNavigationBar() {
-        UIApplication.shared.statusBarStyle = oldStatusBarStyle
-        navigationController?.navigationBar.tintColor = oldBarTintColor
-        navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
+    func logout() {
+        print("Logout!!!")
+    }
+    
+    func showSettingsPopup() {
+        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
+        self.settingsPopup.applicationComponentName = AppComponent.CHECK
+        
+        self.addChildViewController(self.settingsPopup)
+        self.settingsPopup.view.frame = self.view.frame
+        
+        self.view.addSubview(self.settingsPopup.view)
+        self.settingsPopup.view.alpha = 0
+        self.settingsPopup.didMove(toParentViewController: self)
+        
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.settingsPopup.view.alpha = 1
+        }, completion: nil)
+        
     }
     
     private func fetchAccounts() {
@@ -139,11 +180,10 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
 
     //Screen command button actions
     
-    @IBAction func selectAccount(_ sender: UIButton) {
+    @IBAction func selectAccount(_ sender: UITapGestureRecognizer) {
         pickerContainerView.isHidden = false
         
         if accounts.count > 0 {
-            //            pickerViewSelectedRow = 0
             pickerView.reloadAllComponents()
             pickerView.selectRow(0, inComponent: 0, animated: true)
         } else {
@@ -198,7 +238,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         pickerViewSelectedRow = pickerView.selectedRow(inComponent: 0)
         
         selectedAccount = accounts[pickerViewSelectedRow]
-        accountButton.titleLabel?.text = selectedAccount.accountNumber
+        accountTextField.text = selectedAccount.accountNumber
         
         pickerContainerView.isHidden = true
     }
@@ -208,7 +248,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     
     func checkDepositFailed(error: AppError!) {
         print("Check Deposit Failed")
-        selectedAccount = nil
+        reset()
     }
     
     func checkDepositComplete() {
@@ -216,8 +256,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         
         Utility.showAlert(onViewController: self, titleString: "Check is deposited", messageString: "The amount will reflect in your account once the check is processed.")
         
-        selectedAccount = nil
-
+        reset()
         fetchAccounts()
         
         //TODO: You can take care of coredata update of check data here instead of checkManger if required.
@@ -225,6 +264,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     
     func checkDepositCancelled() {
         print("Check Deposit Cancelled")
-        selectedAccount = nil
+        reset()
     }
+    
 }

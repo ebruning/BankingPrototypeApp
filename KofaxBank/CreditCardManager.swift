@@ -756,11 +756,15 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             let monthField = kfxDataField.init()
             monthField.name = "ExpirationMonth"
             monthField.value = month
+            monthField.confidence = (expDateField?.confidence)!
+                
             cardData.expirationMonth = monthField
 
             let yearField = kfxDataField.init()
             yearField.name = "ExpirationYear"
             yearField.value = year
+            yearField.confidence = (expDateField?.confidence)!
+                
             cardData.expirationYear = yearField
             }
         } else {

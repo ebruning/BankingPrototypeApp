@@ -242,7 +242,9 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
                 //value = String(format: "%.02f", score)
             }
             else {
-                value = self.selfieVerificationResult.value(forKey: key) as! String
+                if self.selfieVerificationResult.value(forKey: key) != nil {
+                    value = self.selfieVerificationResult.value(forKey: key) as! String
+                }
             }
         
             cell.configureCell(title: title, value: value)

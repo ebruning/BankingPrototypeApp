@@ -46,6 +46,8 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        customizeNavigationBar()
+
         instructionsView.isHidden = false
         tableView.isHidden = true
 
@@ -56,12 +58,10 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         customizeScreenControls()
-        customizeNavigationBar()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+
         //return if table is already loaded
         if fetchResultController != nil {
             if tableView.isHidden {
@@ -90,26 +90,23 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         self.accentColor = (screenStyler?.get_accent_color())!
         
         //highlight default date label with accent color
-        dateLabel.textColor = accentColor
+       // dateLabel.textColor = accentColor
     }
     
 
     // MARK: Private methods
 
     private func customizeNavigationBar() {
-        
-        //show vertical menu option (vertical dots) on right side of navigationbar
-        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-        //remove back button title from navigationbar
-        if let topItem = self.navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
-        //for iOS 10
-        UIApplication.shared.statusBarStyle = .lightContent
+
+/*        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         
+        //remove back button title from navigationbar
+        navigationController?.navigationBar.backItem?.title = ""
+        let backImage = UIImage(named: "back_white")!
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+  */
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -249,23 +246,24 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
     
     func attemptFetch() {
         DispatchQueue.global().async {
-        _ = self.fetchAccountTransactions(sortWith: nil)
+        _ = self.fetchAccountTransactions()
         }
     }
 
-    func fetchAccountTransactions(sortWith: String!) -> Int {
+    func fetchAccountTransactions() -> Int {
         var recordCount = 0
 
-        var sortKey = sortWith
+        let sortKey = "dateOfTransaction"
         
         let fetchRequest: NSFetchRequest<AccountTransactionMaster> = AccountTransactionMaster.fetchRequest()
         
         if account?.accountNumber != nil {
             fetchRequest.predicate = NSPredicate(format: "account == %@", account!)
             
-            if(sortKey == nil) {
+/*            if(sortKey == nil) {
                sortKey = "dateOfTransaction"    //default
             }
+*/
             let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: false)
             fetchRequest.sortDescriptors = [sortDescriptor]
 
@@ -333,7 +331,7 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         //highlight label with accent color
         dateLabel.textColor = accentColor
         
-        _ = fetchAccountTransactions(sortWith: "dateOfTransaction")
+        _ = fetchAccountTransactions()
         
         //reload table data after fetch
         tableView.reloadData()
@@ -348,7 +346,7 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         //highlight label with accent color
         typeLabel.textColor = accentColor
 
-        _ = fetchAccountTransactions(sortWith: "type")
+        _ = fetchAccountTransactions()
         
         //reload table data after fetch
         tableView.reloadData()
@@ -364,7 +362,7 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         //highlight label with accent color
         amountLabel.textColor = accentColor
 
-        _ = fetchAccountTransactions(sortWith: "amount")
+        _ = fetchAccountTransactions()
         
         //reload table data after fetch
         tableView.reloadData()

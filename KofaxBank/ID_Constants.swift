@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum ServerVersion: String {
+
+enum MobileIDVersion: String {
     case VERSION_1X = "1.x"
     case VERSION_2X = "2.x"
 }
@@ -20,6 +21,7 @@ let ImageResizeID1 = "ID"
 
 let ImageResizeFranceOldID2 = "ID-2" // French Old ID
 
+
 let ID_DEFAULT_REGION_PROPERTIES_MODEL_FILE = "Region_plist_for_ID_Server_2x"
 let ID_DEFAULT_REGION_PROPERTIES_REGION_NAME = "United States"
 let ID_DEFAULT_REGION_PROPERTIES_COUNTRY_DISPLAY_NAME = "United States"
@@ -29,6 +31,7 @@ let ID_DEFAULT_REGION_PROPERTIES_FLAG_IMAGE_NAME = "usa_45x45"
 let ID_DEFAULT_REGION_PROPERTIES_ODC_REGION_CODE = kfxKOEIDRegion.US
 
 //keys of UserDefaults for Region
+
 let KEY_DEFAULTS_LOADED = "DEFAULT LOADED"
 let KEY_ID_REGION_NAME = "ID REGION NAME"
 let KEY_ID_COUNTRY_NAME = "ID COUNTRY NAME"
@@ -37,5 +40,5 @@ let KEY_ID_REGION_FLAG_NAME = "ID REGION FLAG NAME"
 let KEY_ID_IMAGE_RESIZE = "ID IMAGE RESIZE"
 let KEY_ID_REGION_PLIST_FILE_NAME = "ID REGION PLIST"
 
-let KEY_ID_MOBILE_ID_VERSION = "ID MOBILE ID VERSION"
+//let KEY_ID_MOBILE_ID_VERSION = "ID MOBILE ID VERSION"
 

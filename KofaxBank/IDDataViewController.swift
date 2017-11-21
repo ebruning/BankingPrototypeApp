@@ -11,6 +11,7 @@ import UIKit
 protocol  IDDataViewControllerDelegate {
     func IDDataSaved(idData: kfxIDData)
 }
+
 class IDDataViewController: UITableViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -67,6 +68,7 @@ class IDDataViewController: UITableViewController {
     
     @IBOutlet weak var confidenceRatingField: UITextField!
 
+    
     //MARK: Public variables
     
     var delegate: IDDataViewControllerDelegate? = nil
@@ -76,11 +78,11 @@ class IDDataViewController: UITableViewController {
     var idData: kfxIDData! = nil
 
     //MARK: Navigationbar related parameters
-    private var wasNavigationHidden: Bool = false
-    
-    private var oldBarTintColor: UIColor!
-    
-    private var oldStatusBarStyle: UIStatusBarStyle!
+//    private var wasNavigationHidden: Bool = false
+//    
+//    private var oldBarTintColor: UIColor!
+//    
+//    private var oldStatusBarStyle: UIStatusBarStyle!
     
 
     override func viewDidLoad() {
@@ -96,22 +98,22 @@ class IDDataViewController: UITableViewController {
     //MARK: Private methods
     
     private func customizeNavigationBar() {
-        oldStatusBarStyle = UIApplication.shared.statusBarStyle
-        oldBarTintColor = navigationController?.navigationBar.tintColor
+//        oldStatusBarStyle = UIApplication.shared.statusBarStyle
+//        oldBarTintColor = navigationController?.navigationBar.tintColor
         
         UIApplication.shared.statusBarStyle = .default
         navigationController?.navigationBar.tintColor = UIColor.darkGray
         
         if idData != nil {
-        let rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .plain, target: self, action: #selector(onSaveButtonClicked))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+            let rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .plain, target: self, action: #selector(onSaveButtonClicked))
+            self.navigationItem.rightBarButtonItem = rightBarButtonItem
         }
-        
+
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
 
         //navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(onCancelButtonClicked))
         
-        wasNavigationHidden = (navigationController?.navigationBar.isHidden)!
+//        wasNavigationHidden = (navigationController?.navigationBar.isHidden)!
         //show navigation bar
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -121,15 +123,15 @@ class IDDataViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        restoreNavigationBar()
+//        restoreNavigationBar()
     }
-
+/*
     private func restoreNavigationBar() {
         UIApplication.shared.statusBarStyle = oldStatusBarStyle
         navigationController?.navigationBar.tintColor = oldBarTintColor
         navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
     }
-    
+*/
     
     private func displayFields() {
         if idData.faceImageId != nil {
@@ -169,69 +171,142 @@ class IDDataViewController: UITableViewController {
         
         idNumberField.text = idData.idNumber.value
         
+        if idData.idNumber.confidence < 0.80 {
+            idNumberField.textColor = UIColor.red
+        }
+        
         firstNameField.text = idData.firstName.value
         
-         middleNameField.text = idData.middleName.value
-         
-         lastNameField.text = idData.lastName.value
-         
-         addressField.text = idData.address.value
-         
-         cityField.text = idData.city.value
-         
-         stateField.text = idData.state.value
-         
-         zipField.text = idData.zip.value
-         
-         countryField.text = idData.country.value
-         
-         dobField.text = idData.dateOfBirth.value
-         
-         genderField.text = idData.gender.value
-         
-         eyesField.text = idData.eyes.value
-         
-         hairField.text = idData.eyes.value
-         
-         heightField.text = idData.height.value
-         
-         weightField.text = idData.weight.value
-         
-         nationalityField.text = idData.nationality.value
-         
-         //classField.text = data.c
-         
-         countryShortField.text = idData.countryShort.value
-         
-         issueDateField.text = idData.issueDate.value
-         
-         expDateField.text = idData.expirationDate.value
-         
-         barcodeReadField.text = idData.isBarcodeRead == true ? "Yes" : "No"
-         
-         ocrReadField.text = idData.isOcrRead == true ? "Yes" : "No"
-         
-         idVerificationField.text = idData.isIDVerified == true ? "Yes" : "No"
-         
-         //productVersionField.text = data
-         
-         confidenceRatingField.text = String.init(format: "%2.0",  idData.documentVerificationConfidenceRating)
-    }
+        if idData.firstName.confidence < 0.80 {
+            firstNameField.textColor = UIColor.red
+        }
 
+        middleNameField.text = idData.middleName.value
+
+        if idData.middleName.confidence < 0.80 {
+            middleNameField.textColor = UIColor.red
+        }
+
+        lastNameField.text = idData.lastName.value
+
+        if idData.lastName.confidence < 0.80 {
+            lastNameField.textColor = UIColor.red
+        }
+
+        addressField.text = idData.address.value
+
+        if idData.address.confidence < 0.80 {
+            addressField.textColor = UIColor.red
+        }
+
+        cityField.text = idData.city.value
+
+        if idData.city.confidence < 0.80 {
+            cityField.textColor = UIColor.red
+        }
+
+        stateField.text = idData.state.value
+
+        if idData.state.confidence < 0.80 {
+            stateField.textColor = UIColor.red
+        }
+
+        zipField.text = idData.zip.value
+        
+        if idData.zip.confidence < 0.80 {
+            zipField.textColor = UIColor.red
+        }
+
+        countryField.text = idData.country.value
+
+        if idData.country.confidence < 0.80 {
+            countryField.textColor = UIColor.red
+        }
+
+        dobField.text = idData.dateOfBirth.value
+
+        if idData.dateOfBirth.confidence < 0.80 {
+            dobField.textColor = UIColor.red
+        }
+
+        genderField.text = idData.gender.value
+
+        if idData.gender.confidence < 0.80 {
+            genderField.textColor = UIColor.red
+        }
+
+        eyesField.text = idData.eyes.value
+
+        if idData.eyes.confidence < 0.80 {
+            eyesField.textColor = UIColor.red
+        }
+
+        hairField.text = idData.hair.value
+
+        if idData.hair.confidence < 0.80 {
+            hairField.textColor = UIColor.red
+        }
+
+        heightField.text = idData.height.value
+
+        if idData.height.confidence < 0.80 {
+            heightField.textColor = UIColor.red
+        }
+
+        weightField.text = idData.weight.value
+
+        if idData.weight.confidence < 0.80 {
+            weightField.textColor = UIColor.red
+        }
+
+        nationalityField.text = idData.nationality.value
+
+        if idData.nationality.confidence < 0.80 {
+            nationalityField.textColor = UIColor.red
+        }
+        
+        countryShortField.text = idData.countryShort.value
+
+        if idData.countryShort.confidence < 0.80 {
+            countryShortField.textColor = UIColor.red
+        }
+
+        issueDateField.text = idData.issueDate.value
+
+        if idData.issueDate.confidence < 0.80 {
+            issueDateField.textColor = UIColor.red
+        }
+
+        expDateField.text = idData.expirationDate.value
+
+        if idData.expirationDate.confidence < 0.80 {
+            expDateField.textColor = UIColor.red
+        }
+
+        barcodeReadField.text = idData.isBarcodeRead == true ? "Yes" : "No"
+
+        ocrReadField.text = idData.isOcrRead == true ? "Yes" : "No"
+
+        idVerificationField.text = idData.isIDVerified == true ? "Yes" : "No"
+
+        
+        confidenceRatingField.text = String.init(format: "%2.0",  idData.documentVerificationConfidenceRating)
+    }
+    
     
     func onSaveButtonClicked() {
         if areAllRequiredFieldsAvailable() {
-
+            
             updateIDObject()
             delegate?.IDDataSaved(idData: idData)
             delegate = nil
-        self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         } else {
             Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "One or more required fields are empty. Please fill all the details before saving.")
         }
     }
 
-    
+
     private func areAllRequiredFieldsAvailable() -> Bool {
         if firstNameField.text?.characters.count == 0 || lastNameField.text?.characters.count == 0 || addressField.text?.characters.count == 0 || cityField.text?.characters.count == 0 || stateField.text?.characters.count == 0 || countryField.text?.characters.count == 0 || zipField.text?.characters.count == 0 || dobField.text?.characters.count == 0 {
                 return false
@@ -267,8 +342,9 @@ class IDDataViewController: UITableViewController {
 
         idData.expirationDate.value = expDateField.text
     }
+    
     func onCancelButtonClicked() {
-        restoreNavigationBar()
+//        restoreNavigationBar()
         delegate = nil
         self.navigationController?.popViewController(animated: true)
     }

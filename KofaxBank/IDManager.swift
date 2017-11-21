@@ -197,7 +197,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             break
             
         case .IMAGE_DATA_EXTRACTED:
-            if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
+            if mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
                 idHomeScreen?.authenticationResultModel = self.authenticationResultModel
             }
             idHomeScreen?.idDataAvailable(idData: self.idData)
@@ -607,11 +607,11 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         
         //this string is for device processing. Sever processing string is different
         
-        //UserDefaults.standard.set(ServerVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
+        //UserDefaults.standard.set(MobileIDVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
         
         mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
         
-        if mobileIDVersion == ServerVersion.VERSION_1X.rawValue {
+        if mobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {
             return "_DeviceType_2_ScalingMode_2.4__DoSkewCorrectionPage__DoCropCorrection__Do90DegreeRotation_4__DoScaleImageToDPI_300_DocDimSmall_2.123_DocDimLarge_3.363_LoadSetting_<Property Name=\"CSkewDetect.prorate_error_sum_thr_bkg_brightness.Bool\" Value=\"1\" Comment=\"DEFAULT 0\" />_LoadSetting_<Property Name=\"CSkwCor.Do_Fast_Rotation.Bool\" Value=\"0\" Comment=\"DEFAULT 1\" />_LoadSetting_<Property Name=\"CSkewDetect.correct_illumination.Bool\" Value=\"0\" Comment=\"DEFAULT 1\" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Scanner_Bkg.Bool\" Value=\"0\" Comment=\"DEFAULT 1 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Red.Byte\" Value=\"255\" Comment=\"DEFAULT 0 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Green.Byte\" Value=\"255\" Comment=\"DEFAULT 0 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Blue.Byte\" Value=\"255\" Comment=\"DEFAULT 0\" />_LoadSetting_<Property Name=\"EdgeCleanup.Enable\" Value=\"0\" Comment=\"DEFAULT 1\" />"
         } else {
             return "_DeviceType_2__Do90DegreeRotation_4__DoCropCorrection__DoScaleImageToDPI_500_DoSkewCorrectionPage__DocDimLarge_3.375_DocDimSmall_2.125_LoadInlineSetting_[CSkewDetect.correct_illumination.Bool=0]"
@@ -902,7 +902,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 self.parameters.setValue("", forKey: "documentGroupName")
                 
                 
-                if self.mobileIDVersion != nil && self.mobileIDVersion == ServerVersion.VERSION_2X.rawValue {   //TODO: check if all eralier code block is required, else move this to the beginning of if condition.
+                if self.mobileIDVersion != nil && self.mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {   //TODO: check if all eralier code block is required, else move this to the beginning of if condition.
                     self.initiateExtractionWithAuthentication()
                     return
                 } else {
@@ -1112,7 +1112,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     private func prepareParametersForKTA() -> NSMutableDictionary {
         let paraDict: NSMutableDictionary = NSMutableDictionary.init()
         
-        if self.mobileIDVersion != nil && self.mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
+        if self.mobileIDVersion != nil && self.mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
             paraDict.setValue(ktaKofaxProcessName, forKey: "processIdentityName")
         } else {
             paraDict.setValue(ktaProcessName, forKey: "processIdentityName")
@@ -1198,7 +1198,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                         key = component[0]
                     }
                     
-                    print("key ===> \(key) and Value ===> \(dataField.value)")
+                    print("key ===> \(key) and Value ===> \(dataField.value) and confidence ===> \(dataField.confidence)")
                     
                     dataField.name = key
                     //store this field entry in dictionary with key as the field name (for a convinient search later)
@@ -1296,6 +1296,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         let nameField = kfxDataField.init()
         nameField.name = "FirstName"
         nameField.value = nameString
+        nameField.confidence = (firstNameField?.confidence)!
         idData.firstName = nameField
         
         
@@ -1406,7 +1407,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.idData = idData
         updateUserDetails(idData: idData)
         
-        if mobileIDVersion == ServerVersion.VERSION_1X.rawValue {
+        if mobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {
             delegate?.IDDataReadCompleteWithoutSelfieVerification(idData: self.idData)
         } else {
             delegate?.IDDataReadCompleteWithSelfieVerification(idData: self.idData)
@@ -1414,7 +1415,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     }
     
     private func getLimitedUserSessionIdForComponent() -> NSString {
-        if mobileIDVersion == ServerVersion.VERSION_2X.rawValue {
+        if mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
             print("Limited session ID for 2X:")
             return "C640521793431F4486D4EF1586672385"
         } else {

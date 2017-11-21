@@ -27,14 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error: Kofax license is not valid or expired!");
         }
         
-        Utility.loadDatabaseWithDefaultsIfEmpty()
         
         loadDefaults()
 
         return true
     }
     
-    func customizeNavigationBar(application: UIApplication) {
+    private func customizeNavigationBar(application: UIApplication) {
         //make navigationbar transparent
         let navigationController = application.windows[0].rootViewController as! UINavigationController
         
@@ -118,25 +117,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func loadDefaults() {
+        //load (core)database
+        Utility.loadDatabaseWithDefaultsIfEmpty()
         
-        if UserDefaults.standard.value(forKey: KEY_DEFAULTS_LOADED) != nil {
-            return
+        //load user defaults
+        if UserDefaults.standard.value(forKey: KEY_DEFAULTS_LOADED) == nil {
+            Utility.resetUserDefaults()
         }
         
-        //region properties
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_MODEL_FILE, forKey: KEY_ID_REGION_PLIST_FILE_NAME)
-        
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_REGION_NAME, forKey: KEY_ID_REGION_NAME)
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_CODE, forKey: KEY_ID_COUNTRY_CODE)
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_COUNTRY_DISPLAY_NAME, forKey: KEY_ID_COUNTRY_NAME)
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_FLAG_IMAGE_NAME, forKey: KEY_ID_REGION_FLAG_NAME)
-        UserDefaults.standard.setValue(ID_DEFAULT_REGION_PROPERTIES_IMAGE_RESIZE, forKey: KEY_ID_IMAGE_RESIZE)
-        
-        
-        //Mobile ID Version - default 2x
-        UserDefaults.standard.set(ServerVersion.VERSION_1X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
-        
-        UserDefaults.standard.setValue(true, forKey: KEY_DEFAULTS_LOADED)
     }
 
 }

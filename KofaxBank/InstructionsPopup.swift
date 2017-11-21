@@ -93,7 +93,7 @@ class InstructionsPopup: UIViewController {
         instructionLabel.backgroundColor = screenStyler?.get_accent_color()
     }
 
-    func hideNavigationBar() {
+    private func hideNavigationBar() {
         wasNavigationHidden = (self.navigationController?.navigationBar.isHidden)!
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)

@@ -17,7 +17,7 @@ protocol CheckDepositHomeViewControllerDelegate {
     func checkDepositCancelled()
 }
 
-class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
+class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, UITabBarControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -170,6 +170,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         
         depositButton.isHidden = true
         
+//        self.tabBarController?.delegate = self
+        
 //        scrollView.contentInset = scrollContentInset
 //        scrollView.scrollIndicatorInsets = scrollContentInset
         registerForKeyboardNotifications()
@@ -181,6 +183,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
 
         customizeNavigationBar()
+        //self.tabBarController?.delegate = self
+
     }
     
     
@@ -222,6 +226,16 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
         UIApplication.shared.statusBarStyle = oldStatusBarStyle
         navigationController?.navigationBar.tintColor = oldBarTintColor
         navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
+    }
+    
+    //MARK TabBar controller delegate
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController != self {
+            print("New tab selected!")
+            //clear()
+            //markForRefresh = true
+        }
     }
     
 
@@ -678,8 +692,18 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
             checkDataFieldsContainerView.isHidden = false
             
             amountText.text = checkData.amount.value
+            print("checkData.amount confidence ==> \(self.checkData.amount.confidence)")
+
+            if checkData.amount.confidence < 0.80 {
+                amountText.textColor = UIColor.red
+            }
 //            payeeNameText.text = checkData.payeeName.value
+            
             checkNumberText.text = checkData.checkNumber.value
+            print("checkData.checkNumber confidence ==> \(self.checkData.checkNumber.confidence)")
+            if checkData.checkNumber.confidence < 0.80 {
+                checkNumberText.textColor = UIColor.red
+            }
             
             //validate date before displaying
             // TODO: may have to change the date format based on the country.
@@ -688,6 +712,12 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
             } else {
                 dateText.text = ""
             }
+            
+            if checkData.date.confidence < 0.80 {
+                dateText.textColor = UIColor.red
+            }
+            print("checkData.date confidence ==> \(self.checkData.date.confidence)")
+
             
             setupDatePicker()
         }
@@ -958,6 +988,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        textField.textColor = UIColor.init(rgb: 0x525054)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
