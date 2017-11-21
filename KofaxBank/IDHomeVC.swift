@@ -95,9 +95,6 @@ protocol IDHomeVCDelegate {
         customizeScreenControls()
         
         customizeNavigationBar()
-        
-        //TODO: temp code
-        UserDefaults.standard.set(MobileIDVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
     }
     
     //MARK: Public methods

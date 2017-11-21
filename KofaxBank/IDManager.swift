@@ -109,6 +109,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         authenticationResultModel = nil
         
         showInstructionPopupForDriverLicense()
+        
+        self.mobileIDVersion = getMobileIDVersion()
     }
     
     private func showInstructionPopupForDriverLicense() {
@@ -606,11 +608,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     private func getDefaultIPStringForID() -> String {
         
         //this string is for device processing. Sever processing string is different
-        
-        //UserDefaults.standard.set(MobileIDVersion.VERSION_2X.rawValue, forKey: KEY_ID_MOBILE_ID_VERSION)
-        
-        mobileIDVersion = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION) as! String
-        
+
         if mobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {
             return "_DeviceType_2_ScalingMode_2.4__DoSkewCorrectionPage__DoCropCorrection__Do90DegreeRotation_4__DoScaleImageToDPI_300_DocDimSmall_2.123_DocDimLarge_3.363_LoadSetting_<Property Name=\"CSkewDetect.prorate_error_sum_thr_bkg_brightness.Bool\" Value=\"1\" Comment=\"DEFAULT 0\" />_LoadSetting_<Property Name=\"CSkwCor.Do_Fast_Rotation.Bool\" Value=\"0\" Comment=\"DEFAULT 1\" />_LoadSetting_<Property Name=\"CSkewDetect.correct_illumination.Bool\" Value=\"0\" Comment=\"DEFAULT 1\" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Scanner_Bkg.Bool\" Value=\"0\" Comment=\"DEFAULT 1 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Red.Byte\" Value=\"255\" Comment=\"DEFAULT 0 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Green.Byte\" Value=\"255\" Comment=\"DEFAULT 0 \" />_LoadSetting_<Property Name=\"CSkwCor.Fill_Color_Blue.Byte\" Value=\"255\" Comment=\"DEFAULT 0\" />_LoadSetting_<Property Name=\"EdgeCleanup.Enable\" Value=\"0\" Comment=\"DEFAULT 1\" />"
         } else {
@@ -906,22 +904,24 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                     self.initiateExtractionWithAuthentication()
                     return
                 } else {
-                    serverURL = URL.init(string: "http://ktaperf02.kofax.com/TotalAgility/Services/SDK")
+                    //serverURL = URL.init(string: "http://ktaperf02.kofax.com/TotalAgility/Services/SDK")
+                    let urlString = UserDefaults.standard.value(forKey: KEY_ID_SERVER_URL)
+                    if urlString != nil {
+                        serverURL = URL.init(string: urlString as! String)
+                    }
                     
                     self.parameters.setValue("false", forKey: "CropImage")
-                    self.parameters.setValue("KofaxMobileIDSync", forKey: "processIdentityName") //TODO: make this configurable in settings
+                    self.parameters.setValue(self.getProcessIdentityName(), forKey: "processIdentityName") //TODO: make this configurable in settings
                     self.parameters.setValue("0", forKey: "IDType")
                     self.parameters.setValue("true", forKey: "ExtractFaceImage")
                     self.parameters.setValue("true", forKey: "ExtractSignatureImage")
                     let imageResize = UserDefaults.standard.value(forKey: KEY_ID_IMAGE_RESIZE) as! String
                     self.parameters.setValue(imageResize, forKey: "ImageResize")
-                    let sessionId = self.getLimitedUserSessionIdForComponent()
+                    let sessionId = self.getSessionId()
                     self.parameters.setValue(sessionId, forKey: "sessionId")
                 }
                 
                 self.parameters.setValue("0", forKey: "storeFolderAndDocuments") //TODO: Check if required
-                
-                //parameters.setValue("false", forKey: "ImagePerfection")
                 
                 self.extractionManager.extractImagesData(fromProcecssedImageArray: arrProccessed, serverUrl: serverURL!, paramsDict: self.parameters, imageMimeType: MIMETYPE_JPG)
                 
@@ -1046,7 +1046,16 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 }
                 
             }
-            
+            appError = AppError()
+            if error != nil {
+                appError.message = error?.localizedDescription
+            } else {
+                if status == 500 {
+                    appError.message = "Internal Server Error"
+                } else {
+                    appError.message = "Error occurred while reading data from ID"
+                }
+            }
             self.handleScreenFlow(err: appError)
         }
     }
@@ -1065,17 +1074,20 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         return (authenticationResults, error)
     }
     
-    let ktaKofaxServerUrl = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
-    let KTAAUTHENTICJOBSERVICE = "JobService.svc/json/CreateJobSyncWithDocuments"
+//    let ktaKofaxServerUrl = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+//    let KTAAUTHENTICJOBSERVICE = "JobService.svc/json/CreateJobSyncWithDocuments"
     
     private func performExtractionWithAuthenticationWithCompletionHandler(handler: ((Any?, Int, Error?) -> ())!) {
-        
         //let authenticationURL = NSString(format: "%s%s", ktaKofaxServerUrl, KTAAUTHENTICJOBSERVICE) as String
         
-        let authenticationURLString = ktaKofaxServerUrl + KTAAUTHENTICJOBSERVICE
+//        let authenticationURLString = ktaKofaxServerUrl + KTAAUTHENTICJOBSERVICE
+        let authenticationURLString = getAuthenticationURLString()
+        
         let authenticationURL = URL.init(string: authenticationURLString)
         
-        let params: NSMutableDictionary = prepareParametersForKTA()
+        let params: NSMutableDictionary = NSMutableDictionary.init()
+
+        params.setValue(getProcessIdentityName(), forKey: "processIdentityName")
         params.setValue("0", forKey: "storeFolderAndDocuments")
         params.setValue("false", forKey: "ProcessImage")
         params.setValue(UserDefaults.standard.value(forKey: KEY_ID_REGION_NAME) as! String, forKey: "Region")
@@ -1093,7 +1105,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             //params.setValue(NSNull.init(), forKey: "Barcode")
         }
         
-        let authenticationManager = IDAuthenticationService.init(sessionId: getLimitedUserSessionIdForComponent() as String!)
+        let authenticationManager = IDAuthenticationService.init(sessionId: getSessionId())
         
         print("authenticationURLString ==> \(authenticationURLString)")
         print("Params ==> \(params)")
@@ -1104,20 +1116,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             
             handler(responseData, status, error)
         })
-    }
-    
-    let ktaKofaxProcessName = "KofaxMobileIDCaptureSync"    //TODO: Move to settings
-    let ktaProcessName = "KofaxMobileIDSync"            //TODO: Move to settings
-    
-    private func prepareParametersForKTA() -> NSMutableDictionary {
-        let paraDict: NSMutableDictionary = NSMutableDictionary.init()
-        
-        if self.mobileIDVersion != nil && self.mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
-            paraDict.setValue(ktaKofaxProcessName, forKey: "processIdentityName")
-        } else {
-            paraDict.setValue(ktaProcessName, forKey: "processIdentityName")
-        }
-        return paraDict
     }
     
     override func extractionSucceeded(statusCode: NSInteger, results: Data) {
@@ -1414,16 +1412,69 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         }
     }
     
-    private func getLimitedUserSessionIdForComponent() -> NSString {
-        if mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
-            print("Limited session ID for 2X:")
-            return "C640521793431F4486D4EF1586672385"
-        } else {
-            print("Limited session ID for 1X:")
-            return "C640521793431F4486D4EF1586672385"
+    
+    private func getAuthenticationProcessIdentityName() -> String {
+        let authProcessIdentity = UserDefaults.standard.value(forKey: KEY_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME)
+        if authProcessIdentity != nil {
+            return authProcessIdentity as! String
         }
+        return ""
     }
     
+    
+    private func getAuthenticationURLString() -> String {
+        let authUrlString = UserDefaults.standard.value(forKey: KEY_ID_AUTHENTICATION_URL)
+        if authUrlString != nil {
+            return authUrlString as! String
+        }
+        return ""
+    }
+
+    
+    private func getMobileIDVersion() -> String {
+        let version = UserDefaults.standard.value(forKey: KEY_ID_MOBILE_ID_VERSION)
+        if version != nil {
+            print("Mobile ID Version ::: \(version as! String)")
+
+            return version as! String
+        }
+        return ""
+    }
+    
+    private func getSessionId() -> String {
+        let sessionID = UserDefaults.standard.value(forKey: KEY_ID_SESSION_ID)
+        
+        print("sessionID ::: \(sessionID as! String)")
+        
+        if sessionID != nil {
+            return sessionID as! String
+        }
+        return ""
+    }
+    
+    //let ktaKofaxProcessName = "KofaxMobileIDCaptureSync"    //TODO: Move to settings
+    //let ktaProcessName = "KofaxMobileIDSync"            //TODO: Move to settings
+
+    
+    private func getProcessIdentityName() -> String {
+        let mobileIDVersion =  getMobileIDVersion()
+        
+        var processIdentityName: Any?
+        
+        if mobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {
+            processIdentityName = UserDefaults.standard.value(forKey: KEY_ID_PROCESS_IDENTITY_NAME_1X)
+        } else if mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {
+            processIdentityName = UserDefaults.standard.value(forKey: KEY_ID_PROCESS_IDENTITY_NAME_2X)
+        }
+        
+        if processIdentityName != nil {
+            print("Process Identity Name::: \(processIdentityName as! String)")
+            return processIdentityName as! String
+        } else {
+            print("Process Identity Name is Nil!!!")
+        }
+        return ""
+    }
     
     private func bytesArrayForIDImages() -> NSMutableArray {
         
@@ -1502,20 +1553,22 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     private func performSelfieVerificationWithCompletionHandler(handler: ((Any?, Int) -> ())!) {
     
-        let ktaKofaxServerUrl = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
-        let KTAAUTHENTICJOBSERVICE = "JobService.svc/json/CreateJobSyncWithDocuments"
+//        let ktaKofaxServerUrl = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+//        let KTAAUTHENTICJOBSERVICE = "JobService.svc/json/CreateJobSyncWithDocuments"
         
         // if not ODE
         
-        let authenticationURLString = ktaKofaxServerUrl + KTAAUTHENTICJOBSERVICE
+//        let authenticationURLString = ktaKofaxServerUrl + KTAAUTHENTICJOBSERVICE
+        let authenticationURLString = getAuthenticationURLString()
+
         let authenticationURL = URL.init(string: authenticationURLString)
 
         let params = NSMutableDictionary()
-        params.setValue("KofaxMobileIdFacialRecognition", forKey: "processIdentityName")
+        params.setValue(getAuthenticationProcessIdentityName(), forKey: "processIdentityName")
         params.setValue(self.authenticationResultModel.transactionID, forKey: "TransactionId")
         params.setValue("0", forKey: "storeFolderAndDocuments") //TODO: Check if required
 
-        let selfieManager = SelfieVerificationService.init(sessionId: getLimitedUserSessionIdForComponent() as String!)
+        let selfieManager = SelfieVerificationService.init(sessionId: getSessionId())
         selfieManager?.performSelfieVerification(with: authenticationURL, forParameters: params as! [AnyHashable : Any], onImages: bytesArrayForSelfieImage() as! [Any], withCompletionHandler: { (responseData: Any?, status: Int) in
             print("Selfie verification status ==> \(status)")
             handler(responseData,status)

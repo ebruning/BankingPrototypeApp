@@ -142,7 +142,7 @@ let DEFAULT_ID_SERVER_URL: String = "http://ktaperf02.kofax.com/TotalAgility/Ser
 let DEFAULT_ID_PROCESS_IDENTITY_NAME_1X: String = "KofaxMobileIDSync"
 let DEFAULT_ID_PROCESS_IDENTITY_NAME_2X: String = "KofaxMobileIDCaptureSync"
 let DEFAULT_ID_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
-let DEFAULT_ID_MOBILE_ID_VERSION: String = "2X"
+let DEFAULT_ID_MOBILE_ID_VERSION: String = MobileIDVersion.VERSION_2X.rawValue
 let DEFAULT_ID_AUTHENTICATION_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments"
 let DEFAULT_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME: String = "KofaxMobileIdFacialRecognition"
 
