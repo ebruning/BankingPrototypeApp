@@ -520,43 +520,56 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             
             return
         }
+        let urlString = getServerUrlString()
         
-        if extractionManager == nil {
-            extractionManager = ExtractionManager.shared
+        let sessionId = getSessionId()
+        
+        let processIdentityName = getProcessIdentityName()
+        
+        if urlString.characters.count == 0 || sessionId.characters.count == 0 || processIdentityName.characters.count == 0 {
+            flowState = CreditCardFlowStates.IMAGE_DATA_EXTRACTION_FAILED
+            self.errObj.title = "Parameters Error"
+            self.errObj.message  = "Required server parameters are missing to read the data from credit card."
+            self.handleCreditCardFlow(err: self.errObj)
+            
+            return
         }
-        extractionManager.delegate = self
+        DispatchQueue.global().async {
+
+        if self.extractionManager == nil {
+            self.extractionManager = ExtractionManager.shared
+        }
+        self.extractionManager.delegate = self
         
         
         //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //TODO: required if going to store original image
         
-        if parameters != nil {
-            parameters.removeAllObjects()
-            parameters = nil
+        if self.parameters != nil {
+            self.parameters.removeAllObjects()
+            self.parameters = nil
         }
-        parameters = NSMutableDictionary.init()
+        self.parameters = NSMutableDictionary.init()
         
-        if serverType == SERVER_TYPE_TOTALAGILITY {
-            extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
+        if self.serverType == SERVER_TYPE_TOTALAGILITY {
+            self.extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
             
             //We need to send login credentials to the server if the server type is KTA.
-                let urlString = getServerUrlString()
                 let url = URL.init(string: urlString)
 //            let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
 
 //            let serverURL: URL! = URL.init(string: "http://win2012r2-kta.kofax.com/totalagility/services/sdk/")
             //let serverURL: URL! = URL.init(string: "http://hyd-mob-kta73.asia.kofax.com/totalagility/services/sdk/")
-            parameters.setValue("Detect", forKey: "ExtractMethod")
-            parameters.setValue("false", forKey: "ImagePerfection")
+            self.parameters.setValue("Detect", forKey: "ExtractMethod")
+            self.parameters.setValue("false", forKey: "ImagePerfection")
 
-            let processIdentityName = getProcessIdentityName()
-            parameters.setValue(processIdentityName, forKey: "processIdentityName")
+            self.parameters.setValue(processIdentityName, forKey: "processIdentityName")
 
-            let sessionId = getSessionId()
-            parameters.setValue(sessionId, forKey: "sessionId")
+            self.parameters.setValue(sessionId, forKey: "sessionId")
 
-            parameters.setValue("0", forKey: "storeFolderAndDocuments")
+            self.parameters.setValue("0", forKey: "storeFolderAndDocuments")
             
-             extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: processedImage), serverUrl: url!, paramsDict: parameters, imageMimeType: MIMETYPE_JPG)
+             self.extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: self.processedImage), serverUrl: url!, paramsDict: self.parameters, imageMimeType: MIMETYPE_JPG)
+        }
         }
     }
     

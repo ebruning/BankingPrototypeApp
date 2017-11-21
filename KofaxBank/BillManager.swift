@@ -512,6 +512,20 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
             return
         }
         
+        let urlString = getServerUrlString()
+        
+        let sessionID = getSessionId()
+        
+        let processIdentityName = getProcessIdentityName()
+        
+        if urlString.characters.count == 0 || sessionID.characters.count == 0 || processIdentityName.characters.count == 0 {
+            flowState = BillFlowStates.IMAGE_DATA_EXTRACTION_FAILED
+            self.errObj.title = "Parameters Error"
+            self.errObj.message  = "Required server parameters are missing to read the data from bill."
+            self.handleBillFlow(err: self.errObj)
+            
+            return
+        }
         DispatchQueue.global().async {
             if self.extractionManager == nil {
                 self.extractionManager = ExtractionManager.shared
@@ -531,24 +545,58 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
                 self.extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
                 
                 //We need to send login credentials to the server if the server type is KTA.
-                let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
+//                let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
+
+                let url = URL.init(string: urlString)
                 
                // let serverURL: URL! = URL.init(string: "http://hyd-mob-kta73.asia.kofax.com/totalagility/services/sdk")
                 
-                self.parameters.setValue("KofaxBillPaySync", forKey: "processIdentityName")
+                self.parameters.setValue(processIdentityName, forKey: "processIdentityName")
+                
+                self.parameters.setValue(sessionID, forKey: "sessionId")
                 self.parameters.setValue("", forKey: "documentName")
                 self.parameters.setValue("", forKey: "documentGroupName")
                 self.parameters.setValue("", forKey: "username")
                 self.parameters.setValue("", forKey: "password")
                 
                 self.parameters.setValue("0", forKey: "storeFolderAndDocuments")
-                //let sessionId = UserDefaults.standard.value(forKey: "SessionId") as! String
-                let sessionId = "C640521793431F4486D4EF1586672385"  //TODO: define this session ID at a common place
-                self.parameters.setValue(sessionId, forKey: "sessionId")
                 
-                self.extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: self.processedImage), serverUrl: serverURL, paramsDict: self.parameters, imageMimeType: MIMETYPE_TIF)
+                self.extractionManager.extractImagesData(fromProcecssedImageArray: NSMutableArray.init(object: self.processedImage), serverUrl: url!, paramsDict: self.parameters, imageMimeType: MIMETYPE_TIF)
             }
         }
+    }
+    private func getServerUrlString() -> String {
+        let urlString = UserDefaults.standard.value(forKey: KEY_BILLPAY_SERVER_URL)
+        
+        print("Bill URL ::: \(urlString as! String)")
+        
+        if urlString != nil {
+            return urlString as! String
+        }
+        return ""
+    }
+    
+    
+    private func getSessionId() -> String {
+        let sessionID = UserDefaults.standard.value(forKey: KEY_BILLPAY_SESSION_ID)
+        
+        print("Bill sessionID ::: \(sessionID as! String)")
+        
+        if sessionID != nil {
+            return sessionID as! String
+        }
+        return ""
+    }
+    
+    private func getProcessIdentityName() -> String {
+        let processIdentityName = UserDefaults.standard.value(forKey: KEY_BILLPAY_PROCESS_IDENTITY_NAME)
+        
+        print("Bill Process Identity Name ::: \(processIdentityName as! String)")
+        
+        if processIdentityName != nil {
+            return processIdentityName as! String
+        }
+        return ""
     }
 
     override func extractionSucceeded(statusCode: NSInteger, results: Data) {
