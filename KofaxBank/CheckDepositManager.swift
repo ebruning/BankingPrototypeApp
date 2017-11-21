@@ -533,64 +533,84 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
 
         if (!Utility.isConnectedToNetwork()) {
             Utility.showAlert(onViewController: checkHomeViewController, titleString: "Network Error", messageString: "A working network connection is required to read data from check. \nPlease check network connection and try again.")
+            checkHomeViewController.checkDataNotAvailable()
+            checkFlowState = CheckStates.CDNOOP
         }
         
-        if extractionManager == nil {
-            extractionManager = ExtractionManager.shared
-            extractionManager.delegate = self
+        let urlString = getServerUrlString()
+        
+        let sessionID = getSessionId()
+        
+        let processIdentityName = getProcessIdentityName()
+        
+        if urlString.characters.count == 0 || sessionID.characters.count == 0 || processIdentityName.characters.count == 0 {
+            Utility.showAlert(onViewController: checkHomeViewController, titleString: "Parameters Error", messageString: "Required server parameters are missing to read the data from check.")
+            checkHomeViewController.checkDataNotAvailable()
+            checkFlowState = CheckStates.CDNOOP
+            return
         }
         
-        if processedImgFilePathArr != nil {
-            processedImgFilePathArr.removeAllObjects()
-            processedImgFilePathArr = nil
+        DispatchQueue.global().async {
+            
+            if self.extractionManager == nil {
+                self.extractionManager = ExtractionManager.shared
+                self.extractionManager.delegate = self
         }
-        processedImgFilePathArr = NSMutableArray.init()
         
-        processedImgFilePathArr.add(DiskUtility.shared.getFilePathWithType(side: ImageType.FRONT_PROCESSED, type: MIMETYPE_TIF))
+            if self.processedImgFilePathArr != nil {
+                self.processedImgFilePathArr.removeAllObjects()
+                self.processedImgFilePathArr = nil
+            }
+            self.processedImgFilePathArr = NSMutableArray.init()
 
-        processedImgFilePathArr.add(DiskUtility.shared.getFilePathWithType(side: ImageType.BACK_PROCESSED, type: MIMETYPE_TIF))
+            self.processedImgFilePathArr.add(DiskUtility.shared.getFilePathWithType(side: ImageType.FRONT_PROCESSED, type: MIMETYPE_TIF))
 
-        print("File -- 1 \(processedImgFilePathArr.object(at: 0))")
-        print("File -- 2 \(processedImgFilePathArr.object(at: 1))")
+            self.processedImgFilePathArr.add(DiskUtility.shared.getFilePathWithType(side: ImageType.BACK_PROCESSED, type: MIMETYPE_TIF))
+            
+            print("File -- 1 \(self.processedImgFilePathArr.object(at: 0))")
+            print("File -- 2 \(self.processedImgFilePathArr.object(at: 1))")
 
         //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //TODO: required if going to store original image
 
-        if parameters != nil {
-            parameters.removeAllObjects()
-            parameters = nil
+            if self.parameters != nil {
+                self.parameters.removeAllObjects()
+                self.parameters = nil
         }
-        parameters = NSMutableDictionary.init()
+            self.parameters = NSMutableDictionary.init()
         
-        if serverType == SERVER_TYPE_TOTALAGILITY {
-            extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
+            if self.serverType == SERVER_TYPE_TOTALAGILITY {
+                self.extractionManager.serverType = SERVER_TYPE_TOTALAGILITY
             
-            parameters.setValue("US", forKey: "Country")
+                self.parameters.setValue("US", forKey: "Country")   //TODO: use country from country selection screen
             
             //We need to send login credentials to the server if the server type is KTA.
 //            let serverURL: URL! = URL.init(string: "https://mobiledemo.kofax.com:443/mobilesdk/api/CheckDeposit?customer=Kofax")
             
-            let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
+                //let serverURL: URL! = URL.init(string: "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/")
             //let serverURL: URL! = URL.init(string: "http://hyd-mob-kta73.asia.kofax.com/totalagility/services/sdk")
           
-            parameters.setValue("KofaxCheckDepositSync", forKey: "processIdentityName")
-            parameters.setValue("", forKey: "documentName")
-            parameters.setValue("", forKey: "documentGroupName")
+                let url = URL.init(string: urlString)
             
-            parameters.setValue("", forKey: "username")
-            parameters.setValue("", forKey: "password")
+                self.parameters.setValue(processIdentityName, forKey: "processIdentityName")
 
-            parameters.setValue("0", forKey: "storeFolderAndDocuments")
+                self.parameters.setValue(sessionID, forKey: "sessionId")
             
-            //let sessionId = UserDefaults.standard.value(forKey: "SessionId") as! String
-            parameters.setValue("C640521793431F4486D4EF1586672385", forKey: "sessionId")    //TODO: use session ID from login response
+                self.parameters.setValue("", forKey: "documentName")
+                self.parameters.setValue("", forKey: "documentGroupName")
             
-            checkHomeViewController.showWaitIndicator()
+                self.parameters.setValue("", forKey: "username")
+                self.parameters.setValue("", forKey: "password")
             
-            let errorStatus = extractionManager.extractData(fromProcecssedImagePaths: processedImgFilePathArr, serverUrl: serverURL, extractionParams: parameters, imageMimeType: MIMETYPE_TIF)
+                self.parameters.setValue("0", forKey: "storeFolderAndDocuments")
+                
+                self.checkHomeViewController.showWaitIndicator()
+                
+                let errorStatus = self.extractionManager.extractData(fromProcecssedImagePaths: self.processedImgFilePathArr, serverUrl: url!, extractionParams: self.parameters, imageMimeType: MIMETYPE_TIF)
             
             if errorStatus != KMC_SUCCESS {
                 //Utility.showAlert(onViewController: checkHomeViewController, titleString: "Check data extraction failed", messageString: "\(errorStatus)")
-                checkHomeViewController.checkDataNotAvailable()
+                    self.checkHomeViewController.checkDataNotAvailable()
+                }
             }
         }
         
@@ -599,6 +619,39 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         
 //        [self talkToRTTIwithFront:[appStateMachine getImage:FRONT_PROCESSED mimeType:MIMETYPE_TIF] AndBack:[appStateMachine getImage:BACK_PROCESSED mimeType:MIMETYPE_TIF]];
 
+    }
+    private func getServerUrlString() -> String {
+        let urlString = UserDefaults.standard.value(forKey: KEY_CHECK_SERVER_URL)
+        
+        print("Check URL ::: \(urlString as! String)")
+        
+        if urlString != nil {
+            return urlString as! String
+        }
+        return ""
+    }
+    
+    
+    private func getSessionId() -> String {
+        let sessionID = UserDefaults.standard.value(forKey: KEY_CHECK_SESSION_ID)
+        
+        print("Check sessionID ::: \(sessionID as! String)")
+        
+        if sessionID != nil {
+            return sessionID as! String
+        }
+        return ""
+    }
+    
+    private func getProcessIdentityName() -> String {
+        let processIdentityName = UserDefaults.standard.value(forKey: KEY_CHECK_PROCESS_IDENTITY_NAME)
+        
+        print("Check Process Identity Name ::: \(processIdentityName as! String)")
+        
+        if processIdentityName != nil {
+            return processIdentityName as! String
+        }
+        return ""
     }
     
     // Mark: - ImagePickerController delegate

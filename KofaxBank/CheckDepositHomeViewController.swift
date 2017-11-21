@@ -760,6 +760,9 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
             if checkData.car.value == checkData.lar.value {
                 imgCarLarMatchGreen.isHidden = false
                 imgCarLarMatchRed.isHidden = true
+            } else {
+                imgCarLarMatchGreen.isHidden = true
+                imgCarLarMatchRed.isHidden = false
             }
         }
     }
