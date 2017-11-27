@@ -127,11 +127,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("Open URL")
+        
+        
+        //TODO: check how to check if app has navigation controller
+        
+        let navController = self.window?.rootViewController as! UINavigationController
+
+        /*
+         initialize instance variables. Thse will be accessed by application home screen(in case application is not already running). In ViewDidAppear of home screen if these variables found initialized, home screen will call import_profile method of UIStyler library.
+         */
+
+        requestedProfileImport = true
+        urlOfProfileBeingImported = url
+
+        ////check if application is just being launched. In this app splash screen is the first screen. Change the name of view controller based on your applications splash screen.
+        if (navController.viewControllers.first?.isKind(of: SplashVC.self))! {
+
+        } else {
+
+            initiateProfileImport(navController: navController)
+            requestedProfileImport = false
+        }
+        
+        return true
+    }
+    
+    private func initiateProfileImport(navController: UINavigationController) {
+        let visibleViewController = navController.visibleViewController
+
+        Utility.showAlertWithCallback(onViewController: visibleViewController!, titleString: "Profile Import Notification", messageString: "\nA new profile is waiting to be imported.\n\nDo you want to continue?", positiveActionTitle: "Import", negativeActionTitle: "Cancel", positiveActionResponse: {
+            
+            //import profile
+            if (urlOfProfileBeingImported?.absoluteString.characters.count)! > 0 {
+                
+                AppStyleManager.sharedInstance().import_profile(navController, fileUrl: urlOfProfileBeingImported)
+                
+                Utility.showAlert(onViewController: visibleViewController!, titleString: "Profile Import Complete", messageString: "\nPlease see profile page to use new profile.")
+            } else {
+                Utility.showAlert(onViewController: visibleViewController!, titleString: "Profile Import Error", messageString: "Profile url is invalid or empty.")
+            }
+            
+            requestedProfileImport = false
+            
+        }, negativeActionResponse: {
+            
+        })
+    }
+    
 }
 
 
-
+var requestedProfileImport: Bool = false
+var urlOfProfileBeingImported: URL? = nil
 
 
 let ad = UIApplication.shared.delegate as! AppDelegate
 let context = ad.persistentContainer.viewContext
+

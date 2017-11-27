@@ -97,6 +97,14 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         loadUserDetails()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if requestedProfileImport {
+            initiateProfileImport(navController: self.navigationController!)
+            requestedProfileImport = false
+        }
+    }
 
     private func setupPanGestureRecognizerOnBannerView() {
         let panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(move(_:)))
@@ -682,6 +690,29 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         loadUserDetails()
         
         Utility.showAlert(onViewController: self, titleString: "Profile Details Updated", messageString: "\nYou can slide down your profile picture to see the details.")
+    }
+    //MARK: Profile import method
+    
+    private func initiateProfileImport(navController: UINavigationController) {
+        let visibleViewController = navController.visibleViewController
+        
+        Utility.showAlertWithCallback(onViewController: visibleViewController!, titleString: "Profile Import Notification", messageString: "\nA new profile is waiting to be imported.\n\nDo you want to continue?", positiveActionTitle: "Import", negativeActionTitle: "Cancel", positiveActionResponse: {
+            
+            //import profile
+            if (urlOfProfileBeingImported?.absoluteString.characters.count)! > 0 {
+                
+                AppStyleManager.sharedInstance().import_profile(navController, fileUrl: urlOfProfileBeingImported)
+                
+                Utility.showAlert(onViewController: visibleViewController!, titleString: "Profile Import Complete", messageString: "\nPlease see profile page to use new profile.")
+            } else {
+                Utility.showAlert(onViewController: visibleViewController!, titleString: "Profile Import Error", messageString: "Profile url is invalid or empty.")
+            }
+            
+            requestedProfileImport = false
+            
+        }, negativeActionResponse: {
+            
+        })
     }
     
 }
