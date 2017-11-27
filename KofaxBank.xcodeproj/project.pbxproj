@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B3C2511525E09F1E15FC05 /* Pods_KofaxBankTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */; };
 		0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */; };
-		719DE89B310DC15AC8244468 /* Pods_KofaxBankUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */; };
 		AE0FE0A61F0E0FCE00F9F520 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */; };
 		AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */; };
 		AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0FE0AB1F0F643000F9F520 /* MapKit.framework */; };
@@ -62,9 +60,6 @@
 		AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */; };
 		AE5D7E4D1EDD729200D12163 /* KofaxBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E4C1EDD729200D12163 /* KofaxBankTests.swift */; };
 		AE5D7E581EDD729200D12163 /* KofaxBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */; };
-		AE71BBCA1F2726A70066B632 /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC71F2726A70066B632 /* MobileSDK.framework */; };
-		AE71BBCB1F2726A70066B632 /* SDKStrings.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC81F2726A70066B632 /* SDKStrings.bundle */; };
-		AE71BBCC1F2726A70066B632 /* uiimages.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBC91F2726A70066B632 /* uiimages.bundle */; };
 		AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD21F273F530066B632 /* libsqlite3.tbd */; };
 		AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD41F273F5B0066B632 /* libz.tbd */; };
 		AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD61F273F690066B632 /* libc++.tbd */; };
@@ -144,6 +139,9 @@
 		AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
 		AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
 		AEBC71741FBAF81D00604399 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AECE96591FCBF27800651AE3 /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECE96561FCBF27700651AE3 /* MobileSDK.framework */; };
+		AECE965A1FCBF27800651AE3 /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AECE96571FCBF27700651AE3 /* SDKStrings.bundle */; };
+		AECE965B1FCBF27800651AE3 /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AECE96581FCBF27700651AE3 /* uiimages.bundle */; };
 		AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */; };
 		AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */; };
 		AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B51FB1D05100B79700 /* FaceDetection.m */; };
@@ -187,7 +185,6 @@
 /* Begin PBXFileReference section */
 		05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.debug.xcconfig"; sourceTree = "<group>"; };
 		759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.debug.xcconfig"; sourceTree = "<group>"; };
-		971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBankTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
 		AE0FE0AB1F0F643000F9F520 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -251,9 +248,6 @@
 		AE5D7E531EDD729200D12163 /* KofaxBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KofaxBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KofaxBankUITests.swift; sourceTree = "<group>"; };
 		AE5D7E591EDD729200D12163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE71BBC71F2726A70066B632 /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
-		AE71BBC81F2726A70066B632 /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
-		AE71BBC91F2726A70066B632 /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
 		AE71BBD21F273F530066B632 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE71BBD41F273F5B0066B632 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AE71BBD61F273F690066B632 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -354,6 +348,9 @@
 		AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsPopupViewController.xib; sourceTree = "<group>"; };
 		AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabHomeViewController.swift; sourceTree = "<group>"; };
 		AEBC71711FBAF63400604399 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
+		AECE96561FCBF27700651AE3 /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
+		AECE96571FCBF27700651AE3 /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
+		AECE96581FCBF27700651AE3 /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
 		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
 		AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieCaptureExprienceViewController.xib; sourceTree = "<group>"; };
 		AEDDA3B41FB1D05100B79700 /* FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetection.h; sourceTree = "<group>"; };
@@ -368,7 +365,6 @@
 		AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationService.m; sourceTree = "<group>"; };
 		B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBankUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.release.xcconfig"; sourceTree = "<group>"; };
 		F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.release.xcconfig"; sourceTree = "<group>"; };
 		FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -387,11 +383,9 @@
 				AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */,
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
 				AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */,
-				AE71BBCA1F2726A70066B632 /* MobileSDK.framework in Frameworks */,
-				AE71BBCB1F2726A70066B632 /* SDKStrings.bundle in Frameworks */,
-				AE71BBCC1F2726A70066B632 /* uiimages.bundle in Frameworks */,
 				AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */,
 				0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */,
+				AECE96591FCBF27800651AE3 /* MobileSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +393,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B3C2511525E09F1E15FC05 /* Pods_KofaxBankTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +400,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719DE89B310DC15AC8244468 /* Pods_KofaxBankUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +409,9 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AECE96561FCBF27700651AE3 /* MobileSDK.framework */,
+				AECE96571FCBF27700651AE3 /* SDKStrings.bundle */,
+				AECE96581FCBF27700651AE3 /* uiimages.bundle */,
 				AEBC71711FBAF63400604399 /* AppStylerLib.framework */,
 				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
 				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
@@ -425,13 +420,8 @@
 				AE71BBD61F273F690066B632 /* libc++.tbd */,
 				AE71BBD41F273F5B0066B632 /* libz.tbd */,
 				AE71BBD21F273F530066B632 /* libsqlite3.tbd */,
-				AE71BBC71F2726A70066B632 /* MobileSDK.framework */,
-				AE71BBC81F2726A70066B632 /* SDKStrings.bundle */,
-				AE71BBC91F2726A70066B632 /* uiimages.bundle */,
 				AE0FE0AB1F0F643000F9F520 /* MapKit.framework */,
 				B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */,
-				971623EF579B2EDF547951D1 /* Pods_KofaxBankTests.framework */,
-				D5AF594099342BA9E2306186 /* Pods_KofaxBankUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1023,6 +1013,7 @@
 				AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */,
 				AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */,
 				AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */,
+				AECE965B1FCBF27800651AE3 /* uiimages.bundle in Resources */,
 				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
 				AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */,
 				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
@@ -1032,6 +1023,7 @@
 				AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */,
 				AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */,
 				AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */,
+				AECE965A1FCBF27800651AE3 /* SDKStrings.bundle in Resources */,
 				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
 				AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */,
 				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
@@ -1471,6 +1463,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/MobileSDK.framework/Headers";
 				INFOPLIST_FILE = KofaxBank/Info.plist;
@@ -1496,6 +1489,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/MobileSDK.framework/Headers";
 				INFOPLIST_FILE = KofaxBank/Info.plist;

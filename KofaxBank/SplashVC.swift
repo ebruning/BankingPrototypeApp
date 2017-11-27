@@ -63,11 +63,12 @@ class SplashVC: UIViewController {
         self.splashLogoImageView = splashStyler?.configure_app_logo(splashLogoImageView)
         
         self.appTitleLabel = splashStyler?.configure_app_title(appTitleLabel)
-        self.appSubTitleLabel1 = splashStyler?.configure_app_title(appSubTitleLabel1)
-        self.appSubTitleLabel2 = splashStyler?.configure_app_title(appSubTitleLabel2)
         
-        self.appTitleDividerLineView.backgroundColor = accentColor
-        self.appSubtitleDotLabel.textColor = accentColor
+        self.appSubTitleLabel1.textColor = accentColor
+        self.appSubTitleLabel2.textColor = accentColor
+        
+        //self.appTitleDividerLineView.backgroundColor = accentColor
+        //self.appSubtitleDotLabel.textColor = accentColor
         
         self.footerLogoImageView = splashStyler?.configure_footer_logo(footerLogoImageView)
     }

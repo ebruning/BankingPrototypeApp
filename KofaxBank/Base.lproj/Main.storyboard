@@ -2937,11 +2937,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="efX-se-6tp"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="mck-A8-Xlo"/>
                                                                     <action selector="onInfoClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="3UB-8z-YWW"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="zGJ-yu-3xJ">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="46" id="m39-fW-La3"/>
                                                                     <constraint firstAttribute="width" constant="46" id="sPr-Ee-jMz"/>
@@ -2972,11 +2975,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="HPU-W0-quy"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="IJP-tX-yym"/>
                                                                     <action selector="onUserProfileClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="6dZ-ev-nfx"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserHollow" translatesAutoresizingMaskIntoConstraints="NO" id="Jo8-cb-GeJ">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="46" id="3uf-qe-RBs"/>
                                                                     <constraint firstAttribute="width" constant="46" id="W0I-zA-CfG"/>
@@ -3012,11 +3018,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="6iF-tg-hOt"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="re9-Ut-9eJ"/>
                                                                     <action selector="onLocationClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="xc2-hO-aX6"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="L00-ZJ-x96">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="46" id="CV7-bo-goL"/>
                                                                     <constraint firstAttribute="width" constant="46" id="nVV-WU-0Ph"/>
@@ -3047,11 +3056,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="vfp-Lp-4bE"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="nEe-4P-FV9"/>
                                                                     <action selector="onContactUsClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="GfD-je-F5C"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speech_bubble" translatesAutoresizingMaskIntoConstraints="NO" id="GGW-94-Q3I">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="46" id="QcP-TD-QHT"/>
                                                                     <constraint firstAttribute="width" constant="46" id="o3X-Li-Jkd"/>
@@ -3087,11 +3099,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="7y0-1V-bpz"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="UDC-cm-khw"/>
                                                                     <action selector="onResetClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="ktN-gV-fEM"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reset" translatesAutoresizingMaskIntoConstraints="NO" id="uY3-4K-39e">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="46" id="dHt-Di-lLu"/>
                                                                     <constraint firstAttribute="height" constant="46" id="sYR-4M-XOR"/>
@@ -3122,11 +3137,14 @@ United States</string>
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="buttonDragExitEvent:" destination="l9I-sZ-dC3" eventType="touchDragExit" id="pva-oU-gFx"/>
+                                                                    <action selector="buttonTouchDownEvent:" destination="l9I-sZ-dC3" eventType="touchDown" id="JI0-eZ-CJU"/>
                                                                     <action selector="onSettingsClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="ZML-qK-RXf"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings_150" translatesAutoresizingMaskIntoConstraints="NO" id="oOw-pX-Oro">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="46" id="EVk-oT-r4X"/>
                                                                     <constraint firstAttribute="height" constant="46" id="HNA-aq-8UC"/>

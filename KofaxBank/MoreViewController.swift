@@ -22,6 +22,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     
     //MARK: Private variables
 
+    private var accentColor: UIColor? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,36 +47,55 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     private func customizeScreenControls() {
         let appStyler = AppStyleManager.sharedInstance()
         
-        let screenStyler = appStyler?.get_app_screen_styler()
+        self.accentColor = appStyler?.get_app_screen_styler().get_accent_color()
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        infoButton.backgroundColor = screenStyler?.get_accent_color()
-        userProfileButton.backgroundColor = screenStyler?.get_accent_color()
-        locationButton.backgroundColor = screenStyler?.get_accent_color()
-        contactUsButton.backgroundColor = screenStyler?.get_accent_color()
-        resetButton.backgroundColor = screenStyler?.get_accent_color()
-        settingsButton.backgroundColor = screenStyler?.get_accent_color()
+        infoButton.backgroundColor = accentColor
+        infoButton.customizeBorderColor(color: accentColor!)
         
-        //appStyler?.get_button_styler().configure_primary_button(addAccountFloatingButton)
+        userProfileButton.backgroundColor = accentColor
+        userProfileButton.customizeBorderColor(color: accentColor!)
+        
+        locationButton.backgroundColor = accentColor
+        locationButton.customizeBorderColor(color: accentColor!)
+        
+        contactUsButton.backgroundColor = accentColor
+        contactUsButton.customizeBorderColor(color: accentColor!)
+        
+        resetButton.backgroundColor = accentColor
+        resetButton.customizeBorderColor(color: accentColor!)
+        
+        settingsButton.backgroundColor = accentColor
+        settingsButton.customizeBorderColor(color: accentColor!)
     }
 
     
     // Screen UIButton actions
+    @IBAction func buttonTouchDownEvent(_ sender: UIButton) {
+        sender.backgroundColor = UIColor.init(rgb: 0xD8D8D8)  //light gray
+    }
+
+    @IBAction func buttonDragExitEvent(_ sender: UIButton) {
+        sender.backgroundColor = self.accentColor
+    }
     
     @IBAction func onInfoClicked(_ sender: UIButton) {
         print("onInfoClicked")
+        sender.backgroundColor = self.accentColor
         
         showApplicationInformation()
     }
 
     @IBAction func onUserProfileClicked(_ sender: UIButton) {
         print("onUserProfileClicked")
+        sender.backgroundColor = self.accentColor
         
         showUserProfile()
     }
 
     @IBAction func onSettingsClicked(_ sender: UIButton) {
              print("onNotificationClicked")
+        sender.backgroundColor = self.accentColor
         
         let stylerManager = AppStyleManager.sharedInstance()
         stylerManager?.showStyler(self.navigationController)
@@ -84,17 +104,20 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     @IBAction func onContactUsClicked(_ sender: UIButton) {
         
         print("onContactUsClicked")
+        sender.backgroundColor = self.accentColor
         showEmailComposer()
     }
     
     @IBAction func onLocationClicked(_ sender: UIButton) {
              print("onLocationClicked")
+        sender.backgroundColor = self.accentColor
         
         showLocation()
     }
 
     @IBAction func onResetClicked(_ sender: UIButton) {
              print("onResetClicked")
+        sender.backgroundColor = self.accentColor
         
         Utility.showAlertWithCallback(onViewController: self, titleString: "Reset All Data", messageString: "All the application data will be reset to the original values.\n\nDo you want to continue?", positiveActionTitle: "Continue", negativeActionTitle: "Cancel", positiveActionResponse: {
             

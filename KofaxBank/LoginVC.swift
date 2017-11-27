@@ -64,20 +64,20 @@ class LoginVC: UIViewController {
     }
     
     private func customizeScreenControls() {
-        let appStyler = AppStyleManager.sharedInstance()
+        let splashStyler = AppStyleManager.sharedInstance()?.get_splash_styler()
         
-        let splashStyler = appStyler?.get_splash_styler()
-        self.view = splashStyler?.configure_view_background(self.view)
+        let accentColor = AppStyleManager.sharedInstance()?.get_app_screen_styler().get_accent_color()
 
-        splashLogoImageView = splashStyler?.configure_app_logo(splashLogoImageView)
+        self.view = splashStyler?.configure_view_background(self.view)
+        self.splashLogoImageView = splashStyler?.configure_app_logo(splashLogoImageView)
 
         self.appTitleLabel = splashStyler?.configure_app_title(appTitleLabel)
-        self.appSubTitleLabel1 = splashStyler?.configure_app_title(appSubTitleLabel1)
-        self.appSubTitleLabel2 = splashStyler?.configure_app_title(appSubTitleLabel2)
         
-        let accentColor = appStyler?.get_app_screen_styler().get_accent_color()
-        self.appTitleDividerLineView.backgroundColor = accentColor
-        self.appSubtitleDotLabel.textColor = accentColor
+        self.appSubTitleLabel1.textColor = accentColor
+        self.appSubTitleLabel2.textColor = accentColor
+        
+        //self.appTitleDividerLineView.backgroundColor = accentColor
+        //self.appSubtitleDotLabel.textColor = accentColor
 
         self.welcomeLabel.textColor = accentColor
         

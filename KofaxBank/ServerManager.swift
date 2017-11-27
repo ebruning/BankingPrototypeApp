@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 
 class ServerManager {
     
@@ -71,6 +71,16 @@ class ServerManager {
     func formLoginRequest(userNameData: String, passwordData: String) throws -> NSMutableURLRequest? {
         var request: NSMutableURLRequest? = nil
         
+        let params: [String: String] = [
+            "UserId": userNameData,
+            "Password": passwordData,
+            "LogOnProtocol": "\(NSNumber(integerLiteral: 7))",
+            "UnconditionalLogOn": "\(NSNumber(booleanLiteral: true))"
+        ]
+  
+        let outerParam: [String: Any] = ["userIdentityWithPassword": params]
+        
+/*
         let params:Parameters = [
             "UserId": userNameData,
             "Password": passwordData,
@@ -82,6 +92,7 @@ class ServerManager {
             "userIdentityWithPassword": params
             ] as [String : Any]
         
+*/
         //convert parameters dictionary to Data object
         let jsonData = try JSONSerialization.data(withJSONObject: outerParam, options: .prettyPrinted)
         
