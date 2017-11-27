@@ -73,6 +73,7 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         super.viewWillAppear(animated)
 
         customizeScreenControls()
+        customizeNavigationBar()
         initialize()
         
         fetchAccounts()
@@ -80,7 +81,9 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        customizeNavigationBar()
+        super.viewDidAppear(animated)
+
+        self.tabBarController?.delegate = self
     }
     
     
@@ -97,7 +100,6 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
 
         selectionType = SelectionType.ACCOUNT
         
-        self.tabBarController?.delegate = self
         self.pickerView.delegate = self
     }
     

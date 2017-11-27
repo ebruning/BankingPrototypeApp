@@ -75,11 +75,10 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
         
         customizeNavigationBar()
         
-        self.tabBarController?.delegate = self
+        fetchCards()
         
         updateCardBanner(index: 0)
 
-        fetchCards()
         cardStatus = updateSceenAsPerCardStatus()
     }
 
@@ -90,6 +89,9 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tabBarController?.delegate = self
 
         updateTableVisibility()
 

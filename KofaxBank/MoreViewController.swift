@@ -28,11 +28,20 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         customizeScreenControls()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.delegate = self
         customizeScreenControls()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.delegate = nil
     }
 
     //MARK: UITabBar delegate

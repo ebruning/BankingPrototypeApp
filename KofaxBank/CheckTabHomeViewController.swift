@@ -53,11 +53,17 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         initialize()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tabBarController?.delegate = self
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.delegate = nil
         self.pickerView.delegate = nil
+        clear()
     }
     
     private func initialize() {
@@ -71,7 +77,6 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
             fetchAccounts()
         }
 
-        self.tabBarController?.delegate = self
         self.pickerView.delegate = self
 
     }
@@ -174,7 +179,6 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         
         if viewController != self {
             print("New viewcontroller selected!")
-            clear()
         }
     }
 
