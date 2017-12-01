@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */; };
 		AE0FE0A61F0E0FCE00F9F520 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */; };
 		AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */; };
 		AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0FE0AB1F0F643000F9F520 /* MapKit.framework */; };
@@ -32,6 +31,9 @@
 		AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */; };
 		AE254D571F66867500695F8A /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D561F66867500695F8A /* BillManager.swift */; };
 		AE254D591F69309F00695F8A /* CreditCardHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */; };
+		AE2E2FA71FD1B93000DDB811 /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE2E2FA41FD1B93000DDB811 /* uiimages.bundle */; };
+		AE2E2FA81FD1B93000DDB811 /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE2E2FA51FD1B93000DDB811 /* SDKStrings.bundle */; };
+		AE2E2FA91FD1B93000DDB811 /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2E2FA61FD1B93000DDB811 /* MobileSDK.framework */; };
 		AE33FD8F1FB2E41100E3C380 /* SelfieResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE33FD8D1FB2E41100E3C380 /* SelfieResultsViewController.swift */; };
 		AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE33FD8E1FB2E41100E3C380 /* SelfieResultsViewController.xib */; };
 		AE33FD921FB30D5900E3C380 /* SelfieResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE33FD911FB30D5900E3C380 /* SelfieResultsTableViewCell.xib */; };
@@ -122,9 +124,6 @@
 		AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028231F8638180055685B /* IDSettingsViewController.xib */; };
 		AE9028271F864A7A0055685B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028261F864A7A0055685B /* CustomView.swift */; };
 		AE9C006A1F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */; };
-		AE9D61121FCD440F008A138C /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D610F1FCD440F008A138C /* uiimages.bundle */; };
-		AE9D61131FCD440F008A138C /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D61101FCD440F008A138C /* SDKStrings.bundle */; };
-		AE9D61141FCD440F008A138C /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9D61111FCD440F008A138C /* MobileSDK.framework */; };
 		AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */; };
 		AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */; };
 		AEA639661F4D8420006C122D /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA639651F4D8420006C122D /* DataParser.m */; };
@@ -180,8 +179,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.debug.xcconfig"; sourceTree = "<group>"; };
-		759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
 		AE0FE0AB1F0F643000F9F520 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -206,6 +203,9 @@
 		AE254D541F667CB000695F8A /* BillDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillDataPreviewViewController.xib; sourceTree = "<group>"; };
 		AE254D561F66867500695F8A /* BillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
 		AE254D581F69309F00695F8A /* CreditCardHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardHomeVC.swift; sourceTree = "<group>"; };
+		AE2E2FA41FD1B93000DDB811 /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
+		AE2E2FA51FD1B93000DDB811 /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
+		AE2E2FA61FD1B93000DDB811 /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
 		AE33FD8D1FB2E41100E3C380 /* SelfieResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieResultsViewController.swift; sourceTree = "<group>"; };
 		AE33FD8E1FB2E41100E3C380 /* SelfieResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieResultsViewController.xib; sourceTree = "<group>"; };
 		AE33FD911FB30D5900E3C380 /* SelfieResultsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieResultsTableViewCell.xib; sourceTree = "<group>"; };
@@ -327,9 +327,6 @@
 		AE9028261F864A7A0055685B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		AE9C00681F0B7E0C000EEC47 /* KofaxBank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KofaxBank.entitlements; sourceTree = "<group>"; };
 		AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreditCardHomeVC+Banner.swift"; sourceTree = "<group>"; };
-		AE9D610F1FCD440F008A138C /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
-		AE9D61101FCD440F008A138C /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
-		AE9D61111FCD440F008A138C /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
 		AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KofaxBank-Bridging-Header.h"; sourceTree = "<group>"; };
 		AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsHomeVC.swift; sourceTree = "<group>"; };
 		AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -358,11 +355,6 @@
 		AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationResultModel.m; sourceTree = "<group>"; };
 		AEDDA3C31FB1D06B00B79700 /* SelfieVerificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieVerificationService.h; sourceTree = "<group>"; };
 		AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationService.m; sourceTree = "<group>"; };
-		B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KofaxBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.release.xcconfig"; sourceTree = "<group>"; };
-		F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.release.xcconfig"; sourceTree = "<group>"; };
-		FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
+				AE2E2FA91FD1B93000DDB811 /* MobileSDK.framework in Frameworks */,
 				AE6B42E11FCD489300A71F43 /* AppStylerLib.framework in Frameworks */,
 				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
 				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
@@ -378,8 +371,6 @@
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
 				AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */,
 				AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */,
-				0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */,
-				AE9D61141FCD440F008A138C /* MobileSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,10 +394,10 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE2E2FA41FD1B93000DDB811 /* uiimages.bundle */,
+				AE2E2FA51FD1B93000DDB811 /* SDKStrings.bundle */,
+				AE2E2FA61FD1B93000DDB811 /* MobileSDK.framework */,
 				AE6B42E01FCD489300A71F43 /* AppStylerLib.framework */,
-				AE9D610F1FCD440F008A138C /* uiimages.bundle */,
-				AE9D61101FCD440F008A138C /* SDKStrings.bundle */,
-				AE9D61111FCD440F008A138C /* MobileSDK.framework */,
 				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
 				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
 				AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */,
@@ -415,7 +406,6 @@
 				AE71BBD41F273F5B0066B632 /* libz.tbd */,
 				AE71BBD21F273F530066B632 /* libsqlite3.tbd */,
 				AE0FE0AB1F0F643000F9F520 /* MapKit.framework */,
-				B66233EB074F803BB88583BB /* Pods_KofaxBank.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,7 +493,6 @@
 				AE5D7E331EDD729100D12163 /* KofaxBank */,
 				AE5D7E4B1EDD729200D12163 /* KofaxBankTests */,
 				AE5D7E561EDD729200D12163 /* KofaxBankUITests */,
-				D1DE4007D8F113AE6A0345E1 /* Pods */,
 				AE5D7E321EDD729100D12163 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -856,19 +845,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		D1DE4007D8F113AE6A0345E1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */,
-				E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */,
-				05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */,
-				F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */,
-				FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */,
-				CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -876,12 +852,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE5D7E5C1EDD729200D12163 /* Build configuration list for PBXNativeTarget "KofaxBank" */;
 			buildPhases = (
-				A0673D4E03874B01608C937F /* [CP] Check Pods Manifest.lock */,
 				AE5D7E2D1EDD729100D12163 /* Sources */,
 				AE5D7E2E1EDD729100D12163 /* Frameworks */,
 				AE5D7E2F1EDD729100D12163 /* Resources */,
-				2121A1904F6E8190EAE5C511 /* [CP] Embed Pods Frameworks */,
-				DF9BBD5B897F9E61554A8F17 /* [CP] Copy Pods Resources */,
 				AEBC71751FBAF81E00604399 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1004,7 +977,6 @@
 			files = (
 				AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */,
 				AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */,
-				AE9D61121FCD440F008A138C /* uiimages.bundle in Resources */,
 				AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */,
 				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
 				AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */,
@@ -1015,8 +987,9 @@
 				AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */,
 				AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */,
 				AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */,
-				AE9D61131FCD440F008A138C /* SDKStrings.bundle in Resources */,
+				AE2E2FA81FD1B93000DDB811 /* SDKStrings.bundle in Resources */,
 				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
+				AE2E2FA71FD1B93000DDB811 /* uiimages.bundle in Resources */,
 				AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */,
 				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
 				AE7EE5B51F3C8E1900536ED9 /* CheckDepositHomeViewController.xib in Resources */,
@@ -1060,21 +1033,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2121A1904F6E8190EAE5C511 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		57D0010108172D698E356F50 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1103,21 +1061,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0673D4E03874B01608C937F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B070723DB30639653C09E887 /* [CP] Check Pods Manifest.lock */ = {
@@ -1163,21 +1106,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DF9BBD5B897F9E61554A8F17 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1445,7 +1373,6 @@
 		};
 		AE5D7E5D1EDD729200D12163 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 759B0716FCD783BE22136F8E /* Pods-KofaxBank.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1472,7 +1399,6 @@
 		};
 		AE5D7E5E1EDD729200D12163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1498,7 +1424,6 @@
 		};
 		AE5D7E601EDD729200D12163 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05C539D31DC619616E9B1B32 /* Pods-KofaxBankTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1514,7 +1439,6 @@
 		};
 		AE5D7E611EDD729200D12163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1530,7 +1454,6 @@
 		};
 		AE5D7E631EDD729200D12163 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE133A3090D09E72D68EE9A7 /* Pods-KofaxBankUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = C384ZZG573;
@@ -1545,7 +1468,6 @@
 		};
 		AE5D7E641EDD729200D12163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = C384ZZG573;

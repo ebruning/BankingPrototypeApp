@@ -1,6 +1,0 @@
-framework module Pods_KofaxBankUITests {
-  umbrella header "Pods-KofaxBankUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
