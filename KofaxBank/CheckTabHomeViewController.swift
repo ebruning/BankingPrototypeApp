@@ -89,13 +89,8 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
     private func clear() {
         accounts.removeAll()
 
-        if settingsPopup != nil {
-            settingsPopup.close()
-            settingsPopup.dismiss(animated: false, completion: nil)
-            settingsPopup.removeFromParentViewController()
-            
-        }
-
+        closeSettingsPopup()
+        
         if self.checkManager != nil {
             self.checkManager?.delegate = nil
             self.checkManager = nil
@@ -161,6 +156,15 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         
     }
     
+    private func closeSettingsPopup() {
+        if settingsPopup != nil {
+            settingsPopup.close()
+            settingsPopup.dismiss(animated: false, completion: nil)
+            settingsPopup.removeFromParentViewController()
+            
+        }
+    }
+    
     private func fetchAccounts() {
         var fetchRequest: NSFetchRequest<AccountsMaster>! = AccountsMaster.fetchRequest()
         
@@ -179,6 +183,8 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         
         if viewController != self {
             print("New viewcontroller selected!")
+            
+            closeSettingsPopup()
         }
     }
 

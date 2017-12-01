@@ -17,7 +17,6 @@
 		AE154A211F025AE900CF1F48 /* DocumentsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */; };
 		AE154A231F02632700CF1F48 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A221F02632700CF1F48 /* MainTabBarController.swift */; };
 		AE154A321F0288A500CF1F48 /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A311F0288A500CF1F48 /* ViewShadow.swift */; };
-		AE154A341F03A16F00CF1F48 /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A331F03A16F00CF1F48 /* PopVC.swift */; };
 		AE154A361F03A18D00CF1F48 /* PopViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A351F03A18D00CF1F48 /* PopViewCell.swift */; };
 		AE154A381F03A2A400CF1F48 /* PopViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A371F03A2A400CF1F48 /* PopViewData.swift */; };
 		AE154A3A1F03A6E000CF1F48 /* CreditCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A391F03A6E000CF1F48 /* CreditCardData.swift */; };
@@ -126,7 +125,6 @@
 		AE9D61121FCD440F008A138C /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D610F1FCD440F008A138C /* uiimages.bundle */; };
 		AE9D61131FCD440F008A138C /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D61101FCD440F008A138C /* SDKStrings.bundle */; };
 		AE9D61141FCD440F008A138C /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9D61111FCD440F008A138C /* MobileSDK.framework */; };
-		AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */; };
 		AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */; };
 		AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */; };
 		AEA639661F4D8420006C122D /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA639651F4D8420006C122D /* DataParser.m */; };
@@ -193,7 +191,6 @@
 		AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsHomeVC.swift; sourceTree = "<group>"; };
 		AE154A221F02632700CF1F48 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AE154A311F0288A500CF1F48 /* ViewShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
-		AE154A331F03A16F00CF1F48 /* PopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
 		AE154A351F03A18D00CF1F48 /* PopViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopViewCell.swift; sourceTree = "<group>"; };
 		AE154A371F03A2A400CF1F48 /* PopViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopViewData.swift; sourceTree = "<group>"; };
 		AE154A391F03A6E000CF1F48 /* CreditCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardData.swift; sourceTree = "<group>"; };
@@ -334,7 +331,6 @@
 		AE9D61101FCD440F008A138C /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
 		AE9D61111FCD440F008A138C /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
 		AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KofaxBank-Bridging-Header.h"; sourceTree = "<group>"; };
-		AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeScreen.xib; path = ParallaxViewController/HomeScreen.xib; sourceTree = "<group>"; };
 		AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsHomeVC.swift; sourceTree = "<group>"; };
 		AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		AEA639641F4D8420006C122D /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
@@ -576,7 +572,6 @@
 				AE154A221F02632700CF1F48 /* MainTabBarController.swift */,
 				AE254D501F5D762C00695F8A /* InstructionsPopup.swift */,
 				AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */,
-				AE154A331F03A16F00CF1F48 /* PopVC.swift */,
 				AE449F6E1EE6A1B4000E296F /* SplashVC.swift */,
 				AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */,
 				AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */,
@@ -660,7 +655,6 @@
 		AE5D7E6D1EDD757800D12163 /* Storyboard & Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */,
 				AE5D7E381EDD729100D12163 /* Main.storyboard */,
 				AE254D511F5D762C00695F8A /* InstructionsPopup.xib */,
 				AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */,
@@ -1025,7 +1019,6 @@
 				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
 				AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */,
 				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
-				AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */,
 				AE7EE5B51F3C8E1900536ED9 /* CheckDepositHomeViewController.xib in Resources */,
 				AEAA70891F73F35200A511C8 /* RegionViewController.xib in Resources */,
 				AE50E1BE1EEE8B4F00578645 /* WaitIndicatorView.xib in Resources */,
@@ -1249,7 +1242,6 @@
 				AE449F711EE6C0FB000E296F /* TouchIDAuthenticationVC.swift in Sources */,
 				AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */,
 				AEA639661F4D8420006C122D /* DataParser.m in Sources */,
-				AE154A341F03A16F00CF1F48 /* PopVC.swift in Sources */,
 				AE8C80DF1F33304E0024C382 /* BaseFlowManager.swift in Sources */,
 				AE7EE5A91F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift in Sources */,
 				AE7EE5B21F3C755800536ED9 /* PreviewViewController.swift in Sources */,

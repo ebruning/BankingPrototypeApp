@@ -98,13 +98,17 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
+        self.tabBarController?.delegate = self
+
         if requestedProfileImport {
             initiateProfileImport(navController: self.navigationController!)
             requestedProfileImport = false
         }
         
         loadUserDetails()
+        
     }
+    
 
     private func setupPanGestureRecognizerOnBannerView() {
         let panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(move(_:)))
@@ -192,7 +196,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController != self {
-            print("New tab selected!")
+           clear()
         }
     }
     
@@ -248,17 +252,25 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.delegate = nil
+    }
+    
     private func clear() {
+        closeSettingsPopup()
+        self.tabBarController?.delegate = nil
+    }
+
+    private func closeSettingsPopup() {
         if settingsPopup != nil {
             settingsPopup.close()
             settingsPopup.dismiss(animated: false, completion: nil)
             settingsPopup.removeFromParentViewController()
             
         }
-
-//        self.tabBarController?.delegate = nil
     }
-
 
 
     //update the count on the red bagde on bell image to show/hide number of (dummy)notifations received.

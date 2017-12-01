@@ -2434,7 +2434,7 @@ United States</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7N-df-ill" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="902"/>
+            <point key="canvasLocation" x="1283" y="900"/>
         </scene>
         <!--Pay Bills-->
         <scene sceneID="qxK-KY-W3n">
@@ -3197,7 +3197,7 @@ United States</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIB-9r-yTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4711.875" y="1384.8591549295775"/>
+            <point key="canvasLocation" x="4007" y="1361"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="H9D-5h-IxU">
@@ -3545,7 +3545,7 @@ United States</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3101" y="900"/>
+            <point key="canvasLocation" x="2316" y="1053"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="eQa-zm-ss2">
@@ -4615,7 +4615,7 @@ United States</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owY-6h-Obk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7440" y="1441.9014084507041"/>
+            <point key="canvasLocation" x="3173" y="1052"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="J7w-fD-q6g">
@@ -4728,7 +4728,7 @@ United States</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G64-PO-482" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761.25" y="1600.3521126760563"/>
+            <point key="canvasLocation" x="4862" y="1361"/>
         </scene>
         <!--User Profile TableVC-->
         <scene sceneID="96g-Z1-Quh">
@@ -5088,7 +5088,7 @@ United States</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1597.5" y="1594.0140845070423"/>
+            <point key="canvasLocation" x="5664" y="1361"/>
         </scene>
         <!--TouchID EnablerVC-->
         <scene sceneID="7kQ-fi-xC6">
@@ -5203,7 +5203,7 @@ United States</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWh-Yg-hHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="901"/>
+            <point key="canvasLocation" x="116" y="901"/>
         </scene>
     </scenes>
     <resources>

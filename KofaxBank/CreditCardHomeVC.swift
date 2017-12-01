@@ -182,7 +182,13 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
-    
+    private func updateCardBanner(index: Int) {
+        if cards.count > 0 {
+            let card = cards[index]
+            updateBanner(forCard: card)
+        }
+    }
+
     func logout() {
         print("Logout!!!")
     }
@@ -525,51 +531,4 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
             self.updateBanner(forCard: self.cards[0])
         }
     }
-
-    // Remove pending card entry button delegate
-    
-//    @IBAction func removePendingCard(_ sender: UIButton) {
-//        print("removePendingCard...")
-//       
-//        if let objs = self.fetchResultControllerTransactions.fetchedObjects, objs.count > 0 {
-//
-//            let obj = objs[selectedTableRowIndex]
-//            context.delete(obj)
-//            ad.saveContext()
-//
-//            //hide tableview if all rows are deleted
-//            self.updateTableVisibility()
-//        }
-//    }
-
 }
-
-
-extension CreditCardHomeVC: PopoverDelegate {
-    
-    //Popuppover selection delegate
-    
-    func popoverRowSelectedWith(rowIndex: Int) {
-        print("\(rowIndex) was selected on popover")
-        
-        updateCardBanner(index: rowIndex )
-        
-    }
-    
-    func updateCardBanner(index: Int) {
-        if cards.count > 0 {
-            let card = cards[index]
-            updateBanner(forCard: card)
-        }
-    }
-    
-        
-    
-        /*
-        accountNumberLabel.text = creditCards[index].cardNumber
-        dueAmountLabel.text = String.init(format: "%0.2f", creditCards[index].currentSpening)
-        dueDateLabel.text = Utility.formatDate(format: "dd.mm.yy", date: creditCards[index].dueDate)
-        statementDateLabel.text = Utility.formatDate(format: "dd.mm.yy", date: creditCards[index].statementDate)
-        */
-    }
-

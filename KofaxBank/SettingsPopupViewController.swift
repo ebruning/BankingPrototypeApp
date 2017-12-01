@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var serverUrlField: UITextField!
@@ -42,14 +44,19 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
     
     private var wasNavigationHidden: Bool = false
     
+    private let scrollContentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 80, 0.0)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            hideNavigationBar()
-            initialize()
+        hideNavigationBar()
+        initialize()
         
-            loadFields(forAppComponent: applicationComponentName)
+        loadFields(forAppComponent: applicationComponentName)
+        
+        scrollView.contentInset = scrollContentInset
+        scrollView.scrollIndicatorInsets = scrollContentInset
     }
     
     private var currentMobileIDVersion = String()
@@ -67,19 +74,14 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
         loadID()
     }
 
-    //MARK: UITextField Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
 
     // MARK: Public methods
 
     func close() {
         
         self.view.endEditing(true)
+        
+        saveSettings()
         
         //reset navigationbar visibility to same as it was before this screen was shown
         self.navigationController?.setNavigationBarHidden(wasNavigationHidden, animated: false)
@@ -253,5 +255,85 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
         close()
     }
     
+    
+    // MARK: Scrollview and keyboard methods
+    
+    //override var automaticallyAdjustsScrollViewInsets: Bool = true
+    
+    private var scrollViewYPos: CGFloat = 0
+    private var activeField: UITextField! = nil
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    /*  Function to shift scrollview up when keyboard appears
+     Called when the UIKeyboardDidShowNotification is sent.
+     */
+    func keyboardWillBeShown(notification: NSNotification) {
+        
+        let info: NSDictionary = notification.userInfo! as NSDictionary
+        let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, (kbSize?.height)! + 50, 0.0)
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        var rect: CGRect = self.view.frame
+        rect.size.height -= (kbSize?.height)!
+        if (activeField) != nil {
+            if !rect.contains(activeField!.frame.origin) {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+    }
+    
+    /* Function to move scrollview to its initial position when keyboard disappears.
+     Called when the UIKeyboardWillHideNotification is sent.
+     */
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        
+        // let info: NSDictionary = notification.userInfo! as NSDictionary
+        //   let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        // let contentInset: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -(kbSize?.height)!, 0.0)
+        var contentInset: UIEdgeInsets = UIEdgeInsets.zero
+        contentInset.top += scrollViewYPos
+        scrollView.contentInset = scrollContentInset
+        scrollView.scrollIndicatorInsets = scrollContentInset
+        
+        self.automaticallyAdjustsScrollViewInsets = true
+    }
+    
+    
+    
+    
+    // MARK: Textfield delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+        textField.textColor = UIColor.init(rgb: 0x525054)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //if its a last text fiel (done key), dismiss the keyboard
+        dismissKeyboard()
+        return true
+    }
+
 
 }
