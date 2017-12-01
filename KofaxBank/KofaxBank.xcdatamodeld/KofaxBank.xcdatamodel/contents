@@ -79,6 +79,7 @@
     </entity>
     <entity name="UserMaster" representedClassName="UserMaster" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
@@ -95,13 +96,13 @@
         <relationship name="creditcard" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CreditCardMaster" inverseName="user" inverseEntity="CreditCardMaster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AccountMaster" positionX="-639" positionY="99" width="128" height="133"/>
+        <element name="AccountMaster" positionX="-639" positionY="99" width="128" height="135"/>
         <element name="AccountTransactionMaster" positionX="-414" positionY="-54" width="128" height="120"/>
         <element name="BillerMaster" positionX="-29" positionY="-126" width="128" height="178"/>
         <element name="BillTransactions" positionX="16" positionY="144" width="128" height="283"/>
         <element name="CheckTransactions" positionX="-234" positionY="423" width="128" height="163"/>
         <element name="CreditCardMaster" positionX="-432" positionY="441" width="128" height="210"/>
         <element name="CreditCardTransactions" positionX="-639" positionY="458" width="128" height="163"/>
-        <element name="UserMaster" positionX="-459" positionY="144" width="128" height="268"/>
+        <element name="UserMaster" positionX="-459" positionY="144" width="128" height="285"/>
     </elements>
 </model>

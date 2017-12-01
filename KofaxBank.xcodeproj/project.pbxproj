@@ -60,6 +60,8 @@
 		AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D7E401EDD729100D12163 /* LaunchScreen.storyboard */; };
 		AE5D7E4D1EDD729200D12163 /* KofaxBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E4C1EDD729200D12163 /* KofaxBankTests.swift */; };
 		AE5D7E581EDD729200D12163 /* KofaxBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */; };
+		AE6B42E11FCD489300A71F43 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6B42E01FCD489300A71F43 /* AppStylerLib.framework */; };
+		AE6B42E21FCD489800A71F43 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE6B42E01FCD489300A71F43 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD21F273F530066B632 /* libsqlite3.tbd */; };
 		AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD41F273F5B0066B632 /* libz.tbd */; };
 		AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE71BBD61F273F690066B632 /* libc++.tbd */; };
@@ -121,6 +123,9 @@
 		AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028231F8638180055685B /* IDSettingsViewController.xib */; };
 		AE9028271F864A7A0055685B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028261F864A7A0055685B /* CustomView.swift */; };
 		AE9C006A1F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */; };
+		AE9D61121FCD440F008A138C /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D610F1FCD440F008A138C /* uiimages.bundle */; };
+		AE9D61131FCD440F008A138C /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE9D61101FCD440F008A138C /* SDKStrings.bundle */; };
+		AE9D61141FCD440F008A138C /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9D61111FCD440F008A138C /* MobileSDK.framework */; };
 		AEA3D3091EF7A0BF001DBB12 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */; };
 		AEA3D30D1EFBB80C001DBB12 /* AccountsHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */; };
 		AEA3D3111EFBBD19001DBB12 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3D3101EFBBD19001DBB12 /* AccountCell.swift */; };
@@ -136,12 +141,6 @@
 		AEB6EFA91FC2BC2A00D218ED /* SettingsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */; };
 		AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */; };
 		AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */; };
-		AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
-		AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; };
-		AEBC71741FBAF81D00604399 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBC71711FBAF63400604399 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AECE96591FCBF27800651AE3 /* MobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECE96561FCBF27700651AE3 /* MobileSDK.framework */; };
-		AECE965A1FCBF27800651AE3 /* SDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AECE96571FCBF27700651AE3 /* SDKStrings.bundle */; };
-		AECE965B1FCBF27800651AE3 /* uiimages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AECE96581FCBF27700651AE3 /* uiimages.bundle */; };
 		AEDDA3B11FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */; };
 		AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */; };
 		AEDDA3BC1FB1D05100B79700 /* FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B51FB1D05100B79700 /* FaceDetection.m */; };
@@ -175,7 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AEBC71741FBAF81D00604399 /* AppStylerLib.framework in Embed Frameworks */,
+				AE6B42E21FCD489800A71F43 /* AppStylerLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +247,7 @@
 		AE5D7E531EDD729200D12163 /* KofaxBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KofaxBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D7E571EDD729200D12163 /* KofaxBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KofaxBankUITests.swift; sourceTree = "<group>"; };
 		AE5D7E591EDD729200D12163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE6B42E01FCD489300A71F43 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AE71BBD21F273F530066B632 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE71BBD41F273F5B0066B632 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AE71BBD61F273F690066B632 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -330,6 +330,9 @@
 		AE9028261F864A7A0055685B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		AE9C00681F0B7E0C000EEC47 /* KofaxBank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KofaxBank.entitlements; sourceTree = "<group>"; };
 		AE9C00691F0CDC86000EEC47 /* CreditCardHomeVC+Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreditCardHomeVC+Banner.swift"; sourceTree = "<group>"; };
+		AE9D610F1FCD440F008A138C /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
+		AE9D61101FCD440F008A138C /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
+		AE9D61111FCD440F008A138C /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
 		AEA3D3041EF7A0BE001DBB12 /* KofaxBank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KofaxBank-Bridging-Header.h"; sourceTree = "<group>"; };
 		AEA3D3071EF7A0BF001DBB12 /* HomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeScreen.xib; path = ParallaxViewController/HomeScreen.xib; sourceTree = "<group>"; };
 		AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsHomeVC.swift; sourceTree = "<group>"; };
@@ -347,10 +350,6 @@
 		AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPopupViewController.swift; sourceTree = "<group>"; };
 		AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsPopupViewController.xib; sourceTree = "<group>"; };
 		AEBC716D1FB8C22900604399 /* CheckTabHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabHomeViewController.swift; sourceTree = "<group>"; };
-		AEBC71711FBAF63400604399 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
-		AECE96561FCBF27700651AE3 /* MobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileSDK.framework; path = Frameworks/MobileSDK.framework; sourceTree = "<group>"; };
-		AECE96571FCBF27700651AE3 /* SDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SDKStrings.bundle; path = Frameworks/SDKStrings.bundle; sourceTree = "<group>"; };
-		AECE96581FCBF27700651AE3 /* uiimages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = uiimages.bundle; path = Frameworks/uiimages.bundle; sourceTree = "<group>"; };
 		AEDDA3AF1FB18B6000B79700 /* SelfieCaptureExprienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieCaptureExprienceViewController.swift; sourceTree = "<group>"; };
 		AEDDA3B01FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfieCaptureExprienceViewController.xib; sourceTree = "<group>"; };
 		AEDDA3B41FB1D05100B79700 /* FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetection.h; sourceTree = "<group>"; };
@@ -375,17 +374,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEBC71721FBAF63400604399 /* AppStylerLib.framework in Frameworks */,
 				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
+				AE6B42E11FCD489300A71F43 /* AppStylerLib.framework in Frameworks */,
 				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
 				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
 				AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */,
-				AEBC71731FBAF81D00604399 /* AppStylerLib.framework in Frameworks */,
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
 				AE71BBD31F273F530066B632 /* libsqlite3.tbd in Frameworks */,
 				AE0FE0AC1F0F643000F9F520 /* MapKit.framework in Frameworks */,
 				0506E69F6EF4D221F8B30975 /* Pods_KofaxBank.framework in Frameworks */,
-				AECE96591FCBF27800651AE3 /* MobileSDK.framework in Frameworks */,
+				AE9D61141FCD440F008A138C /* MobileSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,10 +407,10 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AECE96561FCBF27700651AE3 /* MobileSDK.framework */,
-				AECE96571FCBF27700651AE3 /* SDKStrings.bundle */,
-				AECE96581FCBF27700651AE3 /* uiimages.bundle */,
-				AEBC71711FBAF63400604399 /* AppStylerLib.framework */,
+				AE6B42E01FCD489300A71F43 /* AppStylerLib.framework */,
+				AE9D610F1FCD440F008A138C /* uiimages.bundle */,
+				AE9D61101FCD440F008A138C /* SDKStrings.bundle */,
+				AE9D61111FCD440F008A138C /* MobileSDK.framework */,
 				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
 				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
 				AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */,
@@ -1012,8 +1010,8 @@
 			files = (
 				AE5D7E421EDD729100D12163 /* LaunchScreen.storyboard in Resources */,
 				AE8C80BF1F3301DC0024C382 /* ImageCaptureViewController.xib in Resources */,
+				AE9D61121FCD440F008A138C /* uiimages.bundle in Resources */,
 				AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */,
-				AECE965B1FCBF27800651AE3 /* uiimages.bundle in Resources */,
 				AE254D531F5D762C00695F8A /* InstructionsPopup.xib in Resources */,
 				AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */,
 				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
@@ -1023,7 +1021,7 @@
 				AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */,
 				AE33FD901FB2E41100E3C380 /* SelfieResultsViewController.xib in Resources */,
 				AE5D7E3A1EDD729100D12163 /* Main.storyboard in Resources */,
-				AECE965A1FCBF27800651AE3 /* SDKStrings.bundle in Resources */,
+				AE9D61131FCD440F008A138C /* SDKStrings.bundle in Resources */,
 				AE254D551F667CB000695F8A /* BillDataPreviewViewController.xib in Resources */,
 				AE33FD961FB3236D00E3C380 /* SelfieResult.plist in Resources */,
 				AE71BBE11F2B1B3A0066B632 /* sample_data.json in Resources */,
@@ -1380,6 +1378,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1432,6 +1431,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1460,6 +1460,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = C384ZZG573;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1486,6 +1487,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = C384ZZG573;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

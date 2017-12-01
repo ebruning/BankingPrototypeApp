@@ -686,6 +686,10 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         if error != nil {
       //      print("Error is ==> \(error.description)")
         }
+        if extractionManager != nil {
+            self.extractionManager.delegate = nil
+            self.extractionManager = nil
+        }
         
         checkHomeViewController.checkDataNotAvailable()
         checkFlowState = CheckStates.CDNOOP
@@ -693,6 +697,11 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
 
     override func extractionSucceeded(statusCode: NSInteger, results: Data) {
         print("CheckDepositManager -- extractionSucceeded delegate.... \(results)")
+
+        if extractionManager != nil {
+            self.extractionManager.delegate = nil
+            self.extractionManager = nil
+        }
 
         if statusCode != REQUEST_SUCCESS {
             Utility.showAlert(onViewController: checkHomeViewController, titleString: "Data Extraction Error", messageString: "Error occurred while reading data from check.")
@@ -882,7 +891,11 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         diskUtilityObj.removeFile(atPath: backProcessedImgPath as String!)
 
         account = nil
-        extractionManager = nil
+        if extractionManager != nil {
+            extractionManager.delegate = nil
+            extractionManager = nil
+        }
+        
         imageProcessManager = nil
         processedImgFilePathArr = nil
         parameters = nil

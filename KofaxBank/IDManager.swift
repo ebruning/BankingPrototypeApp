@@ -244,12 +244,22 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             }
             alert.addAction(readBarcodeAction)
             
-            let skipAction = UIAlertAction.init(title: "Skip Back Side", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+            let skipAction = UIAlertAction.init(title: "Skip Back Side", style: UIAlertActionStyle.destructive) { (UIAlertAction) in
                 print("Skip!")
                 self.flowState = .BACK_SIDE_SKIPPED
                 self.handleScreenFlow(err: nil)
             }
             alert.addAction(skipAction)
+            
+            
+            //for iPad devices
+            //--------
+            alert.popoverPresentationController?.sourceView = self.idHomeScreen?.view
+            alert.popoverPresentationController?.sourceRect = (self.idHomeScreen?.view.bounds)!
+
+            //alert.popoverPresentationController?.barButtonItem = self.navigationController.navigationItem.rightBarButtonItem
+            alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+            //--------
             
             self.idHomeScreen?.present(alert, animated: true, completion: nil)
         }
@@ -941,7 +951,12 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         
         if frontProcessedImagePath != nil {
             processedFront = DiskUtility.shared.getImage(side: ImageType.FRONT_PROCESSED, mimeType: MIMETYPE_JPG)
-            imgArray.add(processedFront)
+            if processedFront != nil {
+                imgArray.add(processedFront)
+            } else {
+                Utility.showAlert(onViewController: self.idHomeScreen!, titleString: "Image Error", messageString: "No front processed image found.\nPlease try again.")
+                print("Error: Front processed image is nil!!!!")
+            }
         }
         
         if backProcessedImagePath != nil && !backSideIsBarcode {

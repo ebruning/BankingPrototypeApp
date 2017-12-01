@@ -153,7 +153,13 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "UserProfile")
         
-        present(vc, animated: true, completion: nil)
+        let navController = UINavigationController.init(rootViewController: vc)
+        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController.navigationBar.shadowImage = UIImage()
+        navController.navigationBar.isTranslucent = true
+        navController.navigationBar.backgroundColor = UIColor.clear
+        
+        self.present(navController, animated: true, completion: nil)
     }
     
 

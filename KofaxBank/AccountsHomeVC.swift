@@ -93,17 +93,17 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         setupPanGestureRecognizerOnBannerView()
 
         initScreenParams()
-        
-        loadUserDetails()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
         if requestedProfileImport {
             initiateProfileImport(navController: self.navigationController!)
             requestedProfileImport = false
         }
+        
+        loadUserDetails()
     }
 
     private func setupPanGestureRecognizerOnBannerView() {
@@ -133,6 +133,12 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         user = fetchUser()
             
         if user != nil {
+            
+            if user.avatar != nil {
+                avatar.image = UIImage(data: user.avatar! as Data)
+            }
+            
+            greetingMessage.text = "Welcome, " + user.firstname! + ( (user.lastname != nil && user.lastname != "") ? (" " + user.lastname!) : "")
             
             var addressStr = user.address! + "\n"
             
@@ -675,7 +681,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     func IDDataReadCompleteWithSelfieVerification(idData: kfxIDData!) {
         print("User ID read complete WITH selfie verification")
-        loadUserDetails()
+//        loadUserDetails()
         
         if idData.address != nil && idData.address.value != nil {
             print("New adress in idData is NOT empty. :)")
@@ -687,7 +693,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     func IDDataReadCompleteWithoutSelfieVerification(idData: kfxIDData!) {
         print("User ID read complete WITHOUT selfie verification")
-        loadUserDetails()
+//        loadUserDetails()
         
         Utility.showAlert(onViewController: self, titleString: "Profile Details Updated", messageString: "\nYou can slide down your profile picture to see the details.")
     }
