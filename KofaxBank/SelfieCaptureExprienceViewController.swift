@@ -94,7 +94,7 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
         if (self.imageCaptureControl != nil) {
             return;
         }
-        self.imageCaptureControl = kfxKUIImageCaptureControl(frame: CGRect.init(x: 0, y: 0, width: self.captureViewContainer.bounds.width, height: self.captureViewContainer.bounds.height - SCREEN_PADDING))
+        self.imageCaptureControl = kfxKUIImageCaptureControl(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - SCREEN_PADDING))
 
         kfxKUIImageCaptureControl.initializeControl()
 
