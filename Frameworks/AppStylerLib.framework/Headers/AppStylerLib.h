@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for CustomThemeLib.
-FOUNDATION_EXPORT double CustomThemeLibVersionNumber;
+//! Project version number for AppStylerLib.
+FOUNDATION_EXPORT double AppStylerLibVersionNumber;
 
-//! Project version string for CustomThemeLib.
-FOUNDATION_EXPORT const unsigned char CustomThemeLibVersionString[];
+//! Project version string for AppStylerLib.
+FOUNDATION_EXPORT const unsigned char AppStylerLibVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like
 #import <AppStylerLib/AppStyleManager.h>

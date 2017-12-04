@@ -1,6 +1,6 @@
 //
 //  InsertManager.h
-//  CustomThemeLib
+//  AppStylerLib
 //
 //  Created by Rupali on 10/01/17.
 //  Copyright © 2017 Kofax. All rights reserved.

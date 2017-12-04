@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //TODO: move license check at appropriate place
         // Set Kofax SDK license. Replace the MyLicenseString below with your license string.
-        if(kfxLicense.setMobileSDK("ttz,L@xtN#VD$B,#vF8vt@&4BXX$ljRnPf[089@p5n[6qb04[(NPIUEAWGUNKl;dfvkhzdf7rglcvjck=,mIOF&^BUL?!!!!!!0t")
+        if(kfxLicense.setMobileSDK("COPY LICENSE KEY HERE")
             == false) {
             print("Error: Kofax license is not valid or expired!");
         }
