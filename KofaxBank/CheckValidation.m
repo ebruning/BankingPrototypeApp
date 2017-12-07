@@ -238,24 +238,24 @@
     if(result != 3 && (doSearchMICR || doUseHandPrint)){
         
         //title = @"Signature and MICR not found";
-        errorMessage = @"Unable to find both MICR and Signature. Would you like to retry?";
+        errorMessage = @"Unable to find both MICR and Signature. Please try again.";
         
         if (result==0) {
             
             if (doUseHandPrint) {
                 errTitle = @"Signature not found";
-                errorMessage = @"Unable to find Signature. Would you like to retry?";
+                errorMessage = @"Unable to find Signature. Please try again.";
                 
                 
             }else if(doSearchMICR){
                 errTitle = @"MICR not detected";
-                errorMessage = @"Unable to find MICR. Would you like to retry?";
+                errorMessage = @"Unable to find MICR. Please try again.";
             }
         }
         else if(result == 1){
             if(doSearchMICR){
                 errTitle = @"MICR not detected";
-                errorMessage = @"Unable to find MICR. Would you like to retry?";
+                errorMessage = @"Unable to find MICR. Please try again.";
                 
             }
         }
@@ -263,7 +263,7 @@
             
             if(doUseHandPrint){
                 errTitle = @"Signature not found";
-                errorMessage = @"Unable to find Signature. Would you like to retry?";
+                errorMessage = @"Unable to find Signature. Please try again.";
             }
         }
     }

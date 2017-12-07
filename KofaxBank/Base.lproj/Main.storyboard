@@ -1063,7 +1063,7 @@ United States</string>
                                                             <constraint firstAttribute="height" constant="20" id="WTa-cD-gEm"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select a payment account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWt-FV-1xc">
+                                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select a deposit account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWt-FV-1xc">
                                                         <rect key="frame" x="16" y="0.0" width="236" height="35"/>
                                                         <gestureRecognizers/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1094,17 +1094,8 @@ United States</string>
                                                     <outletCollection property="gestureRecognizers" destination="wG1-SI-bzx" appends="YES" id="Sqn-mP-Aca"/>
                                                 </connections>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0D-hy-7dU">
-                                                <rect key="frame" x="15" y="118" width="256" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="f2T-64-eIP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8P-Yu-ihT" userLabel="DateCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="151" width="288" height="35"/>
+                                                <rect key="frame" x="0.0" y="118" width="288" height="35"/>
                                                 <subviews>
                                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Fx-ka-rk5">
                                                         <rect key="frame" x="260" y="7.5" width="20" height="20"/>
@@ -1113,11 +1104,11 @@ United States</string>
                                                             <constraint firstAttribute="width" constant="20" id="ihm-rW-E7w"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbn-Uh-bbO">
+                                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbn-Uh-bbO">
                                                         <rect key="frame" x="16" y="0.0" width="236" height="35"/>
                                                         <gestureRecognizers/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
@@ -1133,7 +1124,7 @@ United States</string>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.5"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.8484538613" green="0.8484538613" blue="0.8484538613" alpha="1" colorSpace="calibratedRGB"/>
@@ -1141,7 +1132,7 @@ United States</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkq-Qh-caA">
-                                                <rect key="frame" x="7" y="216" width="272" height="21"/>
+                                                <rect key="frame" x="7" y="183" width="272" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="8DW-fb-xYp"/>
                                                 </constraints>
@@ -1149,20 +1140,29 @@ United States</string>
                                                 <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0D-hy-7dU">
+                                                <rect key="frame" x="15" y="161" width="256" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="f2T-64-eIP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="O0D-hy-7dU" firstAttribute="top" secondItem="Q8P-Yu-ihT" secondAttribute="bottom" constant="8" id="0cg-ag-aOa"/>
                                             <constraint firstItem="1h6-GZ-2jN" firstAttribute="top" secondItem="XTw-yB-xNH" secondAttribute="top" constant="30" id="0gJ-Jh-lmv"/>
                                             <constraint firstAttribute="trailing" secondItem="Q8P-Yu-ihT" secondAttribute="trailing" id="1nz-4w-Yc3"/>
                                             <constraint firstAttribute="trailing" secondItem="O0D-hy-7dU" secondAttribute="trailing" constant="17" id="3Xb-GS-gXa"/>
-                                            <constraint firstItem="O0D-hy-7dU" firstAttribute="top" secondItem="1Wu-Hq-ZlU" secondAttribute="bottom" constant="20" id="6vo-oV-Une"/>
                                             <constraint firstItem="1Wu-Hq-ZlU" firstAttribute="leading" secondItem="XTw-yB-xNH" secondAttribute="leading" id="Bws-y8-1CU"/>
                                             <constraint firstItem="rkq-Qh-caA" firstAttribute="top" secondItem="Q8P-Yu-ihT" secondAttribute="bottom" constant="30" id="CHC-Lk-wdw"/>
                                             <constraint firstAttribute="trailing" secondItem="rkq-Qh-caA" secondAttribute="trailing" constant="9" id="DHf-mC-Lub"/>
                                             <constraint firstItem="1Wu-Hq-ZlU" firstAttribute="top" secondItem="1h6-GZ-2jN" secondAttribute="bottom" constant="8" id="GDB-Fg-pws"/>
                                             <constraint firstItem="O0D-hy-7dU" firstAttribute="leading" secondItem="XTw-yB-xNH" secondAttribute="leading" constant="15" id="cuw-FK-UuQ"/>
                                             <constraint firstItem="rkq-Qh-caA" firstAttribute="leading" secondItem="XTw-yB-xNH" secondAttribute="leading" constant="7" id="db6-AY-y2r"/>
-                                            <constraint firstItem="Q8P-Yu-ihT" firstAttribute="top" secondItem="O0D-hy-7dU" secondAttribute="bottom" constant="8" id="giv-fh-aLb"/>
+                                            <constraint firstItem="Q8P-Yu-ihT" firstAttribute="top" secondItem="1Wu-Hq-ZlU" secondAttribute="bottom" constant="20" id="eT4-GS-kwM"/>
                                             <constraint firstAttribute="trailing" secondItem="1Wu-Hq-ZlU" secondAttribute="trailing" id="hSf-Lk-vVk"/>
                                             <constraint firstItem="1h6-GZ-2jN" firstAttribute="leading" secondItem="XTw-yB-xNH" secondAttribute="leading" constant="15" id="ntx-sL-N6Y"/>
                                             <constraint firstAttribute="trailing" secondItem="1h6-GZ-2jN" secondAttribute="trailing" constant="17" id="oDL-DR-pL3"/>
@@ -1215,7 +1215,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sE-Gh-wQN" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="-4" y="10" width="194" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take picture of the check." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ui-S3-v7K">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take picture of the check" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ui-S3-v7K">
                                                         <rect key="frame" x="8" y="3.5" width="160" height="43"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="43" id="SVG-su-nHv"/>
@@ -2730,7 +2730,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qol-cl-SVo" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="-4" y="10" width="194" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont see the Payee? Take picture of coupon to pay here." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lj-HD-K9R">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont see the Payee? Take picture of coupon to pay here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lj-HD-K9R">
                                                         <rect key="frame" x="8" y="3.5" width="160" height="43"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="43" id="J0E-VW-tAR"/>

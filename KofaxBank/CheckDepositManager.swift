@@ -53,6 +53,10 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     private var currentCapturedImage: kfxKEDImage! = nil
     private var currentProcessedImage: kfxKEDImage! = nil
 
+    private var frontProcessedImagePath: String! = nil
+    
+    private var backProcessedImagePath: String! = nil
+    
     private var documentSide: DocumentSide = DocumentSide.FRONT
     
     private var checkHomeViewController: CheckDepositHomeViewController! = nil
@@ -80,6 +84,8 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         self.navigationController = navigationController
         
         showCheckDepositHomeScreen()
+        
+        deleteImageFiles()
     }
 
     private func showCheckDepositHomeScreen() {
@@ -231,6 +237,8 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         
         if let img = frontCheckImage {
             aspectRatio = Float(img.imageWidth) / Float(img.imageHeight)
+        } else {
+            aspectRatio = 2.18000007
         }
         
         ImageUtilities.clearImage(image: frontCheckImage)
@@ -305,6 +313,8 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
                         checkFlowState = CheckStates.CDNOOP
                     }
                     else {
+                        self.frontProcessedImagePath = path
+
                         //display front processed image scaled-down version on CDHome screen
                         DispatchQueue.main.async {
                             self.checkHomeViewController.displayFrontImage(image: self.currentProcessedImage, isProcessed: true)
@@ -318,12 +328,15 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
                 let path = DiskUtility.shared.saveAsKfxKEDImageToDisk(image: self.currentProcessedImage, side: ImageType.BACK_PROCESSED, mimeType: MIMETYPE_TIF)
 
                 if path == nil {
+                    
                     print("Failed to write image object to disk.")
                     Utility.showAlert(onViewController: checkHomeViewController, titleString: "", messageString: "Failed to save image on disk. Please try again.")
 
                     handleError(forSide: DocumentSide.BACK)
                 }
                 else {
+                    self.backProcessedImagePath = path
+                    
                     //display front processed image scaled-down version on CDHome screen
                     DispatchQueue.main.async {
                         self.checkHomeViewController.displayBackImage(image: self.currentProcessedImage, isProcessed: true)
@@ -856,6 +869,33 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         return checkIQData
     }
     
+    private func deleteImageFiles() {
+
+        DispatchQueue.main.async {
+            
+            let diskUtilityObj = DiskUtility.shared
+            
+            let frontRawImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.FRONT_RAW, type: MIMETYPE_JPG)
+            
+            diskUtilityObj.removeFile(atPath: frontRawImgPath as String!)
+            
+            let frontProcessedImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.FRONT_PROCESSED, type: MIMETYPE_TIF)
+            
+            diskUtilityObj.removeFile(atPath: frontProcessedImgPath as String!)
+            
+            let backRawImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.BACK_RAW, type: MIMETYPE_JPG)
+            
+            diskUtilityObj.removeFile(atPath: backRawImgPath as String!)
+            
+            let backProcessedImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.BACK_PROCESSED, type: MIMETYPE_TIF)
+            
+            diskUtilityObj.removeFile(atPath: backProcessedImgPath as String!)
+            
+            self.frontProcessedImagePath = nil
+            self.backProcessedImagePath = nil
+        }
+    }
+    
     override func unloadManager() {
         
         if checkHomeViewController != nil {
@@ -870,24 +910,8 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         
         //remove files from disk
 
-        let diskUtilityObj = DiskUtility.shared
+        deleteImageFiles()
         
-        let frontRawImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.FRONT_RAW, type: MIMETYPE_JPG)
-        
-        diskUtilityObj.removeFile(atPath: frontRawImgPath as String!)
-
-        let frontProcessedImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.FRONT_PROCESSED, type: MIMETYPE_TIF)
-        
-        diskUtilityObj.removeFile(atPath: frontProcessedImgPath as String!)
-
-        let backRawImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.BACK_RAW, type: MIMETYPE_JPG)
-        
-        diskUtilityObj.removeFile(atPath: backRawImgPath as String!)
-
-        let backProcessedImgPath = diskUtilityObj.getFilePathWithType(side: ImageType.BACK_PROCESSED, type: MIMETYPE_TIF)
-
-        diskUtilityObj.removeFile(atPath: backProcessedImgPath as String!)
-
         account = nil
         if extractionManager != nil {
             extractionManager.delegate = nil

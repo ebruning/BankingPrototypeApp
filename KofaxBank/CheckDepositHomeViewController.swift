@@ -25,6 +25,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
     @IBOutlet weak var frontContainerView: ViewShadow!
     
+    @IBOutlet weak var frontCaptureButton: UIButton!
+    
     @IBOutlet weak var frontInstructionLabel: UILabel!
     
     @IBOutlet weak var frontProcessedImageView: UIImageView!
@@ -33,6 +35,8 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
     @IBOutlet weak var backContainerView: ViewShadow!
     
+    @IBOutlet weak var backCaptureButton: UIButton!
+    
     @IBOutlet weak var backInstructionLabel: UILabel!
     
     @IBOutlet weak var backProcessedImageViewTop: UIImageView!
@@ -40,8 +44,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     @IBOutlet weak var backProcessedImageViewBottom: UIImageView!
 
     @IBOutlet weak var depositButton: UIButton!
-    
-    @IBOutlet weak var selectionOverlayVisualEffectView: UIVisualEffectView!
     
     @IBOutlet weak var checkDataHeaderLabel: UILabel!
     
@@ -118,9 +120,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
     private var backProcessedImagePath: String!
     
-    private var tapGestureRecognizerForFrontContainer: UITapGestureRecognizer!
-    private var tapGestureRecognizerForBackContainer: UITapGestureRecognizer!
-    
     private var frontContainerSwipeRightRecogizer: UISwipeGestureRecognizer! = nil
     private var frontContainerSwipeLeftRecogizer: UISwipeGestureRecognizer! = nil
     
@@ -158,8 +157,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addTapGestureRecognizers()
         
         frontProcessedImageView.isHidden = true
         backProcessedImageViewTop.isHidden = true
@@ -258,60 +255,20 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
     
     // MARK: Tap gesture methods
     
-    private func addTapGestureRecognizers() {
-        addTapGestureRecognizerFront()
-        addTapGestureRecognizerBack()
-    }
+    // MARK: Capture Buttons callbacks
     
-    func addTapGestureRecognizerFront() {
-        //add tap gesture recognizer to front container
-        tapGestureRecognizerForFrontContainer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleTapOnFrontContainer))
-        
-        frontContainerView.addGestureRecognizer(tapGestureRecognizerForFrontContainer)
-        frontContainerView.isUserInteractionEnabled = true
-    }
-
-    func addTapGestureRecognizerBack() {
-        //add tap gesture recognizer to back container
-        tapGestureRecognizerForBackContainer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleTapOnBackContainer))
-        
-        backContainerView.addGestureRecognizer(tapGestureRecognizerForBackContainer)
-        backContainerView.isUserInteractionEnabled = true
-    }
-    
-    private func removeTapGestureRecognizer(fromView: UIView, gestureRecognizer: UITapGestureRecognizer) {
-        fromView.removeGestureRecognizer(gestureRecognizer)
-    }
-    
-    private func hideOverlay() {
-        selectionOverlayVisualEffectView.isHidden = true
-        //show navigation on hiding overlay
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    private func showOverlay() {
-        //hide navigation bar on showing overlay
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        selectionOverlayVisualEffectView.isHidden = false
-    }
-    
-    // MARK: TapGesture recognizer callbacks
-    
-    func handleTapOnFrontContainer(_ sender: UITapGestureRecognizer) {
+    @IBAction func handleFrontSideCaptureButton(_ sender: UIButton) {
         print("Enter: handleTapOnFrontContainer")
-        
         documentSide = DocumentSide.FRONT
-        showOverlay()
+        delegate?.showCamera(side: documentSide)
     }
     
-    func handleTapOnBackContainer(_ sender: UITapGestureRecognizer) {
+    @IBAction func handleBackSideCaptureButton(_ sender: UIButton) {
         print("Enter: handleTapOnBackContainer")
-        
         documentSide = DocumentSide.BACK
-        showOverlay()
+        delegate?.showCamera(side: documentSide)
     }
     
-
     
     func displayFrontImage(image: kfxKEDImage!, isProcessed: Bool){
         if image != nil {
@@ -331,10 +288,12 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
                 frontProcessedImageView.image = image.getBitmap()
                 frontProcessedImageView.isHidden = false
 //              addSwipeGestureListenerFront()    //MARK: Feedback
-                frontInstructionLabel.isHidden = true   //MARK: Feedback
+                frontCaptureButton.isHidden = true
+                frontInstructionLabel.isHidden = true
+                
+                //display back image containerview for user to capture back side of the check
+                backContainerView.isHidden = false
             }
-            //frontContainerView.removeGestureRecognizer(tapGestureRecognizerForFrontContainer)
-            removeTapGestureRecognizer(fromView: frontContainerView, gestureRecognizer: tapGestureRecognizerForFrontContainer)
         }
     }
     
@@ -352,19 +311,20 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
                 backInstructionLabel.isHidden = true
 */
             }
-            else {
+            else
+            {
                 //Using full sized processed image instead of scaled image here
                 if backProcessedImageViewBottom.image == nil {
                     self.backProcessedImage = image.getBitmap()
                     backProcessedImageViewBottom.image = image.getBitmap()
                     backProcessedImageViewBottom.isHidden = false
-                    backInstructionLabel.isHidden = true    //MARK: Feedback
+                    
+                    backCaptureButton.isHidden = true
+                    backInstructionLabel.isHidden = true
 
-                    removeTapGestureRecognizer(fromView: backContainerView, gestureRecognizer: tapGestureRecognizerForBackContainer)
                 } else {
                     backProcessedImageViewTop.image = backProcessedImage //backProcessedImageViewBottom.image
                     self.backProcessedImage = nil
-                    //backProcessedImageViewTop.isHidden = false
                 }
             }
         }
@@ -380,7 +340,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
             self.frontProcessedImageView.isHidden = true
 
             self.frontInstructionLabel.isHidden = false
-            self.addTapGestureRecognizerFront()
+            self.frontCaptureButton.isHidden = false
         }
     }
     
@@ -397,9 +357,10 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
             self.backProcessedImageViewBottom.isHidden = true
 
             self.backInstructionLabel.isHidden = false
-            self.backContainerView.isHidden = false
+            self.backCaptureButton.isHidden = false
             
-            self.addTapGestureRecognizerBack()
+            self.backContainerView.isHidden = false
+
         }
     }
 /*
@@ -654,20 +615,9 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func onCameraOptionClicked(_ sender: UIButton) {
-        delegate?.showCamera(side: documentSide)
-        hideOverlay()
-    }
-
     @IBAction func onGalleryOptionClicked(_ sender: UIButton) {
         delegate?.showGallery(side: documentSide)
-        hideOverlay()
     }
-    
-    @IBAction func closeOverlay(_ sender: UIButton) {
-        hideOverlay()
-    }
-
     
     
     //MARK: Post check-data retrieval methods (merged from CheckDataPreviewController. Deleted the CheckDataPreviewController screen.)

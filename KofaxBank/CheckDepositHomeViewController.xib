@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="alertBanner" destination="4wj-sk-qcB" id="Az5-Vt-PY7"/>
                 <outlet property="amountText" destination="K2p-7M-T8k" id="z8t-hw-FHV"/>
+                <outlet property="backCaptureButton" destination="EkE-uz-5D7" id="HvZ-VJ-emV"/>
                 <outlet property="backContainerView" destination="oL6-6I-Dpz" id="8GD-99-L3t"/>
                 <outlet property="backInstructionLabel" destination="Bdz-kh-xEv" id="ClK-V4-EHJ"/>
                 <outlet property="backProcessedImageViewBottom" destination="IRI-us-acC" id="oul-EE-rUf"/>
@@ -24,6 +25,7 @@
                 <outlet property="countryNameLabel" destination="3Nx-7z-tkT" id="jZ7-pA-zWf"/>
                 <outlet property="dateText" destination="8H1-3b-CE9" id="T5i-QU-CIV"/>
                 <outlet property="depositButton" destination="p75-LI-CFb" id="p9I-sG-H8n"/>
+                <outlet property="frontCaptureButton" destination="gYV-v4-vny" id="bwe-3O-gxg"/>
                 <outlet property="frontContainerView" destination="tTW-wK-arX" id="5CQ-vP-weI"/>
                 <outlet property="frontInstructionLabel" destination="cQJ-vg-Kcp" id="gHE-ai-tf3"/>
                 <outlet property="frontPageControl" destination="7TB-21-uLs" id="m8a-wC-moe"/>
@@ -45,7 +47,6 @@
                 <outlet property="imgTornEdgesGreen" destination="Fcx-gQ-ZrT" id="MLT-0Q-ZW0"/>
                 <outlet property="imgTornEdgesRed" destination="Zjg-Zq-06A" id="GAm-LY-fBw"/>
                 <outlet property="scrollView" destination="1i7-H4-mqT" id="yv2-FD-TzF"/>
-                <outlet property="selectionOverlayVisualEffectView" destination="LyN-Mw-wbT" id="ap1-3z-RhO"/>
                 <outlet property="view" destination="iN0-l3-epB" id="JuE-Ic-oaZ"/>
             </connections>
         </placeholder>
@@ -100,7 +101,7 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="fw8-Mj-ugF">
-                    <rect key="frame" x="0.0" y="70" width="375" height="557.5"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="621.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-bd-KsO">
                             <rect key="frame" x="16" y="0.0" width="343" height="557.5"/>
@@ -128,8 +129,20 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTW-wK-arX" customClass="ViewShadow" customModule="KofaxBank" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add FRONT side of check" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQJ-vg-Kcp">
-                                                    <rect key="frame" x="8" y="64.5" width="327" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYV-v4-vny" userLabel="CaptureFrontButton">
+                                                    <rect key="frame" x="146.5" y="20" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="K6J-f5-lPZ"/>
+                                                        <constraint firstAttribute="height" constant="50" id="SMR-Na-nKl"/>
+                                                    </constraints>
+                                                    <state key="normal" image="camera_gray_round"/>
+                                                    <connections>
+                                                        <action selector="handleFrontSideCaptureButton:" destination="-1" eventType="touchUpInside" id="keS-vC-0A1"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take picture of check FRONT side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQJ-vg-Kcp">
+                                                    <rect key="frame" x="8" y="78" width="327" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9a6-ZC-95n"/>
                                                     </constraints>
@@ -153,26 +166,39 @@
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="7TB-21-uLs" secondAttribute="bottom" constant="-10" id="1Xu-n0-ZxH"/>
-                                                <constraint firstItem="cQJ-vg-Kcp" firstAttribute="centerY" secondItem="tTW-wK-arX" secondAttribute="centerY" id="5BG-ju-iUG"/>
+                                                <constraint firstItem="gYV-v4-vny" firstAttribute="centerX" secondItem="tTW-wK-arX" secondAttribute="centerX" id="3NS-CU-OO0"/>
                                                 <constraint firstItem="ACW-xW-P1q" firstAttribute="leading" secondItem="tTW-wK-arX" secondAttribute="leading" id="7i1-8e-Kuj"/>
                                                 <constraint firstItem="1w6-pb-HWS" firstAttribute="top" secondItem="tTW-wK-arX" secondAttribute="top" id="HZx-Tp-8Oe"/>
                                                 <constraint firstAttribute="trailing" secondItem="cQJ-vg-Kcp" secondAttribute="trailing" constant="8" id="LaF-Vg-KmX"/>
                                                 <constraint firstItem="1w6-pb-HWS" firstAttribute="leading" secondItem="tTW-wK-arX" secondAttribute="leading" id="QD3-lM-7cV"/>
                                                 <constraint firstItem="7TB-21-uLs" firstAttribute="centerX" secondItem="tTW-wK-arX" secondAttribute="centerX" id="RUf-XF-RyY"/>
+                                                <constraint firstItem="gYV-v4-vny" firstAttribute="top" secondItem="tTW-wK-arX" secondAttribute="top" constant="20" id="TgY-kQ-ZD9"/>
                                                 <constraint firstAttribute="trailing" secondItem="ACW-xW-P1q" secondAttribute="trailing" id="Zuz-l8-E8b"/>
                                                 <constraint firstAttribute="height" constant="150" id="bAf-z4-PqD"/>
                                                 <constraint firstAttribute="bottom" secondItem="ACW-xW-P1q" secondAttribute="bottom" constant="19" id="eCf-CO-5gt"/>
                                                 <constraint firstAttribute="bottom" secondItem="1w6-pb-HWS" secondAttribute="bottom" constant="19" id="ecv-6L-7gW"/>
+                                                <constraint firstItem="cQJ-vg-Kcp" firstAttribute="top" secondItem="gYV-v4-vny" secondAttribute="bottom" constant="8" id="g7L-Un-pte"/>
                                                 <constraint firstAttribute="trailing" secondItem="1w6-pb-HWS" secondAttribute="trailing" id="jbK-tp-wFK"/>
                                                 <constraint firstItem="ACW-xW-P1q" firstAttribute="top" secondItem="tTW-wK-arX" secondAttribute="top" id="u3T-4o-N9i"/>
                                                 <constraint firstItem="cQJ-vg-Kcp" firstAttribute="leading" secondItem="tTW-wK-arX" secondAttribute="leading" constant="8" id="yhK-Nz-Ved"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oL6-6I-Dpz" customClass="ViewShadow" customModule="KofaxBank" customModuleProvider="target">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oL6-6I-Dpz" customClass="ViewShadow" customModule="KofaxBank" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="174" width="343" height="150"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add BACK side of check" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdz-kh-xEv">
-                                                    <rect key="frame" x="8" y="65" width="327" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-uz-5D7" userLabel="CaptureBackButton">
+                                                    <rect key="frame" x="146.5" y="20" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="WWF-u8-W1S"/>
+                                                        <constraint firstAttribute="width" constant="50" id="r1I-rA-2DQ"/>
+                                                    </constraints>
+                                                    <state key="normal" image="camera_gray_round"/>
+                                                    <connections>
+                                                        <action selector="handleBackSideCaptureButton:" destination="-1" eventType="touchUpInside" id="jas-ye-jn9"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take picture of check BACK side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdz-kh-xEv">
+                                                    <rect key="frame" x="8" y="78" width="327" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="S9G-mL-ayk"/>
                                                     </constraints>
@@ -187,9 +213,11 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
                                             <constraints>
+                                                <constraint firstItem="Bdz-kh-xEv" firstAttribute="top" secondItem="EkE-uz-5D7" secondAttribute="bottom" constant="8" id="4Jq-KY-Nxc"/>
                                                 <constraint firstAttribute="bottom" secondItem="IRI-us-acC" secondAttribute="bottom" constant="19" id="6tB-1l-DGv"/>
-                                                <constraint firstItem="Bdz-kh-xEv" firstAttribute="centerY" secondItem="oL6-6I-Dpz" secondAttribute="centerY" id="8Ka-1Z-XAx"/>
                                                 <constraint firstAttribute="height" constant="150" id="GXK-mx-edp"/>
+                                                <constraint firstItem="EkE-uz-5D7" firstAttribute="centerX" secondItem="oL6-6I-Dpz" secondAttribute="centerX" id="OKK-Yf-Uf7"/>
+                                                <constraint firstItem="EkE-uz-5D7" firstAttribute="top" secondItem="oL6-6I-Dpz" secondAttribute="top" constant="20" id="Qs0-hE-47g"/>
                                                 <constraint firstItem="IRI-us-acC" firstAttribute="top" secondItem="oL6-6I-Dpz" secondAttribute="top" id="RfL-2D-UmF"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bdz-kh-xEv" secondAttribute="trailing" constant="8" id="htL-31-Bdl"/>
                                                 <constraint firstItem="Bdz-kh-xEv" firstAttribute="leading" secondItem="oL6-6I-Dpz" secondAttribute="leading" constant="8" id="jkf-VG-N2R"/>
@@ -370,8 +398,8 @@
                                 <constraint firstAttribute="trailing" secondItem="5hV-44-Vpf" secondAttribute="trailing" id="wZu-JI-K4J"/>
                             </constraints>
                         </stackView>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p75-LI-CFb" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
-                            <rect key="frame" x="87.5" y="557.5" width="200" height="0.0"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p75-LI-CFb" customClass="CustomButton" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="87.5" y="581.5" width="200" height="40"/>
                             <color key="backgroundColor" red="1" green="0.77255852570000005" blue="0.095399493759999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="XfN-db-7ae"/>
@@ -786,70 +814,6 @@
                     </view>
                     <blurEffect style="light"/>
                 </visualEffectView>
-                <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyN-Mw-wbT">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3VI-L3-37F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-KI-Qfq">
-                                <rect key="frame" x="93" y="306.5" width="189" height="54"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avh-Vt-fJl">
-                                        <rect key="frame" x="69.5" y="2" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="SFz-HO-5q6"/>
-                                            <constraint firstAttribute="height" constant="50" id="q79-gV-FJU"/>
-                                        </constraints>
-                                        <state key="normal" image="camera_gray_round"/>
-                                        <connections>
-                                            <action selector="onCameraOptionClicked:" destination="-1" eventType="touchUpInside" id="vVd-ph-zn6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNT-fk-T6M">
-                                        <rect key="frame" x="167" y="27" width="0.0" height="0.0"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="dHU-bu-Uhf"/>
-                                            <constraint firstAttribute="width" id="ekk-E0-M86"/>
-                                        </constraints>
-                                        <state key="normal" image="gallery_gray_round"/>
-                                        <connections>
-                                            <action selector="onGalleryOptionClicked:" destination="-1" eventType="touchUpInside" id="TI8-YQ-fQe"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="1vQ-yp-J29"/>
-                                    <constraint firstAttribute="height" constant="54" id="3q9-WJ-Uni"/>
-                                    <constraint firstItem="GNT-fk-T6M" firstAttribute="centerY" secondItem="xtp-KI-Qfq" secondAttribute="centerY" id="Lhw-WU-cU2"/>
-                                    <constraint firstAttribute="trailing" secondItem="GNT-fk-T6M" secondAttribute="trailing" constant="22" id="cjw-Gn-P0h"/>
-                                    <constraint firstItem="Avh-Vt-fJl" firstAttribute="centerY" secondItem="xtp-KI-Qfq" secondAttribute="centerY" id="md2-R6-x9P"/>
-                                    <constraint firstItem="Avh-Vt-fJl" firstAttribute="centerX" secondItem="xtp-KI-Qfq" secondAttribute="centerX" id="zbA-Pu-W23"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY1-y1-1F0">
-                                <rect key="frame" x="167.5" y="619" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="ly4-0p-JvF"/>
-                                    <constraint firstAttribute="height" constant="40" id="ngs-wh-lS7"/>
-                                </constraints>
-                                <state key="normal" image="cancel_filled_black"/>
-                                <connections>
-                                    <action selector="closeOverlay:" destination="-1" eventType="touchUpInside" id="st5-cn-Lkv"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="xtp-KI-Qfq" firstAttribute="centerY" secondItem="3VI-L3-37F" secondAttribute="centerY" id="1I7-eh-4ab"/>
-                            <constraint firstItem="xtp-KI-Qfq" firstAttribute="centerX" secondItem="3VI-L3-37F" secondAttribute="centerX" id="2ex-iC-emy"/>
-                            <constraint firstAttribute="bottom" secondItem="jY1-y1-1F0" secondAttribute="bottom" constant="8" id="843-Oq-Sgw"/>
-                            <constraint firstItem="jY1-y1-1F0" firstAttribute="centerX" secondItem="3VI-L3-37F" secondAttribute="centerX" id="Ibk-hE-J1f"/>
-                        </constraints>
-                    </view>
-                    <blurEffect style="light"/>
-                </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -858,15 +822,11 @@
                 <constraint firstItem="iZc-9l-f97" firstAttribute="top" secondItem="4wj-sk-qcB" secondAttribute="bottom" id="339-eG-rdm"/>
                 <constraint firstItem="fw8-Mj-ugF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="70" id="3f1-Tp-pyq"/>
                 <constraint firstAttribute="trailing" secondItem="4wj-sk-qcB" secondAttribute="trailing" id="BaP-VB-9ZG"/>
-                <constraint firstItem="LyN-Mw-wbT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CLv-4p-OU4"/>
                 <constraint firstItem="fw8-Mj-ugF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LfP-lD-Dig"/>
                 <constraint firstAttribute="bottom" secondItem="iZc-9l-f97" secondAttribute="bottom" id="Qd8-pN-EHw"/>
                 <constraint firstAttribute="trailing" secondItem="iZc-9l-f97" secondAttribute="trailing" id="RV4-tM-pha"/>
                 <constraint firstItem="iZc-9l-f97" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="W5M-05-V4M"/>
-                <constraint firstAttribute="trailing" secondItem="LyN-Mw-wbT" secondAttribute="trailing" id="Xza-cT-6gf"/>
-                <constraint firstAttribute="bottom" secondItem="LyN-Mw-wbT" secondAttribute="bottom" id="pbJ-91-Zrw"/>
                 <constraint firstItem="4wj-sk-qcB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-40" id="yWx-eT-OiV"/>
-                <constraint firstItem="LyN-Mw-wbT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zc5-QX-5pJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -885,10 +845,8 @@
     <resources>
         <image name="alert_round" width="40" height="38"/>
         <image name="camera_gray_round" width="100" height="100"/>
-        <image name="cancel_filled_black" width="50" height="50"/>
         <image name="checkmark_green" width="50" height="43"/>
         <image name="cross_red" width="50" height="50"/>
-        <image name="gallery_gray_round" width="100" height="100"/>
-        <image name="info_white" width="16" height="16"/>
+        <image name="info_white" width="200" height="200"/>
     </resources>
 </document>
