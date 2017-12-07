@@ -1382,7 +1382,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     //MARK: IDHomeVCDelegate methods
     
-    var selfieCaptureExprienceVC: SelfieCaptureExprienceViewController! = nil
+    private var selfieCaptureExprienceVC: SelfieCaptureExprienceViewController! = nil
     
     func authenticateWithSelfie(idData: kfxIDData) {
         if self.idData != nil {
@@ -1622,6 +1622,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     func cancelledSelfieCapture() {
         print("Selfie capture was cancelled.")
+        selfieCaptureExprienceVC.delegate = nil
+        selfieCaptureExprienceVC = nil
         idHomeScreen?.selfieAuthenticationEnded()
     }
     
@@ -1630,6 +1632,8 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         self.selfieImage = nil
         self.selfieImage = image
         
+        selfieCaptureExprienceVC.delegate = nil
+        selfieCaptureExprienceVC = nil
 
         DispatchQueue.global().async {
             self.performSelfieVerificationWithCompletionHandler(handler: { (responseData: Any?, status: Int) in

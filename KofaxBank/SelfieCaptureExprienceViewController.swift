@@ -47,11 +47,13 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         initializeCaptureControl()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         freeCaptureControl()
     }
 
@@ -165,9 +167,9 @@ class SelfieCaptureExprienceViewController: UIViewController, kfxKUIImageCapture
     func imageCaptureControl(_ imageCaptureControl: kfxKUIImageCaptureControl!, imageCaptured image: kfxKEDImage!) {
         print("Selfie Captured with image == \(image)")
         
-        if image != nil {
+        //if image != nil {
             delegate?.selfieCapturedWithImage(image: image.getBitmap())
-        }
+        //}
         
         closeScreen()
     }
