@@ -63,11 +63,8 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
     private var errObj: AppError! = AppError.init()
     
     private var parameters: NSMutableDictionary! = nil
-
     
-    //TODO: temp constant
     private let serverType = SERVER_TYPE_TOTALAGILITY
-
     
     override init() {
         super.init()
@@ -111,7 +108,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             
             self.instructionPopup.titleText = "Add Supplementary Card?"
             self.instructionPopup.bodyMessageText = "Provide image of your new supplementary card.\n\nMake sure that the captured side (FRONT or BACK) of the card image contains card number."
-            self.instructionPopup.sampleImageName = "CreditCardSampleBlack"
+            self.instructionPopup.sampleImageName = "credit_card_sample_black"
 
             parentView?.addChildViewController(self.instructionPopup)
             self.instructionPopup.view.frame = (parentView?.view.frame)!
@@ -135,7 +132,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
             
             self.instructionPopup.titleText = "Activate Card?"
             self.instructionPopup.bodyMessageText = "Take picture of your new card.\n\nMake sure that the captured side (FRONT or BACK) of the card image contains card number."
-            self.instructionPopup.sampleImageName = "CreditCardSampleBlack"
+            self.instructionPopup.sampleImageName = "credit_card_sample_black"
             
             parentView?.addChildViewController(self.instructionPopup)
             self.instructionPopup.view.frame = (parentView?.view.frame)!
@@ -321,8 +318,6 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
 
         //save image on to disk in JPG format
         self.capturedImagePath = DiskUtility.shared.saveAsJPEGToDisk(image: self.capturedImage, side: ImageType.FRONT_RAW)
-
-        //TODO: display captured image on screen
         
         flowState = CreditCardFlowStates.IMAGE_RETRIEVED
         handleCreditCardFlow(err: nil)
@@ -542,7 +537,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
         self.extractionManager.delegate = self
         
         
-        //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //TODO: required if going to store original image
+        //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //required if going to store original image
         
         if self.parameters != nil {
             self.parameters.removeAllObjects()

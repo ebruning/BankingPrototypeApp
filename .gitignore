@@ -17,6 +17,11 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+## Custom Frameworks
+/Frameworks/MobileSDK.framework
+/Frameworks/SDKStrings.bundle
+/Frameworks/uiimages.bundle
+
 ## Other
 *.moved-aside
 *.xccheckout

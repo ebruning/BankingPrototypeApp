@@ -189,7 +189,7 @@ class BillDataPreviewViewController: UIViewController, UITextFieldDelegate {
         if processedImagePath != nil {
             displayImage(toImageView: processedImageView, fromFileContent: processedImagePath)
             processedImageView.isHidden = false
-            //TODO: temp code. if only processed image should be shown
+            //if only processed image should be shown
             imagePlaceholderLabel.isHidden = true
             //pageControl.currentPage = 0
         }
@@ -198,26 +198,12 @@ class BillDataPreviewViewController: UIViewController, UITextFieldDelegate {
     private func displayImage(toImageView: UIImageView, fromFileContent: String) {
         let image = UIImage.init(contentsOfFile: fromFileContent)
         if image != nil {
-            let scaledImg = resizeImage(image: image, newWidth: processedImageView.bounds.width)
+            let scaledImg = Utility.resizeImage(image: image, newWidth: processedImageView.bounds.width)
             toImageView.image = scaledImg
         }
     }
     
-    
-    private func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
-        if (image == nil) {
-            return nil
-        }
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
-        image.draw(in:(CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight)))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-
-    
+        
     private func showBillData() {
         DispatchQueue.main.async {
             
@@ -410,9 +396,6 @@ class BillDataPreviewViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func saveBiller(billData: kfxBillData) {
-    //    var fetchRequest: NSFetchRequest<BillerMaster>! = BillerMaster.fetchRequest()
-        //TODO: add condition for pending card
-
             let newBiller = BillerMaster(context: context)
             newBiller.name = billData.name.value
 

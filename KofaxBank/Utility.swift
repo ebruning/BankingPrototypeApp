@@ -97,7 +97,7 @@ class Utility {
         
         //use current timezone
         //TODO: time zone is not being updating properply. comeback to this later.
-        df.timeZone =  TimeZone.current //Locale(identifier: "en_IN_POSIX")
+        df.timeZone =  TimeZone.current
         return df
     }
     
@@ -107,7 +107,7 @@ class Utility {
         return convertStringToDate(format: format, dateStr: df.string(from: date))
     }
     
-    class func dateToFormattedString(format: String, date: Date) -> String { //TODO: write test case to check with invalid date
+    class func dateToFormattedString(format: String, date: Date) -> String {
         let df = getDateFormatter(format: format)
         return df.string(from: date);
     }
@@ -215,7 +215,19 @@ class Utility {
         return outputImage
     }
     
-    
+    class func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
+        if (image == nil) {
+            return nil
+        }
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
+        image.draw(in:(CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight)))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+
     class func loadDatabaseWithDefaultsIfEmpty() {
         
         let fetchRequest: NSFetchRequest<UserMaster> = UserMaster.fetchRequest()
@@ -256,7 +268,7 @@ class Utility {
             user.middlename = userObject["middlename"] as? String
             
             user.lastname = userObject["lastname"] as? String
-            if let birthDate:Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (userObject["birthdate"] as? String)) {   //TODO: put this null check for every date field
+            if let birthDate:Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (userObject["birthdate"] as? String)) {
                 user.birthdate = birthDate! as NSDate
             }
             
@@ -278,7 +290,11 @@ class Utility {
                 let aObject = accountArray[index] as! [String : AnyObject]
                 
                 accountMaster.accountNumber = aObject["accountnumber"] as? String
-                accountMaster.openingDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (aObject["openingdate"] as? String))! as NSDate //aObject["openingdate"] as? NSDate
+                
+                if let openingDate:Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (aObject["openingdate"] as? String)) {
+                    accountMaster.openingDate = openingDate! as NSDate
+                }
+                
                 accountMaster.accounttype = aObject["type"] as? String
                 accountMaster.balance = (aObject["balance"] as! NSString).doubleValue
                 
@@ -349,7 +365,9 @@ class Utility {
                 ccMaster.cardNumber = ccObject["cardnumber"] as? String
                 ccMaster.company = ccObject["company"] as? String
                 
-                ccMaster.expDate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: ccObject["expdate"] as? String) as NSDate?//ccObject["expdate"] as? NSDate
+                if let expDate: Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: ccObject["expdate"] as? String) {
+                    ccMaster.expDate = expDate! as NSDate
+                }
                 
                 print("Formatted exp DAte-----> \(Utility.dateToFormattedString(format: LongDateFormatWithTime, date: ccMaster.expDate! as Date))")
                 
@@ -370,7 +388,11 @@ class Utility {
                     let tObject = transactionArray[index1] as! [String : AnyObject]
                     
                     transaction.transactionId = tObject["id"] as? String
-                    transaction.date = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (tObject["date"] as? String))! as NSDate//tObject["date"] as? NSDate
+                    
+                    if let date: Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: (tObject["date"] as? String)) {
+                        transaction.date = date! as NSDate
+                    }
+                    
                     transaction.amount = (tObject["amount"] as! NSString).doubleValue
                     transaction.vender = tObject["vender"] as? String
                     transaction.venderCategory = tObject["vendercategory"] as? String

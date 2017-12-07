@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,7 +56,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="109" height="100"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_yellow_100" translatesAutoresizingMaskIntoConstraints="NO" id="HE8-Nc-rus">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_yellow_round" translatesAutoresizingMaskIntoConstraints="NO" id="HE8-Nc-rus">
                                                 <rect key="frame" x="29.5" y="8" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="NzP-Xe-zCw"/>
@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="109" height="100"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery_white_100" translatesAutoresizingMaskIntoConstraints="NO" id="WpN-3F-dFw">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery_white_round" translatesAutoresizingMaskIntoConstraints="NO" id="WpN-3F-dFw">
                                                 <rect key="frame" x="29.5" y="8" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Jpj-kG-bBI"/>
@@ -756,8 +756,8 @@
     </objects>
     <resources>
         <image name="app_background" width="451" height="800"/>
-        <image name="camera_yellow_100" width="100" height="100"/>
+        <image name="camera_yellow_round" width="100" height="100"/>
         <image name="cloud_white" width="100" height="73"/>
-        <image name="gallery_white_100" width="100" height="100"/>
+        <image name="gallery_white_round" width="100" height="100"/>
     </resources>
 </document>

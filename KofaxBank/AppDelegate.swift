@@ -132,7 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Open URL")
         
         
-        //TODO: check how to check if app has navigation controller
         
         let navController = self.window?.rootViewController as! UINavigationController
 

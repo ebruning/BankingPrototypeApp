@@ -15,9 +15,9 @@ class ImageProcessManager: NSObject, kfxKIPDelegate {
     typealias CompletionCallback = ((Any?, NSError?) -> Void)
     typealias ProgressCallBack = ((Int) -> Void)
     
-    var completionCallback: CompletionCallback!
-    var progressCallback: ProgressCallBack!
-    var sharedImageProcessor: kfxKENImageProcessor!
+    private var completionCallback: CompletionCallback!
+    private var progressCallback: ProgressCallBack!
+    private var sharedImageProcessor: kfxKENImageProcessor!
 
     override init() {
         
@@ -51,16 +51,11 @@ class ImageProcessManager: NSObject, kfxKIPDelegate {
     }
     
     
-    //TODO: TBD: usage of this method???
-    func cancelProcessing(completionCallback: @escaping CompletionCallback, progressCallback: @escaping ProgressCallBack) {
-        self.completionCallback = completionCallback
-        self.progressCallback = progressCallback
-        
-        if sharedImageProcessor == nil {
-            sharedImageProcessor = kfxKENImageProcessor.init()
+    func cancelProcessing(completionCallback: @escaping CompletionCallback) {
+
+        if sharedImageProcessor != nil {
+            sharedImageProcessor.cancelProcessing()
         }
-        sharedImageProcessor.delegate = self
-        sharedImageProcessor.cancelProcessing()
     }
     
     deinit {

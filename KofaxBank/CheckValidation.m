@@ -232,9 +232,9 @@
     int result = [self verifySignatureAndMicr:[image getImageMetaData] isFrontSide:isFront];
     //NSString *title = @"", *msg = @"Retake?";
     
-    BOOL doSearchMICR = true;   //TODO: add it is configuration if required
-    BOOL doUseHandPrint = true; //TODO: add it is configuration if required
-    
+    BOOL doSearchMICR = true;
+    BOOL doUseHandPrint = true;
+
     if(result != 3 && (doSearchMICR || doUseHandPrint)){
         
         //title = @"Signature and MICR not found";
@@ -269,7 +269,7 @@
     }
 //    else{
 
-        // TODO: not checking for duplicate check in this app.
+        // not checking for duplicate check in this app.
 /*        if ([[advancedSettings valueForKey:CHECKFORDUPLICATES] boolValue] && [self checkMICRExistOrNot:_localMICR]) {
             
             errTitle = @"Duplicate Check";

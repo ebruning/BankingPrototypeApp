@@ -349,23 +349,6 @@ protocol IDHomeVCDelegate {
         }
     }
     
-    //TODO: This is a common function across multiple files. put it in a single place
-    private func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
-        
-        if image == nil {
-            return nil
-        }
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        
-        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
-        image.drawAsPattern(in: CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
     
     private func displayDataFields() {
         guard let data = idData else { return  }

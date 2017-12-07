@@ -155,11 +155,7 @@ UIImagePickerControllerDelegate {
 
         editingHasBegun = !editingHasBegun
         
-        if editingHasBegun == true {
-            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "checkmark_gray")
-            nameText.becomeFirstResponder()
-            
-        } else {
+        if editingHasBegun == false {
             
             if isAnyFieldEmpty() {
                 Utility.showAlert(onViewController: self, titleString: "Empty Fields", messageString: "Fill all the user details before saving")
@@ -172,6 +168,11 @@ UIImagePickerControllerDelegate {
         }
 
         updateFieldAccess()
+        
+        if editingHasBegun == true {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "checkmark_gray")
+            nameText.becomeFirstResponder()
+        }
     }
 
     private func updateFieldAccess() {
@@ -235,7 +236,7 @@ UIImagePickerControllerDelegate {
         
         if didAvatarChange {
             if avatarImageView.image != nil {
-                let thumbnail = resizeImage(image: avatarImageView.image, newWidth: avatarImageView.bounds.width)
+                let thumbnail = Utility.resizeImage(image: avatarImageView.image, newWidth: avatarImageView.bounds.width)
                 
                 if thumbnail != nil {
                     user.avatar = UIImagePNGRepresentation(thumbnail!)! as NSData
@@ -246,23 +247,6 @@ UIImagePickerControllerDelegate {
         ad.saveContext()
     }
     
-    
-    //TODO: Move this and all other occurences of resizeImage to Utilities
-    
-    private func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
-        if (image == nil) {
-            return nil
-        }
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
-        image.draw(in:(CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight)))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-
     
     @IBAction func mainViewOnTap(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)

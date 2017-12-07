@@ -34,9 +34,7 @@ class BaseCaptureViewController: BaseViewController {
     func initializeControl() {
         
     }
-    
-    //TODO: Check if KMD where to call this function
-    
+        
     class func checkCameraAccess(statusHandler: @escaping CameraStatus) {
         
         let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)

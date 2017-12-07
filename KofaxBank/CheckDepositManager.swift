@@ -42,8 +42,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
     // MARK: Local constants
         
     
-    //TODO: temp constant
-    let serverType = SERVER_TYPE_TOTALAGILITY
+    private let serverType = SERVER_TYPE_TOTALAGILITY
     
     
     // MARK: Local variables
@@ -342,7 +341,6 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
                     }
                 }
             }
-            //self.currentProcessedImage = nil    //TODO: right place to reset?
         }
             //TODO : as per this condition, currently, front of check should always be captured and processed first before back. Make it generic later.
         else if checkFlowState == CheckStates.CDREPROCESSED {  //back reprocessing done
@@ -570,7 +568,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
             print("File -- 1 \(self.processedImgFilePathArr.object(at: 0))")
             print("File -- 2 \(self.processedImgFilePathArr.object(at: 1))")
 
-        //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //TODO: required if going to store original image
+        //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //required if going to store original image
 
             if self.parameters != nil {
                 self.parameters.removeAllObjects()

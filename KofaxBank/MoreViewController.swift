@@ -171,7 +171,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
             mailer.mailComposeDelegate = self
             
             mailer.setSubject("Customer: Lucy Tate")
-            mailer.setToRecipients(NSArray.init(object: "rupali.ghate@kofax.com") as? [String])
+            mailer.setToRecipients(NSArray.init(object: "") as? [String])
             
             mailer.setMessageBody("", isHTML: false)
             

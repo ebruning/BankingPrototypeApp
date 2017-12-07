@@ -66,8 +66,8 @@ class IDSettingsViewController: UIViewController {
     @IBAction func onCameraSettingsSelected(_ sender: UITapGestureRecognizer) {
 
         if stackViewCameraSettings.isHidden {
-            cameraImage.image = UIImage.init(named: "camera_yellow_100")
-            imageProcessImage.image = UIImage.init(named: "gallery_white_100")
+            cameraImage.image = UIImage.init(named: "camera_yellow_round")
+            imageProcessImage.image = UIImage.init(named: "gallery_white_round")
             serverImage.image = UIImage.init(named: "cloud_white")
             
             cameraLabel.textColor = accentColor
@@ -83,8 +83,8 @@ class IDSettingsViewController: UIViewController {
     @IBAction func onImageProcessorSettingsSelected(_ sender: UITapGestureRecognizer) {
 
         if stackViewImageProcessSettings.isHidden {
-            imageProcessImage.image = UIImage.init(named: "gallery_yellow_100")
-            cameraImage.image = UIImage.init(named: "camera_white_100")
+            imageProcessImage.image = UIImage.init(named: "gallery_yellow_round")
+            cameraImage.image = UIImage.init(named: "camera_white_round")
             serverImage.image = UIImage.init(named: "cloud_white")
 
             imageProcessLabel.textColor = accentColor
@@ -100,9 +100,9 @@ class IDSettingsViewController: UIViewController {
     @IBAction func onServerSettingsSelected(_ sender: UITapGestureRecognizer) {
     
         if stackViewServerSettings.isHidden {
-            serverImage.image = UIImage.init(named: "cloud_yellow_100")
-            cameraImage.image = UIImage.init(named: "camera_white_100")
-            imageProcessImage.image = UIImage.init(named: "gallery_white_100")
+            serverImage.image = UIImage.init(named: "cloud_yellow")
+            cameraImage.image = UIImage.init(named: "camera_white_round")
+            imageProcessImage.image = UIImage.init(named: "gallery_white_round")
 
             serverLabel.textColor = accentColor
             imageProcessLabel.textColor = applicationTextColor

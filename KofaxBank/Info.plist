@@ -45,8 +45,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to capture image of bills</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Kofax Bank would like to access your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Required to access documents present in phot library</string>
 	<key>UILaunchStoryboardName</key>

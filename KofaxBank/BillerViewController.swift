@@ -150,8 +150,6 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     }
     
     
-
-
     private func customizeNavigationBar() {
 
         UIApplication.shared.isStatusBarHidden = false
@@ -167,7 +165,7 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
          
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
          
          self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
  
@@ -278,17 +276,6 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     }
 
 
-/*
-    private func closeScreen() {
-        
-        //TODO: find place to clean data
-        
-        accounts.removeAll()
-        billers.removeAll()
-
-        navigationController?.popViewController(animated: true)
-    }
-*/
     @IBAction func selectPayee(_ sender: UITapGestureRecognizer) {
         pickerContainerView.isHidden = false
         

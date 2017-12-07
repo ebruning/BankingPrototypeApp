@@ -49,7 +49,7 @@ class MainTabBarController: UITabBarController, UIPopoverPresentationControllerD
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: nil)
 
         self.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
     }

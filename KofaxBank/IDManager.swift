@@ -86,7 +86,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     private var selfieImage: UIImage! = nil
     
-    //TODO: temp constant
     private let serverType = SERVER_TYPE_TOTALAGILITY
     
     private var mobileIDVersion: String!
@@ -121,7 +120,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             
             self.instructionPopup.titleText = "Driver License ID"
             self.instructionPopup.bodyMessageText = "Take picture of your drivering license."
-            self.instructionPopup.sampleImageName = "DriverLicensex150"
+            self.instructionPopup.sampleImageName = "driver_license"
             
             parentView?.addChildViewController(self.instructionPopup)
             self.instructionPopup.view.frame = (parentView?.view.frame)!
@@ -486,7 +485,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 self.backRawImagePath = self.capturedImagePath
             }
             
-            //TODO: display captured image on screen
             self.flowState = IDFlowStates.IMAGE_RETRIEVED
             self.handleScreenFlow(err: nil)
         }
@@ -910,7 +908,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                 self.parameters.setValue("", forKey: "documentGroupName")
                 
                 
-                if self.mobileIDVersion != nil && self.mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {   //TODO: check if all eralier code block is required, else move this to the beginning of if condition.
+                if self.mobileIDVersion != nil && self.mobileIDVersion == MobileIDVersion.VERSION_2X.rawValue {   //TODO: check if all earlier code block is required, else move this to the beginning of if condition.
                     self.initiateExtractionWithAuthentication()
                     return
                 } else {
@@ -921,7 +919,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                     }
                     
                     self.parameters.setValue("false", forKey: "CropImage")
-                    self.parameters.setValue(self.getProcessIdentityName(), forKey: "processIdentityName") //TODO: make this configurable in settings
+                    self.parameters.setValue(self.getProcessIdentityName(), forKey: "processIdentityName")
                     self.parameters.setValue("0", forKey: "IDType")
                     self.parameters.setValue("true", forKey: "ExtractFaceImage")
                     self.parameters.setValue("true", forKey: "ExtractSignatureImage")
@@ -931,7 +929,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                     self.parameters.setValue(sessionId, forKey: "sessionId")
                 }
                 
-                self.parameters.setValue("0", forKey: "storeFolderAndDocuments") //TODO: Check if required
+                self.parameters.setValue("0", forKey: "storeFolderAndDocuments")
                 
                 self.extractionManager.extractImagesData(fromProcecssedImageArray: arrProccessed, serverUrl: serverURL!, paramsDict: self.parameters, imageMimeType: MIMETYPE_JPG)
                 
@@ -1057,7 +1055,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
                         }
                         
                     }
-                    
                 }
                 
             }
@@ -1467,10 +1464,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         return ""
     }
     
-    //let ktaKofaxProcessName = "KofaxMobileIDCaptureSync"    //TODO: Move to settings
-    //let ktaProcessName = "KofaxMobileIDSync"            //TODO: Move to settings
-
-    
     private func getProcessIdentityName() -> String {
         let mobileIDVersion =  getMobileIDVersion()
         
@@ -1581,7 +1574,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         let params = NSMutableDictionary()
         params.setValue(getAuthenticationProcessIdentityName(), forKey: "processIdentityName")
         params.setValue(self.authenticationResultModel.transactionID, forKey: "TransactionId")
-        params.setValue("0", forKey: "storeFolderAndDocuments") //TODO: Check if required
+        params.setValue("0", forKey: "storeFolderAndDocuments")
 
         let selfieManager = SelfieVerificationService.init(sessionId: getSessionId())
         selfieManager?.performSelfieVerification(with: authenticationURL, forParameters: params as! [AnyHashable : Any], onImages: bytesArrayForSelfieImage() as! [Any], withCompletionHandler: { (responseData: Any?, status: Int) in
@@ -1738,9 +1731,11 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         if  let user = fetchUser() {
 
             if idData.dateOfBirth != nil && idData.dateOfBirth.value != nil {
-             //   user.birthdate = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: idData.dateOfBirth.value)! as NSDate    //TODO: check the issue with nil birthdate later
+                if let birthdate: Date? = Utility.convertStringToDate(format: LongDateFormatWithNumericMonth, dateStr: idData.dateOfBirth.value) {
+                    user.birthdate = birthdate! as NSDate
+                }
             }
-            
+
             if idData.address != nil && idData.address.value != nil {
                 user.address = idData.address.value
             } else {
@@ -1799,7 +1794,6 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
     
     
     func sendPushNotificationServiceOnSelfiVerification() {
-        //TODO: needs to be completed
     }
     
     func backFromSelfieResultScreen() {

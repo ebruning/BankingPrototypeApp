@@ -321,7 +321,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
         
         self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
         
@@ -416,7 +416,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     }
     
     let sectionHeaderTitleArray = ["BANKING ACCOUNT", "CREDIT CARD ACCOUNT"]
-    //let sectionHeaderImageArray = ["Account", "Card Black"]
+    //let sectionHeaderImageArray = ["account", "card_black"]
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView(frame: CGRect.init(x:0, y:0, width: 200, height:30))
@@ -558,7 +558,8 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         } catch {
             let error = error as NSError
             print("\(error)")
-            //TODO: Return and display error  on screen.
+            
+            Utility.showAlert(onViewController: self, titleString: "Account Fetch Error", messageString: "Error occurred while fetching accounts.")
         }
     }
     
@@ -581,7 +582,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
             let error = error as NSError
             print("\(error)")
             
-            //TODO: Return and display error  on screen.
+            Utility.showAlert(onViewController: self, titleString: "Credit Card Fetch Error", messageString: "Error occurred while fetching credit card account.")
         }
     }
 

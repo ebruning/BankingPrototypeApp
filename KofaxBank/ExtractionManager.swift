@@ -38,8 +38,8 @@ class ExtractionManager: NSObject, KFXServerExtractorDelegate, URLSessionDelegat
 
     // MARK: Local Variable
     
-    var serverExtractor: kfxKLOServerExtractor!
-    var ktaServerConnection: KFXKTAServerConnection!
+    private var serverExtractor: kfxKLOServerExtractor!
+    private var ktaServerConnection: KFXKTAServerConnection!
     
     // MARK: Methods
 
@@ -210,7 +210,6 @@ class ExtractionManager: NSObject, KFXServerExtractorDelegate, URLSessionDelegat
     
     // MARK: NSURLSessionDelegate
     
-    //TODO: complete this method later
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
     }
@@ -227,9 +226,9 @@ class ExtractionManager: NSObject, KFXServerExtractorDelegate, URLSessionDelegat
 
  */
     func unload() {
-        //TODO: complete this method
         serverExtractor = nil
-
+        ktaServerConnection = nil
+        delegate = nil
     }
     
     deinit {

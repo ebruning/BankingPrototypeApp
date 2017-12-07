@@ -175,7 +175,7 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Menu Vertical white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
+        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
         
         self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
         
@@ -232,22 +232,7 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
         if cards.count == 0 {
             return STATUS_ACTIVE
         }
-        //TODO: what if card record does not contain issue date?
-/*
-         //compare expdate of card with current date
-        let card = cards[0]
-        
-        let today = Date()
-        
-        guard let expDate = card.expDate else {
-            print("Error: Card issue date is empty!")
-            return true
-        }
-        
-        if today > expDate as Date {
-            expired = true
-        }
-*/
+
         let cardStatus = cards[0].cardStatus
         
         if cardStatus == STATUS_EXPIRED {

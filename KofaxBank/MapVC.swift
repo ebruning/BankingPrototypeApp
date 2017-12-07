@@ -113,7 +113,7 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         
-        let pinImage = UIImage(named: "Logo")
+        let pinImage = UIImage(named: "logo")
         annotationView!.image = pinImage
         return annotationView
     }

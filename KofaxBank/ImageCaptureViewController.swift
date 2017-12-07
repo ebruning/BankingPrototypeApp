@@ -212,7 +212,7 @@ class ImageCaptureViewController: BaseCaptureViewController, kfxKUIImageCaptureC
             self.baseCaptureExperience.tutorialSampleImage = self.experienceOptions.tutorialSampleImage
         }
         
-        self.configureCaptureExperienceMessages(messages: self.experienceOptions.messages)   //TODO: uncomment this later and provide experiencesOptions.messages if needed
+        self.configureCaptureExperienceMessages(messages: self.experienceOptions.messages)
     }
 
     func addGestureRecognizerToCaptureControl() {
@@ -275,12 +275,12 @@ class ImageCaptureViewController: BaseCaptureViewController, kfxKUIImageCaptureC
     @IBAction func onTorchButtonClicked(_ sender: UIButton)
     {
         if(self.captureControl.flash == kfxKUITorch) {
-            sender.setImage(UIImage.init(named: "torch_off_150.png"), for: UIControlState.normal)
+            sender.setImage(UIImage.init(named: "torch_off.png"), for: UIControlState.normal)
             self.captureControl.flash = kfxKUIFlashOff
         }
         else
         {
-            sender.setImage(UIImage.init(named: "torch_on_150.png"), for: UIControlState.normal)
+            sender.setImage(UIImage.init(named: "torch_on.png"), for: UIControlState.normal)
             self.captureControl.flash = kfxKUITorch
         }
         

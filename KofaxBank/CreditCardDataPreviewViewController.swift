@@ -48,7 +48,6 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
 
     var cardData: kfxCreditCardData! = nil
 
-    //TODO: Temp variable
     private var cardCompanyField: kfxDataField?
     
     //Mark: - Delegate
@@ -155,7 +154,7 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
         if processedImagePath != nil {
             displayImage(toImageView: processedImageView, fromFileContent: processedImagePath)
             
-            //TODO: temp code. if only processed image should be shown
+            //if only processed image should be shown
             imagePlaceholderLabel.isHidden = true
             rawImageView.isHidden = true
             processedImageView.isHidden = false
@@ -166,26 +165,13 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
     private func displayImage(toImageView: UIImageView, fromFileContent: String) {
         var image = UIImage.init(contentsOfFile: fromFileContent)
         if image != nil {
-            let scaledImg = resizeImage(image: image, newWidth: toImageView.bounds.width)
+            let scaledImg = Utility.resizeImage(image: image, newWidth: toImageView.bounds.width)
             toImageView.image = scaledImg
             image = nil
         }
     }
     
-    //TODO: This is a common function across multiple files. put it in a single place
-    private func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
-        if (image == nil) {
-            return nil
-        }
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
-        image.draw(in:(CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight)))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
+
     // MARK: - Navigationbar methods
     
     private func customizeScreenControls() {
@@ -346,7 +332,6 @@ class CreditCardDataPreviewViewController: UIViewController, UITextFieldDelegate
             cardData.expirationYear.value = expYearTextField.text
             
             var fetchRequest: NSFetchRequest<CreditCardMaster>! = CreditCardMaster.fetchRequest()
-            //TODO: add condition for active card
             do {
                 var cards = try context.fetch(fetchRequest)
                 let newCard = cards[0]

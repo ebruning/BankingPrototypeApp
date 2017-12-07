@@ -84,7 +84,7 @@
                                                 <color key="textColor" red="0.23093501329999999" green="0.18637529310000001" blue="0.026702002579999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Make sure your full face is visible on the camera" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfa-Q1-aQ3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Make sure your full face is visible on the camera" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfa-Q1-aQ3">
                                                 <rect key="frame" x="0.0" y="170" width="359" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cHK-Wm-oHC"/>
@@ -104,7 +104,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHe-bU-B1y" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="147"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selfie_wrong" translatesAutoresizingMaskIntoConstraints="NO" id="xYE-ca-xJC">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selfie_incorrect" translatesAutoresizingMaskIntoConstraints="NO" id="xYE-ca-xJC">
                                                                 <rect key="frame" x="8" y="8" width="114" height="131"/>
                                                             </imageView>
                                                         </subviews>
@@ -130,7 +130,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_red" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-QU-d9C">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_red_filled" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-QU-d9C">
                                                         <rect key="frame" x="50" y="155" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="0Dy-z8-2Nj"/>
@@ -145,7 +145,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Red-Ql-A04" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="147"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selfie_right" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-wE-D8l">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selfie_correct" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-wE-D8l">
                                                                 <rect key="frame" x="8" y="8" width="114" height="131"/>
                                                             </imageView>
                                                         </subviews>
@@ -171,7 +171,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_green" translatesAutoresizingMaskIntoConstraints="NO" id="zZU-pm-NoV">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_green_filled" translatesAutoresizingMaskIntoConstraints="NO" id="zZU-pm-NoV">
                                                         <rect key="frame" x="50" y="155" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="9wk-lx-Vdd"/>
@@ -236,9 +236,9 @@
         </view>
     </objects>
     <resources>
-        <image name="checkmark_green" width="30" height="30"/>
-        <image name="cross_red" width="30" height="30"/>
-        <image name="selfie_right" width="128" height="175"/>
-        <image name="selfie_wrong" width="104" height="145"/>
+        <image name="checkmark_green_filled" width="30" height="30"/>
+        <image name="cross_red_filled" width="30" height="30"/>
+        <image name="selfie_correct" width="245" height="362"/>
+        <image name="selfie_incorrect" width="245" height="362"/>
     </resources>
 </document>

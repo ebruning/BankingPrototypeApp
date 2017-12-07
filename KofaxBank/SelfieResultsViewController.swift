@@ -169,7 +169,7 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
             if self.selfieVerificationResult.selfieMatchResult.caseInsensitiveCompare("PASS") == ComparisonResult.orderedSame {
 //                self.notificationContainer.backgroundColor = applicationGreenColor
                 self.notificationLabel.text = "SELFIE VERIFICATION PASSED"
-                self.notificationIcon.image = UIImage(named: "checkmark_green")
+                self.notificationIcon.image = UIImage(named: "checkmark_green_filled")
             } else if self.selfieVerificationResult.selfieMatchResult.caseInsensitiveCompare("ATTENTION") == ComparisonResult.orderedSame {
 //                self.notificationContainer.backgroundColor = applicationOrangeColor
                 self.notificationLabel.text = "SELFIE VERIFICATION NEEDS ATTENTION"
@@ -232,14 +232,16 @@ class SelfieResultsViewController: UIViewController, UITableViewDataSource, UITa
                 
                 //TODO: display results of "Document image analysis"
                 
+                
             } else if title.caseInsensitiveCompare("Match Score") == ComparisonResult.orderedSame {
                 
                 //TODO: Fix below statement
                 
                 print("\(self.selfieVerificationResult.value(forKey: key) as! String)")
                 
-                //let score = self.selfieVerificationResult.value(forKey: key) as! Double
-                //value = String(format: "%.02f", score)
+                if let score = Double(self.selfieVerificationResult.value(forKey: key) as! String) {
+                    value = String(format: "%.02f", score)
+                }
             }
             else {
                 if self.selfieVerificationResult.value(forKey: key) != nil {

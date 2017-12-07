@@ -40,7 +40,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kofax logo" translatesAutoresizingMaskIntoConstraints="NO" id="n8f-pL-WQx" userLabel="footerLogo">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kofax_logo" translatesAutoresizingMaskIntoConstraints="NO" id="n8f-pL-WQx" userLabel="footerLogo">
                                                 <rect key="frame" x="145" y="33" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Bh3-1F-T5O"/>
@@ -61,7 +61,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0c-7Q-toc">
                                         <rect key="frame" x="0.0" y="8" width="320" height="195"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="cBb-jL-4GG">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="cBb-jL-4GG">
                                                 <rect key="frame" x="117" y="8" width="86" height="97"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="86" id="ABr-tj-o5p"/>
@@ -213,7 +213,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeN-mB-0Og">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oYT-eT-T3V">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="oYT-eT-T3V">
                                                 <rect key="frame" x="117" y="8" width="86" height="97"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="86" id="7EJ-Bc-Vlj"/>
@@ -340,7 +340,7 @@
                                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                                                     </textField>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserHollow" translatesAutoresizingMaskIntoConstraints="NO" id="cgM-VO-wzL">
+                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_hollow" translatesAutoresizingMaskIntoConstraints="NO" id="cgM-VO-wzL">
                                                                                         <rect key="frame" x="6" y="6" width="18" height="18"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="18" id="9MC-dh-F7y"/>
@@ -716,7 +716,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="1ac-pw-Icz"/>
                                                             <constraint firstAttribute="width" constant="20" id="poS-zY-QXV"/>
                                                         </constraints>
-                                                        <state key="normal" image="bell100x100"/>
+                                                        <state key="normal" image="bell_white"/>
                                                         <connections>
                                                             <action selector="onNotificationClicked:" destination="erx-ga-v50" eventType="touchUpInside" id="9vl-Ry-mzN"/>
                                                         </connections>
@@ -747,7 +747,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-yx-0c7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="256" height="101"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_50" translatesAutoresizingMaskIntoConstraints="NO" id="Xyu-7r-lz2">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_white" translatesAutoresizingMaskIntoConstraints="NO" id="Xyu-7r-lz2">
                                                                         <rect key="frame" x="115.5" y="0.0" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="6xY-5J-yTr"/>
@@ -775,7 +775,7 @@ United States</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OSV-du-3ck">
                                                                 <rect key="frame" x="0.0" y="117" width="256" height="55"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_50" translatesAutoresizingMaskIntoConstraints="NO" id="DX7-lV-qtH">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_white" translatesAutoresizingMaskIntoConstraints="NO" id="DX7-lV-qtH">
                                                                         <rect key="frame" x="115.5" y="0.0" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="O5T-8N-eld"/>
@@ -800,7 +800,7 @@ United States</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tEn-Mt-RA5">
                                                                 <rect key="frame" x="0.0" y="188" width="256" height="55"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_50" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-pb-1k4">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_white" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-pb-1k4">
                                                                         <rect key="frame" x="115.5" y="0.0" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="E6y-Uy-SJD"/>
@@ -894,7 +894,7 @@ United States</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzx-ii-7fx" userLabel="TopBar">
                                         <rect key="frame" x="16" y="20" width="288" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Nt9-hl-2Qf">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Nt9-hl-2Qf">
                                                 <rect key="frame" x="124" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="WFY-VA-Dgj"/>
@@ -967,7 +967,7 @@ United States</string>
                             <constraint firstItem="ihn-fb-qRi" firstAttribute="leading" secondItem="rng-5S-jpm" secondAttribute="leading" id="fne-G4-zgX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Accounts" image="bottombar-dollar" id="J9I-mh-D6Q"/>
+                    <tabBarItem key="tabBarItem" title="Accounts" image="dollar" id="J9I-mh-D6Q"/>
                     <connections>
                         <outlet property="addAccountFloatingButton" destination="qsD-AI-Ldh" id="coV-68-yLP"/>
                         <outlet property="addressLabel" destination="PZ3-Lh-0Ma" id="jEc-dJ-o8V"/>
@@ -1056,7 +1056,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Wu-Hq-ZlU" userLabel="AccountCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="63" width="288" height="35"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-vN-pZu">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-vN-pZu">
                                                         <rect key="frame" x="260" y="7.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="Ge6-S4-sZf"/>
@@ -1106,7 +1106,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8P-Yu-ihT" userLabel="DateCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="151" width="288" height="35"/>
                                                 <subviews>
-                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="3Fx-ka-rk5">
+                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Fx-ka-rk5">
                                                         <rect key="frame" x="260" y="7.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="Mfo-0g-zQl"/>
@@ -1191,7 +1191,7 @@ United States</string>
                                                     <constraint firstAttribute="height" constant="50" id="wRe-Q5-8SG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" image="camera_white_small">
+                                                <state key="normal" image="camera_white">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1224,7 +1224,7 @@ United States</string>
                                                         <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="zsc-mS-BgN">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="zsc-mS-BgN">
                                                         <rect key="frame" x="174" y="22" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="BhD-Zt-Wtd"/>
@@ -1316,7 +1316,7 @@ United States</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gb-H4-G5u" userLabel="TopBar">
                                         <rect key="frame" x="16" y="20" width="296" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dy2-OT-q34">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dy2-OT-q34">
                                                 <rect key="frame" x="128" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="221-vA-Dry"/>
@@ -1416,7 +1416,7 @@ United States</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="350"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreditCardSample" translatesAutoresizingMaskIntoConstraints="NO" id="Lbq-Nd-jF9">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card_sample" translatesAutoresizingMaskIntoConstraints="NO" id="Lbq-Nd-jF9">
                                                                     <rect key="frame" x="52" y="22" width="146" height="87"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="146" id="A8v-T3-zWf"/>
@@ -1636,7 +1636,7 @@ United States</string>
                                                                 <constraint firstAttribute="width" constant="19" id="KoQ-4j-dsf"/>
                                                                 <constraint firstAttribute="height" constant="30" id="st1-rs-f0z"/>
                                                             </constraints>
-                                                            <state key="normal" image="white_arrow_filled_left100x100"/>
+                                                            <state key="normal" image="arrow_left_white_filled"/>
                                                             <connections>
                                                                 <action selector="previousButtonClicked:" destination="Zdm-Xf-OZu" eventType="touchUpInside" id="UDX-aG-YUi"/>
                                                             </connections>
@@ -1647,7 +1647,7 @@ United States</string>
                                                                 <constraint firstAttribute="width" constant="19" id="OvG-Ku-YOx"/>
                                                                 <constraint firstAttribute="height" constant="30" id="bfa-Vi-oEu"/>
                                                             </constraints>
-                                                            <state key="normal" image="white_arrow_filled_right100x100"/>
+                                                            <state key="normal" image="arrow_right_white_filled"/>
                                                             <connections>
                                                                 <action selector="nextButtonClicked:" destination="Zdm-Xf-OZu" eventType="touchUpInside" id="Ssf-Fg-Xeh"/>
                                                             </connections>
@@ -1803,7 +1803,7 @@ United States</string>
                                             <constraint firstAttribute="width" constant="50" id="vub-Ql-Tdq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="36"/>
-                                        <state key="normal" image="AddCreditCard30x30">
+                                        <state key="normal" image="add_credit_card">
                                             <color key="titleShadowColor" red="0.18018649319999999" green="0.17490782620000001" blue="0.18180122679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1830,7 +1830,7 @@ United States</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-f9-f2K" userLabel="TopBar">
                                         <rect key="frame" x="16" y="20" width="296" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GVh-Ia-M0N">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GVh-Ia-M0N">
                                                 <rect key="frame" x="128" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="3eA-GW-d6K"/>
@@ -1876,7 +1876,7 @@ United States</string>
                             <constraint firstItem="un7-su-Dyn" firstAttribute="leading" secondItem="gO8-bK-KVx" secondAttribute="leading" id="yex-ze-dCX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Credit Card" image="Card" id="oIy-C3-W6O"/>
+                    <tabBarItem key="tabBarItem" title="Credit Card" image="card_black" id="oIy-C3-W6O"/>
                     <connections>
                         <outlet property="appLogoImage" destination="GVh-Ia-M0N" id="JRQ-jK-gHn"/>
                         <outlet property="bannerContentsView" destination="mtT-L3-xHd" id="0HJ-Ah-C5b"/>
@@ -2040,11 +2040,10 @@ United States</string>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="Awc-AK-8Xr">
+                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="arrow_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="Awc-AK-8Xr">
                                                                         <rect key="frame" x="0.0" y="25" width="12" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="12" id="gtW-R1-GO5"/>
-                                                                            <constraint firstAttribute="height" constant="6" id="mL6-bT-YNo"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                 </subviews>
@@ -2195,6 +2194,10 @@ United States</string>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="0H8-tP-gPc" firstAttribute="top" secondItem="gYg-WC-e3H" secondAttribute="top" id="gno-fi-Sb7"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="0H8-tP-gPc" secondAttribute="bottom" id="p6E-m9-EkT"/>
+                                                                    </constraints>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
@@ -2259,7 +2262,7 @@ United States</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXO-vx-5Oc" userLabel="TopBar">
                                         <rect key="frame" x="16" y="20" width="296" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3xx-GU-rF0">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3xx-GU-rF0">
                                                 <rect key="frame" x="128" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="A8B-hw-bSD"/>
@@ -2356,7 +2359,7 @@ United States</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBo-kJ-DSw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TouchIDColoredLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xHb-FZ-5et">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touchID_colored_large" translatesAutoresizingMaskIntoConstraints="NO" id="xHb-FZ-5et">
                                         <rect key="frame" x="100" y="230" width="120" height="109"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="109" id="Erm-JE-k0j"/>
@@ -2499,7 +2502,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hD-H5-yAV" userLabel="AccountCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="63" width="288" height="35"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="Y28-st-C9s">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y28-st-C9s">
                                                         <rect key="frame" x="260" y="7.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="VHn-De-mMp"/>
@@ -2549,7 +2552,7 @@ United States</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIu-AV-A20" userLabel="PayeeCommand" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="151" width="288" height="35"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-Hr-BVw">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-Hr-BVw">
                                                         <rect key="frame" x="260" y="7.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="0zb-Sv-yam"/>
@@ -2703,7 +2706,7 @@ United States</string>
                                                     <constraint firstAttribute="height" constant="50" id="yan-4n-kpf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" image="camera_white_small">
+                                                <state key="normal" image="camera_white">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -2736,7 +2739,7 @@ United States</string>
                                                         <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="en2-71-SsP">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="en2-71-SsP">
                                                         <rect key="frame" x="174" y="22" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="KKq-vF-Sk1"/>
@@ -2828,7 +2831,7 @@ United States</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01R-M1-vb9" userLabel="TopBar">
                                         <rect key="frame" x="16" y="20" width="296" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="k55-sD-tTa">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="k55-sD-tTa">
                                                 <rect key="frame" x="128" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="d8a-3c-BUw"/>
@@ -2942,7 +2945,7 @@ United States</string>
                                                                     <action selector="onInfoClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="3UB-8z-YWW"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="zGJ-yu-3xJ">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_white" translatesAutoresizingMaskIntoConstraints="NO" id="zGJ-yu-3xJ">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -2980,7 +2983,7 @@ United States</string>
                                                                     <action selector="onUserProfileClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="6dZ-ev-nfx"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserHollow" translatesAutoresizingMaskIntoConstraints="NO" id="Jo8-cb-GeJ">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_hollow" translatesAutoresizingMaskIntoConstraints="NO" id="Jo8-cb-GeJ">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -3142,7 +3145,7 @@ United States</string>
                                                                     <action selector="onSettingsClicked:" destination="l9I-sZ-dC3" eventType="touchUpInside" id="ZML-qK-RXf"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings_150" translatesAutoresizingMaskIntoConstraints="NO" id="oOw-pX-Oro">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings_white" translatesAutoresizingMaskIntoConstraints="NO" id="oOw-pX-Oro">
                                                                 <rect key="frame" x="17" y="17" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -3385,14 +3388,14 @@ United States</string>
                                                     <outletCollection property="gestureRecognizers" destination="OHy-of-sU4" appends="YES" id="4FK-QZ-YuD"/>
                                                 </connections>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="xIk-J7-gzw">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="xIk-J7-gzw">
                                                 <rect key="frame" x="276" y="55.5" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="Hqg-7X-0ut"/>
                                                     <constraint firstAttribute="width" constant="16" id="WJu-Ur-1vP"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_gray_100x100" translatesAutoresizingMaskIntoConstraints="NO" id="qne-3S-I1g">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="qne-3S-I1g">
                                                 <rect key="frame" x="276" y="113" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="U3Y-K4-AlB"/>
@@ -4641,7 +4644,7 @@ United States</string>
                                                 <constraint firstAttribute="height" constant="30" id="pG3-3c-DmD"/>
                                                 <constraint firstAttribute="width" constant="30" id="rXH-I3-lYL"/>
                                             </constraints>
-                                            <state key="normal" image="left_arrow100x100"/>
+                                            <state key="normal" image="arrow_left_gray"/>
                                             <connections>
                                                 <action selector="close:" destination="HTa-Ai-MWa" eventType="touchUpInside" id="PHf-iN-vNB"/>
                                             </connections>
@@ -4660,7 +4663,7 @@ United States</string>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="598-ji-VzE">
                                 <rect key="frame" x="0.0" y="64" width="320" height="484"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-ew-e2s">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-ew-e2s">
                                         <rect key="frame" x="125" y="0.0" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="Hnb-7c-euU"/>
@@ -4857,7 +4860,7 @@ United States</string>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift_grayx50" translatesAutoresizingMaskIntoConstraints="NO" id="OV7-Fi-syP">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift_box_gray" translatesAutoresizingMaskIntoConstraints="NO" id="OV7-Fi-syP">
                                                     <rect key="frame" x="24" y="12" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="Abj-L7-qHZ"/>
@@ -4889,7 +4892,7 @@ United States</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telephone_gray_50" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-wl-Rsi">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telephone_gray" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-wl-Rsi">
                                                     <rect key="frame" x="24" y="12" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="6Zi-Jq-SJJ"/>
@@ -4932,14 +4935,14 @@ United States</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_gray_50" translatesAutoresizingMaskIntoConstraints="NO" id="oR7-nk-VM4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_gray" translatesAutoresizingMaskIntoConstraints="NO" id="oR7-nk-VM4">
                                                     <rect key="frame" x="24" y="12" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Jgr-2K-ilA"/>
                                                         <constraint firstAttribute="width" constant="20" id="ZbT-Da-dFc"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rupali.ghate@kofax.com" placeholder="email address" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="czc-Jr-atE" userLabel="birthdate">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@kofax.com" placeholder="email address" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="czc-Jr-atE" userLabel="email">
                                                     <rect key="frame" x="60" y="7" width="244" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Bbf-JW-Mgn"/>
@@ -4975,7 +4978,7 @@ United States</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_gray_50" translatesAutoresizingMaskIntoConstraints="NO" id="Xbq-Ny-HTK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xbq-Ny-HTK">
                                                     <rect key="frame" x="24" y="8" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Ozv-IB-8dY"/>
@@ -5105,7 +5108,7 @@ United States</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWB-gd-KfC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TouchIDColoredLarge" translatesAutoresizingMaskIntoConstraints="NO" id="a6C-e4-e10">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touchID_colored_large" translatesAutoresizingMaskIntoConstraints="NO" id="a6C-e4-e10">
                                         <rect key="frame" x="100" y="229.5" width="120" height="109"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="109" id="AZJ-Wg-KeN"/>
@@ -5207,36 +5210,36 @@ United States</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AddCreditCard30x30" width="30" height="28"/>
-        <image name="Card" width="30" height="30"/>
-        <image name="CreditCardSample" width="200" height="125"/>
-        <image name="Logo" width="360" height="360"/>
-        <image name="TouchIDColoredLarge" width="320" height="320"/>
-        <image name="UserHollow" width="100" height="121"/>
+        <image name="add_credit_card" width="30" height="28"/>
         <image name="arrow_down_white" width="20" height="11"/>
-        <image name="bell100x100" width="100" height="100"/>
-        <image name="bill" width="30" height="32"/>
-        <image name="bottombar-dollar" width="30" height="30"/>
-        <image name="camera_white_small" width="30" height="26"/>
-        <image name="check" width="48" height="27"/>
+        <image name="arrow_left_gray" width="100" height="100"/>
+        <image name="arrow_left_white_filled" width="100" height="100"/>
+        <image name="arrow_right_gray" width="100" height="100"/>
+        <image name="arrow_right_white_filled" width="100" height="100"/>
+        <image name="bell_white" width="100" height="100"/>
+        <image name="bill" width="24" height="25"/>
+        <image name="camera_white" width="30" height="26"/>
+        <image name="card_black" width="30" height="19"/>
+        <image name="check" width="30" height="17"/>
+        <image name="credit_card_sample" width="200" height="125"/>
+        <image name="dollar" width="13" height="25"/>
         <image name="dummy_avatar" width="400" height="395"/>
-        <image name="email_50" width="50" height="50"/>
-        <image name="email_gray_50" width="50" height="50"/>
-        <image name="gift_grayx50" width="50" height="64"/>
-        <image name="home_50" width="50" height="50"/>
-        <image name="home_gray_50" width="50" height="40"/>
-        <image name="info" width="200" height="200"/>
+        <image name="email_gray" width="50" height="50"/>
+        <image name="email_white" width="50" height="50"/>
+        <image name="gift_box_gray" width="50" height="64"/>
+        <image name="home_gray" width="50" height="40"/>
+        <image name="home_white" width="50" height="50"/>
+        <image name="info_white" width="200" height="200"/>
         <image name="key" width="128" height="128"/>
-        <image name="kofax logo" width="364" height="364"/>
-        <image name="left_arrow100x100" width="100" height="100"/>
+        <image name="kofax_logo" width="364" height="364"/>
         <image name="location" width="200" height="200"/>
-        <image name="phone_50" width="50" height="50"/>
+        <image name="logo" width="360" height="360"/>
+        <image name="phone_white" width="50" height="50"/>
         <image name="reset" width="76" height="76"/>
-        <image name="right_gray_100x100" width="100" height="100"/>
-        <image name="settings_150" width="150" height="159"/>
+        <image name="settings_white" width="150" height="159"/>
         <image name="speech_bubble" width="200" height="200"/>
-        <image name="telephone_gray_50" width="50" height="44"/>
-        <image name="white_arrow_filled_left100x100" width="100" height="100"/>
-        <image name="white_arrow_filled_right100x100" width="100" height="100"/>
+        <image name="telephone_gray" width="50" height="44"/>
+        <image name="touchID_colored_large" width="320" height="320"/>
+        <image name="user_hollow" width="100" height="121"/>
     </resources>
 </document>

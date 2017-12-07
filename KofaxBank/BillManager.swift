@@ -9,7 +9,6 @@
 import UIKit
 
 protocol BillManagerDelegate {
-    //TODO: implement these delegates
     func billPaymentSucceded()
     func billPaymentFailed(error: AppError!)
     func billPaymentCancelled()
@@ -68,7 +67,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
     
     private var errObj: AppError! = nil
 
-    //TODO: temp constant
     private let serverType = SERVER_TYPE_TOTALAGILITY
     
     
@@ -152,7 +150,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
 //            self.instructionPopup.bodyMessageText = "Take photo or select exising coupon from photo library.\n\nMake sure that coupon text is clearly visible on image for better reading."
             self.instructionPopup.bodyMessageText = "Take picture of coupon.\n\nMake sure that coupon text is clearly visible on image for better reading."
 
-            self.instructionPopup.sampleImageName = "BillSampleBlack"   //TODO: update image name here
+            self.instructionPopup.sampleImageName = "bill_sample_black"
             
             parentView?.addChildViewController(self.instructionPopup)
             self.instructionPopup.view.frame = (parentView?.view.frame)!
@@ -285,8 +283,6 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         
         //save image on to disk in JPG format
         self.capturedImagePath = DiskUtility.shared.saveAsJPEGToDisk(image: self.capturedImage, side: ImageType.FRONT_RAW)
-        
-        //TODO: display captured image on screen
         
         flowState = BillFlowStates.IMAGE_RETRIEVED
         handleBillFlow(err: nil)
@@ -533,7 +529,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
             self.extractionManager.delegate = self
             
             
-            //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //TODO: required if going to store original image
+            //var arrUnProccessed: NSMutableArray = NSMutableArray.init()   //required if going to store original image
             
             if self.parameters != nil {
                 self.parameters.removeAllObjects()

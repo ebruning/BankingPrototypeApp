@@ -248,7 +248,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
             self.restoreNavigationBar()
 
             self.clearScreenData()
-
+            
             self.navigationController?.popViewController(animated: true)
 
         }, negativeActionResponse: {
@@ -503,20 +503,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
         self.present(navController, animated: true, completion: nil)
     }
 */
-    
-    private func resizeImage(image: UIImage!, newWidth: CGFloat) -> UIImage! {
-        if (image == nil) {
-            return nil
-        }
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize.init(width: newWidth, height: newHeight))
-        image.draw(in:(CGRect.init(x: 0, y: 0, width: newWidth, height: newHeight)))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
+
     
     // MARK: SwipeGestureRecognizer methods
     
@@ -706,7 +693,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
             }
             
             //validate date before displaying
-            // TODO: may have to change the date format based on the country.
             if Utility.validateDate(format: LongDateFormatWithNumericMonth, dateStr: checkData.date.value) == true {
                 dateText.text = checkData.date.value
             } else {
@@ -827,7 +813,6 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
         })
     }
     
-    //TODO: call this method while closing screen
     
     private func stopBannerTimer() {
         if bannerTimer != nil {
@@ -924,6 +909,7 @@ class CheckDepositHomeViewController: BaseViewController, UITextFieldDelegate, U
 
     
     private func clearScreenData() {
+        self.stopBannerTimer()
         self.backProcessedImage = nil
         self.delegate = nil
         self.checkData = nil

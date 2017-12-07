@@ -94,7 +94,7 @@
                                 <constraint firstAttribute="height" constant="45" id="9En-oA-qzf"/>
                                 <constraint firstAttribute="width" constant="50" id="Ix4-BO-Gw0"/>
                             </constraints>
-                            <state key="normal" image="torch_off_150"/>
+                            <state key="normal" image="torch_off"/>
                             <connections>
                                 <action selector="onTorchButtonClicked:" destination="-1" eventType="touchUpInside" id="fNM-6E-wMD"/>
                             </connections>
@@ -124,6 +124,6 @@
     </objects>
     <resources>
         <image name="capture" width="64" height="64"/>
-        <image name="torch_off_150" width="150" height="139"/>
+        <image name="torch_off" width="150" height="139"/>
     </resources>
 </document>
