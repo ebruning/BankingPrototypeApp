@@ -243,7 +243,7 @@ class CreditCardManager: BaseFlowManager, UINavigationControllerDelegate,
         experienceOptions.rollThresholdEnabled = true
         experienceOptions.focusConstraintEnabled = true
         experienceOptions.doShowGuidingDemo = true
-        experienceOptions.portraitMode = true
+        experienceOptions.portraitMode = false
         experienceOptions.edgeDetection = 1
         experienceOptions.stabilityThreshold = 95
         experienceOptions.pitchThreshold = 15

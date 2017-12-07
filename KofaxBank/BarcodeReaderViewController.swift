@@ -21,7 +21,7 @@ class BarcodeReaderViewController: UIViewController, kfxKUIBarCodeCaptureControl
     
     private var barcodeImage: kfxKEDImage?
     
-    private let ORIENTATION_PORTRAIT = true
+    private let ORIENTATION_PORTRAIT = false
     
     //MARK: Navigationbar related parameters
     private var wasNavigationHidden: Bool = false
