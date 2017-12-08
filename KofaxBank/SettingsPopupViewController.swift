@@ -20,6 +20,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var sessionIDField: UITextField!
     
+    @IBOutlet weak var captureGuidanceSwitch: UISwitch!
     @IBOutlet weak var mobileIDVersionContainer: CustomView!
     
     @IBOutlet weak var mobileIDVersionSegmentedControl: UISegmentedControl!
@@ -150,24 +151,44 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
         serverUrlField.text = UserDefaults.standard.value(forKey: KEY_BILLPAY_SERVER_URL) as? String
         processIdentityNameField.text = UserDefaults.standard.value(forKey: KEY_BILLPAY_PROCESS_IDENTITY_NAME) as? String
         sessionIDField.text = UserDefaults.standard.value(forKey: KEY_BILLPAY_SESSION_ID) as? String
+        if let captureGuidance = UserDefaults.standard.value(forKey: KEY_BILLPAY_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidanceSwitch.setOn(captureGuidance, animated: false)
+        } else {
+            captureGuidanceSwitch.setOn(true, animated: false)
+        }
     }
     
     private func loadCheck() {
         serverUrlField.text = UserDefaults.standard.value(forKey: KEY_CHECK_SERVER_URL) as? String
         processIdentityNameField.text = UserDefaults.standard.value(forKey: KEY_CHECK_PROCESS_IDENTITY_NAME) as? String
         sessionIDField.text = UserDefaults.standard.value(forKey: KEY_CHECK_SESSION_ID) as? String
+        if let captureGuidance = UserDefaults.standard.value(forKey: KEY_CHECK_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidanceSwitch.setOn(captureGuidance, animated: false)
+        } else {
+            captureGuidanceSwitch.setOn(true, animated: false)
+        }
     }
     
     private func loadCreditCard() {
         serverUrlField.text = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_URL) as? String
         processIdentityNameField.text = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_PROCESS_IDENTITY_NAME) as? String
         sessionIDField.text = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_SESSION_ID) as? String
+        if let captureGuidance = UserDefaults.standard.value(forKey: KEY_CREDIT_CARD_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidanceSwitch.setOn(captureGuidance, animated: false)
+        } else {
+            captureGuidanceSwitch.setOn(true, animated: false)
+        }
     }
     
     private func loadID() {
         stackContainerForIDSettings.isHidden = false
         serverUrlField.text = UserDefaults.standard.value(forKey: KEY_ID_SERVER_URL) as? String
         sessionIDField.text = UserDefaults.standard.value(forKey: KEY_ID_SESSION_ID) as? String
+        if let captureGuidance = UserDefaults.standard.value(forKey: KEY_ID_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidanceSwitch.setOn(captureGuidance, animated: false)
+        } else {
+            captureGuidanceSwitch.setOn(true, animated: false)
+        }
         
         if currentMobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {  // Mobile ID -- 1.x
             
@@ -217,24 +238,28 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
         UserDefaults.standard.set(serverUrlField.text, forKey: KEY_BILLPAY_SERVER_URL)
         UserDefaults.standard.set(processIdentityNameField.text, forKey: KEY_BILLPAY_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(sessionIDField.text, forKey: KEY_BILLPAY_SESSION_ID)
+        UserDefaults.standard.set(captureGuidanceSwitch.isOn, forKey: KEY_BILLPAY_CAPTURE_GUIDANCE)
     }
 
     private func saveCheckSetings() {
         UserDefaults.standard.set(serverUrlField.text, forKey: KEY_CHECK_SERVER_URL)
         UserDefaults.standard.set(processIdentityNameField.text, forKey: KEY_CHECK_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(sessionIDField.text, forKey: KEY_CHECK_SESSION_ID)
+        UserDefaults.standard.set(captureGuidanceSwitch.isOn, forKey: KEY_CHECK_CAPTURE_GUIDANCE)
     }
     
     private func saveCreditCardSetings() {
         UserDefaults.standard.set(serverUrlField.text, forKey: KEY_CREDIT_CARD_URL)
         UserDefaults.standard.set(processIdentityNameField.text, forKey: KEY_CREDIT_CARD_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(sessionIDField.text, forKey: KEY_CREDIT_CARD_SESSION_ID)
+        UserDefaults.standard.set(captureGuidanceSwitch.isOn, forKey: KEY_CREDIT_CARD_CAPTURE_GUIDANCE)
     }
 
     private func saveIDSetings() {
         UserDefaults.standard.set(serverUrlField.text, forKey: KEY_ID_SERVER_URL)
         UserDefaults.standard.set(sessionIDField.text, forKey: KEY_ID_SESSION_ID)
         UserDefaults.standard.set(currentMobileIDVersion, forKey: KEY_ID_MOBILE_ID_VERSION)
+        UserDefaults.standard.set(captureGuidanceSwitch.isOn, forKey: KEY_ID_CAPTURE_GUIDANCE)
 
         if currentMobileIDVersion == MobileIDVersion.VERSION_1X.rawValue {
             UserDefaults.standard.set(processIdentityNameField.text, forKey: KEY_ID_PROCESS_IDENTITY_NAME_1X)

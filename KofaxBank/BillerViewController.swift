@@ -304,7 +304,7 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
 
     @IBAction func openBillPayScreen(_ sender: UIButton) {
         if selectedAccount  == nil {
-            Utility.showAlert(onViewController: self, titleString: "Ampty Account", messageString: "Select account before paying new bill.")
+            Utility.showAlert(onViewController: self, titleString: "Empty Account", messageString: "Select account before paying new bill.")
         } else {
             if billManager == nil {
                 billManager = BillManager()

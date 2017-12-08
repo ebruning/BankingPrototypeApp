@@ -203,7 +203,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
 
     @IBAction func openCheckDepositScreen(_ sender: UIButton) {
         if selectedAccount  == nil {
-            Utility.showAlert(onViewController: self, titleString: "Ampty Account", messageString: "Select account to deposit check into.")
+            Utility.showAlert(onViewController: self, titleString: "Empty Account", messageString: "Select account to deposit check into.")
         } else {
             if checkManager == nil {
                 self.checkManager = CheckDepositManager()

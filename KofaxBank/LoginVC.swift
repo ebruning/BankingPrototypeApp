@@ -21,8 +21,6 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var welcomeLabel: UILabel!
     
-    @IBOutlet weak var textFieldViewContainer1: UIView!
-    @IBOutlet weak var textFieldViewContainer2: UIView!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -56,11 +54,6 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-
-        
-        textFieldViewContainer1.customizeBorderColor(color: UIColor.lightGray)
-        textFieldViewContainer2.customizeBorderColor(color: UIColor.lightGray)
-        
     }
     
     private func customizeScreenControls() {

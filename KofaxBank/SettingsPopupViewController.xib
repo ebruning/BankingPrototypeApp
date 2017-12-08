@@ -14,6 +14,7 @@
                 <outlet property="authenticationContainerViewFor2X" destination="yJq-Cc-t18" id="x9O-dN-A20"/>
                 <outlet property="authenticationProcessIdentityNameField" destination="oJQ-qo-nSk" id="bRo-Qt-vxo"/>
                 <outlet property="authenticationURLField" destination="ryv-sh-j7d" id="EYP-ba-aPY"/>
+                <outlet property="captureGuidanceSwitch" destination="sbo-vF-6uP" id="ItM-4O-Xyl"/>
                 <outlet property="mobileIDVersionContainer" destination="hA2-aO-BS8" id="8If-nQ-X9k"/>
                 <outlet property="mobileIDVersionSegmentedControl" destination="JTx-yu-WrD" id="q3m-zm-mi4"/>
                 <outlet property="parentViewHeight" destination="dgJ-fg-J6o" id="C1d-kE-sfG"/>
@@ -50,7 +51,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="409"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PBP-Ru-4mK">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="409"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="474"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLu-an-X3N" userLabel="ServerURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="65"/>
@@ -184,8 +185,41 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUH-qp-AhA" userLabel="CaptureGuidance" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="195" width="270" height="65"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture Guidance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuJ-mv-lQh">
+                                                                <rect key="frame" x="8" y="22" width="254" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="21" id="nDi-pa-cFa"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                                <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbo-vF-6uP">
+                                                                <rect key="frame" x="199" y="17" width="51" height="31"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </switch>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="BuJ-mv-lQh" firstAttribute="leading" secondItem="QUH-qp-AhA" secondAttribute="leading" constant="8" id="PNH-Jy-SPy"/>
+                                                            <constraint firstItem="BuJ-mv-lQh" firstAttribute="centerY" secondItem="QUH-qp-AhA" secondAttribute="centerY" id="UBc-Im-OZp"/>
+                                                            <constraint firstAttribute="trailing" secondItem="BuJ-mv-lQh" secondAttribute="trailing" constant="8" id="Y3N-6k-IQ7"/>
+                                                            <constraint firstAttribute="height" constant="65" id="m5H-Gq-R8Y"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ljR-N3-B3J" userLabel="AuthenticationStackView">
-                                                        <rect key="frame" x="0.0" y="195" width="270" height="214"/>
+                                                        <rect key="frame" x="0.0" y="260" width="270" height="214"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUTHENTICATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV4-c2-YtQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="21"/>

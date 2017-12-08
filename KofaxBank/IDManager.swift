@@ -119,7 +119,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
             self.instructionPopup.delegate = self
             
             self.instructionPopup.titleText = "Driver License ID"
-            self.instructionPopup.bodyMessageText = "Take picture of your drivering license."
+            self.instructionPopup.bodyMessageText = "Take picture of your driver license."
             self.instructionPopup.sampleImageName = "driver_license"
             
             parentView?.addChildViewController(self.instructionPopup)

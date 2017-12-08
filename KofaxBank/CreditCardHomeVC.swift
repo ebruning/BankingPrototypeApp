@@ -107,7 +107,7 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
             if cardStatus ==  STATUS_EXPIRED {
                 floatingButton.isHidden = false
                 
-                Utility.showAlertWithCallback(onViewController: self, titleString: "Attention", messageString: "Your credit card is not valid anymore.\nPlease request a new card. \n\n If a new card is aready issued, use 'Activate Now' button to start activication process. You can also use option on screen to activate it later.", positiveActionTitle: "Activate Now", negativeActionTitle: "Maybe later", positiveActionResponse: {
+                Utility.showAlertWithCallback(onViewController: self, titleString: "Attention", messageString: "Your credit card is not valid anymore.\n\nWe have issued you a new card. \n\n If you have received it, use 'Activate Now' button to start activation process. You can also use the round button on screen to activate it later.", positiveActionTitle: "Activate Now", negativeActionTitle: "Cancel", positiveActionResponse: {
                     
                     self.initiateCardActivation()
                     

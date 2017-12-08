@@ -427,15 +427,18 @@ class Utility {
         UserDefaults.standard.set(DEFAULT_BILLPAY_SERVER_URL, forKey: KEY_BILLPAY_SERVER_URL)
         UserDefaults.standard.set(DEFAULT_BILLPAY_PROCESS_IDENTITY_NAME, forKey: KEY_BILLPAY_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(DEFAULT_BILLPAY_SESSION_ID, forKey: KEY_BILLPAY_SESSION_ID)
+        UserDefaults.standard.set(DEFAULT_BILLPAY_CAPTURE_GUIDANCE, forKey: KEY_BILLPAY_CAPTURE_GUIDANCE)
         
         UserDefaults.standard.set(DEFAULT_CHECK_SERVER_URL, forKey: KEY_CHECK_SERVER_URL)
         UserDefaults.standard.set(DEFAULT_CHECK_PROCESS_IDENTITY_NAME, forKey: KEY_CHECK_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(DEFAULT_CHECK_SESSION_ID, forKey: KEY_CHECK_SESSION_ID)
+        UserDefaults.standard.set(DEFAULT_CHECK_CAPTURE_GUIDANCE, forKey: KEY_CHECK_CAPTURE_GUIDANCE)
         
         UserDefaults.standard.set(DEFAULT_CREDIT_CARD_SERVER_URL, forKey: KEY_CREDIT_CARD_URL)
         UserDefaults.standard.set(DEFAULT_CREDIT_CARD_PROCESS_IDENTITY_NAME, forKey: KEY_CREDIT_CARD_PROCESS_IDENTITY_NAME)
         UserDefaults.standard.set(DEFAULT_CREDIT_CARD_SESSION_ID, forKey: KEY_CREDIT_CARD_SESSION_ID)
 
+        UserDefaults.standard.set(DEFAULT_CREDIT_CARD_CAPTURE_GUIDANCE, forKey: KEY_CREDIT_CARD_CAPTURE_GUIDANCE)
         
         UserDefaults.standard.set(DEFAULT_ID_SERVER_URL, forKey: KEY_ID_SERVER_URL)
         //Mobile ID Version - default 2x
@@ -446,6 +449,7 @@ class Utility {
         UserDefaults.standard.set(DEFAULT_ID_AUTHENTICATION_URL, forKey: KEY_ID_AUTHENTICATION_URL)
         UserDefaults.standard.set(DEFAULT_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME, forKey: KEY_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME)
         
+        UserDefaults.standard.set(DEFAULT_ID_CAPTURE_GUIDANCE, forKey: KEY_ID_CAPTURE_GUIDANCE)
         
         UserDefaults.standard.setValue(true, forKey: KEY_DEFAULTS_LOADED)
     }
