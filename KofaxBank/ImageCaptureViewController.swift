@@ -201,7 +201,7 @@ class ImageCaptureViewController: BaseCaptureViewController, kfxKUIImageCaptureC
     
     
     func setCaptureExperienceOptions() {
-        self.baseCaptureExperience.tutorialEnabled = true
+        self.baseCaptureExperience.tutorialEnabled = experienceOptions.doShowGuidingDemo!
         
         if (self.baseCaptureExperience.tutorialEnabled) {
          //   addGestureRecognizerToCaptureControl(action: #selector(self.tapOnCaptureControl(tapGesture:)));

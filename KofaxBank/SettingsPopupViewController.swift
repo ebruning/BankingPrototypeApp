@@ -98,7 +98,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
 
     private func initialize() {
         stackContainerForIDSettings.isHidden = true
-        parentViewHeight.constant = 195
+        parentViewHeight.constant = 260
     }
 
     
@@ -198,7 +198,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
             //hide authentication fields container
             authenticationContainerViewFor2X.isHidden = true
             
-            parentViewHeight.constant = 260
+            parentViewHeight.constant = 325
         } else {    // Mobile ID -- 2.x
             mobileIDVersionSegmentedControl.selectedSegmentIndex = 1
             processIdentityNameField.text = UserDefaults.standard.value(forKey: KEY_ID_PROCESS_IDENTITY_NAME_2X) as? String
@@ -208,7 +208,7 @@ class SettingsPopupViewController: UIViewController, UITextFieldDelegate {
             
             //Show authentication fields container
             authenticationContainerViewFor2X.isHidden = false
-            parentViewHeight.constant = 409
+            parentViewHeight.constant = 400
         }
     }
     

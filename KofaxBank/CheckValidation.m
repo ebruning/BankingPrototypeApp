@@ -14,8 +14,6 @@
 #define SEARCHMICR @"searchmicr"
 #define CHECKVALIDATIONSERVER @"checkvalidationatserver"
 #define SHOWCHECKINFO @"showcheckinfo"
-#define SHOWCHECKGUIDINGDEMO @"showcapturedemo"
-#define SHOWGUIDINGDEMO @"showcapturedemo"
 #define CHECKEXTRACTION @"checkextraction"
 #define SHOWINSTRUCTION @"showinstruction"
 #define DOCUMENTSNUMBER @"numberofdocumentstocapture"

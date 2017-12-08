@@ -108,7 +108,7 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         experienceOptions.pitchThresholdEnabled = true
         experienceOptions.rollThresholdEnabled = true
         experienceOptions.focusConstraintEnabled = true
-        experienceOptions.doShowGuidingDemo = true
+        experienceOptions.doShowGuidingDemo = getGuidingDemoStatus()
         experienceOptions.portraitMode = false
         experienceOptions.edgeDetection = 0
         experienceOptions.stabilityThreshold = 95
@@ -161,6 +161,16 @@ class CheckDepositManager: BaseFlowManager, PreviewDelegate, CheckDepositHomeVie
         self.captureController.delegate = self
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
+    }
+    private func getGuidingDemoStatus() -> Bool {
+        
+        var captureGuidance: Bool = true
+        
+        if let status = UserDefaults.standard.value(forKey: KEY_CHECK_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidance = status
+        }
+        
+        return captureGuidance
     }
     
     override func cancelCamera() {

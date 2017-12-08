@@ -39,16 +39,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRe-rM-3NR" userLabel="SettingsNameLabel">
-                                <rect key="frame" x="16" y="98" width="343" height="22"/>
+                                <rect key="frame" x="16" y="102.5" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
                                 <color key="textColor" red="0.32156862749999998" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iff-RH-Dj4" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                                <rect key="frame" x="52" y="129" width="270" height="409"/>
+                                <rect key="frame" x="52" y="133.5" width="270" height="400"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgl-iC-3HA">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="409"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="400"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PBP-Ru-4mK">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="474"/>
@@ -386,7 +386,7 @@
                                     <constraint firstItem="Mgl-iC-3HA" firstAttribute="height" secondItem="iff-RH-Dj4" secondAttribute="height" id="EBh-3C-vxK"/>
                                     <constraint firstAttribute="trailing" secondItem="Mgl-iC-3HA" secondAttribute="trailing" id="SAo-sr-Gxm"/>
                                     <constraint firstItem="Mgl-iC-3HA" firstAttribute="leading" secondItem="iff-RH-Dj4" secondAttribute="leading" id="d3N-wm-U2e"/>
-                                    <constraint firstAttribute="height" constant="409" id="dgJ-fg-J6o"/>
+                                    <constraint firstAttribute="height" constant="400" id="dgJ-fg-J6o"/>
                                     <constraint firstAttribute="bottom" secondItem="Mgl-iC-3HA" secondAttribute="bottom" id="lzO-hX-dyw"/>
                                     <constraint firstAttribute="width" constant="270" id="vBw-UK-Jpf"/>
                                     <constraint firstItem="Mgl-iC-3HA" firstAttribute="top" secondItem="iff-RH-Dj4" secondAttribute="top" id="wwT-bV-oEe"/>

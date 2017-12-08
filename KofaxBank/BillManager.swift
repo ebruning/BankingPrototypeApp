@@ -207,7 +207,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         experienceOptions.pitchThresholdEnabled = true
         experienceOptions.rollThresholdEnabled = true
         experienceOptions.focusConstraintEnabled = true
-        experienceOptions.doShowGuidingDemo = true
+        experienceOptions.doShowGuidingDemo = getGuidingDemoStatus()
         experienceOptions.portraitMode = false
         experienceOptions.edgeDetection = 1
         experienceOptions.stabilityThreshold = 95
@@ -251,6 +251,16 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
+    }
+    private func getGuidingDemoStatus() -> Bool {
+        
+        var captureGuidance: Bool = true
+        
+        if let status = UserDefaults.standard.value(forKey: KEY_BILLPAY_CAPTURE_GUIDANCE) as? Bool {
+            captureGuidance = status
+        }
+        
+        return captureGuidance
     }
     
     override func imageCaptured(image: kfxKEDImage) {
