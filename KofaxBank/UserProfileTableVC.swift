@@ -43,6 +43,8 @@ UIImagePickerControllerDelegate {
     private var editingHasBegun: Bool = false
 
     private var didAvatarChange: Bool = false
+    
+    private var dob: NSDate! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -229,6 +231,10 @@ UIImagePickerControllerDelegate {
         user.country = countryText.text
         user.zip = zipText.text
         
+        if dob != nil {
+            user.birthdate = dob
+        }
+
         user.phone = phoneNumberText.text
         
         user.email = emailText.text
@@ -316,8 +322,8 @@ UIImagePickerControllerDelegate {
         let picker = self.birthdateText.inputView as! UIDatePicker
         self.birthdateText.text = Utility.dateToFormattedString(format: InformalDateFormat, date: picker.date)
         
-        user.birthdate = picker.date as NSDate
-        
+        //user.birthdate = picker.date as NSDate
+        dob = picker.date as NSDate
         //dismiss date picker dialog
         self.view.endEditing(true)
     }

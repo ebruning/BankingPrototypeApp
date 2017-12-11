@@ -82,11 +82,11 @@ let applicationCurrency = CurrencyType.DOLLER
 
 
 let ShortDateFormatWithDay: String = "dd.MMM"
-let ShortDateFormatWithMonth = "dd.MMM.yyyy"
+//let ShortDateFormatWithMonth = "MMM.dd.yyyy"
 let LongDateFormatWithNumericMonth: String = "MM.dd.yyyy"
 let ShortDateFormatWithoutDay: String = "MM.yy"
 let LongDateFormatWithNumericMonthAndTime: String = "MM.dd.yyyy hh:mm a"
-let LongDateFormatWithTime = "dd.MMM.yyyy hh:mm a"
+let LongDateFormatWithTime = "MMM.dd.yyyy hh:mm a"
 let InformalDateFormat = "MMM dd, yyyy"
 
 //Creditcard costants

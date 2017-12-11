@@ -71,7 +71,7 @@ class CheckTabHomeViewController: UIViewController, UITabBarControllerDelegate, 
         
         reset()
         
-        dateTextField.text = Utility.dateToFormattedString(format: ShortDateFormatWithMonth, date: Date())
+        dateTextField.text = Utility.dateToFormattedString(format: InformalDateFormat, date: Date())
         
         if self.accounts.count == 0 {
             fetchAccounts()

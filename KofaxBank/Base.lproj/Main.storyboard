@@ -1777,7 +1777,7 @@ United States</string>
                                                 <color key="value" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                <size key="value" width="5" height="5"/>
+                                                <size key="value" width="1" height="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
                                                 <color key="value" red="1" green="0.77255852570000005" blue="0.095399493759999995" alpha="1" colorSpace="calibratedRGB"/>
