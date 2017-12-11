@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class LoginVC: UIViewController {
     
@@ -21,11 +22,14 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    @IBOutlet weak var loginFieldsContainer: UIVisualEffectView!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    
+    private var touchIDStatus: Bool = false
     
     /// Overlayview that is being displayed when the user tries to log in
     private lazy var waitIndicator: WaitIndicatorView! = {
@@ -41,19 +45,46 @@ class LoginVC: UIViewController {
         return true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        customizeScreenControls()
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        customizeScreenControls()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(viewOnTap))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+
+        updateScreen()
+    }
+
+
+    func viewOnTap() {
+        self.view.endEditing(true)
+    }
+    
+    private func updateScreen() {
+        let status = UserDefaults.standard.value(forKey: KEY_TOUCH_ID_STATUS)
+        
+        if status != nil {
+             touchIDStatus = status  as! Bool
+        }
+
+        //if touch ID is already enabled
+        if isTouchIdAvailableOnDevice() && touchIDStatus == true {
+            //display alert asking to scan touch ID
+            askForTouchIDAuth()
+        } else {
+            // if touch ID is not set or enabled, display login fields(username, pwd)
+            askForLogin()
+        }
+    }
+    
+    private func askForLogin() {
+        loginFieldsContainer.isHidden = false
+
+        usernameTextField.becomeFirstResponder()
     }
     
     private func customizeScreenControls() {
@@ -82,10 +113,17 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonClicked(_ sender: UIButton) {
         view.endEditing(true)
        // login()
-        let notAFirstTimeLogin = false;
-        self.launchNextScreen(isFirstTimeLogin: !notAFirstTimeLogin)
+        self.launchNextScreen()
     }
     
+    
+    private func isFirstTimeLogin() -> Bool {
+        if Utility.isKeyPresentInUserDefaults(key: KEY_VERY_FIRST_LOGIN) {
+            return UserDefaults.standard.value(forKey: KEY_VERY_FIRST_LOGIN) as! Bool
+        } else {
+            return true
+        }
+    }
     
     func login() {
        
@@ -185,29 +223,26 @@ class LoginVC: UIViewController {
     
     func handleLoginSuccess() {
 
-        //if the key is not yet set in userdeault then its a very first login of user
-        let notAFirstTimeLogin = Utility.isKeyPresentInUserDefaults(key: EverLoggedInPast)
-        
-        //set userdefault with the value that user is logged into application atleast once
-        UserDefaults.standard.set(true, forKey: EverLoggedInPast)
-
         DispatchQueue.main.async {
-
-            self.launchNextScreen(isFirstTimeLogin: !notAFirstTimeLogin)
+            self.launchNextScreen()
         }
     }
     
-    func launchNextScreen(isFirstTimeLogin: Bool) {
+    func launchNextScreen() {
 
-       // if  isFirstTimeLogin == true {
+        let firstTimeLogin = isFirstTimeLogin()
+        
+        if  firstTimeLogin {
+            //if the key is not yet set in userdeault then its a very first login of user
+            UserDefaults.standard.setValue(false, forKey: KEY_VERY_FIRST_LOGIN)
+            
             //display Touch ID screen asking use if he wishes to enable it before proceeding
             performSegue(withIdentifier: "TouchIDEnablerVC", sender: nil)
-        //} else {
-            
+       } else {
             //if user had logged in in the past, then display home screen
             //performSegue(withIdentifier: "HomeVC", sender: nil)
-            //launchHomeScreenAsFirstScreen()
-        //}
+            launchHomeScreenAsFirstScreen()
+       }
     }
     
     func launchHomeScreenAsFirstScreen(){
@@ -215,22 +250,104 @@ class LoginVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         navigationController?.pushViewController(vc, animated: true)
 
-//        let vc = HomeVC(nibName: "HomeScreen", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
-
         /**
          Important: set next viewcontroller as base(first) viewcontroller after login screen is closed.
          This will prevent the new first viewcontroller to go back to login screen agian.
          */
         let newViewControllersSequenceArray: NSMutableArray = NSMutableArray(object: vc)
         navigationController?.setViewControllers(newViewControllersSequenceArray as! [UIViewController], animated: false)
-        
-        //dismiss(animated: true, completion: nil)
     }
     
-    //
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
+    
+    //MARK: Touch ID Auth Methods
+    
+    private func askForTouchIDAuth() {
+        
+        loginFieldsContainer.isHidden = true
+        
+        initiateTouchIDScan()
+    }
+    
+    private func initiateTouchIDScan() {
+        
+        let context = LAContext()
+        context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenication is required to access your account.", reply: {(success, error) in
+            DispatchQueue.main.async {
+                
+                if success {
+                    print("Authentication successful")
+                    
+                    //self.notifyUser(titleString: "Authentication successful", bodyString: "You now have full access")
+                    self.launchHomeScreenAsFirstScreen()
+                }
+                else if error != nil {
+                    switch error!._code {
+                    case LAError.Code.systemCancel.rawValue:
+                        print("Session cancelled")
+                        break
+                        
+                    case LAError.Code.userCancel.rawValue:
+                        print("User cancelled.")
+                        break
+                        
+                    case LAError.Code.userFallback.rawValue:
+                        print("Fallback to password")
+                        break
+                        
+                    default:
+                        print("Authentication failed")
+                        break
+                    }
+                    self.askForLogin()
+                }
+            }
+        })
+    }
+
+    
+    private func isTouchIdAvailableOnDevice() -> Bool {
+        var deviceTouchIDStatus: Bool = false
+        
+        let context = LAContext()
+        
+        context.invalidate()
+        
+        var error: NSError?
+        
+        //check if TouchID is available on device
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error) == false {
+            
+            //Device cannot use TouchID
+            switch error!.code {
+                
+            case LAError.Code.touchIDNotEnrolled.rawValue:
+                //The user has not enrolled any fingerprints into TouchID on the device
+                print("Touch ID is not enrolled")
+                break
+                
+            case LAError.Code.passcodeNotSet.rawValue:
+                //The user has not yet configured a passcode on the device.
+                print("A passcode has not been set")
+                break
+                
+            case LAError.Code.touchIDNotAvailable.rawValue:
+                break
+                
+            default:
+                //The device does not have a TouchID fingerprint scanner (LAError.touchIDNotAvailable)
+                deviceTouchIDStatus = true
+            }
+            
+        } else {
+            
+            deviceTouchIDStatus = true
+        }
+        
+        return deviceTouchIDStatus
+    }
+    
+    private func dismissTouchIDAuth() {
+        
     }
     
 }

@@ -51,9 +51,9 @@ class TouchIDEnablerVC: UIViewController {
     @IBAction func enableTouchIDButtonClicked(_ sender: UIButton) {
     
         //toggle touch status
-        UserDefaults.standard.set(true, forKey: TouchIDStatus)
+        UserDefaults.standard.set(true, forKey: KEY_TOUCH_ID_STATUS)
         
-        print("Current Touch ID value: \(UserDefaults.standard.bool(forKey: TouchIDStatus))")
+        print("Current Touch ID value: \(UserDefaults.standard.bool(forKey: KEY_TOUCH_ID_STATUS))")
         
         Utility.showAlert(onViewController: self, titleString: "Touch ID Enabled", messageString: nil)
         

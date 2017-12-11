@@ -99,15 +99,17 @@ let STATUS_EXPIRED = "Expired"
 
 
 //NSUserDefaults keys
-let EverLoggedInPast: String = "EverLoggedInPast"
+let KEY_VERY_FIRST_LOGIN: String = "keyVeryFirstLogin"
 
-let TouchIDStatus: String = "TouchIDStatus"
+let KEY_TOUCH_ID_STATUS: String = "TouchIDStatus"
+let DEFAULT_TOUCH_ID_STATUS: Bool! = nil
 
 //for BillPay Settings
 let KEY_BILLPAY_SERVER_URL: String = "keyBillPayServerURL"
 let KEY_BILLPAY_PROCESS_IDENTITY_NAME: String = "keyBillPayProcessIdentityName"
 let KEY_BILLPAY_SESSION_ID: String = "keyBillPaySessionID"
 let KEY_BILLPAY_CAPTURE_GUIDANCE: String = "keyBillPayCaptureGuidance"
+
 
 let DEFAULT_BILLPAY_SERVER_URL: String = "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/"
 let DEFAULT_BILLPAY_PROCESS_IDENTITY_NAME: String = "KofaxBillPaySync"
@@ -119,6 +121,7 @@ let KEY_CHECK_SERVER_URL: String = "keyCheckDepositServerURL"
 let KEY_CHECK_PROCESS_IDENTITY_NAME: String = "keyCheckDepositProcessIdentityName"
 let KEY_CHECK_SESSION_ID: String = "keyCheckDepositSessionID"
 let KEY_CHECK_CAPTURE_GUIDANCE: String = "keyCheckCaptureGuidance"
+
 
 let DEFAULT_CHECK_SERVER_URL: String = "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/"
 let DEFAULT_CHECK_PROCESS_IDENTITY_NAME: String = "KofaxCheckDepositSync"
@@ -153,8 +156,6 @@ let DEFAULT_ID_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
 let DEFAULT_ID_MOBILE_ID_VERSION: String = MobileIDVersion.VERSION_2X.rawValue
 let DEFAULT_ID_AUTHENTICATION_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments"
 let DEFAULT_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME: String = "KofaxMobileIdFacialRecognition"
-
-
 let DEFAULT_ID_CAPTURE_GUIDANCE: Bool = true
 
 

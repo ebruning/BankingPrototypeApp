@@ -24,6 +24,8 @@
 		AE16A9571FD940B600F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; };
 		AE16A9581FD9410600F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; };
 		AE16A9591FD9410600F7DE59 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */; };
+		AE16A9621FDE8EED00F7DE59 /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */; };
 		AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D241F55995A00695F8A /* UIColor+customization.swift */; };
 		AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */; };
 		AE254D491F582B3000695F8A /* CreditCardDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */; };
@@ -42,8 +44,6 @@
 		AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6A1EE6856E000E296F /* UIView+ customization.swift */; };
 		AE449F6D1EE6894C000E296F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6C1EE6894C000E296F /* LoginVC.swift */; };
 		AE449F6F1EE6A1B4000E296F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F6E1EE6A1B4000E296F /* SplashVC.swift */; };
-		AE449F711EE6C0FB000E296F /* TouchIDAuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */; };
-		AE449F731EE6DE57000E296F /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */; };
 		AE449F781EE9209C000E296F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F771EE9209C000E296F /* Constants.swift */; };
 		AE449F7B1EE92633000E296F /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449F7A1EE92633000E296F /* ServerManager.swift */; };
 		AE50E1BA1EEE74DE00578645 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE50E1B91EEE74DE00578645 /* Utility.swift */; };
@@ -197,6 +197,8 @@
 		AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionData.swift; sourceTree = "<group>"; };
 		AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardPendingApprovalCell.swift; sourceTree = "<group>"; };
 		AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
+		AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
 		AE254D241F55995A00695F8A /* UIColor+customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+customization.swift"; sourceTree = "<group>"; };
 		AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardDataPreviewViewController.swift; sourceTree = "<group>"; };
 		AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreditCardDataPreviewViewController.xib; sourceTree = "<group>"; };
@@ -215,8 +217,6 @@
 		AE449F6A1EE6856E000E296F /* UIView+ customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ customization.swift"; sourceTree = "<group>"; };
 		AE449F6C1EE6894C000E296F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AE449F6E1EE6A1B4000E296F /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthenticationVC.swift; sourceTree = "<group>"; };
-		AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
 		AE449F771EE9209C000E296F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AE449F7A1EE92633000E296F /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		AE50E1B91EEE74DE00578645 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -369,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */,
 				AE16A9571FD940B600F7DE59 /* AppStylerLib.framework in Frameworks */,
 				AE16A9581FD9410600F7DE59 /* AppStylerLib.framework in Frameworks */,
 				AE863BAE1FD7DFBE002AEDB0 /* libsqlite3.tbd in Frameworks */,
@@ -402,6 +403,7 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */,
 				AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */,
 				AE863BAD1FD7DFBE002AEDB0 /* libsqlite3.tbd */,
 				AE9D610F1FCD440F008A138C /* uiimages.bundle */,
@@ -416,6 +418,15 @@
 				AE0FE0AB1F0F643000F9F520 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE16A95A1FDACCD900F7DE59 /* LoginAndTouchID */ = {
+			isa = PBXGroup;
+			children = (
+				AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */,
+				AE449F6C1EE6894C000E296F /* LoginVC.swift */,
+			);
+			name = LoginAndTouchID;
 			sourceTree = "<group>";
 		};
 		AE254D441F582A8100695F8A /* CreditCard */ = {
@@ -519,6 +530,7 @@
 		AE5D7E331EDD729100D12163 /* KofaxBank */ = {
 			isa = PBXGroup;
 			children = (
+				AE16A95A1FDACCD900F7DE59 /* LoginAndTouchID */,
 				AEB6EFA61FC2BC1200D218ED /* PopOver */,
 				AE7D5CE21F90A65500538E61 /* Barcode */,
 				AEAA70801F73CF9A00A511C8 /* ID */,
@@ -566,13 +578,10 @@
 				AE71BBE21F2B2C390066B632 /* MoreViewController.swift */,
 				AEA3D30C1EFBB80A001DBB12 /* AccountsHomeVC.swift */,
 				AE154A201F025AE900CF1F48 /* DocumentsHomeVC.swift */,
-				AE449F6C1EE6894C000E296F /* LoginVC.swift */,
 				AE154A221F02632700CF1F48 /* MainTabBarController.swift */,
 				AE254D501F5D762C00695F8A /* InstructionsPopup.swift */,
 				AE0FE0A51F0E0FCE00F9F520 /* MapVC.swift */,
 				AE449F6E1EE6A1B4000E296F /* SplashVC.swift */,
-				AE449F701EE6C0FB000E296F /* TouchIDAuthenticationVC.swift */,
-				AE449F721EE6DE57000E296F /* TouchIDEnablerVC.swift */,
 				AE0FE0A71F0E0FDD00F9F520 /* UserProfileTableVC.swift */,
 				AE7EE5B01F3C755800536ED9 /* PreviewViewController.swift */,
 			);
@@ -1041,6 +1050,7 @@
 				AEBC716E1FB8C22900604399 /* CheckTabHomeViewController.swift in Sources */,
 				AE71BBE31F2B2C390066B632 /* MoreViewController.swift in Sources */,
 				AEB6EFA91FC2BC2A00D218ED /* SettingsPopupViewController.swift in Sources */,
+				AE16A9621FDE8EED00F7DE59 /* TouchIDEnablerVC.swift in Sources */,
 				AE7D5E591FA77BED00538E61 /* ImageOriginalityValuesModel.m in Sources */,
 				AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */,
 				AEDDA3BE1FB1D05100B79700 /* SelfieOriginalityValuesModel.m in Sources */,
@@ -1087,10 +1097,8 @@
 				AE7D5E561FA77BDB00538E61 /* CautionAlertsModel.m in Sources */,
 				AE7D5E5F1FA77C1100538E61 /* DocumentTestsModel.m in Sources */,
 				AE50E1BA1EEE74DE00578645 /* Utility.swift in Sources */,
-				AE449F731EE6DE57000E296F /* TouchIDEnablerVC.swift in Sources */,
 				AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */,
 				AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */,
-				AE449F711EE6C0FB000E296F /* TouchIDAuthenticationVC.swift in Sources */,
 				AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */,
 				AEA639661F4D8420006C122D /* DataParser.m in Sources */,
 				AE8C80DF1F33304E0024C382 /* BaseFlowManager.swift in Sources */,
