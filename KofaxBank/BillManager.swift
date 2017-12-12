@@ -252,6 +252,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         let parentView: UIViewController! = self.navigationController.topViewController
         parentView.present(navController, animated: true, completion: nil)
     }
+    
     private func getGuidingDemoStatus() -> Bool {
         
         var captureGuidance: Bool = true
@@ -262,6 +263,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         
         return captureGuidance
     }
+
     
     override func imageCaptured(image: kfxKEDImage) {
         print("Image Captured!")
@@ -628,7 +630,7 @@ class BillManager: BaseFlowManager, BillDataPreviewDelegate, InstructionsDelegat
         }
         self.errObj.title = "Data read failed"
         if errorData != nil {
-            self.errObj.message  = "Bill data read failed with error Data==> \(errorData)"
+            self.errObj.message  = "Bill data read failed with error code==> \(responseCode)"
         } else {
             self.errObj.message  = "Bill data read failed"
         }

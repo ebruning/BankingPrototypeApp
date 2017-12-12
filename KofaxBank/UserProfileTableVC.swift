@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class UserProfileTableVC: UITableViewController, UINavigationControllerDelegate,
-UIImagePickerControllerDelegate {
+UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     
@@ -334,6 +334,38 @@ UIImagePickerControllerDelegate {
         
         //dismiss date picker dialog
         self.view.endEditing(true)
+    }
+    // MARK: Textfield delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameText || textField == phoneNumberText || textField == emailText || textField == zipText {
+            dismissKeyboard()
+        } else {
+            var activeField: UITextField! = nil
+            if textField == addressText {
+                activeField = cityText
+            } else if textField == cityText {
+                activeField = stateText
+            } else if textField == stateText {
+                activeField = countryText
+            } else if textField == countryText {
+                activeField = zipText
+            }
+            if activeField != nil {
+                activeField.becomeFirstResponder()
+            }
+        }
+        return true
     }
 
 }

@@ -1168,7 +1168,7 @@ InstructionsDelegate, PreviewDelegate, BarcodeReadViewControllerDelegate, IDHome
         }
         self.errObj.title = "Data read failed"
         if errorData != nil {
-            self.errObj.message  = "ID data read failed with error Data==> \(errorData)"
+            self.errObj.message  = "ID data read failed with error code==> \(responseCode)"
         } else {
             self.errObj.message  = "ID data read failed"
         }

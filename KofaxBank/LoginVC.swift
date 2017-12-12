@@ -30,7 +30,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     private var touchIDStatus: Bool = false
-    private var activeField: UITextField! = nil
     
     /// Overlayview that is being displayed when the user tries to log in
     private lazy var waitIndicator: WaitIndicatorView! = {
@@ -360,11 +359,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // MARK: Textfield delegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeField = textField
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        activeField = nil
     }
     
     
@@ -374,12 +371,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if activeField == passwordTextField {
+        if textField == passwordTextField {
             //if its a last text field (Go key), dismiss the keyboard and login.
             dismissKeyboard()
             dummyLogin()
         } else {
-            activeField = passwordTextField
             passwordTextField.becomeFirstResponder()
         }
         

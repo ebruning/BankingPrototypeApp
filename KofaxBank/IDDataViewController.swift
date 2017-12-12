@@ -12,7 +12,7 @@ protocol  IDDataViewControllerDelegate {
     func IDDataSaved(idData: kfxIDData)
 }
 
-class IDDataViewController: UITableViewController {
+class IDDataViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -89,14 +89,24 @@ class IDDataViewController: UITableViewController {
         super.viewDidLoad()
 
 //        customizeNavigationBar()
+        setupScreenControls()
 
         if idData != nil {
             displayFields()
         }
+        setupDatePicker()
     }
 
     //MARK: Private methods
     
+    private func setupScreenControls() {
+        let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(mainViewOnTap))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func mainViewOnTap() {
+        self.view.endEditing(true)
+    }
     private func customizeNavigationBar() {
 //        oldStatusBarStyle = UIApplication.shared.statusBarStyle
 //        oldBarTintColor = navigationController?.navigationBar.tintColor
@@ -223,10 +233,21 @@ class IDDataViewController: UITableViewController {
             countryField.textColor = UIColor.red
         }
 
+        if idData.dateOfBirth != nil && idData.dateOfBirth.value != nil {
+        
+            dob = Utility.convertStringToDate(format: "yyyy-MM-dd", dateStr: idData.dateOfBirth.value)
+            
+            if dob != nil {
+                let dateStr = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: dob!) //TODO: The date format should be updated based on the country
+                
+                dobField.text = dateStr
+            } else {
         dobField.text = idData.dateOfBirth.value
+            }
 
         if idData.dateOfBirth.confidence < 0.80 {
             dobField.textColor = UIColor.red
+        }
         }
 
         genderField.text = idData.gender.value
@@ -271,16 +292,38 @@ class IDDataViewController: UITableViewController {
             countryShortField.textColor = UIColor.red
         }
 
+        if idData.issueDate != nil && idData.issueDate.value != nil {
+            
+            issueDate = Utility.convertStringToDate(format: "yyyy-MM-dd", dateStr: idData.issueDate.value)
+            
+            if issueDate != nil {
+                let dateStr = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: issueDate!)//TODO: The date format should be updated based on the country
+                
+                issueDateField.text = dateStr
+            } else {
         issueDateField.text = idData.issueDate.value
+            }
 
         if idData.issueDate.confidence < 0.80 {
             issueDateField.textColor = UIColor.red
         }
+        }
 
+        if idData.expirationDate != nil && idData.expirationDate.value != nil {
+            
+            expDate = Utility.convertStringToDate(format: "yyyy-MM-dd", dateStr: idData.expirationDate.value)
+            
+            if expDate != nil {
+                let dateStr = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: expDate!)//TODO: The date format should be updated based on the country
+                
+                expDateField.text = dateStr
+            } else {
         expDateField.text = idData.expirationDate.value
+            }
 
         if idData.expirationDate.confidence < 0.80 {
             expDateField.textColor = UIColor.red
+        }
         }
 
         barcodeReadField.text = idData.isBarcodeRead == true ? "Yes" : "No"
@@ -349,4 +392,93 @@ class IDDataViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    // MARK : date picker methods
+    
+    func setupDatePicker() {
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        
+        //done button & cancel button
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        
+        // add toolbar to textField
+        dobField.inputAccessoryView = toolbar
+        
+        // add datepicker to textField
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.date
+        
+        dobField.inputView = datePicker
+        
+        issueDateField.inputAccessoryView = toolbar
+        issueDateField.inputView = datePicker
+        
+        expDateField.inputAccessoryView = toolbar
+        expDateField.inputView = datePicker
+    }
+    
+    var activeDateViewField: UITextField! = nil
+    var dob: Date! = nil
+    var issueDate: Date! = nil
+    var expDate: Date! = nil
+
+
+    func doneDatePicker() {
+        print("Done datepicker")
+
+        //dismiss date picker dialog
+        self.view.endEditing(true)
+
+        
+        if activeDateViewField == nil {
+            return
+        }
+        
+        let picker = self.activeDateViewField.inputView as! UIDatePicker
+        let dateFromPicker = Utility.dateToFormattedString(format: LongDateFormatWithNumericMonth, date: picker.date)
+        
+        self.activeDateViewField.text = dateFromPicker
+        
+        if activeDateViewField == dobField {
+            dob = picker.date
+        } else if activeDateViewField == issueDateField {
+            issueDate = picker.date
+        } else if activeDateViewField == expDateField {
+            expDate = picker.date
+        }
+    }
+    
+
+    
+    // MARK: Textfield delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == dobField || textField == issueDateField || textField == expDateField {
+            activeDateViewField = textField
+            
+            if textField == dobField && dob != nil {
+                (textField.inputView as! UIDatePicker).date = dob
+            } else if textField == issueDateField && issueDate != nil {
+                (textField.inputView as! UIDatePicker).date = issueDate
+            } else if textField == expDateField && expDate != nil {
+                (textField.inputView as! UIDatePicker).date = expDate
+            }
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return true
+    }
 }

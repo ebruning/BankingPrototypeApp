@@ -3573,7 +3573,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.32549019607843138" green="0.31361684210000002" blue="0.32816590309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="ybX-Y7-gX2"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3609,7 +3612,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="BfZ-9g-WgJ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3645,7 +3651,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="7c4-dJ-1kN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3681,7 +3690,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="U2A-1q-n4b"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3717,7 +3729,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="5cZ-RZ-4ab"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3753,7 +3768,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="7lf-po-Txb"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3789,7 +3807,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="ReF-3r-7sJ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3825,7 +3846,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="5ll-Y7-vCA"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3861,7 +3885,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="I6f-1F-dg0"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3898,6 +3925,9 @@ United States</string>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="cxZ-jp-soJ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3933,7 +3963,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="yes"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="0Fp-Sg-TiP"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3969,7 +4002,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="JoS-Ki-TO6"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4005,7 +4041,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="fR5-wf-3Hy"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4041,7 +4080,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="lB9-1u-Tor"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4078,6 +4120,9 @@ United States</string>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="y17-8t-pwT"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4113,7 +4158,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="yes"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="BCT-SS-sDj"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4142,7 +4190,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="9gS-fR-BYi" userLabel="Class Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="9gS-fR-BYi" userLabel="Class Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="0j8-2U-7WD"/>
@@ -4178,7 +4226,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="yg1-Mw-RfO" userLabel="Country Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="yg1-Mw-RfO" userLabel="Country Short Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="faJ-f6-rRK"/>
@@ -4222,6 +4270,9 @@ United States</string>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="lp1-Pl-vUY"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4240,7 +4291,7 @@ United States</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issue Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPy-T7-g0z" userLabel="Exp Date">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPy-T7-g0z" userLabel="Exp Date">
                                                     <rect key="frame" x="16" y="11" width="120" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ELh-ug-ufr"/>
@@ -4258,6 +4309,9 @@ United States</string>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="Nz7-fq-0Wb"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4286,7 +4340,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="0dx-1L-vJa" userLabel="Barcode Read Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="0dx-1L-vJa" userLabel="Barcode Read Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="2ey-9f-CL0"/>
@@ -4294,6 +4348,9 @@ United States</string>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="FGd-Z8-o3S" id="RV9-UJ-gQC"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4322,7 +4379,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Kse-Ix-1Nu" userLabel="OCR Read Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Kse-Ix-1Nu" userLabel="OCR Read Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="M43-j0-XpE"/>
@@ -4358,7 +4415,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="oys-Lj-9Us" userLabel="ID Verified Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="oys-Lj-9Us" userLabel="ID Verified Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="O0b-5K-112"/>
@@ -4377,44 +4434,8 @@ United States</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AiQ-Sd-3q2">
-                                        <rect key="frame" x="0.0" y="1114" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AiQ-Sd-3q2" id="ZgB-lB-B86">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixq-fP-2ZN">
-                                                    <rect key="frame" x="16" y="11" width="120" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="29j-pH-uZB"/>
-                                                        <constraint firstAttribute="width" constant="120" id="cZI-XU-qTH"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4FK-W6-KE0" userLabel="Product Version Field">
-                                                    <rect key="frame" x="216" y="-1" width="190" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="190" id="BkP-EE-RMz"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="4FK-W6-KE0" firstAttribute="height" secondItem="ZgB-lB-B86" secondAttribute="height" id="TYt-0t-WVj"/>
-                                                <constraint firstItem="4FK-W6-KE0" firstAttribute="centerY" secondItem="ZgB-lB-B86" secondAttribute="centerY" id="V23-RY-bPd"/>
-                                                <constraint firstAttribute="trailing" secondItem="4FK-W6-KE0" secondAttribute="trailing" constant="8" id="bZ5-JT-epb"/>
-                                                <constraint firstItem="Ixq-fP-2ZN" firstAttribute="centerY" secondItem="ZgB-lB-B86" secondAttribute="centerY" id="vdW-Fl-Ziy"/>
-                                                <constraint firstItem="Ixq-fP-2ZN" firstAttribute="leading" secondItem="ZgB-lB-B86" secondAttribute="leadingMargin" constant="8" id="zCa-BN-dcG"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KqM-ji-EJw">
-                                        <rect key="frame" x="0.0" y="1158" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1114" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KqM-ji-EJw" id="QjR-Vh-gao">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -4430,7 +4451,7 @@ United States</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-J0-wEk" userLabel="Confidence Rating Field">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-J0-wEk" userLabel="Confidence Rating Field">
                                                     <rect key="frame" x="216" y="-1" width="190" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="190" id="7W0-Ir-HyS"/>
@@ -4479,7 +4500,6 @@ United States</string>
                         <outlet property="middleNameField" destination="Vzl-ms-fnM" id="Jz2-Bc-G8j"/>
                         <outlet property="nationalityField" destination="hNP-IU-hek" id="Xxm-Pa-OvI"/>
                         <outlet property="ocrReadField" destination="Kse-Ix-1Nu" id="3R2-hs-VGS"/>
-                        <outlet property="productVersionField" destination="4FK-W6-KE0" id="BkZ-2i-PS7"/>
                         <outlet property="profileImage" destination="dva-D8-onO" id="sbz-HX-efk"/>
                         <outlet property="singatureImage" destination="Wao-xN-fqi" id="RuN-dT-w7u"/>
                         <outlet property="stateField" destination="Fxh-4C-2H0" id="Q6s-II-a6d"/>
@@ -4681,7 +4701,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="W4o-qG-qkz"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4778,6 +4801,9 @@ United States</string>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="dgM-7t-ob4"/>
+                                                    </connections>
                                                 </textField>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5P-I1-OxN">
                                                     <rect key="frame" x="15" y="43" width="399" height="1"/>
@@ -4820,7 +4846,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="MgK-e4-xCA"/>
+                                                    </connections>
                                                 </textField>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-kA-4Ji">
                                                     <rect key="frame" x="15" y="43" width="399" height="1"/>
@@ -4863,7 +4892,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="0KK-Ej-54t"/>
+                                                    </connections>
                                                 </textField>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaT-TE-OS1">
                                                     <rect key="frame" x="23" y="161" width="383" height="1"/>
@@ -4879,7 +4911,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="2II-Zr-d3P"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="msZ-fj-zRI" userLabel="birthdate">
                                                     <rect key="frame" x="60" y="98" width="330" height="30"/>
@@ -4888,7 +4923,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="PG8-ob-QeV"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="JNq-uL-g6E" userLabel="birthdate">
                                                     <rect key="frame" x="60" y="68" width="330" height="30"/>
@@ -4897,7 +4935,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="Oda-Pr-bKt"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zipcode" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="iKz-2P-peg" userLabel="birthdate">
                                                     <rect key="frame" x="60" y="128" width="330" height="30"/>
@@ -4906,7 +4947,10 @@ United States</string>
                                                     </constraints>
                                                     <color key="textColor" red="0.1917067308" green="0.1917067308" blue="0.1917067308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BmG-8D-59L" id="wKv-da-yUG"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
