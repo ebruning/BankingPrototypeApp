@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var splashLogoImageView: UIImageView!
@@ -30,6 +30,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     private var touchIDStatus: Bool = false
+    private var activeField: UITextField! = nil
     
     /// Overlayview that is being displayed when the user tries to log in
     private lazy var waitIndicator: WaitIndicatorView! = {
@@ -84,7 +85,7 @@ class LoginVC: UIViewController {
     private func askForLogin() {
         loginFieldsContainer.isHidden = false
 
-        usernameTextField.becomeFirstResponder()
+        //usernameTextField.becomeFirstResponder()
     }
     
     private func customizeScreenControls() {
@@ -113,7 +114,7 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonClicked(_ sender: UIButton) {
         view.endEditing(true)
        // login()
-        self.launchNextScreen()
+       dummyLogin()
     }
     
     
@@ -125,7 +126,13 @@ class LoginVC: UIViewController {
         }
     }
     
-    func login() {
+    //Use 'login()' method if realtime login is to be integrated.
+    
+    private func dummyLogin() {
+        self.launchNextScreen()
+    }
+    
+    private func login() {
        
         if Utility.isConnectedToNetwork() == false {
             Utility.showAlert(onViewController: self, titleString: "Network Error", messageString: "Make sure mobile has a working connection before login.")
@@ -350,4 +357,32 @@ class LoginVC: UIViewController {
         
     }
     
+    // MARK: Textfield delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if activeField == passwordTextField {
+            //if its a last text field (Go key), dismiss the keyboard and login.
+            dismissKeyboard()
+            dummyLogin()
+        } else {
+            activeField = passwordTextField
+            passwordTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
 }
