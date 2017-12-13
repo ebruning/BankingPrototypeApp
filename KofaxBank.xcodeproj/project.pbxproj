@@ -26,6 +26,7 @@
 		AE16A9591FD9410600F7DE59 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */; };
 		AE16A9621FDE8EED00F7DE59 /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */; };
+		AE16A9641FE12F1C00F7DE59 /* IDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */; };
 		AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D241F55995A00695F8A /* UIColor+customization.swift */; };
 		AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */; };
 		AE254D491F582B3000695F8A /* CreditCardDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */; };
@@ -117,7 +118,6 @@
 		AE8C80F51F3483230024C382 /* ExperienceMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80F41F3483230024C382 /* ExperienceMessages.swift */; };
 		AE8C80F71F34AAA50024C382 /* CheckDepositManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C80F61F34AAA50024C382 /* CheckDepositManager.swift */; };
 		AE90281B1F8376820055685B /* IDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90281A1F8376820055685B /* IDManager.swift */; };
-		AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90281C1F838F8B0055685B /* IDHomeVC.swift */; };
 		AE9028241F8638180055685B /* IDSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028221F8638180055685B /* IDSettingsViewController.swift */; };
 		AE9028251F8638180055685B /* IDSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028231F8638180055685B /* IDSettingsViewController.xib */; };
 		AE9028271F864A7A0055685B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9028261F864A7A0055685B /* CustomView.swift */; };
@@ -199,6 +199,7 @@
 		AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
+		AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDHomeVC.swift; sourceTree = "<group>"; };
 		AE254D241F55995A00695F8A /* UIColor+customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+customization.swift"; sourceTree = "<group>"; };
 		AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardDataPreviewViewController.swift; sourceTree = "<group>"; };
 		AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreditCardDataPreviewViewController.xib; sourceTree = "<group>"; };
@@ -321,7 +322,6 @@
 		AE8C80F41F3483230024C382 /* ExperienceMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceMessages.swift; sourceTree = "<group>"; };
 		AE8C80F61F34AAA50024C382 /* CheckDepositManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDepositManager.swift; sourceTree = "<group>"; };
 		AE90281A1F8376820055685B /* IDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDManager.swift; sourceTree = "<group>"; };
-		AE90281C1F838F8B0055685B /* IDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDHomeVC.swift; sourceTree = "<group>"; };
 		AE9028221F8638180055685B /* IDSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSettingsViewController.swift; sourceTree = "<group>"; };
 		AE9028231F8638180055685B /* IDSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDSettingsViewController.xib; sourceTree = "<group>"; };
 		AE9028261F864A7A0055685B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -804,11 +804,11 @@
 		AEAA70801F73CF9A00A511C8 /* ID */ = {
 			isa = PBXGroup;
 			children = (
+				AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */,
 				AEDDA3AE1FB18B3A00B79700 /* Selfie */,
 				AE7D5DAB1FA7493000538E61 /* DLAuthentication */,
 				AEAA70811F73CFA200A511C8 /* Region */,
 				AEAA708A1F73F51A00A511C8 /* ID_Constants.swift */,
-				AE90281C1F838F8B0055685B /* IDHomeVC.swift */,
 				AE7D5CE71FA3761200538E61 /* IDDataViewController.swift */,
 				AE9028221F8638180055685B /* IDSettingsViewController.swift */,
 				AE9028231F8638180055685B /* IDSettingsViewController.xib */,
@@ -1099,7 +1099,6 @@
 				AE50E1BA1EEE74DE00578645 /* Utility.swift in Sources */,
 				AE449F6B1EE6856E000E296F /* UIView+ customization.swift in Sources */,
 				AE0FE0A81F0E0FDD00F9F520 /* UserProfileTableVC.swift in Sources */,
-				AE90281E1F838F8B0055685B /* IDHomeVC.swift in Sources */,
 				AEA639661F4D8420006C122D /* DataParser.m in Sources */,
 				AE8C80DF1F33304E0024C382 /* BaseFlowManager.swift in Sources */,
 				AE7EE5A91F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift in Sources */,
@@ -1140,6 +1139,7 @@
 				AE7D5E471FA77B2200538E61 /* DocumentRiskVectorAnalysisModel.m in Sources */,
 				AE254D571F66867500695F8A /* BillManager.swift in Sources */,
 				AE449F7B1EE92633000E296F /* ServerManager.swift in Sources */,
+				AE16A9641FE12F1C00F7DE59 /* IDHomeVC.swift in Sources */,
 				AE0FE0A61F0E0FCE00F9F520 /* MapVC.swift in Sources */,
 				AE53433A1F445AEF00EFD829 /* IPPUtilities.m in Sources */,
 				AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */,

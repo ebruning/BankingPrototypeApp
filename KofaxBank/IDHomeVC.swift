@@ -17,17 +17,23 @@ protocol IDHomeVCDelegate {
 
  class IDHomeVC: UIViewController, IDDataViewControllerDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var warningContainer: UIView!
     
     @IBOutlet weak var warningLabel: UILabel!
     
     @IBOutlet weak var warningIcon: UIImageView!
 
+    @IBOutlet weak var frontContainerView: CustomView!
+    
     @IBOutlet weak var frontImageView: UIImageView!
+
+    @IBOutlet weak var backImageViewTop: UIImageView!
     
-    @IBOutlet weak var backImageContainerView: CustomView!
+    @IBOutlet weak var backContainerView: CustomView!
     
-    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var backImageViewBottom: UIImageView!
 
     @IBOutlet weak var backImagePreviewLabel: UILabel!
 
@@ -35,12 +41,20 @@ protocol IDHomeVCDelegate {
     
     @IBOutlet weak var fieldsContainerView: UIView!
 
+    @IBOutlet weak var pageControl: UIPageControl!
 
 //    @IBOutlet weak var waitIndicatorContainerVaiw: UIView!
 
     @IBOutlet weak var idNumberField: UITextField!
     
     @IBOutlet weak var firstNameField: UITextField!
+    
+    @IBOutlet weak var lastNameField: UITextField!
+
+    @IBOutlet weak var dobField: UITextField!
+
+    @IBOutlet weak var addressField: UITextField!
+
     
     @IBOutlet weak var viewMoreButton: UIButton!
     
@@ -51,6 +65,12 @@ protocol IDHomeVCDelegate {
     private var idData: kfxIDData!
     
     private var dataReadInProgress = false
+    
+    private var frontContainerSwipeRightRecogizer: UISwipeGestureRecognizer! = nil
+
+    private var frontContainerSwipeLeftRecogizer: UISwipeGestureRecognizer! = nil
+
+    
 
     private lazy var waitindicatorView: WaitIndicatorView! = {
         let waitindicatorView = WaitIndicatorView()
@@ -122,6 +142,12 @@ protocol IDHomeVCDelegate {
         dataReadInProgress = false
         hideWaitIndicator()
         
+        if self.backImageFilePath != nil && self.backImageFilePath.characters.count > 0 {
+            self.pageControl.isHidden = false
+            self.backContainerView.isHidden = true
+            self.addSwipeGestureListenerFront()
+        }
+        
         self.idData = nil
         
         if err != nil {
@@ -151,10 +177,17 @@ protocol IDHomeVCDelegate {
         DispatchQueue.main.async {
             
             self.viewMoreButton.isHidden = false
-            
+            self.backContainerView.isHidden = true
+
+            if self.backImageFilePath != nil && self.backImageFilePath.characters.count > 0 {
+                self.backImageViewTop.image = self.backImageViewBottom.image
+                self.pageControl.isHidden = false
+                self.addSwipeGestureListenerFront()
+            }
+
             if self.idData != nil {
                 self.displayDataFields()
-
+                
                 if self.shouldAuthenticateWithSelfie() {
                     if self.authenticationResultModel == nil {
                         Utility.showAlert(onViewController: self, titleString: "Verification Error", messageString: "Could not receive ID verification results.\n\nPlease try again.")
@@ -174,6 +207,9 @@ protocol IDHomeVCDelegate {
             }
         }
     }
+    
+    
+    
 
     func selfieAuthenticationBegun() {
         showWaitIndicator()
@@ -306,7 +342,19 @@ protocol IDHomeVCDelegate {
     
     
     func onCancelButtonClick() {
-        Utility.showAlertWithCallback(onViewController: self, titleString: "Abort", messageString: "This will cancel the ID Authentication process.\n\nDo you want to continue?", positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
+        
+        var title: String!
+        var message: String!
+        
+        if idData != nil {
+            title = "Abort"
+            message = "This will cancel the ID Authentication process.\n\nDo you want to continue?"
+        } else {
+            title = "Abort"
+            message = "Do you want to close the screen?"
+        }
+        
+        Utility.showAlertWithCallback(onViewController: self, titleString: title, messageString: message, positiveActionTitle: "Yes", negativeActionTitle: "No", positiveActionResponse: {
             print("Positive response selected")
             
             self.delegate?.onIDHomeCancel()
@@ -333,8 +381,9 @@ protocol IDHomeVCDelegate {
     
     private func displayBackImage() {
         if _backImageFilePath != nil {
-            displayImage(toImageView: backImageView, fromFileContent: _backImageFilePath)
-            backImageContainerView.isHidden = false
+            displayImage(toImageView: backImageViewBottom, fromFileContent: _backImageFilePath)
+            displayImage(toImageView: backImageViewTop, fromFileContent: _backImageFilePath)
+            backContainerView.isHidden = false
         }
     }
     
@@ -358,13 +407,96 @@ protocol IDHomeVCDelegate {
 
     private func displayTextFields(data: kfxIDData) {
         
-        idNumberField.text = data.idNumber.value
+        if data.idNumber != nil && data.idNumber.value != nil {
+         
+            idNumberField.text = data.idNumber.value
+        }
         
-        firstNameField.text = data.firstName.value
+        if data.firstName != nil && data.firstName.value != nil {
+
+            firstNameField.text = data.firstName.value
+        }
+        
+        if data.lastName != nil && data.lastName.value != nil {
+            
+            lastNameField.text = data.lastName.value
+        }
+        
+        if data.dateOfBirth != nil && data.dateOfBirth.value != nil {
+            
+            dobField.text = data.dateOfBirth.value
+        }
+        
+        if data.address != nil && data.address.value != nil {
+        
+            addressField.text = data.address.value
+        }
         
         fieldsContainerView.isHidden = false
     }
     
+    // MARK: SwipeGestureRecognizer methods
+    
+    func addSwipeGestureListenerFront() {
+        // add swipe-left recognizer
+        if frontContainerSwipeLeftRecogizer == nil {
+            frontContainerSwipeLeftRecogizer = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGestureFront))
+            frontContainerSwipeLeftRecogizer.direction = UISwipeGestureRecognizerDirection.left
+        }
+        frontContainerView.addGestureRecognizer(frontContainerSwipeLeftRecogizer)
+        
+        // add swipe-right recognizer
+        if frontContainerSwipeRightRecogizer == nil {
+            frontContainerSwipeRightRecogizer = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGestureFront))
+            frontContainerSwipeRightRecogizer.direction = UISwipeGestureRecognizerDirection.right
+        }
+        frontContainerView.addGestureRecognizer(frontContainerSwipeRightRecogizer)
+    }
+    
+    
+    private func removeSwipeGestureFront() {
+        if frontContainerView.gestureRecognizers != nil && frontContainerSwipeLeftRecogizer != nil {
+            frontContainerView.removeGestureRecognizer(frontContainerSwipeLeftRecogizer)
+            frontContainerView.removeGestureRecognizer(frontContainerSwipeRightRecogizer)
+        }
+    }
+    
+    func respondToSwipeGestureFront(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swipe Right...")
+                showPrevious()
+                
+                pageControl.currentPage = 0
+                break
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swipe Left...")
+                pageControl.currentPage = 1
+                showNext()
+                break
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    func showNext() {
+        if backImageViewTop.isHidden {
+            backImageViewTop.isHidden = false
+            frontImageView.isHidden = true
+        }
+    }
+    
+    func showPrevious() {
+        if frontImageView.isHidden {
+            frontImageView.isHidden = false
+            backImageViewTop.isHidden = true
+        }
+    }
+    
+
     
     //MARK: Command button action
     
@@ -386,8 +518,9 @@ protocol IDHomeVCDelegate {
     //MARK: IDDataViewControllerDelegate method
     func IDDataSaved(idData: kfxIDData) {
         self.idData = idData
+        displayTextFields(data: self.idData)
     }
-    
+
     
     //MARK: Wait indicator methods
     
