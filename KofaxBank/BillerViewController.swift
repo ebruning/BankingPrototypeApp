@@ -60,9 +60,6 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
     private var selectedAccount: AccountsMaster! = nil
     private var selectedBiller: BillerMaster! = nil
 
-    
-    private var settingsPopup: SettingsPopupViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,13 +114,6 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         accounts.removeAll()
         billers.removeAll()
         
-        if settingsPopup != nil {
-            settingsPopup.close()
-            settingsPopup.dismiss(animated: false, completion: nil)
-            settingsPopup.removeFromParentViewController()
-            
-        }
-        
         if self.billManager != nil {
             self.billManager?.delegate = nil
             self.billManager = nil
@@ -164,34 +154,14 @@ class BillerViewController: UIViewController, UITabBarControllerDelegate, UIPick
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
-         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
-         
-         self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+        
+         self.tabBarController?.navigationItem.rightBarButtonItem = logoutBarButtonItem
  
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func logout() {
         print("Logout!!!")
-    }
-
-    func showSettingsPopup() {
-        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
-        self.settingsPopup.applicationComponentName = AppComponent.BILL
-        
-        
-        self.addChildViewController(self.settingsPopup)
-        self.settingsPopup.view.frame = self.view.frame
-        
-        self.view.addSubview(self.settingsPopup.view)
-        self.settingsPopup.view.alpha = 0
-        self.settingsPopup.didMove(toParentViewController: self)
-        
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-            self.settingsPopup.view.alpha = 1
-        }, completion: nil)
-        
     }
     
     //MARK Tabbar controller delegate

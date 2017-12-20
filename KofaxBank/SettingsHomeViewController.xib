@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsHomeViewController" customModule="KofaxBank" customModuleProvider="target">
+            <connections>
+                <outlet property="customViewBill" destination="IBs-vt-XIL" id="Eyb-h8-4oO"/>
+                <outlet property="customViewCheck" destination="1nM-4C-WVU" id="6bR-YM-D2J"/>
+                <outlet property="customViewCreditCard" destination="pYs-yG-Z3V" id="A4u-Qw-vXo"/>
+                <outlet property="customViewID" destination="0rX-6G-7UO" id="FYC-dg-Ugg"/>
+                <outlet property="touchIDSwitch" destination="uvl-SN-khb" id="Wz8-LM-Hea"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LY-0R-GV8">
+                    <rect key="frame" x="16" y="75" width="343" height="26"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-0f-Xas" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="121" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aW-gt-7QI">
+                            <rect key="frame" x="16" y="13" width="325" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="H9F-J3-tut"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="k4Y-yg-eV7">
+                            <rect key="frame" x="349" y="13" width="18" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="CGY-Xd-1nG"/>
+                                <constraint firstAttribute="height" constant="24" id="CRv-ee-FNc"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="2z4-Ba-IxB"/>
+                        <constraint firstItem="7aW-gt-7QI" firstAttribute="centerY" secondItem="Yah-0f-Xas" secondAttribute="centerY" id="7Q3-Jy-NcP"/>
+                        <constraint firstItem="k4Y-yg-eV7" firstAttribute="centerY" secondItem="Yah-0f-Xas" secondAttribute="centerY" id="KGs-2m-fe2"/>
+                        <constraint firstItem="7aW-gt-7QI" firstAttribute="leading" secondItem="Yah-0f-Xas" secondAttribute="leading" constant="16" id="ehE-5b-uJl"/>
+                        <constraint firstAttribute="trailing" secondItem="k4Y-yg-eV7" secondAttribute="trailing" constant="8" id="rn4-dn-TZl"/>
+                        <constraint firstItem="k4Y-yg-eV7" firstAttribute="leading" secondItem="7aW-gt-7QI" secondAttribute="trailing" constant="8" id="xs9-Px-F6j"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gic-Vw-mGP" appends="YES" id="kw5-Kc-3hX"/>
+                    </connections>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-cH-cMc">
+                    <rect key="frame" x="0.0" y="261" width="375" height="222"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3e-EO-1jJ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MODULES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ev-fU-KGV">
+                                    <rect key="frame" x="16" y="0.0" width="343" height="22"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="3ev-fU-KGV" firstAttribute="top" secondItem="Z3e-EO-1jJ" secondAttribute="top" id="08K-yb-Adi"/>
+                                <constraint firstAttribute="bottom" secondItem="3ev-fU-KGV" secondAttribute="bottom" id="UiP-Hz-PEr"/>
+                                <constraint firstItem="3ev-fU-KGV" firstAttribute="leading" secondItem="Z3e-EO-1jJ" secondAttribute="leading" constant="16" id="aF8-qX-rta"/>
+                                <constraint firstAttribute="height" constant="22" id="ma7-p4-kd1"/>
+                                <constraint firstAttribute="trailing" secondItem="3ev-fU-KGV" secondAttribute="trailing" constant="16" id="rMV-3A-Wzt"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-vt-XIL" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="22" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDW-Fe-vr1">
+                                    <rect key="frame" x="16" y="13" width="325" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="DJQ-vF-SWn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-ex-hcF">
+                                    <rect key="frame" x="349" y="13" width="18" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="18" id="3Gr-WO-Fsu"/>
+                                        <constraint firstAttribute="height" constant="24" id="i9x-XB-kFN"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Lck-iZ-MWE"/>
+                                <constraint firstItem="wHQ-ex-hcF" firstAttribute="leading" secondItem="rDW-Fe-vr1" secondAttribute="trailing" constant="8" id="S5v-Hm-Z5A"/>
+                                <constraint firstItem="rDW-Fe-vr1" firstAttribute="leading" secondItem="IBs-vt-XIL" secondAttribute="leading" constant="16" id="X68-e4-djG"/>
+                                <constraint firstItem="rDW-Fe-vr1" firstAttribute="centerY" secondItem="IBs-vt-XIL" secondAttribute="centerY" id="Ya1-o0-rne"/>
+                                <constraint firstAttribute="trailing" secondItem="wHQ-ex-hcF" secondAttribute="trailing" constant="8" id="gc9-qu-FQL"/>
+                                <constraint firstItem="wHQ-ex-hcF" firstAttribute="centerY" secondItem="IBs-vt-XIL" secondAttribute="centerY" id="hqk-6h-Yu4"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="ZxP-qP-Wl3" appends="YES" id="hHE-im-dHq"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nM-4C-WVU" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="72" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Deposit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYR-VH-TJU">
+                                    <rect key="frame" x="16" y="13" width="325" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="BwO-ti-Ryn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="d5s-dd-HQY">
+                                    <rect key="frame" x="349" y="13" width="18" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="18" id="iAR-So-ZBO"/>
+                                        <constraint firstAttribute="height" constant="24" id="tPk-3L-I4I"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="oYR-VH-TJU" firstAttribute="leading" secondItem="1nM-4C-WVU" secondAttribute="leading" constant="16" id="W3P-rj-dDf"/>
+                                <constraint firstItem="d5s-dd-HQY" firstAttribute="leading" secondItem="oYR-VH-TJU" secondAttribute="trailing" constant="8" id="Xyg-eF-qcd"/>
+                                <constraint firstAttribute="height" constant="50" id="gcI-Gg-RRv"/>
+                                <constraint firstAttribute="trailing" secondItem="d5s-dd-HQY" secondAttribute="trailing" constant="8" id="mRI-ft-1Yx"/>
+                                <constraint firstItem="oYR-VH-TJU" firstAttribute="centerY" secondItem="1nM-4C-WVU" secondAttribute="centerY" id="pv7-xy-77V"/>
+                                <constraint firstItem="d5s-dd-HQY" firstAttribute="centerY" secondItem="1nM-4C-WVU" secondAttribute="centerY" id="yIn-Dd-dHX"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="0Tb-C9-nLa" appends="YES" id="mwK-Nv-b3W"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYs-yG-Z3V" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="122" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seI-F2-Ucv">
+                                    <rect key="frame" x="16" y="13" width="325" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="aXt-F5-my3"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="PMc-Jg-uZq">
+                                    <rect key="frame" x="349" y="13" width="18" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="j8L-B9-kZM"/>
+                                        <constraint firstAttribute="width" constant="18" id="mtS-jR-0x4"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="PMc-Jg-uZq" firstAttribute="leading" secondItem="seI-F2-Ucv" secondAttribute="trailing" constant="8" id="4VX-4L-VBC"/>
+                                <constraint firstItem="seI-F2-Ucv" firstAttribute="leading" secondItem="pYs-yG-Z3V" secondAttribute="leading" constant="16" id="9Ef-kl-VjS"/>
+                                <constraint firstAttribute="trailing" secondItem="PMc-Jg-uZq" secondAttribute="trailing" constant="8" id="RN7-xd-0a4"/>
+                                <constraint firstAttribute="height" constant="50" id="WVc-RQ-naA"/>
+                                <constraint firstItem="PMc-Jg-uZq" firstAttribute="centerY" secondItem="pYs-yG-Z3V" secondAttribute="centerY" id="aWA-ep-HDA"/>
+                                <constraint firstItem="seI-F2-Ucv" firstAttribute="centerY" secondItem="pYs-yG-Z3V" secondAttribute="centerY" id="p0M-73-kQ8"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="io3-Ia-Tfz" appends="YES" id="Qul-z8-ObL"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rX-6G-7UO" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="172" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-jx-6D6">
+                                    <rect key="frame" x="16" y="13" width="325" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="FR6-vI-COM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-FO-dDf">
+                                    <rect key="frame" x="349" y="13" width="18" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="18" id="Br5-xV-RVP"/>
+                                        <constraint firstAttribute="height" constant="24" id="Cgm-5A-rfe"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="uqJ-jx-6D6" firstAttribute="centerY" secondItem="0rX-6G-7UO" secondAttribute="centerY" id="MC8-xm-AC6"/>
+                                <constraint firstItem="LCR-FO-dDf" firstAttribute="centerY" secondItem="0rX-6G-7UO" secondAttribute="centerY" id="MO1-Lt-ESN"/>
+                                <constraint firstItem="LCR-FO-dDf" firstAttribute="leading" secondItem="uqJ-jx-6D6" secondAttribute="trailing" constant="8" id="XNv-2x-Em3"/>
+                                <constraint firstAttribute="trailing" secondItem="LCR-FO-dDf" secondAttribute="trailing" constant="8" id="eS9-E3-YjS"/>
+                                <constraint firstItem="uqJ-jx-6D6" firstAttribute="leading" secondItem="0rX-6G-7UO" secondAttribute="leading" constant="16" id="gkg-hb-cQH"/>
+                                <constraint firstAttribute="height" constant="50" id="mfv-pB-66T"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="FMt-lq-dXY" appends="YES" id="N31-2g-8ub"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="222" id="ZFa-9g-Yof"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-bE-Pel" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="191" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1l-Xg-pfu">
+                            <rect key="frame" x="16" y="13" width="294" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="cCC-zc-mNE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-SN-khb">
+                            <rect key="frame" x="318" y="10" width="51" height="31"/>
+                            <connections>
+                                <action selector="touchIDSwitchValueChanged:" destination="-1" eventType="valueChanged" id="s7P-fM-nI4"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Bo1-bQ-g7L"/>
+                        <constraint firstItem="uvl-SN-khb" firstAttribute="leading" secondItem="U1l-Xg-pfu" secondAttribute="trailing" constant="8" id="G3u-4s-cvq"/>
+                        <constraint firstAttribute="trailing" secondItem="uvl-SN-khb" secondAttribute="trailing" constant="8" id="MAg-ab-wyB"/>
+                        <constraint firstItem="U1l-Xg-pfu" firstAttribute="centerY" secondItem="O3M-bE-Pel" secondAttribute="centerY" id="eex-eh-OJm"/>
+                        <constraint firstItem="U1l-Xg-pfu" firstAttribute="leading" secondItem="O3M-bE-Pel" secondAttribute="leading" constant="16" id="vQM-cO-iMm"/>
+                        <constraint firstItem="uvl-SN-khb" firstAttribute="centerY" secondItem="O3M-bE-Pel" secondAttribute="centerY" id="zQo-QD-l2N"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yah-0f-Xas" secondAttribute="trailing" id="5tO-02-88o"/>
+                <constraint firstAttribute="trailing" secondItem="O3M-bE-Pel" secondAttribute="trailing" id="6AM-En-Kay"/>
+                <constraint firstItem="O3M-bE-Pel" firstAttribute="top" secondItem="Yah-0f-Xas" secondAttribute="bottom" constant="20" id="GAS-ji-Rtt"/>
+                <constraint firstItem="6LY-0R-GV8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="JUB-Hp-ckB"/>
+                <constraint firstItem="xA4-cH-cMc" firstAttribute="top" secondItem="O3M-bE-Pel" secondAttribute="bottom" constant="20" id="Nav-JN-SUg"/>
+                <constraint firstItem="6LY-0R-GV8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="PY6-Uo-v6S"/>
+                <constraint firstItem="xA4-cH-cMc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z8x-LI-aVh"/>
+                <constraint firstItem="O3M-bE-Pel" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dER-BY-idk"/>
+                <constraint firstAttribute="trailing" secondItem="xA4-cH-cMc" secondAttribute="trailing" id="fZk-9n-0We"/>
+                <constraint firstItem="Yah-0f-Xas" firstAttribute="top" secondItem="6LY-0R-GV8" secondAttribute="bottom" constant="20" id="hxp-ZE-Mqn"/>
+                <constraint firstItem="Yah-0f-Xas" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j1A-CN-49k"/>
+                <constraint firstAttribute="trailing" secondItem="6LY-0R-GV8" secondAttribute="trailing" constant="16" id="mTF-DS-dQc"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+        <tapGestureRecognizer id="gic-Vw-mGP" userLabel="Tap Gesture Recognizer Theme">
+            <connections>
+                <action selector="themeOptionOnTap:" destination="-1" id="rDW-dc-xyD"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="ZxP-qP-Wl3" userLabel="Tap Gesture Recognizer Bill">
+            <connections>
+                <action selector="moduleOptionOnTap:" destination="-1" id="Lyr-iZ-Zc1"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="0Tb-C9-nLa" userLabel="Tap Gesture Recognizer Check">
+            <connections>
+                <action selector="moduleOptionOnTap:" destination="-1" id="LMz-2t-RNS"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="io3-Ia-Tfz" userLabel="Tap Gesture Recognizer Credit Card">
+            <connections>
+                <action selector="moduleOptionOnTap:" destination="-1" id="6jq-Nf-F2n"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="FMt-lq-dXY" userLabel="Tap Gesture Recognizer ID">
+            <connections>
+                <action selector="moduleOptionOnTap:" destination="-1" id="cwm-SB-H4l"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="arrow_right_gray" width="100" height="100"/>
+    </resources>
+</document>

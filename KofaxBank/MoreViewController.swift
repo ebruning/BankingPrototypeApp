@@ -105,9 +105,8 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     @IBAction func onSettingsClicked(_ sender: UIButton) {
              print("onNotificationClicked")
         sender.backgroundColor = self.accentColor
-        
-        let stylerManager = AppStyleManager.sharedInstance()
-        stylerManager?.showStyler(self.navigationController)
+
+        showSettingHomeScreen()
     }
 
     @IBAction func onContactUsClicked(_ sender: UIButton) {
@@ -163,6 +162,19 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
     }
     
 
+    private func showSettingHomeScreen() {
+        let settingVC = SettingsHomeViewController.init(nibName: "SettingsHomeViewController", bundle: nil)
+
+        let navController = UINavigationController.init(rootViewController: settingVC)
+        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController.navigationBar.shadowImage = UIImage()
+        navController.navigationBar.isTranslucent = true
+        navController.navigationBar.backgroundColor = UIColor.clear
+        
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    
     //Contact Us
     
     private func showEmailComposer() {
@@ -170,7 +182,7 @@ class MoreViewController: UIViewController, UITabBarControllerDelegate, MFMailCo
             let mailer = MFMailComposeViewController()
             mailer.mailComposeDelegate = self
             
-            mailer.setSubject("Customer: Lucy Tate")
+            mailer.setSubject("Customer: " + DEFAULT_USER_DISPLAY_NAME)
             mailer.setToRecipients(NSArray.init(object: "") as? [String])
             
             mailer.setMessageBody("", isHTML: false)

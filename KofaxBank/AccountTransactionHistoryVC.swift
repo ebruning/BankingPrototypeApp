@@ -138,11 +138,6 @@ class AccountTransactionHistoryVC: BaseViewController, UITableViewDelegate, UITa
         }
     }
     
-    func showSettingsPopup() {
-        print("SHow settings popup")
-    }
-    
-    
 /*    func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {

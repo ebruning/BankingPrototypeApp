@@ -37,8 +37,6 @@ class ServerManager {
 //    private let DEFAULT_USERID = "administrator"
 //    private let DEFAULT_PASSWORD = "K00fax"
     
-    private let DEFAULT_USER_DISPLAY_NAME = "Lucy"
-
     static let shared = ServerManager()
     
     var dataTask: URLSessionDataTask?

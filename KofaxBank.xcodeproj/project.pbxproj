@@ -21,12 +21,14 @@
 		AE154A3A1F03A6E000CF1F48 /* CreditCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A391F03A6E000CF1F48 /* CreditCardData.swift */; };
 		AE154A3C1F03C6D700CF1F48 /* CreditCardTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */; };
 		AE154A3E1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */; };
-		AE16A9571FD940B600F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; };
-		AE16A9581FD9410600F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; };
-		AE16A9591FD9410600F7DE59 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */; };
 		AE16A9621FDE8EED00F7DE59 /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */; };
 		AE16A9641FE12F1C00F7DE59 /* IDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */; };
+		AE16A9691FE9064200F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; };
+		AE16A96A1FE9064B00F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; };
+		AE16A96B1FE9064B00F7DE59 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE16A96E1FEA6F6100F7DE59 /* SettingsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A96C1FEA6F6100F7DE59 /* SettingsHomeViewController.swift */; };
+		AE16A96F1FEA6F6100F7DE59 /* SettingsHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE16A96D1FEA6F6100F7DE59 /* SettingsHomeViewController.xib */; };
 		AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D241F55995A00695F8A /* UIColor+customization.swift */; };
 		AE254D481F582B3000695F8A /* CreditCardDataPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */; };
 		AE254D491F582B3000695F8A /* CreditCardDataPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */; };
@@ -172,7 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AE16A9591FD9410600F7DE59 /* AppStylerLib.framework in Embed Frameworks */,
+				AE16A96B1FE9064B00F7DE59 /* AppStylerLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,10 +198,12 @@
 		AE154A391F03A6E000CF1F48 /* CreditCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardData.swift; sourceTree = "<group>"; };
 		AE154A3B1F03C6D700CF1F48 /* CreditCardTransactionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionData.swift; sourceTree = "<group>"; };
 		AE154A3D1F03CF0700CF1F48 /* CreditCardPendingApprovalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardPendingApprovalCell.swift; sourceTree = "<group>"; };
-		AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
 		AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDHomeVC.swift; sourceTree = "<group>"; };
+		AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
+		AE16A96C1FEA6F6100F7DE59 /* SettingsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHomeViewController.swift; sourceTree = "<group>"; };
+		AE16A96D1FEA6F6100F7DE59 /* SettingsHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHomeViewController.xib; sourceTree = "<group>"; };
 		AE254D241F55995A00695F8A /* UIColor+customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+customization.swift"; sourceTree = "<group>"; };
 		AE254D461F582B3000695F8A /* CreditCardDataPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardDataPreviewViewController.swift; sourceTree = "<group>"; };
 		AE254D471F582B3000695F8A /* CreditCardDataPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreditCardDataPreviewViewController.xib; sourceTree = "<group>"; };
@@ -370,11 +374,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */,
-				AE16A9571FD940B600F7DE59 /* AppStylerLib.framework in Frameworks */,
-				AE16A9581FD9410600F7DE59 /* AppStylerLib.framework in Frameworks */,
+				AE16A9691FE9064200F7DE59 /* AppStylerLib.framework in Frameworks */,
 				AE863BAE1FD7DFBE002AEDB0 /* libsqlite3.tbd in Frameworks */,
 				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
 				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
+				AE16A96A1FE9064B00F7DE59 /* AppStylerLib.framework in Frameworks */,
 				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
 				AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */,
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
@@ -403,8 +407,8 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */,
 				AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */,
-				AE16A9561FD940B600F7DE59 /* AppStylerLib.framework */,
 				AE863BAD1FD7DFBE002AEDB0 /* libsqlite3.tbd */,
 				AE9D610F1FCD440F008A138C /* uiimages.bundle */,
 				AE9D61101FCD440F008A138C /* SDKStrings.bundle */,
@@ -531,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				AE16A95A1FDACCD900F7DE59 /* LoginAndTouchID */,
-				AEB6EFA61FC2BC1200D218ED /* PopOver */,
+				AEB6EFA61FC2BC1200D218ED /* Settings */,
 				AE7D5CE21F90A65500538E61 /* Barcode */,
 				AEAA70801F73CF9A00A511C8 /* ID */,
 				AE5D7E681EDD751C00D12163 /* AppDelegate */,
@@ -828,13 +832,15 @@
 			name = Region;
 			sourceTree = "<group>";
 		};
-		AEB6EFA61FC2BC1200D218ED /* PopOver */ = {
+		AEB6EFA61FC2BC1200D218ED /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				AEB6EFA71FC2BC2A00D218ED /* SettingsPopupViewController.swift */,
 				AEB6EFA81FC2BC2A00D218ED /* SettingsPopupViewController.xib */,
+				AE16A96C1FEA6F6100F7DE59 /* SettingsHomeViewController.swift */,
+				AE16A96D1FEA6F6100F7DE59 /* SettingsHomeViewController.xib */,
 			);
-			name = PopOver;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		AEDDA3AE1FB18B3A00B79700 /* Selfie */ = {
@@ -1008,6 +1014,7 @@
 				AEB6EFAA1FC2BC2A00D218ED /* SettingsPopupViewController.xib in Resources */,
 				AE5D7E3F1EDD729100D12163 /* Assets.xcassets in Resources */,
 				AE33FD921FB30D5900E3C380 /* SelfieResultsTableViewCell.xib in Resources */,
+				AE16A96F1FEA6F6100F7DE59 /* SettingsHomeViewController.xib in Resources */,
 				AE7EE5B31F3C755800536ED9 /* PreviewViewController.xib in Resources */,
 				AEAA70831F73CFE400A511C8 /* Region_plist_for_ID_Server_1x.plist in Resources */,
 				AEDDA3B21FB18B6000B79700 /* SelfieCaptureExprienceViewController.xib in Resources */,
@@ -1121,6 +1128,7 @@
 				AEDDA3C61FB1D06B00B79700 /* SelfieVerificationService.m in Sources */,
 				AE154A1D1EFD1A5600CF1F48 /* AccountTransactionData.swift in Sources */,
 				AE9028241F8638180055685B /* IDSettingsViewController.swift in Sources */,
+				AE16A96E1FEA6F6100F7DE59 /* SettingsHomeViewController.swift in Sources */,
 				AE33FD941FB30E6900E3C380 /* SelfieResultsTableViewCell.swift in Sources */,
 				AE8C80EB1F3347F10024C382 /* UIImageEffects.m in Sources */,
 				AE154A361F03A18D00CF1F48 /* PopViewCell.swift in Sources */,

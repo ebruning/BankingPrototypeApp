@@ -1,11 +1,11 @@
 {
     "user":{
-        "firstname":"Lucy",
+        "firstname":"Laura",
         "middlename":"",
-        "lastname":"Tate",
+        "lastname":"Wilson",
         "birthdate":"05-17-1982",
         "phone":"+198765432",
-        "email":"lucy.tate@kofax.com",
+        "email":"laura.wilson@kofax.com",
         "address":"15211, Abc Xyz Road",
         "city":"Los Angeles",
         "state":"CA",
@@ -79,7 +79,7 @@
                                     "date":"03-01-2017",
                                     "type":"Credit",
                                     "checknumber":"0000064167",
-                                    "payeename":"Lucy Tate",
+                                    "payeename":"Laura Wilson",
                                     "comment":"Check Deposit for Premium"
                                     },
                                     {
@@ -88,7 +88,7 @@
                                     "date":"04-01-2017",
                                     "type":"Credit",
                                     "checknumber":"00000678766",
-                                    "payeename":"Lucy Tate",
+                                    "payeename":"Laura Wilson",
                                     "comment":"Check Deposit for Premium"
                                     },
                                     {
@@ -97,7 +97,7 @@
                                     "date":"05-01-2017",
                                     "type":"Credit",
                                     "checknumber":"00000678768",
-                                    "payeename":"Lucy Tate",
+                                    "payeename":"Laura Wilson",
                                     "comment":"Check Deposit for Premium"
                                     }]
                         }

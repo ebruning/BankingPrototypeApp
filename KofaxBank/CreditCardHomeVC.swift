@@ -59,9 +59,6 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
 
     private var refreshOnTabChanged: Bool = true
     
-    //settings popup
-    private var settingsPopup: SettingsPopupViewController!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +103,7 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
             refreshOnTabChanged = false
             if cardStatus ==  STATUS_EXPIRED {
                 floatingButton.isHidden = false
-                
+            
                 Utility.showAlertWithCallback(onViewController: self, titleString: "Attention", messageString: "Your credit card is not valid anymore.\n\nWe have issued you a new card. \n\n If you have received it, use 'Activate Now' button to start activation process. You can also use the round button on screen to activate it later.", positiveActionTitle: "Activate Now", negativeActionTitle: "Cancel", positiveActionResponse: {
                     
                     self.initiateCardActivation()
@@ -130,12 +127,6 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
 
     
     private func clear() {
-        if settingsPopup != nil {
-            settingsPopup.close()
-            settingsPopup.dismiss(animated: false, completion: nil)
-            settingsPopup.removeFromParentViewController()
-            
-        }
     }
     
 
@@ -175,9 +166,7 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
-        
-        self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+        self.tabBarController?.navigationItem.rightBarButtonItem = logoutBarButtonItem
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -192,24 +181,6 @@ class CreditCardHomeVC: BaseViewController, UITabBarControllerDelegate, UIPopove
     func logout() {
         print("Logout!!!")
     }
-    
-    func showSettingsPopup() {
-        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
-        self.settingsPopup.applicationComponentName = AppComponent.CREDITCARD
-        
-        self.addChildViewController(self.settingsPopup)
-        self.settingsPopup.view.frame = self.view.frame
-        
-        self.view.addSubview(self.settingsPopup.view)
-        self.settingsPopup.view.alpha = 0
-        self.settingsPopup.didMove(toParentViewController: self)
-        
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-            self.settingsPopup.view.alpha = 1
-        }, completion: nil)
-        
-    }
-    
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none

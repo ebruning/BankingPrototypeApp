@@ -74,9 +74,6 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     
     private var bannerInnerOffset: CGFloat = 0
 
-    //Settings popup
-    private var settingsPopup: SettingsPopupViewController!
-
     
     //Others
 //    private var markForRefresh = true
@@ -259,17 +256,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     }
     
     private func clear() {
-        closeSettingsPopup()
         self.tabBarController?.delegate = nil
-    }
-
-    private func closeSettingsPopup() {
-        if settingsPopup != nil {
-            settingsPopup.close()
-            settingsPopup.dismiss(animated: false, completion: nil)
-            settingsPopup.removeFromParentViewController()
-            
-        }
     }
 
 
@@ -321,9 +308,7 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
         
         let logoutBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "logout_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(logout))
         
-        let menuBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "menu_vertical_white"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showSettingsPopup))
-        
-        self.tabBarController?.navigationItem.rightBarButtonItems = [logoutBarButtonItem, menuBarButtonItem]
+        self.tabBarController?.navigationItem.rightBarButtonItem = logoutBarButtonItem
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -331,25 +316,6 @@ class AccountsHomeVC: UIViewController, UITabBarControllerDelegate, UITableViewD
     func logout() {
         print("Logout!!!")
     }
-    
-    func showSettingsPopup() {
-        self.settingsPopup = SettingsPopupViewController(nibName: "SettingsPopupViewController", bundle: nil)
-        self.settingsPopup.applicationComponentName = AppComponent.IDCARD
-        
-        
-        self.addChildViewController(self.settingsPopup)
-        self.settingsPopup.view.frame = self.view.frame
-        
-        self.view.addSubview(self.settingsPopup.view)
-        self.settingsPopup.view.alpha = 0
-        self.settingsPopup.didMove(toParentViewController: self)
-        
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
-            self.settingsPopup.view.alpha = 1
-        }, completion: nil)
-        
-    }
-
     
     private func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
