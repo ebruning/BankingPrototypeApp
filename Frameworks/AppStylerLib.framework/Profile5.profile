@@ -19,22 +19,22 @@
                {
                 "type":"splashscreen",
                 "properties":{
-                    "background_type":"color",
+                    "background_type":"image",
                     "background_color":"#ffffff",
-                    "background_image":"",
-                    "app_title":"Kofax Capture",
-                    "app_title_color":"#000000",
-                    "app_title_logo":"",
-                    "footer_text":"",
+                    "background_image":"restaurant_splash_background.jpg",
+                    "app_title":"Food n More",
+                    "app_title_color":"#ffffff",
+                    "app_title_logo":"restaurant_logo.png",
+                    "footer_text":"Powered by",
                     "footer_text_color":"#555555",
-                    "footer_image":""
+                    "footer_image":"kofax_logo.png"
                 }
                },
                {
                 "type":"appscreen",
                 "properties":{
-                    "background_type":"color",
-                    "background_image":"",
+                    "background_type":"image",
+                    "background_image":"restaurant_screen_background.jpg",
                     "primary_background_color":"#2D292B",
                     "primary_text_color":"#FFFFFF",
                     "secondary_background_color":"#373032",
@@ -45,9 +45,9 @@
                {
                 "type":"button",
                 "properties":{
-                    "animate":true,
-                    "show_border":true,
-                    "corner_radius":10,
+                    "animate":false,
+                    "show_border":false,
+                    "corner_radius":3,
                     "primary_button_background_color":"#DC445E",
                     "primary_button_text_color":"#FFFFFF",
                     "primary_button_border_color":"#DC445E",

@@ -19,22 +19,22 @@
                {
                 "type":"splashscreen",
                 "properties":{
-                    "background_type":"color",
+                    "background_type":"image",
                     "background_color":"#ffffff",
-                    "background_image":"",
-                    "app_title":"Kofax Capture",
+                    "background_image":"bookshop_splash_background.jpg",
+                    "app_title":"CrossWords",
                     "app_title_color":"#000000",
-                    "app_title_logo":"",
-                    "footer_text":"",
+                    "app_title_logo":"bookshop_logo.png",
+                    "footer_text":"Powered by",
                     "footer_text_color":"#555555",
-                    "footer_image":""
+                    "footer_image":"kofax_logo.png"
                 }
                },
                {
                 "type":"appscreen",
                 "properties":{
-                    "background_type":"color",
-                    "background_image":"",
+                    "background_type":"image",
+                    "background_image":"bookshop_screen_background.jpeg",
                     "primary_background_color":"#ffffff",
                     "primary_text_color":"#000000",
                     "secondary_background_color":"#E8E8E8",
@@ -47,7 +47,7 @@
                 "properties":{
                     "animate":false,
                     "show_border":false,
-                    "corner_radius":5,
+                    "corner_radius":3,
                     "primary_button_background_color":"#54C4D0",
                     "primary_button_text_color":"#ffffff",
                     "primary_button_border_color":"#54C4D0",

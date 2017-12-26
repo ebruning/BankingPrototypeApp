@@ -12,34 +12,34 @@
                     "background_color":"#0079C2",
                     "title_color":"#ffffff",
                     "option_item_color":"#ffffff",
-                    "transparency":false,
+                    "transparency":true,
                     "blurry":false
                 }
                },
                {
                 "type":"splashscreen",
                 "properties":{
-                    "background_type":"color",
+                    "background_type":"image",
                     "background_color":"#ffffff",
-                    "background_image":"",
-                    "app_title":"Kofax Capture",
-                    "app_title_color":"#000000",
-                    "app_title_logo":"",
-                    "footer_text":"",
-                    "footer_text_color":"#555555",
-                    "footer_image":""
+                    "background_image":"bank_splash_background.jpg",
+                    "app_title":"BankRight",
+                    "app_title_color":"#FFC518",
+                    "app_title_logo":"bank_logo.png",
+                    "footer_text":"Powered by",
+                    "footer_text_color":"#ffffff",
+                    "footer_image":"kofax_logo.png"
                 }
                },
                {
                 "type":"appscreen",
                 "properties":{
-                    "background_type":"color",
-                    "background_image":"",
+                    "background_type":"image",
+                    "background_image":"bank_screen_background.jpg",
                     "primary_background_color":"#ffffff",
                     "primary_text_color":"#000000",
                     "secondary_background_color":"#E8E8E8",
                     "secondary_text_color":"#626262",
-                    "accent_color":"#FF7F00"
+                    "accent_color":"#FFC518"
                 }
                },
                {
@@ -47,12 +47,12 @@
                 "properties":{
                     "animate":false,
                     "show_border":false,
-                    "corner_radius":0,
-                    "primary_button_background_color":"#0079C2",
+                    "corner_radius":3,
+                    "primary_button_background_color":"#FFC518",
                     "primary_button_text_color":"#ffffff",
-                    "primary_button_border_color":"#127BBF",
+                    "primary_button_border_color":"#FFC518",
                     "secondary_button_background_color":"#ffffff",
-                    "secondary_button_text_color":"#000000",
+                    "secondary_button_text_color":"#555555",
                     "secondary_button_border_color":"#cccccc"
                 }
                }

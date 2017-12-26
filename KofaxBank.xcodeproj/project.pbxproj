@@ -24,9 +24,6 @@
 		AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */; };
 		AE16A9621FDE8EED00F7DE59 /* TouchIDEnablerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */; };
 		AE16A9641FE12F1C00F7DE59 /* IDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */; };
-		AE16A9691FE9064200F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; };
-		AE16A96A1FE9064B00F7DE59 /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; };
-		AE16A96B1FE9064B00F7DE59 /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE16A96E1FEA6F6100F7DE59 /* SettingsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE16A96C1FEA6F6100F7DE59 /* SettingsHomeViewController.swift */; };
 		AE16A96F1FEA6F6100F7DE59 /* SettingsHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE16A96D1FEA6F6100F7DE59 /* SettingsHomeViewController.xib */; };
 		AE254D251F55995A00695F8A /* UIColor+customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE254D241F55995A00695F8A /* UIColor+customization.swift */; };
@@ -148,6 +145,9 @@
 		AEDDA3BE1FB1D05100B79700 /* SelfieOriginalityValuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3B91FB1D05100B79700 /* SelfieOriginalityValuesModel.m */; };
 		AEDDA3BF1FB1D05100B79700 /* SelfieVerificationResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */; };
 		AEDDA3C61FB1D06B00B79700 /* SelfieVerificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */; };
+		AEF9B9AB1FF291FA003707CE /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF9B9AA1FF291FA003707CE /* AppStylerLib.framework */; };
+		AEF9B9AC1FF29201003707CE /* AppStylerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF9B9AA1FF291FA003707CE /* AppStylerLib.framework */; };
+		AEF9B9AD1FF29201003707CE /* AppStylerLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEF9B9AA1FF291FA003707CE /* AppStylerLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,13 +168,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		AE16A90C1FD92A4F00F7DE59 /* Embed Frameworks */ = {
+		AE8987D01FF2727B000CEF7E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AE16A96B1FE9064B00F7DE59 /* AppStylerLib.framework in Embed Frameworks */,
+				AEF9B9AD1FF29201003707CE /* AppStylerLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +201,6 @@
 		AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		AE16A9611FDE8EED00F7DE59 /* TouchIDEnablerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDEnablerVC.swift; sourceTree = "<group>"; };
 		AE16A9631FE12F1C00F7DE59 /* IDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDHomeVC.swift; sourceTree = "<group>"; };
-		AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		AE16A96C1FEA6F6100F7DE59 /* SettingsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHomeViewController.swift; sourceTree = "<group>"; };
 		AE16A96D1FEA6F6100F7DE59 /* SettingsHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHomeViewController.xib; sourceTree = "<group>"; };
 		AE254D241F55995A00695F8A /* UIColor+customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+customization.swift"; sourceTree = "<group>"; };
@@ -300,7 +299,6 @@
 		AE7D5E661FA77E2200538E61 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		AE7D5E671FAAE15400538E61 /* CreditCardTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTransactionCell.swift; sourceTree = "<group>"; };
 		AE7D5E691FAB55B300538E61 /* BillerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillerViewController.swift; sourceTree = "<group>"; };
-		AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		AE7EE5A61F3B296100536ED9 /* DiskUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskUtility.swift; sourceTree = "<group>"; };
 		AE7EE5A81F3B4BDA00536ED9 /* KEDImageMimeType+TypeStringify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KEDImageMimeType+TypeStringify.swift"; sourceTree = "<group>"; };
@@ -362,6 +360,7 @@
 		AEDDA3BB1FB1D05100B79700 /* SelfieVerificationResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationResultModel.m; sourceTree = "<group>"; };
 		AEDDA3C31FB1D06B00B79700 /* SelfieVerificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfieVerificationService.h; sourceTree = "<group>"; };
 		AEDDA3C41FB1D06B00B79700 /* SelfieVerificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfieVerificationService.m; sourceTree = "<group>"; };
+		AEF9B9AA1FF291FA003707CE /* AppStylerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppStylerLib.framework; path = Frameworks/AppStylerLib.framework; sourceTree = "<group>"; };
 		CBDB4E358E32082983212D65 /* Pods-KofaxBankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankUITests/Pods-KofaxBankUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E7EB795AB3C5139D294BC588 /* Pods-KofaxBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBank.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBank/Pods-KofaxBank.release.xcconfig"; sourceTree = "<group>"; };
 		F50ADCDA7CF5A528698D180D /* Pods-KofaxBankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KofaxBankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KofaxBankTests/Pods-KofaxBankTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -374,11 +373,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE16A9601FDE7FDB00F7DE59 /* LocalAuthentication.framework in Frameworks */,
-				AE16A9691FE9064200F7DE59 /* AppStylerLib.framework in Frameworks */,
+				AEF9B9AB1FF291FA003707CE /* AppStylerLib.framework in Frameworks */,
 				AE863BAE1FD7DFBE002AEDB0 /* libsqlite3.tbd in Frameworks */,
 				AE7EE5A51F3B0D9B00536ED9 /* Photos.framework in Frameworks */,
 				AE71BBDB1F273F8B0066B632 /* CoreMotion.framework in Frameworks */,
-				AE16A96A1FE9064B00F7DE59 /* AppStylerLib.framework in Frameworks */,
+				AEF9B9AC1FF29201003707CE /* AppStylerLib.framework in Frameworks */,
 				AE71BBD91F273F700066B632 /* libxml2.tbd in Frameworks */,
 				AE71BBD71F273F690066B632 /* libc++.tbd in Frameworks */,
 				AE71BBD51F273F5B0066B632 /* libz.tbd in Frameworks */,
@@ -407,14 +406,13 @@
 		75BDBBC70348218DCE276DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AE16A9681FE9064200F7DE59 /* AppStylerLib.framework */,
+				AEF9B9AA1FF291FA003707CE /* AppStylerLib.framework */,
 				AE16A95F1FDE7FDB00F7DE59 /* LocalAuthentication.framework */,
 				AE863BAD1FD7DFBE002AEDB0 /* libsqlite3.tbd */,
 				AE9D610F1FCD440F008A138C /* uiimages.bundle */,
 				AE9D61101FCD440F008A138C /* SDKStrings.bundle */,
 				AE9D61111FCD440F008A138C /* MobileSDK.framework */,
 				AE7EE5A41F3B0D9B00536ED9 /* Photos.framework */,
-				AE7EE5A21F3B0CE800536ED9 /* AssetsLibrary.framework */,
 				AE71BBDA1F273F8B0066B632 /* CoreMotion.framework */,
 				AE71BBD81F273F700066B632 /* libxml2.tbd */,
 				AE71BBD61F273F690066B632 /* libc++.tbd */,
@@ -892,7 +890,7 @@
 				AE5D7E2D1EDD729100D12163 /* Sources */,
 				AE5D7E2E1EDD729100D12163 /* Frameworks */,
 				AE5D7E2F1EDD729100D12163 /* Resources */,
-				AE16A90C1FD92A4F00F7DE59 /* Embed Frameworks */,
+				AE8987D01FF2727B000CEF7E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

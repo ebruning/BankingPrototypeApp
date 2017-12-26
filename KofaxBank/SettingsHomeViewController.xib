@@ -25,13 +25,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LY-0R-GV8">
-                    <rect key="frame" x="16" y="75" width="343" height="26"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                    <rect key="frame" x="16" y="75" width="343" height="33"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-0f-Xas" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="121" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="128" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aW-gt-7QI">
                             <rect key="frame" x="16" y="13" width="325" height="25"/>
@@ -73,7 +73,7 @@
                     </connections>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-cH-cMc">
-                    <rect key="frame" x="0.0" y="261" width="375" height="222"/>
+                    <rect key="frame" x="0.0" y="268" width="375" height="222"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3e-EO-1jJ">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
@@ -268,7 +268,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-bE-Pel" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="191" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="198" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1l-Xg-pfu">
                             <rect key="frame" x="16" y="13" width="294" height="25"/>
