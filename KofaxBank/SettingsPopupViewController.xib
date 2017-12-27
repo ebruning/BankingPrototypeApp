@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsPopupViewController" customModule="KofaxBank" customModuleProvider="target">
             <connections>
@@ -144,7 +151,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0L-zq-yUJ" userLabel="SessionIDContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="130" width="270" height="65"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="C640521793431F4486D4EF1586672385" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uh-dK-hCl">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0578F9E20EB144A69A64C3DFEE603BE9" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uh-dK-hCl">
                                                                 <rect key="frame" x="8" y="27" width="254" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="P21-Lg-ad7"/>
@@ -278,7 +285,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCw-4r-yzy" userLabel="AuthenticationURLContainer" customClass="CustomView" customModule="KofaxBank" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="74"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-sh-j7d">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://mps5.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryv-sh-j7d">
                                                                                 <rect key="frame" x="8" y="36" width="254" height="30"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="30" id="XOm-1u-bVf"/>

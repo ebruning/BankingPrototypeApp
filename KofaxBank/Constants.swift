@@ -114,10 +114,10 @@ let KEY_BILLPAY_CAPTURE_GUIDANCE: String = "keyBillPayCaptureGuidance"
 
 
 //let DEFAULT_BILLPAY_SERVER_URL: String = "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/"
-let DEFAULT_BILLPAY_SERVER_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+let DEFAULT_BILLPAY_SERVER_URL: String = "https://mps5.kofax.com/TotalAgility/Services/Sdk/"
 
 let DEFAULT_BILLPAY_PROCESS_IDENTITY_NAME: String = "KofaxBillPaySync"
-let DEFAULT_BILLPAY_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
+let DEFAULT_BILLPAY_SESSION_ID: String = "0578F9E20EB144A69A64C3DFEE603BE9"
 let DEFAULT_BILLPAY_CAPTURE_GUIDANCE: Bool = true
 
 //for Check Settings
@@ -128,10 +128,10 @@ let KEY_CHECK_CAPTURE_GUIDANCE: String = "keyCheckCaptureGuidance"
 
 
 //let DEFAULT_CHECK_SERVER_URL: String = "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/"
-let DEFAULT_CHECK_SERVER_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+let DEFAULT_CHECK_SERVER_URL: String = "https://mps5.kofax.com/TotalAgility/Services/Sdk/"
 
 let DEFAULT_CHECK_PROCESS_IDENTITY_NAME: String = "KofaxCheckDepositSync"
-let DEFAULT_CHECK_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
+let DEFAULT_CHECK_SESSION_ID: String = "0578F9E20EB144A69A64C3DFEE603BE9"
 let DEFAULT_CHECK_CAPTURE_GUIDANCE: Bool = true
 
 //for Credit Card Settings
@@ -141,10 +141,10 @@ let KEY_CREDIT_CARD_SESSION_ID: String = "keyCreditCardSessionID"
 let KEY_CREDIT_CARD_CAPTURE_GUIDANCE: String = "keyCreditCardCaptureGuidance"
 
 //let DEFAULT_CREDIT_CARD_SERVER_URL: String = "http://t4cgm8rclt1mnw5.asia.kofax.com/totalagility/services/sdk/"
-let DEFAULT_CREDIT_CARD_SERVER_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/"
+let DEFAULT_CREDIT_CARD_SERVER_URL: String = "https://mps5.kofax.com/TotalAgility/Services/Sdk/"
 
 let DEFAULT_CREDIT_CARD_PROCESS_IDENTITY_NAME: String = "KofaxCardCaptureSync"
-let DEFAULT_CREDIT_CARD_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
+let DEFAULT_CREDIT_CARD_SESSION_ID: String = "0578F9E20EB144A69A64C3DFEE603BE9"
 let DEFAULT_CREDIT_CARD_CAPTURE_GUIDANCE: Bool = true
 
 //for ID Settings
@@ -158,12 +158,12 @@ let KEY_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME: String = "keyIDAuthenticationPr
 let KEY_ID_CAPTURE_GUIDANCE: String = "keyIDCaptureGuidance"
 
 //let DEFAULT_ID_SERVER_URL: String = "http://ktaperf02.kofax.com/TotalAgility/Services/SDK"
-let DEFAULT_ID_SERVER_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk"
+let DEFAULT_ID_SERVER_URL: String = "https://mps5.kofax.com/TotalAgility/Services/Sdk"
 let DEFAULT_ID_PROCESS_IDENTITY_NAME_1X: String = "KofaxMobileIDSync"
 let DEFAULT_ID_PROCESS_IDENTITY_NAME_2X: String = "KofaxMobileIDCaptureSync"
-let DEFAULT_ID_SESSION_ID: String = "C640521793431F4486D4EF1586672385"
+let DEFAULT_ID_SESSION_ID: String = "0578F9E20EB144A69A64C3DFEE603BE9"
 let DEFAULT_ID_MOBILE_ID_VERSION: String = MobileIDVersion.VERSION_2X.rawValue
-let DEFAULT_ID_AUTHENTICATION_URL: String = "https://mobiledemo4.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments"
+let DEFAULT_ID_AUTHENTICATION_URL: String = "https://mps5.kofax.com/TotalAgility/Services/Sdk/JobService.svc/json/CreateJobSyncWithDocuments"
 let DEFAULT_ID_AUTHENTICATION_PROCESS_IDENTITY_NAME: String = "KofaxMobileIdFacialRecognition"
 let DEFAULT_ID_CAPTURE_GUIDANCE: Bool = true
 
